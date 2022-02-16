@@ -1,0 +1,176 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    color: black;
+    font-family: 'NotoSansKR', Arial, sans-serif;
+}
+
+.header{
+	width: 100%;
+	background-color: white;
+	top:0px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+
+.header-nav{
+    display: flex;
+    justify-content: space-between;
+    heigth:70px;
+    z-index: 1;
+
+    
+}
+.nav-logo{
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.flex{
+    display: flex;
+}
+
+
+
+.nav-login{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style:none;
+   
+    
+}
+.login-item01{
+    width: 100px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    list-style:none;
+    border-right: 1px solid black;
+    
+}
+.login-item02{
+	width: 100px;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items: center;
+    list-style:none;
+}
+.login-item02 a{
+	display:flex;
+	flex-direction:row;
+}
+
+.login-item02 a:hover{
+	position: relative;
+}
+.login-item02 span{
+	display: none;
+	flex-direction: row;
+}
+.login-item02 a:hover span{
+	display:flex;
+	flex-direction:row;
+	z-index: 100;
+	top:30px;
+	left:-17px;
+	width:70px;
+	position: absolute;
+	border: 1px solid black;
+	justify-content:center;
+	background-color: black;
+	color:white;
+}
+
+
+.login-item01 a{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+}
+.main{
+    position: relative;
+    top: 70px;
+}
+
+.header-card{
+	display: flex;
+	justify-content: center;
+}
+
+.flex-center{
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+}
+
+
+.card .card-img-top{
+    
+	width: 300px;
+	height:300px;
+	object-fit: cover;
+}
+
+
+.header-board{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+footer{
+    background-color: black;
+    color: white;
+    height: 300px;
+    margin-top: 150px;
+}
+
+
+.first-line{
+    border-bottom: 1px solid #392d23;
+}
+
+
+.second-line .col{
+	color:white;
+}
+
+.third-line{
+    display: none;
+}
+
+@media screen and (max-width: 1100px) { 
+    
+    .first-line{
+        text-align: center;
+    }
+
+    .second-line{
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-bottom: 1px solid #392d23;
+    }
+
+    .third-line{
+        display:block;
+    }
+}
