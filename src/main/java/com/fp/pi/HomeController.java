@@ -17,4 +17,10 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/index.go", method = RequestMethod.GET)
+	public String indexGo(HttpServletRequest request) {
+		
+		return home(request);  // 로고를 누르면 home(request) 메서드를 불러내겠다
+	}
+	
 }
