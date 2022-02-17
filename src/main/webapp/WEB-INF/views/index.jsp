@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +21,7 @@
 <div class="header">
 	<div class="container header-nav">
 		<div class="nav-logo">
-			<a href="#"><img
+			<a href="/pi"><img
 				src="https://w.namu.la/s/8c5bc8129cf1dc5011dc8dad2e505c568e6be2c6c0bb9e9b6e9374df725639ffa359c16b9546536fe381f7982379d980b90fc1b2b3ff3bbe5d0c05377bdda69039472251a5b54f1a39d388a657f38149"
 				style="width: 70px;"></a>
 		</div>
@@ -44,17 +46,18 @@
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="#">Separated link</a></li>
+					
+					<li><a class="dropdown-item" href="#"></a></li>
 				</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 				href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" href="#">Action</a></li>
-					<li><a class="dropdown-item" href="#">Another action</a></li>
-					<li><a class="dropdown-item" href="#">Something else here</a></li>
+					<li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
+					<li><a class="dropdown-item" href="#">쇼핑후기</a></li>
+					<li><a class="dropdown-item" href="#">바디프로필</a></li>
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="#">Separated link</a></li>
+					<li><a class="dropdown-item" href="#">Exercises(영상)</a></li>
 				</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 				href="#" role="button" aria-expanded="false" style="color: black;">대회/운동 루틴</a>
 				<ul class="dropdown-menu">
@@ -80,14 +83,14 @@
 	</div>
 </div>
 
-	<div >
+	<div style="margin-top: 70px" >
 		<jsp:include page="${contentPage }"></jsp:include>
 	</div>
 		
 	 <footer>
         <div class="container">
             <div class="pb-5 pt-5 first-line" >
-                <h1 style="color: white;">Pumping Iron</h1>
+                <h1 style="color: white; font-family: facon">Pumping Iron</h1>
             </div>
             <div class="pb-5 pt-5 second-line">
                 <div class="row">
