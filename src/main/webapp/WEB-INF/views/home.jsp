@@ -10,7 +10,7 @@
 
 <!-- 슬라이드  -->
 	<div id="carouselExampleCaptions" class="carousel slide"
-		data-bs-ride="carousel" style="top: 70px; z-index: 0;">
+		data-bs-ride="carousel" style="z-index: 0;">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carouselExampleCaptions"
 				data-bs-slide-to="0" class="active" aria-current="true"
@@ -21,29 +21,27 @@
 				data-bs-slide-to="2" aria-label="Slide 3"></button>
 		</div>
 		<div class="carousel-inner">
-			<div class="carousel-item active" style="height: 1000px;">
-				<img src="https://t1.daumcdn.net/cfile/tistory/99C941375C870FD50E"
-					class="d-block w-100" alt="...">
+			<div class="carousel-item active" >
+				<a href="#"><img style="height: 1000px;"
+				src="https://t1.daumcdn.net/cfile/tistory/99C941375C870FD50E"
+					class="d-block w-100" alt="..."></a>
 				<div class="carousel-caption d-none d-md-block">
-					<h5>First slide label</h5>
-					<p>Some representative placeholder content for the first slide.</p>
+				
 				</div>
 			</div>
-			<div class="carousel-item" style="height: 1000px;">
-				<img
-					src="https://img.jjang0u.com/data3/chalkadak/160/201211/07/135225533788463.jpg"
-					class="d-block w-100" alt="...">
+			<div class="carousel-item" >
+				<a href="#"><img style="height: 1000px;"
+					src="resources/img/index/slide_02.png"
+					class="d-block w-100" alt="..."></a>
 				<div class="carousel-caption d-none d-md-block">
-					<h5>Second slide label</h5>
-					<p>Some representative placeholder content for the second
-						slide.</p>
+				
 				</div>
 			</div>
-			<div class="carousel-item" style="height: 1000px;">
-				<img src="/img/spotifylogo.png" class="d-block w-100" alt="...">
+			<div class="carousel-item">
+				<a href="#"><img style="height: 1000px;"
+				src="resources/img/index/slide_03.png" class="d-block w-100" alt="..."></a>
 				<div class="carousel-caption d-none d-md-block">
-					<h5>Third slide label</h5>
-					<p>Some representative placeholder content for the third slide.</p>
+				
 				</div>
 			</div>
 		</div>
