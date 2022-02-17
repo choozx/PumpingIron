@@ -116,23 +116,20 @@
 						<li><a class="dropdown-item" href="#">무릎 보호대</a></li>
 						<li><a class="dropdown-item" href="#">신발</a></li>
 					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-					href="#" role="button" aria-expanded="false" style="color: black;">헬스장
-						정보</a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="#">Separated link</a></li>
-					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-					href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-						<li>
+                    href="#" role="button" aria-expanded="false" style="color: black;">헬스장
+                        정보</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="infoMap.go">헬스장 정보 검색</a></li>
+                        <li><a class="dropdown-item" href="#">가격 정보 모아보기</a></li>
+                 
+                    </ul>
+                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
+                        <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
+                        <li><a class="dropdown-item" href="#">바디프로필</a></li>
+                        <li>
 							<hr class="dropdown-divider">
 						</li>
 						<li><a class="dropdown-item" href="#">Separated link</a></li>
