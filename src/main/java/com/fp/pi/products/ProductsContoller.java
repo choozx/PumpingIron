@@ -21,6 +21,7 @@ public class ProductsContoller {
 		return "index";  
 	}
 	
+	//상품 디테일 페이지
 	@RequestMapping(value = "/product.detail", method = RequestMethod.GET)
 	public String ProductDetail(HttpServletRequest request) {
 		pDAO.getProductDetail(request);
