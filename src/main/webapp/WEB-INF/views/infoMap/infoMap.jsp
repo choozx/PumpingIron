@@ -16,7 +16,7 @@
 	</div>
 
 	<!-- 지도를 표시할 div 입니다 -->
-	<div id="map" style="width: 100%; height: 750px;" class="container"></div>
+	<div id="kakao_map" style="width: 100%; height: 750px;" class="container"></div>
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=938630b29a8b84390fba8518da467e06"></script>

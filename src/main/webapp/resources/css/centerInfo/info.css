@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.centerInfo_fhoto {
+width: 200px;
+border-style:dotted;
+border-color: black;
+position: relative;
+left: 100px;
+}
