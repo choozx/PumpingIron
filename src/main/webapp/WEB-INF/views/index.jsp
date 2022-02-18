@@ -123,17 +123,14 @@
                         <li><a class="dropdown-item" href="#">가격 정보 모아보기</a></li>
                  
                     </ul>
-                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
+                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="#">바디프로필</a></li>
-                        <li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="#">Separated link</a></li>
-					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+					</ul> 
+                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 					href="#" role="button" aria-expanded="false" style="color: black;">대회/운동
 						루틴</a>
 					<ul class="dropdown-menu">
