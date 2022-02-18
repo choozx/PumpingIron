@@ -13,6 +13,7 @@
 <link href="resources/css/index.css" rel="stylesheet">
 <link href="resources/css/member/login.css" rel="stylesheet">
 <link href="resources/css/member/join.css" rel="stylesheet">
+<link href="resources/css/products/products.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/f44a228655.js"
 	crossorigin="anonymous"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
@@ -109,7 +110,7 @@
 					class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">보충제</a></li>
+						<li><a class="dropdown-item" href="products.go">보충제</a></li>
 						<li><a class="dropdown-item" href="#">그립/스트랩</a></li>
 						<li><a class="dropdown-item" href="#">팔꿈치 보호대</a></li>
 						<li><a class="dropdown-item" href="#">등/허리</a></li>
