@@ -29,6 +29,8 @@ public class tipsController {
 		req.setAttribute("contentPage", "tips/watchContents.jsp");
 		return "index";
 	}
+
+	
 	
 
 }
