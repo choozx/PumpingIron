@@ -11,6 +11,7 @@ create table products(
 
 create sequence products_seq;
 insert into PRODUCTS values(products_seq.nextval, '보충제1', 'supplements', 10000, 'zxc', 0);
+insert into PRODUCTS values(products_seq.nextval, '보충제2', 'supplements', 15000, 'zxc', 0);
 
 
 --------------------------------------------------------------------

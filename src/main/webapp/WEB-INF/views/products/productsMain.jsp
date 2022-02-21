@@ -11,7 +11,7 @@
 	<div id="products_banner">보충제</div>
 	<c:forEach var="p" items="${products }">
 		<div id="product_div">
-			<a href="product.detail?p_no=" + ${p.p_no }>
+			<a href="product.detail?p_no=${p.p_no }">
 				<div id="product_img_div"><img class="container" src="resources/img/products/${p.p_img }.jpg"></div>
 				<div id="product_name_div">${p.p_name }</div>
 				<div id="product_price_div">${p.p_price }</div>

@@ -20,8 +20,12 @@ public class ProductsDAO {
 		}
 	}
 
-	public void getProductDetail(HttpServletRequest request) {
-		
+	public void getProductDetail(Product p, HttpServletRequest request) {
+		try {
+			request.setAttribute("product", ss.getMapper(ProductsMapper.class).getProduct(p));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

@@ -17,8 +17,10 @@
 <script src="https://kit.fontawesome.com/f44a228655.js"
 	crossorigin="anonymous"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/member/member.js"></script>
+<script type="text/javascript" src="resources/js/products/pay.js"></script>
 <script type="text/javascript">
 	$(document).ready(
 			function() {

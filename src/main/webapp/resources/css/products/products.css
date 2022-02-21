@@ -6,6 +6,7 @@
 	height: 300px;
 }
 #product_div{
+	float: left;
 	height: 320px;
 	width: 230px;
 }
@@ -15,4 +16,25 @@
 	height: 200px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#product_detail_img_div{
+	width: 300px;
+	margin-left: 200px;
+	float: left;
+	
+}
+
+#product_detail_div{
+	margin-top: 50px;
+}
+
+#product_info{
+	float: right;
+	margin-right: 200px;
+}
+
+#product_selector{
+	margin-top: 50px;
+	width: 600px;
 }

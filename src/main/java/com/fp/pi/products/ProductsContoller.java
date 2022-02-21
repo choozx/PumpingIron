@@ -23,9 +23,9 @@ public class ProductsContoller {
 	
 	//상품 디테일 페이지
 	@RequestMapping(value = "/product.detail", method = RequestMethod.GET)
-	public String ProductDetail(HttpServletRequest request) {
-		pDAO.getProductDetail(request);
-		request.setAttribute("contentPage", "products/productsMain.jsp");
+	public String ProductDetail(Product p, HttpServletRequest request) {
+		pDAO.getProductDetail(p, request);
+		request.setAttribute("contentPage", "products/productDetail.jsp");
 		
 		return "index";  
 	}
