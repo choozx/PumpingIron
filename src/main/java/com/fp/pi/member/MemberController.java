@@ -1,6 +1,7 @@
 package com.fp.pi.member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import oracle.net.aso.m;
 
 @Controller
 public class MemberController {
@@ -23,11 +26,20 @@ public class MemberController {
 		return "index";
 	}
 
-	// 회원가입
+	// 회원가입 페이지로 이동
 	@RequestMapping(value = "/member.join.go", method = RequestMethod.GET)
 	public String join(HttpServletRequest req) {
 
 		req.setAttribute("contentPage", "member/join.jsp");
+		return "index";
+	}
+	
+	// 회원가입 
+	@RequestMapping(value = "/member.join.do", method = RequestMethod.POST)
+	public String joinGo(Member m, HttpServletRequest req, HttpServletResponse respons) {
+		
+		mDAO.join(m, req, respons);
+		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 
@@ -35,13 +47,22 @@ public class MemberController {
 	// 휴대폰 인증
 	@RequestMapping(value = "/phoneCheck", method = RequestMethod.GET) 
 	@ResponseBody
-	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { 
+	public String sendSMS(@RequestParam("m_phone") String userPhoneNumber) { 
 		int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);//난수 생성 
 		
 		mDAO.certifiedPhoneNumber(userPhoneNumber,randomNumber); 
 		
 		return Integer.toString(randomNumber); 
 		}
+	
+	// email 중복 체크 컨트롤러
+		@RequestMapping(value = "/member/emailCheck", method = RequestMethod.GET)
+		@ResponseBody
+		public int emailCheck(@RequestParam("m_email") String m_email) {
+
+			return mDAO.emailCheck(m_email);
+		}
+	
 	}
 
 	

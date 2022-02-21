@@ -1,9 +1,20 @@
 package com.fp.pi.member;
 
+import java.io.File;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -11,6 +22,11 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @Service
 public class MemberDAO {
 
+	@Autowired
+	private SqlSession ss;
+
+
+	
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) { 
 		String api_key = "NCSSD7DTHFAANFEY"; 
 		String api_secret = "3ZBCTLBLJTUCTWUN5JWDFLP0DAHBOFGH"; 
@@ -30,6 +46,94 @@ public class MemberDAO {
 		} catch (CoolsmsException e) {
 			System.out.println(e.getMessage()); 
 			System.out.println(e.getCode()); } }
+
+	
+	
+	// 회원가입
+	public void join(Member m, HttpServletRequest req, HttpServletResponse response) {
+
+		String path = req.getSession().getServletContext().getRealPath("resources/files");
+		MultipartRequest mr = null;
+		try {
+			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "가입실패");
+			return;
+		}
+
+		try {
+			String m_email = mr.getParameter("m_email");
+			String m_pw = mr.getParameter("m_pw");
+			String m_phone = mr.getParameter("m_phone");
+			String m_name = mr.getParameter("m_name");
+			String m_addr1 = mr.getParameter("m_addr1");
+			String m_addr2 = mr.getParameter("m_addr2");
+			String m_addr3 = mr.getParameter("m_addr3");
+			String m_addr = m_addr1 + "!" + m_addr2 + "!" + m_addr3; // !는 구분자
+			String m_photo = mr.getFilesystemName("m_photo");
+			m_photo = URLEncoder.encode(m_photo, "utf-8");
+			m_photo = m_photo.replace("+", " ");
+
+			System.out.println(m_email);
+			System.out.println(m_pw);
+			System.out.println(m_phone);
+			System.out.println(m_addr);
+			System.out.println(m_name);
+			System.out.println(m_photo);
+			
+			
+			
+			m.setM_email(m_email);
+			m.setM_pw(m_pw);
+			m.setM_phone(m_phone);
+			m.setM_addr(m_addr);
+			m.setM_name(m_name);
+			m.setM_photo(m_photo);
+
+			if (ss.getMapper(MemberMapper.class).join(m) == 1) {
+				response.setContentType("text/html; charset=euc-kr");
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('회원가입이 완료되었습니다.');");
+				script.println("location.href ='index.go'");
+				script.println("</script>");
+				script.close();
+				System.out.println("가입 성공");
+			} else {
+				req.setAttribute("result", "가입 실패");
+				System.out.println("가입 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			String fileName = mr.getFilesystemName("m_photo");
+			new File(path + "/" + fileName).delete();
+			req.setAttribute("result", "가입 실패");
+		}
+		
+		
+		
+		
+	}
+
+
+
+
+	public int emailCheck(String m_email) {
+
+		MemberMapper MemberDAO = ss.getMapper(MemberMapper.class);
+
+		return MemberDAO.emailCheck(m_email);
+		
+	}
+
+
+
+	
+
+
+
+	
 	}
 
 	
