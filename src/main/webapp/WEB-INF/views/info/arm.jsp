@@ -27,27 +27,27 @@
 
 <div class="article-board ">
 <div class="video-board-wrapper   ">
-<a class="video-elem container" href=""><img src="resources/img/info/bi.webp"
+<a class="video-elem container" href="arm1.go"><img src="resources/img/info/bi.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">이두</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/bi2.webp"
+<a class="video-elem container" href="arm2.go"><img src="resources/img/info/bi2.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">이두</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/bi3.webp"
+<a class="video-elem container" href="arm3.go"><img src="resources/img/info/bi3.webp"
 class="d-block w-100"style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">이두</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/tri.webp"
+<a class="video-elem container" href="arm4.go"><img src="resources/img/info/tri.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">삼두</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/tri2.webp"
+<a class="video-elem container" href="arm5.go"><img src="resources/img/info/tri2.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">삼두</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/tri3.webp"
+<a class="video-elem container" href="arm6.go"><img src="resources/img/info/tri3.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">삼두</div>
 </a>

@@ -27,27 +27,27 @@
 
 <div class="article-board ">
 <div class="video-board-wrapper   ">
-<a class="video-elem container" href=""><img src="resources/img/info/bench.webp"
+<a class="video-elem container" href="chest1.go"><img src="resources/img/info/bench.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">벤치프레스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/dumbbell press.webp"
+<a class="video-elem container" href="chest2.go"><img src="resources/img/info/dumbbell press.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">덤벨 벤치프레스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/incline.webp"
+<a class="video-elem container" href="chest3.go"><img src="resources/img/info/incline.webp"
 class="d-block w-100"style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">인클라인 벤치프레스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/dips.webp"
+<a class="video-elem container" href="chest4.go"><img src="resources/img/info/dips.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">딥스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/chestpress.webp"
+<a class="video-elem container" href="chest5.go"><img src="resources/img/info/chestpress.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">체스트 프레스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/fly.webp"
+<a class="video-elem container" href="chest6.go"><img src="resources/img/info/fly.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">덤벨플라이</div>
 </a>

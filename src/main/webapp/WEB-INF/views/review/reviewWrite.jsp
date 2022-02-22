@@ -23,28 +23,26 @@
 <body class="main-bg">
 <div class="title-center text-center ">
 
-<a href="tips/tips.jsp">
-<span class="prompt-h1">Q/A</span>
+<a href="">
+<span class="prompt-h1">review</span>
 </a>
 </div>
 
 <div class="write-wrapper container">
 <div class="write-input-top d-flex mb-4">
 <span class="m-0 sub-title noto-pb">작성자</span>
-<span class="noto-pb mr-2"></span>
+<span class="noto-pb mr-2">#ID</span>
 
 </div>
 
 <form id="common-edit-form" onsubmit="return false;">
 <div class="d-flex justify-content-center mb-4">
 <span class="m-0 sub-title noto-pb pt-3">제목</span>
-<input class="common-oneline-input" type="text" name="cr_title"
- maxlength="100" placeholder="제목을 입력해주세요" >
+<input class="common-oneline-input" type="text" name="title"
+ maxlength="100" value placeholder="제목을 입력해주세요">
 
 </div>
- <textarea id="summernote" name="cr_text"></textarea>
- 
- 
+ <div id="summernote"></div>
     <script>
       $('#summernote').summernote({
         tabsize: 2,
@@ -53,19 +51,19 @@
     </script>
 
 
+</form>
 <div class="write-bottom">
 <a class="border-b-btn board-btn noto-h4 text-center"
 href="javascript:history.back();" type="button" name="button">취소</a>
 
 <button class="ml-3 background-b-btn board-btn noto-h4"
  type="button" name="button" data-type="board" data-category-id="8"
- data-id onclick="location.href='write.do'">저장</button>
+ data-id onclick="">저장</button>
 
 
 
 </div>
 
-</form>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

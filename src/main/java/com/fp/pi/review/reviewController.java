@@ -12,7 +12,19 @@ public class reviewController {
 	@RequestMapping(value = "/review.go", method = RequestMethod.GET)
 	public String reviewGo(HttpServletRequest req) {
 		
-		req.setAttribute("contentPage", "review/review.jsp");
+		req.setAttribute("contentPage", "review/review2.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/reviewWrite.go", method = RequestMethod.GET)
+	public String reviewWriteGo(HttpServletRequest req) {
+		
+		req.setAttribute("contentPage", "review/reviewWrite.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/reviewWatch.go", method = RequestMethod.GET)
+	public String reviewWratchGo(HttpServletRequest req) {
+		
+		req.setAttribute("contentPage", "review/reviewWatch.jsp");
 		return "index";
 	}
 

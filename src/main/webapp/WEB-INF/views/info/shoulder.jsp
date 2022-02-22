@@ -27,27 +27,27 @@
 
 <div class="article-board ">
 <div class="video-board-wrapper   ">
-<a class="video-elem container" href=""><img src="resources/img/info/mp.webp"
+<a class="video-elem container" href="shoulder1.go"><img src="resources/img/info/mp.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">밀리터리 프레스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/spress.webp"
+<a class="video-elem container" href="shoulder2.go"><img src="resources/img/info/spress.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">숄더 프레스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/sarere.webp"
+<a class="video-elem container" href="shoulder3.go"><img src="resources/img/info/sarere.webp"
 class="d-block w-100"style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">사이드 레터럴 레이즈</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/backtri.webp"
+<a class="video-elem container" href="shoulder4.go"><img src="resources/img/info/backtri.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">후면 삼각근</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/r1.webp"
+<a class="video-elem container" href="shoulder5.go"><img src="resources/img/info/r1.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">어깨 루틴1</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/r2.webp"
+<a class="video-elem container" href="shoulder6.go"><img src="resources/img/info/r2.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">어깨 루틴2</div>
 </a>

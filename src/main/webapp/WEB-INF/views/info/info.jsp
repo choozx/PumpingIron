@@ -14,26 +14,44 @@
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/info.css">
-
 </head>
 <body>
 <div class="main-wrapper container">
 <div class="title-center text-center ">
 
 <a href="tips/tips.jsp">
-<span class="prompt-h1">WorkOut</span>
+<span class="prompt-h1">workout</span>
 </a>
 </div>
 
 
 <div class="article-board ">
 <div class="video-board-wrapper   ">
-<a class="video-elem container" href="chest.go" style="width: 373px;">CHEST DAY</a>
-<a class="video-elem container" href="back.go" style="width: 373px;">BACK DAY</a>
-<a class="video-elem container" href="shoulder.go" style="width: 373px;">SHOULDER DAY</a>
-<a class="video-elem container" href="leg.go" style="width: 373px;">LEG DAY</a>
-<a class="video-elem container" href="arm.go" style="width: 373px;">ARM DAY</a>
-<a class="video-elem container" href="abs.go" style="width: 373px;">ABS DAY</a>
+<a class="video-elem container" href="chest.go"><img src=""
+class="d-block w-100" style="width: 373px;">
+<div class="w-100 p-2 font-weight-bold prompt-h1" style="height:20%;  font-size: 30px; text-align: center;">CHEST DAY</div>
+</a>
+<a class="video-elem container" href="back.go"><img src=""
+class="d-block w-100" style="width: 373px;">
+<div class="w-100 p-2 font-weight-bold prompt-h1" style="height:20%;  font-size: 30px; text-align: center;">BACK DAY</div>
+</a>
+<a class="video-elem container" href="shoulder.go"><img src=""
+class="d-block w-100"style="width: 373px;">
+<div class="w-100 p-2 font-weight-bold prompt-h1" style="height:20%;  font-size: 30px; text-align: center;">SHOULDER DAY</div>
+</a>
+<a class="video-elem container" href="leg.go"><img src=""
+class="d-block w-100" style="width: 373px;">
+<div class="w-100 p-2 font-weight-bold prompt-h1" style="height:20%;  font-size: 30px; text-align: center;">LEG DAY</div>
+</a>
+<a class="video-elem container" href="arm.go"><img src=""
+class="d-block w-100" style="width: 373px;">
+<div class="w-100 p-2 font-weight-bold prompt-h1" style="height:20%;  font-size: 30px; text-align: center;">ARM DAY</div>
+</a>
+<a class="video-elem container" href="abs.go"><img src=""
+class="d-block w-100" style="width: 373px;">
+<div class="w-100 p-2 font-weight-bold prompt-h1" style="height:20%; font-size: 30px; text-align: center;">ABS DAY</div>
+</a>
+
 </div>
 </div>
 <nav class="pagination-wrapper mt-5" aria-label="Page navigation example"></nav>

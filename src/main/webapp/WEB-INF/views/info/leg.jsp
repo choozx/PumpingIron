@@ -27,27 +27,27 @@
 
 <div class="article-board ">
 <div class="video-board-wrapper   ">
-<a class="video-elem container" href=""><img src="resources/img/info/squat.webp"
+<a class="video-elem container" href="leg1.go"><img src="resources/img/info/squat.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">스쿼트</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/legpress.webp"
+<a class="video-elem container" href="leg2.go"><img src="resources/img/info/legpress.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">레그 프레스</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/legex.webp"
+<a class="video-elem container" href="leg3.go"><img src="resources/img/info/legex.webp"
 class="d-block w-100"style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">레그 익스텐션</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/curl.webp"
+<a class="video-elem container" href="leg4.go"><img src="resources/img/info/curl.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">레그 컬</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/run.webp"
+<a class="video-elem container" href="leg5.go"><img src="resources/img/info/run.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">런지</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/luma.webp"
+<a class="video-elem container" href="leg6.go"><img src="resources/img/info/luma.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">루마니안 스플릿 스쿼트</div>
 </a>

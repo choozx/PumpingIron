@@ -54,7 +54,7 @@ select * from community_info_reply;
 -------------------------------------------------------
 
 create table community_review(
-cr_no number(7) primary key,
+cr_no number(7),
 cr_title varchar2(30 char) not null,
 cr_text varchar2(200 char) not null,
 cr_writer varchar2(20 char) not null,
@@ -64,9 +64,10 @@ cr_img varchar2(200 char) not null,
 cr_tips varchar2(200 char) not null,
 cr_bodyProfile varchar2(200 char) not null,
 cr_productReview varchar2(200 char) not null,
-cr_date date not null
-
+cr_date date not null,
+CONSTRAINT community_review_pk PRIMARY KEY (cr_no, cr_writer)
 )
+
 create sequence community_review_seq;
 
 insert into community_review values(community_review_seq.nextval, '1', '1', 'gw', '1', '1', '1', '1', '1', '1', sysdate);
@@ -75,6 +76,12 @@ select * from community_review;
 
 DROP SEQUENCE community_review_seq;
 DROP TABLE community_review CASCADE CONSTRAINTS;
+
+
+
+
+
+
 
 ------------------------------------------------------
 

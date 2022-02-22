@@ -27,27 +27,27 @@
 
 <div class="article-board ">
 <div class="video-board-wrapper   ">
-<a class="video-elem container" href=""><img src="resources/img/info/abs.webp"
+<a class="video-elem container" href="abs1.go"><img src="resources/img/info/abs.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">복근</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/abs2.webp"
+<a class="video-elem container" href="abs2.go"><img src="resources/img/info/abs2.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">복근</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/abs3.webp"
+<a class="video-elem container" href="abs3.go"><img src="resources/img/info/abs3.webp"
 class="d-block w-100"style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">복근</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/abs4.webp"
+<a class="video-elem container" href="abs4.go"><img src="resources/img/info/abs4.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">복근</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/abs5.webp"
+<a class="video-elem container" href="abs5.go"><img src="resources/img/info/abs5.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">복근</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/abs6.webp"
+<a class="video-elem container" href="abs6.go"><img src="resources/img/info/abs6.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">복근</div>
 </a>

@@ -27,27 +27,27 @@
 
 <div class="article-board ">
 <div class="video-board-wrapper   ">
-<a class="video-elem container" href=""><img src="resources/img/info/pull.webp"
+<a class="video-elem container" href="back1.go"><img src="resources/img/info/pull.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">풀업</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/dead.webp"
+<a class="video-elem container" href="back2.go"><img src="resources/img/info/dead.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">데드리프트</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/let.webp"
+<a class="video-elem container" href="back3.go"><img src="resources/img/info/let.webp"
 class="d-block w-100"style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">랫풀다운</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/sit.webp"
+<a class="video-elem container" href="back4.go"><img src="resources/img/info/sit.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">시티드 케이블 로우</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/row.webp"
+<a class="video-elem container" href="back5.go"><img src="resources/img/info/row.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">로우</div>
 </a>
-<a class="video-elem container" href=""><img src="resources/img/info/every.webp"
+<a class="video-elem container" href="back6.go"><img src="resources/img/info/every.webp"
 class="d-block w-100" style="width: 373px;">
 <div class="w-100 p-2 font-weight-bold" style="height:20%">등 종합</div>
 </a>

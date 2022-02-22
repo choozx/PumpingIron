@@ -3,6 +3,7 @@ package com.fp.pi.tips;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class community_review {
 
 	private int cr_no;
