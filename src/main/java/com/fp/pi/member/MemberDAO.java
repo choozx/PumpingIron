@@ -26,7 +26,7 @@ public class MemberDAO {
 	private SqlSession ss;
 
 
-	
+	// 휴대폰 인증번호 보내기
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) { 
 		String api_key = "NCSSD7DTHFAANFEY"; 
 		String api_secret = "3ZBCTLBLJTUCTWUN5JWDFLP0DAHBOFGH"; 
@@ -118,7 +118,7 @@ public class MemberDAO {
 
 
 
-
+	// 이메일 중복 체크
 	public int emailCheck(String m_email) {
 
 		MemberMapper MemberDAO = ss.getMapper(MemberMapper.class);
@@ -127,14 +127,51 @@ public class MemberDAO {
 		
 	}
 
-
-
 	
+	// 로그인
+	public void login(Member m, HttpServletRequest req) {
 
+		Member dbMember = ss.getMapper(MemberMapper.class).getMemberByID(m); // db에 있는 비밀번호 가져오기 위함
 
-
-	
+		if (dbMember != null) {
+			if (m.getM_pw().equals(dbMember.getM_pw())) {
+				req.getSession().setAttribute("loginMember", dbMember);
+				req.getSession().setMaxInactiveInterval(60 * 30);
+				System.out.println("로그인 성공");
+			} else {
+				req.setAttribute("result", "로그인 실패(PW오류)");
+				System.out.println("로그인 실패(PW오류)");
+			}
+		} else {
+			req.setAttribute("result", "로그인 실패(미가입ID)");
+			System.out.println("로그인 실패(미가입ID)");
+		}
 	}
+	
+	public boolean loginCheck(HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		if (m != null) {
+			return true;
+		} else {
+			req.setAttribute("loginPage", "member/login.jsp");
+			return false;
+		}
+	}
+
+
+
+	public void logout(HttpServletRequest req) {
+		req.getSession().setAttribute("loginMember", null);
+		System.out.println("로그아웃");
+	}
+
+
+	
+	
+
+
+
+}
 
 	
 

@@ -10,21 +10,41 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import oracle.net.aso.m;
-
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberDAO mDAO;
 
-	// 로그인
+	// 로그인 폼
 	@RequestMapping(value = "/member.login.go", method = RequestMethod.GET)
 	public String login(HttpServletRequest req) {
-
+		
+		
 		req.setAttribute("contentPage", "member/login.jsp");
 		return "index";
 	}
+	
+	// 로그인하기
+	@RequestMapping(value = "/member.login.do", method = RequestMethod.POST)
+	public String login(Member m, HttpServletRequest req, HttpServletResponse respons) {
+			
+		mDAO.login(m, req);
+		mDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	// 로그아웃
+	@RequestMapping(value = "member.logout", method = RequestMethod.GET)
+	public String logout(Member m, HttpServletRequest req) {
+		
+		mDAO.logout(req);
+		mDAO.loginCheck(req);
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
 
 	// 회원가입 페이지로 이동
 	@RequestMapping(value = "/member.join.go", method = RequestMethod.GET)
@@ -56,12 +76,15 @@ public class MemberController {
 		}
 	
 	// email 중복 체크 컨트롤러
-		@RequestMapping(value = "/member/emailCheck", method = RequestMethod.GET)
-		@ResponseBody
+	@RequestMapping(value = "/member.emailCheck", method = RequestMethod.GET)
+	@ResponseBody
 		public int emailCheck(@RequestParam("m_email") String m_email) {
 
 			return mDAO.emailCheck(m_email);
 		}
+	
+	
+	
 	
 	}
 

@@ -6,4 +6,6 @@ public interface MemberMapper {
 
 	int emailCheck(String m_email);
 
+	Member getMemberByID(Member m);
+
 }

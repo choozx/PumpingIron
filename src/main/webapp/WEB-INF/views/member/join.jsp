@@ -62,7 +62,7 @@ $("#m_email").keyup(function() {
 	var user_id = $('#m_email').val();
 	// alert(user_id)
 	$.ajax({
-		url : '${pageContext.request.contextPath}/member/emailCheck?m_email='+ user_id,
+		url : '${pageContext.request.contextPath}/member.emailCheck?m_email='+ user_id,
 		type : 'get',
 		success : function(data) {
 			console.log("1 = 중복o / 0 = 중복x : "+ data);							
