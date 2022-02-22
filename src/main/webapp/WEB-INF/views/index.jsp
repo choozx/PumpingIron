@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
 <!DOCTYPE html>
 <html>	
 <head>
@@ -145,13 +147,37 @@
 
 			</div>
 			<div class="nav-login">
-				<div class="login-item01">
-					<a href="member.login.go">로그인</a>
-				</div>
-				<div class="login-item02">
-					<a href="#"><i class="fa-solid fa-cart-shopping"
-						style="color: black;"><span>장바구니</span></i></a>
-				</div>
+				<c:choose>
+					<c:when test="${sessionScope.loginMember == null}">
+					<!-- 로그인 안했을 경우   -->
+						<div class="login-item02">
+							<a href="#"><i class="fa-solid fa-cart-shopping"
+								style="color: black;"><span>장바구니</span></i></a>
+						</div>					
+						<div class="login-item01">
+							<a href="member.login.go">로그인</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+					<!-- 로그인 했을 경우  -->
+						<div class="login-item02">
+							<a href="#"><i class="fa-solid fa-cart-shopping"
+								style="color: black;"><span>장바구니</span></i></a>
+						</div>
+						<div class="login-item01">
+							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
+			                    <ul class="dropdown-menu" style="padding: 0px">
+			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_email}</a></li>
+			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
+			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(0)</a></li>
+			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">회원정보</a></li>
+			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">회원탈퇴</a></li>
+			                        <li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
+								</ul> 
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
