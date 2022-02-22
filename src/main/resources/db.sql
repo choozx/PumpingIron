@@ -12,6 +12,11 @@ create table products(
 create sequence products_seq;
 insert into PRODUCTS values(products_seq.nextval, '보충제1', 'supplements', 10000, 'zxc', 0);
 insert into PRODUCTS values(products_seq.nextval, '보충제2', 'supplements', 15000, 'zxc', 0);
+insert into PRODUCTS values(products_seq.nextval, '스트렙1', 'gripStrap', 15000, 'strap1', 0);
+insert into PRODUCTS values(products_seq.nextval, '팔꿈치보호대1', 'elbowProtecter', 20000, 'elbowProtecter1', 0);
+insert into PRODUCTS values(products_seq.nextval, '밸트', 'backWaist', 50000, 'back1', 0);
+insert into PRODUCTS values(products_seq.nextval, '무릅보호대1', 'kneeProtecter', 11000, 'kneeProtecter1', 0);
+insert into PRODUCTS values(products_seq.nextval, '신발', 'shoes', 11000, 'shoes1', 0);
 
 
 --------------------------------------------------------------------

@@ -1,7 +1,11 @@
 function payment() {
 	
 	var p_name = $('#product_name').text();
-	alert(p_name);
+	var p_price = $('#product_price').text();
+	var p_quantity = $('#product_quantity').text();
+	
+	var total_amount = p_price * p_quantity;
+	
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp60273439');
 	IMP.request_pay({
@@ -11,7 +15,7 @@ function payment() {
 		merchant_uid: 'test' + new Date().getTime(),
 	
 		name: p_name,
-		amount: 100,
+		amount: total_amount,
 		buyer_email: 'choozx@naver.com',
 		buyer_name: '유제현',
 		buyer_tel: '010-7192-2785',

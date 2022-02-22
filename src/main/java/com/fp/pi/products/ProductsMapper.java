@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ProductsMapper {
 
-	public List<Product> getProducts();
+	public List<Product> getProducts(String choose);
 
 	public Product getProduct(Product p);
 }

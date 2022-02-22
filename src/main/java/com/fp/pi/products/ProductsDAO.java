@@ -14,7 +14,9 @@ public class ProductsDAO {
 	
 	public void getProducts(HttpServletRequest request) {
 		try {
-			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts());			
+			String choose = request.getParameter("products");
+			System.out.println(choose);
+			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts(choose));			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

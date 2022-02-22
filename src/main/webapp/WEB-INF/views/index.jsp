@@ -112,15 +112,17 @@
 					class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="products.go">보충제</a></li>
-						<li><a class="dropdown-item" href="#">그립/스트랩</a></li>
-						<li><a class="dropdown-item" href="#">팔꿈치 보호대</a></li>
-						<li><a class="dropdown-item" href="#">등/허리</a></li>
-						<li><a class="dropdown-item" href="#">무릎 보호대</a></li>
-						<li><a class="dropdown-item" href="#">신발</a></li>
+						<li>
+							<input type="hidden">
+							<a class="dropdown-item" href="products.go?products=supplements">보충제</a>
+						</li>
+						<li><a class="dropdown-item" href="products.go?products=gripStrap">그립/스트랩</a></li>
+						<li><a class="dropdown-item" href="products.go?products=elbowProtecter">팔꿈치 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?products=backWaist" >등/허리</a></li>
+						<li><a class="dropdown-item" href="products.go?products=kneeProtecter">무릎 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?products=shoes">신발</a></li>
 					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                    href="#" role="button" aria-expanded="false" style="color: black;">헬스장
-                        정보</a>
+                    href="#" role="button" aria-expanded="false" style="color: black;">헬스장 정보</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="infoMap.go">헬스장 정보 검색</a></li>
                         <li><a class="dropdown-item" href="#">가격 정보 모아보기</a></li>
