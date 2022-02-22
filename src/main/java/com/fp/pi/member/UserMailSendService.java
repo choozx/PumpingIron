@@ -68,7 +68,7 @@ public class UserMailSendService {
 				+ "<a href='http://localhost" + req.getContextPath() + "/user/key_alter?m_email="+ m_email +"&m_key="+key+"'>인증하기</a></p>"
 				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
 		try {
-			mail.setSubject("[본인인증] Pumping Iron 회원가입 인증메일입니다", "utf-8");
+			mail.setSubject("[본인인증] Pumping Iron 회원가입 인증메일입니다.", "utf-8");
 			mail.setText(htmlStr, "utf-8", "html");
 			mail.addRecipient(RecipientType.TO, new InternetAddress(m_email));
 			mailSender.send(mail);

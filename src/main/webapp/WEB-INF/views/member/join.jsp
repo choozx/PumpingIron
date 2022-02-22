@@ -180,7 +180,7 @@ $("#m_email").keyup(function() {
 					src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
 			</div>
 			<div class="submit">
-				<input type="submit" value="submit" id="reg_submit">
+				<button id="reg_submit">submit</button>
 			</div>
 		</div>
 	</div>
