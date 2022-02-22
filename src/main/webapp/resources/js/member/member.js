@@ -149,12 +149,14 @@ $(function() {
 	$('#loginBtn').click(function() {
 		var m_email = $('#m_email').val();
 		var m_pw = $('#m_pw').val();
+		var remember_us = $('#remember_us').is(':checked');
 		$.ajax({
 			type : 'post',
 			url : "/pi/member.login.do",
 			data : {
 				m_email : m_email,
-				m_pw : m_pw
+				m_pw : m_pw,
+				remember_userId : remember_us
 				},
 				success : function(data) {
 		
@@ -166,9 +168,14 @@ $(function() {
 						console.log(data);
 						$('#spanLoginCheck').text('이메일을 통하여 이메일인증을 해주시길 바랍니다.');
 						$("#spanLoginCheck").css("color", "red"); 
-					} else if (data == -3) { // 비밀번호 오류라면?
+						
+					} else if (data == -3) { // 아이디가 사용중이라면?
 						console.log(data);
-						$('#spanLoginCheck').text('비밀번호 오류입니다.');	
+						location.href = '/pi/member.login.go?m_email=' + m_email + '&m_pw=' + m_pw + '&remember_userId=' + remember_us;
+						
+					} else if (data == -4) { // 비밀번호 오류라면?
+						console.log(data);
+						$('#spanLoginCheck').text('로그인 정보를 정확히 입력해주세요.');	
 						$("#spanLoginCheck").css("color", "red"); 
 					} else { //로그인 성공시
 						console.log(data);

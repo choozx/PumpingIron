@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -131,7 +132,8 @@ public class MemberDAO {
 
 	
 	// 로그인
-public int userLogin(Member m, HttpSession httpSession, HttpServletResponse response, HttpServletRequest req) {
+public int userLogin(Member m, HttpSession httpSession, HttpServletResponse response, HttpServletRequest req,
+		String user_check) {
 		
 		System.out.println("UserLoginService // 로그인 객체 확인 MemberDAO : " + m);
 		String user_id = m.getM_email();
@@ -165,18 +167,16 @@ public int userLogin(Member m, HttpSession httpSession, HttpServletResponse resp
 				System.out.println("2단계");
 				
 				// 쿠키 체크 검사
-//				Cookie cookie = new Cookie("user_check", user_id);
-//				if (user_check.equals("true")) {
-//					response.addCookie(cookie);
-//					System.out.println("3단계-쿠키 아이디저장 O");
-//					// 쿠키 확인
-//					// System.out.println("Service check" + cookie);
+				Cookie cookie = new Cookie("user_check", user_id);
+				if (user_check.equals("true")) {
+					response.addCookie(cookie);
+					System.out.println("3단계-쿠키 아이디저장 O");
+					  // 쿠키 확인
+					  System.out.println("Cookie : " + cookie);
 				} else {
 					System.out.println("3단계-쿠키 아이디저장 X");
-					result = -3;
-					return result;
-//					cookie.setMaxAge(0);
-//					response.addCookie(cookie);
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
 				}
 
 				System.out.println("3단계-로그인단계");
@@ -189,25 +189,17 @@ public int userLogin(Member m, HttpSession httpSession, HttpServletResponse resp
 
 				result = 1;
 
-//				// 중복로그인 start
-//				
-//				// 접속자 아이디를 세션에 담는다.
-//				httpSession.setAttribute("loginId", userVO.getUser_id());
-//
-//				// 이미 접속한 아이디인지 체크한다.
-//				loginManager.printloginUsers(); // 접속자 리스트
-//				if (loginManager.isUsing(userVO.getUser_id())) {
-//					result = -3;
-//					System.out.println("@@@@@@@@@@@@@@@@@@@[중복로그인 발생]@@@@@@@@@@@@@@@@@@");
-//				} else {
-//					loginManager.setSession(httpSession, userVO.getUser_id());
-//				}
-
+				
 				// 중복로그인 end
+			} else {
+				System.out.println("로그인 정보를 정확히 입력해주세요.");
+				result = -4;
+				return result;
 			}
 		
 	
 
+		}
 		return result;
 	}
 		

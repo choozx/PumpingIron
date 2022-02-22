@@ -37,11 +37,11 @@ public class MemberController {
 	// 로그인하기
 	@RequestMapping(value = "/member.login.do", method = RequestMethod.POST)
 	@ResponseBody
-	public int login(Member m, HttpServletRequest req, HttpServletResponse response, HttpSession httpSession) {
+	public int login(Member m, HttpServletRequest req, HttpServletResponse response, HttpSession httpSession, String user_check) {
 			
-		System.out.println(req.getParameter("m_email"));
+		user_check = req.getParameter("remember_userId");
 	
-		int result = mDAO.userLogin(m, httpSession, response, req);
+		int result = mDAO.userLogin(m, httpSession, response, req, user_check);
 //		int result = lg.userLogin(m, httpSession, response, req);
 		mDAO.loginCheck(req);
 		
