@@ -1,86 +1,113 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html >
+<html lang='en'>
 <head>
 <meta charset="UTF-8">
+
+<link href='resources/css/calendar/main.css' rel='stylesheet' />
+<script type="text/javascript" src='resources/js/calendar/main.js'></script>
+<script type="text/javascript"
+	src='resources/js/calendar/locales-all.js'></script>
+
+<script type="text/javascript">
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          timeZone: 'local',
+          initialView: 'dayGridMonth',
+          selectable: true,
+          
+          customButtons: {
+        		  addEvent: { // 추가한 버튼 설정
+                      text : "대회 일정 추가",  // 버튼 내용
+                      click : function(){ // 버튼 클릭 시 이벤트 추가
+                          $("#calendarModal").modal("show"); // modal 나타내기
+
+                          $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
+                              var content = $("#calendar_content").val();
+                              var start_date = $("#calendar_start_date").val();
+                              var end_date = $("#calendar_end_date").val();
+                              
+                              //내용 입력 여부 확인
+                              if(content == null || content == ""){
+                                  alert("내용을 입력하세요.");
+                              }else if(start_date == "" || end_date ==""){
+                                  alert("날짜를 입력하세요.");
+                              }else if(new Date(end_date)- new Date(start_date) < 0){ // date 타입으로 변경 후 확인
+                                  alert("종료일이 시작일보다 먼저입니다.");
+                              }else{ // 정상적인 입력 시
+                                  var obj = {
+                                      "title" : content,
+                                      "start" : start_date,
+                                      "end" : end_date
+                                  }//전송할 객체 생성
+                                  console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
+                              }
+                          });
+                      }
+                  }
+              },
+              
+              editable: true, // false로 변경 시 draggable 작동 x 
+              displayEventTime: false // 시간 표시 x
+
+        });
+        calendar.render();
+        
+        calendar.on('dateClick', function(info) {
+      	 console.log('clicked on ' + info.dateStr);
+      	//alert('Clicked on: ' + info.dateStr);
+      	});
+        
+        
+      });
+      
+    </script>
+    
+    
+    
+
 <title>Insert title here</title>
 </head>
 <body>
 
-  <%
-  java.util.Calendar cal=java.util.Calendar.getInstance(); //Calendar객체 cal생성
-  int currentYear=cal.get(java.util.Calendar.YEAR); //현재 날짜 기억
-  int currentMonth=cal.get(java.util.Calendar.MONTH);
-  int currentDate=cal.get(java.util.Calendar.DATE);
-  String Year=request.getParameter("year"); //나타내고자 하는 날짜
-  String Month=request.getParameter("month");
-  int year, month;
-  if(Year == null && Month == null){ //처음 호출했을 때
-  year=currentYear;
-  month=currentMonth;
-  }
-  else { //나타내고자 하는 날짜를 숫자로 변환
-   year=Integer.parseInt(Year);
-   month=Integer.parseInt(Month);
-   if(month<0) { month=11; year=year-1; } //1월부터 12월까지 범위 지정.
-   if(month>11) { month=0; year=year+1; }
-  }
-  %>
-  
-  
-<div class="container" style="width: 100%">
-  <table border=0 style="width: 100%"> <!-- 달력 상단 부분, 더 좋은 방법이 없을까? -->
-   <tr>
-    <td align=left width=200> <!-- 년 도-->
-    <a href="calendar.jsp?year=<%out.print(year-1);%>&month=<%out.print(month);%>">◀</a>
-    <% out.print(year); %>년
-    <a href="calendar.jsp?year=<%out.print(year+1);%>&month=<%out.print(month);%>">▶</a>
-    </td>
-    <td align=center width=300> <!-- 월 -->
-    <a href="calendar.jsp?year=<%out.print(year);%>&month=<%out.print(month-1);%>">◀</a>
-    <% out.print(month+1); %>월
-    <a href="calendar.jsp?year=<%out.print(year);%>&month=<%out.print(month+1);%>">▶</a>
-    </td>
-    <td align=right width=200><% out.print(currentYear + "-" + (currentMonth+1) + "-" + currentDate); %></td>
-   </tr>
-  </table>
-  <table border="1" cellspacing=0 style="width: 100%; height: 500px;"> <!-- 달력 부분 -->
-   <tr>
-    <td width=100>일</td> <!-- 일=1 -->
-    <td width=100>월</td> <!-- 월=2 -->
-    <td width=100>화</td> <!-- 화=3 -->
-    <td width=100>수</td> <!-- 수=4 -->
-    <td width=100>목</td> <!-- 목=5 -->
-    <td width=100>금</td> <!-- 금=6 -->
-    <td width=100>토</td> <!-- 토=7 -->
-   </tr>
-   <tr height=30>
-   <% /* 나중에 jstl로 수정하기 */
-   cal.set(year, month, 1); //현재 날짜를 현재 월의 1일로 설정
-   int startDay=cal.get(java.util.Calendar.DAY_OF_WEEK); //현재날짜(1일)의 요일
-   int end=cal.getActualMaximum(java.util.Calendar.DAY_OF_MONTH); //이 달의 끝나는 날
-   int br=0; //7일마다 줄 바꾸기
-   for(int i=0; i<(startDay-1); i++) { //빈칸출력
-    out.println("<td>&nbsp;</td>");
-    br++;
-    if((br%7)==0) {
-     out.println("<br>");
-    }
-   }
-   for(int i=1; i<=end; i++) { //날짜출력
-    out.println("<td>" + i + "</td>");
-    br++;
-    if((br%7)==0 && i!=end) {
-     out.println("</tr><tr height=30>");
-    }
-   }
-   while((br++)%7!=0) //말일 이후 빈칸출력
-    out.println("<td>&nbsp;</td>");
-   %>
-   </tr>
-  </table>
-  </div>
+	<div id='calendar' class="container"></div>
+
+
+ <!-- modal 추가 -->
+    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="taskId" class="col-form-label">일정 내용</label>
+                        <input type="text" class="form-control" id="calendar_content" name="calendar_content">
+                        <label for="taskId" class="col-form-label">시작 날짜</label>
+                        <input type="date" class="form-control" id="calendar_start_date" name="calendar_start_date">
+                        <label for="taskId" class="col-form-label">종료 날짜</label>
+                        <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="sprintSettingModalClose">취소</button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>

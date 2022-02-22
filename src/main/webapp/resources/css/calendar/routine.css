@@ -77,15 +77,15 @@ html, body{
   color: #0b0809;
 }
 .input-list > div{
-  font-size: 10px;
+  font-size: 10pt;
   width: 60%;
   float: left;
   color: #ddaf35;
 }
-.input-list > .checked{
+/* .input-list > .checked{
   color: #FFFFFF;
   text-decoration:line-through
-}
+} */
 .del-data{
   display: block;
   color: #ddaf35;
@@ -100,7 +100,7 @@ html, body{
 }
 .content-right{
   float: left;
-  width: 90%;
+  width: 100%;
   padding: 10px;
 }
 .sun{
@@ -200,7 +200,7 @@ html, body{
     color: #0b0809;
   }
   .input-list > div{
-    font-size: 10px;
+    font-size: 10pt;
     width: 60%;
     float: left;
     color: #ddaf35;

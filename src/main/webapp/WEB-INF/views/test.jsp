@@ -8,8 +8,7 @@
 <meta name="viewport" content="width=device-width">
 
 <link href="resources/css/calendar/routine.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-	rel="stylesheet">
+
 
 <script type="text/javascript"
 	src="resources/js/calendar/calendarTodo1.js"></script>
@@ -20,21 +19,20 @@
 	<div class="main">
 		<div class="content-wrap">
 			<div class="content-left">
-				<div class="main-wrap" style="color: white;">
-					<div id="main-day" class="main-day" style="color: white;"></div>
-					<div id="main-date" class="main-date" style="color: white;"></div>
+				<div class="main-wrap">
+					<div id="main-day" class="main-day"></div>
+					<div id="main-date" class="main-date"></div>
 				</div>
 				<div class="todo-wrap">
-					<div class="todo-title" style="color: white;"> 루틴 기록 </div>
+					<div class="todo-title">Todo List</div>
 					<div class="input-wrap">
-						<input type="text" placeholder=" today's routine "
+						<input type="text" placeholder="please write here!!"
 							id="input-box" class="input-box">
-						<button type="button" id="input-data" class="input-data">기록</button>
-						<div id="input-list" class="input-list" ></div>
+						<button type="button" id="input-data" class="input-data">INPUT</button>
+						<div id="input-list" class="input-list"></div>
 					</div>
 				</div>
 			</div>
-			
 			<div class="content-right">
 				<table id="calendar" align="center">
 					<thead>
