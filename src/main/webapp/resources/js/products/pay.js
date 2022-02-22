@@ -2,7 +2,7 @@ function payment() {
 	
 	var p_name = $('#product_name').text();
 	var p_price = $('#product_price').text();
-	var p_quantity = $('#product_quantity').text();
+	var p_quantity = $('#quantity').val();
 	
 	var total_amount = p_price * p_quantity;
 	

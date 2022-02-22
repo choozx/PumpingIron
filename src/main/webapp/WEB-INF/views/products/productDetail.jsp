@@ -17,14 +17,18 @@
 		<input type="button" value="신발">
 	</div>
 	<div id="product_detail_div" class="container">
-		<div id="product_detail_img_div"><img src="resources/img/products/${product.p_img }.jpg"></div>
+		<div id="product_detail_img_div"><img id="product_detail_img" src="resources/img/products/${productDetail.p_img }.jpg"></div>
 		<div id="product_info">
-			<div id="product_name">${product.p_name}</div>
+			<div id="product_name">${productDetail.p_name }</div>
 			<div id="product_star">별점</div>
-			<div id="product_price">1000</div>
-			<div id="product_quantity"></div>
+			<div id="product_price">${productDetail.p_price }₩</div>
+			<div id="product_quantity">수량<p><input class="container" type="text" value="1" id='quantity'></div>
 			<div><img id="kakao_pay" src="resources/img/products/payment_icon_yellow_small.png"></div>
 		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div id="#product_detail_info" class="container">
+		asdasdasdzxc
 	</div>
 </body>
 </html>
