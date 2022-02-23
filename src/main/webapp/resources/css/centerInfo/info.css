@@ -1,20 +1,7 @@
 @charset "UTF-8";
 
 
-.centerInfo{
-	width: 100%;
-	border-style: solid;
-	border-color: black;
-	position: fixed;
+.partnership_center:hover{
+	color: red;
 	
-}
-
-
-
-.centerInfo_fhoto {
-width: 200px;
-border-style:dotted;
-border-color: black;
-position: relative;
-left: 100px;
 }
