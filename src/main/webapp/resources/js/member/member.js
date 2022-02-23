@@ -56,7 +56,7 @@ $(function() {
 					$("#phone2").attr("disabled", false);
 					$("#phoneChk2").css("display", "inline-block");
 					$(".successPhoneChk").text("인증번호를 입력한 뒤 확인을 눌러주십시오.");
-					$(".successPhoneChk").css("color", "green");
+					$(".successPhoneChk").css("color", "red");
 					$("#phone").attr("readonly", true);
 					code2 = data;
 				}
@@ -143,5 +143,48 @@ $(function() {
 				$("#reg_submit").attr("disabled", true); } });
 
 	
+	
+	
+// 로그인 할 때 유효성 검사
+	$('#loginBtn').click(function() {
+		var m_email = $('#m_email').val();
+		var m_pw = $('#m_pw').val();
+		var remember_us = $('#remember_us').is(':checked');
+		$.ajax({
+			type : 'post',
+			url : "/pi/member.login.do",
+			data : {
+				m_email : m_email,
+				m_pw : m_pw,
+				remember_userId : remember_us
+				},
+				success : function(data) {
+		
+					console.log(data);
+					if (data == 0) { // 없는 회원일 경우
+						$('#spanLoginCheck').text('존재하지 않는 회원입니다.');
+						$("#spanLoginCheck").css("color", "red"); 
+					} else if (data == -2) { //인증하지 않았다면?
+						console.log(data);
+						$('#spanLoginCheck').text('이메일을 통하여 이메일인증을 해주시길 바랍니다.');
+						$("#spanLoginCheck").css("color", "red"); 
+						
+					} else if (data == -3) { // 아이디가 사용중이라면?
+						console.log(data);
+						location.href = '/pi/member.login.go?m_email=' + m_email + '&m_pw=' + m_pw + '&remember_userId=' + remember_us;
+						
+					} else if (data == -4) { // 비밀번호 오류라면?
+						console.log(data);
+						$('#spanLoginCheck').text('로그인 정보를 정확히 입력해주세요.');	
+						$("#spanLoginCheck").css("color", "red"); 
+					} else { //로그인 성공시
+						console.log(data);
+						location.href = '/pi/index.go';
+					}
+				}
+			});
+		});
+	
+
 	
 });
