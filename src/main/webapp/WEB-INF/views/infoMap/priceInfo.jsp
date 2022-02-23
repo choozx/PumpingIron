@@ -15,11 +15,14 @@
 			id="button-addon2">검색</button>
 	</div>
 	
-	<div class="centerInfo_fhoto mt-2 container" >
+	<div class="centerInfo container" >
+	
+	<div class="centerInfo_fhoto mt-2" >
 		헬스장 사진
 	</div>
 
 
+	</div>
 
 
 </body>

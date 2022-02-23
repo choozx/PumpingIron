@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+
+.centerInfo{
+	width: 100%;
+	border-style: solid;
+	border-color: black;
+	position: fixed;
+	
+}
+
+
+
 .centerInfo_fhoto {
 width: 200px;
 border-style:dotted;
