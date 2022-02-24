@@ -19,4 +19,6 @@ delete MEMBER where m_email = '1234@gmail.com';
 
 select * from member;
 
+delete member where m_email = '@naver.com'
+
 drop table member cascade constraint purge;
