@@ -140,18 +140,13 @@
                          <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="#">바디프로필</a></li>
-<<<<<<< HEAD
                         <li>
 							<hr class="dropdown-divider">
 						</li>
 						<li><a class="dropdown-item" href="#">Separated link</a></li>
-					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-					href="#" role="button" aria-expanded="false" style="color: black;">대회 정보/운동
-=======
 					</ul> 
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 					href="#" role="button" aria-expanded="false" style="color: black;">대회/운동
->>>>>>> 604d897b95786a4eccb55b1368df4d242539d60c
 						루틴</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="schedule.go">대회 정보</a></li>
