@@ -60,16 +60,14 @@ body{
     justify-content: space-between;
     align-items: center;
     list-style:none;
-   
-    
+ 
 }
 .login-item01{
-    width: 100px;
+	width: 100px;
     display: flex;
     justify-content:center;
     align-items: center;
     list-style:none;
-    border-right: 1px solid black;
     
 }
 .login-item02{
@@ -185,6 +183,7 @@ footer{
 	font-family: facon;
 	src:url("facon.ttf"); /* Pumping Iron 글씨체 */
 }
+
 
 
 

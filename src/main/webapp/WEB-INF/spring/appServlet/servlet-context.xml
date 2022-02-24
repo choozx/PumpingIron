@@ -29,8 +29,13 @@
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
+<<<<<<< HEAD
 		<beans:property name="username" value="c##jss" />
 		<beans:property name="password" value="jss" />
+=======
+		<beans:property name="username" value="yjh" />
+		<beans:property name="password" value="yjh" />
+>>>>>>> 604d897b95786a4eccb55b1368df4d242539d60c
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -45,8 +50,12 @@
 			<beans:list>
 				<beans:value>classpath:memberMapper.xml</beans:value>
 				<beans:value>classpath:tipsMapper.xml</beans:value>
+<<<<<<< HEAD
 				<beans:value>classpath:infoMapMapper.xml</beans:value>
 				<beans:value>classpath:calendarMapper.xml</beans:value>
+=======
+				<beans:value>classpath:productsMapper.xml</beans:value>
+>>>>>>> 604d897b95786a4eccb55b1368df4d242539d60c
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -54,6 +63,23 @@
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
+	</beans:bean>
+	
+	<!-- 회원가입 메일 인증 -->
+	<beans:bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.gmail.com" />
+		<beans:property name="port" value="587" /><!-- 465 or 25 -->
+		<beans:property name="username" value="gr9501@gmail.com" />
+		<beans:property name="password" value="14ic035C!@" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+				<beans:prop key="mail.debug">true</beans:prop>
+			</beans:props>
+		</beans:property>
 	</beans:bean>
 
 </beans:beans>
