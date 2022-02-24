@@ -36,7 +36,7 @@
 					<a href="member.join.go">회원가입</a>
 				</div>
 				<div class="forgot_pw">
-					<a href="">아이디・비밀번호 찾기</a>
+					<a href="member.search.go">아이디・비밀번호 찾기</a>
 				</div>
 			</div>
 			<div class="submit">

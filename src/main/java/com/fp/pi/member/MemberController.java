@@ -1,5 +1,8 @@
 package com.fp.pi.member;
 
+import java.io.IOException;
+import java.net.http.HttpResponse;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -108,5 +111,85 @@ public class MemberController {
 			
 			return "member/loginSuccess";
 	}
+		// 메뉴 - 회원탈퇴
+		@RequestMapping(value = "/member.withdrawal", method = RequestMethod.GET)
+		public String withdrawal(Member m,HttpServletRequest req, HttpServletResponse response) {
 
+		 
+			mDAO.loginCheck(req);
+			req.setAttribute("contentPage", "member/withdrawlGo.jsp");
+			return "index";
+		}	
+		// 회원탈퇴 페이지 이동
+		@RequestMapping(value = "/member.withdrawal.go", method = RequestMethod.GET)
+		public String withdrawalGo(Member m,HttpServletRequest req, HttpServletResponse response) {
+
+			mDAO.loginCheck(req);
+			req.setAttribute("contentPage", "member/withdrawlDo.jsp");
+			return "index";
+		}	
+		// 회원탈퇴 수행
+		@RequestMapping(value = "/member.withdrawal.do", method = RequestMethod.POST)
+		public String withdrawalDo(Member m,HttpServletRequest req, HttpServletResponse response) {
+
+		if(mDAO.loginCheck(req)) {
+			mDAO.withdrawal(m, req, response);
+		}
+			req.setAttribute("contentPage", "home.jsp");
+			return "index";
+		}	
+
+		// 아이디 / 비밀번호 찾기 페이지로 이동
+		@RequestMapping(value = "/member.search.go", method = RequestMethod.GET)
+		public String searchGo(Member m,HttpServletRequest req, HttpServletResponse response) {
+			
+			
+			req.setAttribute("contentPage", "member/memberSearch.jsp");
+			return "index";
+		}
+		
+		// ajax 요청 아이디 찾기
+		@RequestMapping(value = "/member.searchId.do", method = RequestMethod.POST)
+		@ResponseBody
+		public String SearchId(Member m, HttpServletRequest req, HttpServletResponse response) {
+			
+			System.out.println(m.getM_name());
+			System.out.println(m.getM_phone());
+			String result = mDAO.get_searchId(m.getM_name(), m.getM_phone(), req);
+
+			return result;
+		}
+		
+		// 비밀번호 찾기(이메일로 임시 비밀번호 발송)
+		@RequestMapping(value = "/member.searchPw.do", method = RequestMethod.GET)
+		@ResponseBody
+		public int passwordSearch(@RequestParam("m_email")String m_email,
+				@RequestParam("m_phone")String m_phone,
+				HttpServletRequest req) {
+
+		int result = mailsender.mailSendWithPassword(m_email,m_phone, req);
+			
+			return result;
+		}
+		// 회원정보 페이지 이동 전에 비밀번호 입력받기
+		@RequestMapping(value = "/member.info", method = RequestMethod.GET)
+		public String info(Member m,HttpServletRequest req, HttpServletResponse response) {
+
+			mDAO.loginCheck(req);
+			req.setAttribute("contentPage", "member/info.jsp");
+			return "index";
+		}
+		
+		
+		
+		// 회원정보 페이지로 이동
+		@RequestMapping(value = "/member.info.go", method = RequestMethod.POST)
+		public String infoGo(Member m,HttpServletRequest req, HttpServletResponse response)  {
+			
+			mDAO.loginCheck(req);
+			mDAO.splitAddr(req);
+			mDAO.infoPwCheck(m, req, response);
+			req.setAttribute("contentPage", "member/infoGo.jsp");
+			return "index";
+		}
 }

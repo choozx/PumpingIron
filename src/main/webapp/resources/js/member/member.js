@@ -1,3 +1,120 @@
+// 회원 탈퇴
+function withdraw() {
+	var ok = confirm("정말 탈퇴하시겠습니까?");
+	let withdrawPw = document.getElementById('m_pw');
+
+	if (isEmpty(withdrawPw)) {
+
+		alert('비밀번호를 입력해주세요')
+
+		withdrawPw.focus();
+		withdrawPw.value == "";
+
+		return false;
+
+	}
+
+	
+	if (ok) {
+		return true;
+	} else{
+		return false;
+	}
+}
+
+
+// 아이디/비밀번호 찾기 체크 버튼에 따라
+function search_check(num) {
+	if (num == '1') {
+		document.getElementById("searchP").style.display = "none";
+		document.getElementById("searchI").style.display = "";	
+	} else {
+		document.getElementById("searchI").style.display = "none";
+		document.getElementById("searchP").style.display = "";
+	}
+}
+
+
+
+$(function() {
+// 아이디 값 받고 출력하는 ajax
+$('#searchBtn').click(function(){
+	var idV = "";
+	var m_name = $('#m_name').val();
+	var m_phone = $('#m_phone').val();
+
+	$.ajax({
+		type:"POST",
+		url:"/pi/member.searchId.do",
+		data : {
+					m_name : m_name,
+					m_phone : m_phone
+					},	
+		success:function(data){
+			if(data == 0){
+				$('#id_value').text("존재하지 않는 회원입니다.");	
+			} else {
+				
+				$('#id_value').text(data);
+				// 아이디값 별도로 저장
+				idV = data;
+			}
+		}
+	});
+});
+
+
+// 아이디 찾기 후에 비밀번호 찾기 눌렀을 때
+$('#pwSearch_btn').click(function(){		
+	
+	
+	// 1. 패스워드 찾기 창으로 이어지고
+	$('#search_2').prop("checked", true);
+	
+	// 2. 메서드 호출
+	search_check(2);
+	
+	// 3. 모달창 닫기
+	$('#staticBackdrop').modal('hide');
+	// 4.아이디 
+//	$('#inputEmail_2').attr("value", idV);
+	
+});
+
+
+//비밀번호 찾기 이메일로 보내기
+$('#searchBtn2').click(function(){
+	console.log("패스워드 찾기 : ajax 들어가기 전");
+	console.log($('#inputEmail_2').val());
+	console.log($('#inputPhone_2').val());
+	var m_email = $('#inputEmail_2').val();
+	var m_phone = $('#inputPhone_2').val();
+	$.ajax({
+		type : "get",
+		url : "member.searchPw.do",
+		data : {
+			m_email : m_email,
+			m_phone : m_phone
+		},
+		success : function(data){
+					
+			if(data == 0){
+			   alert("존재하지 않는 회원입니다.")
+			} else if (data == -4) { // 비밀번호 오류라면?
+				alert("회원정보를 올바르게 입력해주세요.")
+			}else {
+				alert("해당 이메일로 임시 비밀번호를 발송하였습니다.");
+			}
+		}
+	});
+	
+});
+
+
+
+
+
+});
 // 주소 찾기
 function connectAddrSearchEvent() {
 
@@ -14,7 +131,9 @@ function connectAddrSearchEvent() {
 $(function() {
 
 	connectAddrSearchEvent();
-
+	
+	
+	
 });
 
 
@@ -33,6 +152,9 @@ $(function() {
 	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	// 휴대폰 번호 정규식
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+	
+	
+	
 	
 	
 
