@@ -16,11 +16,8 @@
 <link href="resources/css/index.css" rel="stylesheet">
 <link href="resources/css/member/login.css" rel="stylesheet">
 <link href="resources/css/member/join.css" rel="stylesheet">
-<<<<<<< HEAD
 <link href="resources/css/centerInfo/info.css" rel="stylesheet">
-=======
 <link href="resources/css/products/products.css" rel="stylesheet">
->>>>>>> 604d897b95786a4eccb55b1368df4d242539d60c
 <script src="https://kit.fontawesome.com/f44a228655.js"
 	crossorigin="anonymous"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>	
@@ -30,6 +27,7 @@
 <script type="text/javascript" src="resources/js/member/member.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(
 			function() {
 				function setCookie(name, value, expiredays) {
