@@ -1,5 +1,7 @@
 select * from products
 
+select * from products where p_type = 'supplements' ORDER BY p_price DESC
+
 create table products(
 	p_no number(7) primary key,
 	p_name varchar2(30 char) not null,

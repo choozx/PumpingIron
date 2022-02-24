@@ -11,6 +11,14 @@
 	width: 230px;
 }
 
+#products_select_div{
+	margin-bottom: 50px;
+}
+
+#p_main_sort{
+	float: right;
+}
+
 #product_img_div{
 	width: 200px;
 	height: 200px;

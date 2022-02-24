@@ -153,11 +153,11 @@ public int userLogin(Member m, HttpSession httpSession, HttpServletResponse resp
 		}
 
 		// 인증 안 했을 경우 인증하란 메세지 발생
-		String y = "Y";
+		/*String y = "Y";
 		if (!(dbMember.getM_key().equals(y))) {
 			result = -2;
 			return result;
-		}
+		}*/
 
 		// 입력한 아이디와 스토어id값을 통해 정보가 존재 할 경우
 		if (dbMember != null) {

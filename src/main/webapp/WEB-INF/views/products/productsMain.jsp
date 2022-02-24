@@ -8,8 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div id="products_banner">보충제</div>
-	<c:forEach var="p" items="${products }">
+	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }">보충제</div>
+	<div id="products_select_div">
+		<select id="p_main_sort" name="p_sort">			
+			<option value="p_name">이름순</option>
+			<option value="p_cnt">구매순</option>
+			<option value="evaluation_sort">평점순</option>
+			<option value="p_price">높은가격순</option>
+			<option value="p_price">낮은가격순</option>
+		</select>
+	</div>
+	<div style="clear: both;"></div>
+	
+	<table id="product_tb">
+	</table>
+ 	<%-- <c:forEach var="p" items="${products }">
 		<div id="product_div">
 			<a href="product.detail?p_no=${p.p_no }">
 				<div id="product_img_div"><img class="container" src="resources/img/products/${p.p_img }.jpg"></div>
@@ -17,6 +30,6 @@
 				<div id="product_price_div">${p.p_price }</div>
 			</a>
 		</div>
-	</c:forEach>
+	</c:forEach> --%>
 </body>
 </html>

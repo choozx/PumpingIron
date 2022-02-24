@@ -23,6 +23,7 @@
 			<div id="product_star">별점</div>
 			<div id="product_price_div">${productDetail.p_price }<input id="product_price" type="hidden" value="${productDetail.p_price }"></div>
 			<div id="product_quantity">수량<p><input class="container" type="text" value="1" id='quantity'></div>
+			<input id="product_no" type="hidden" value="${productDetail.p_no }">
 			<input id="member_addr" type="hidden" value="${sessionScope.loginMember.m_addr }">
 			<input id="member_email" type="hidden" value="${sessionScope.loginMember.m_email }">
 			<input id="member_name" type="hidden" value="${sessionScope.loginMember.m_name }">			
@@ -32,7 +33,7 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div id="#product_detail_info" class="container">
-		${sessionScope.loginMember.m_addr }
+		<h1>상품 내용</h1>
 	</div>
 </body>
 </html>

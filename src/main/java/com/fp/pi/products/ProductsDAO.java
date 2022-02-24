@@ -1,5 +1,7 @@
 package com.fp.pi.products;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,9 +16,8 @@ public class ProductsDAO {
 	
 	public void getProducts(HttpServletRequest request) {
 		try {
-			String choose = request.getParameter("products");
-			System.out.println(choose);
-			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts(choose));			
+			String type = request.getParameter("products");
+			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts(type));			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,6 +29,29 @@ public class ProductsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void IncreaseBuyCount(Product p, HttpServletRequest request) {
+		
+		try {
+			if (ss.getMapper(ProductsMapper.class).increaseBuyCount(p) == 1) {
+				request.setAttribute("result", "성공");
+			} else {
+				request.setAttribute("result", "실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("result", "실패");
+		}
+	}
+
+	public Products getProductsSort(ProductSort ps) {
+		System.out.println(ps.getP_sort());
+		System.out.println(ps.getP_type());
+		List<Product> products = ss.getMapper(ProductsMapper.class).getProductSort(ps);
+		
+		Products p = new Products(products);
+		return p;
 	}
 	
 }
