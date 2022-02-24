@@ -19,10 +19,10 @@ public class InfoMapController {
 	
 	
 	
-	@RequestMapping(value = "/onedayTicket.go", method = RequestMethod.GET)
-	public String onedayTicketGo(HttpServletRequest request) {
+	@RequestMapping(value = "/priceInfo.go", method = RequestMethod.GET)
+	public String priceInfoGo(HttpServletRequest request) {
 		
-		 request.setAttribute("contentPage", "infoMap/onedayTicket.jsp");
+		 request.setAttribute("contentPage", "infoMap/priceInfo.jsp");
 		
 		return "index";
 	}

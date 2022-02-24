@@ -1,10 +1,21 @@
 function payment() {
 	
-	var p_name = $('#product_name').text();
-	var p_price = $('#product_price').text();
-	var p_quantity = $('#quantity').val();
+	let p_name = $('#product_name').text();
+	let p_price = $('#product_price').val();
+	let p_quantity = $('#quantity').val();
 	
-	var total_amount = p_price * p_quantity;
+	let m_name = $('#member_name').val();
+	let m_email = $('#member_email').val();
+	let m_phone = $('#member_phone').val();
+	let m_addr = $('#member_addr').val();
+	
+	let m_addr_split = m_addr.split('!');
+	
+	let total_amount = p_price * p_quantity;
+	
+	alert(p_price);
+	alert(p_quantity);
+	alert(total_amount);
 	
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp60273439');
@@ -16,11 +27,11 @@ function payment() {
 	
 		name: p_name,
 		amount: total_amount,
-		buyer_email: 'choozx@naver.com',
-		buyer_name: '유제현',
-		buyer_tel: '010-7192-2785',
-		buyer_addr: '서울특별시 강남구 삼성동',
-		buyer_postcode: '123-456',
+		buyer_email: m_email,
+		buyer_name: m_name,
+		buyer_tel: m_phone,
+		buyer_addr: m_addr_split[0] + m_addr_split[1],
+		buyer_postcode: m_addr_split[2],
 		m_redirect_url : 'redirect url'
 	}, function (rsp) {
 		console.log(rsp);

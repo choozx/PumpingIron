@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Pumping Iron</title>
+  <link rel="shortcut icon" href="#">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -15,6 +16,7 @@
 <link href="resources/css/index.css" rel="stylesheet">
 <link href="resources/css/member/login.css" rel="stylesheet">
 <link href="resources/css/member/join.css" rel="stylesheet">
+<link href="resources/css/centerInfo/info.css" rel="stylesheet">
 <link href="resources/css/products/products.css" rel="stylesheet">
 <link href="resources/css/member/withdrawlDo.css" rel="stylesheet">
 <link href="resources/css/member/memberSearch.css" rel="stylesheet">
@@ -28,6 +30,7 @@
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(
 			function() {
 				function setCookie(name, value, expiredays) {
@@ -114,8 +117,7 @@
 					style="width: 70px;"></a>
 			</div>
 			<div class="nav">
-				<li class="nav-item dropdown flex"><a
-					class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+				<li class="nav-item dropdown flex"> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
 						<li>
@@ -131,7 +133,7 @@
                     href="#" role="button" aria-expanded="false" style="color: black;">헬스장 정보</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="infoMap.go">헬스장 정보 검색</a></li>
-                        <li><a class="dropdown-item" href="#">가격 정보 모아보기</a></li>
+                        <li><a class="dropdown-item" href="priceInfo.go">가격 정보 모아보기</a></li>
                  
                     </ul>
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
@@ -140,18 +142,17 @@
                          <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="#">바디프로필</a></li>
+                        <li>
+							<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item" href="#">Separated link</a></li>
 					</ul> 
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 					href="#" role="button" aria-expanded="false" style="color: black;">대회/운동
 						루틴</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="#">건우씨 짱</a></li>
+						<li><a class="dropdown-item" href="schedule.go">대회 정보</a></li>
+						<li><a class="dropdown-item" href="routine.go">운동 루틴 기록</a></li>
 					</ul></li>
 
 			</div>
