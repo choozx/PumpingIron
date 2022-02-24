@@ -114,8 +114,7 @@
 					style="width: 70px;"></a>
 			</div>
 			<div class="nav">
-				<li class="nav-item dropdown flex"><a
-					class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+				<li class="nav-item dropdown flex"> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
 						<li>
