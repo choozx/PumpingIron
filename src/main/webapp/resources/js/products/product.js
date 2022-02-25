@@ -13,7 +13,7 @@ function productsSort() {
 				"p_sort" : sort_type,
 				"p_type" : p_type
 			},
-			seccess : function(data) {
+			success : function(data) {
 				alert("aaa");
 				console.log(data);
 				function successcall2(data) {
