@@ -2,6 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.tips.TipsMapper">
 
+<select id="reviews" resultType="com.fp.pi.tips.community_review">
+
+select * from community_review 
+
+
+</select>
+
+
+<insert id="writeCon" parameterType="com.fp.pi.tips.community_review">
+
+insert into community_review values(community_review_seq.nextval, #{cr_title}, #{cr_text}, #{cr_writer}, 0, 0, #{cr_img}, #{cr_tips}, #{cr_bodyProfile}, #{cr_productReview}, sysdate)
+ 
+
+
+</insert>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

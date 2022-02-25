@@ -16,17 +16,13 @@
 <link href="resources/css/member/login.css" rel="stylesheet">
 <link href="resources/css/member/join.css" rel="stylesheet">
 <link href="resources/css/products/products.css" rel="stylesheet">
-<link href="resources/css/member/withdrawlDo.css" rel="stylesheet">
-<link href="resources/css/member/memberSearch.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/f44a228655.js"
 	crossorigin="anonymous"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>	
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script type="text/javascript" src="resources/js/jQuery.js"  charset="utf-8"></script>
-<script type="text/javascript" src="resources/js/member/member.js" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
+<script type="text/javascript" src="resources/js/member/member.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
-<script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript">
 	$(document).ready(
 			function() {
@@ -134,16 +130,22 @@
                         <li><a class="dropdown-item" href="#">가격 정보 모아보기</a></li>
                  
                     </ul>
+                    
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
                     <ul class="dropdown-menu">
-                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
-                        <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
+                        <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
+                        <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="#">바디프로필</a></li>
-					</ul> 
-                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-					href="#" role="button" aria-expanded="false" style="color: black;">대회/운동
-						루틴</a>
+                        <li>
+							<hr class="dropdown-divider">
+						</li>
+						
+						<li><a class="dropdown-item" href="info.go">운동영상</a></li>
+					</ul>
+
+                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+					</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">Action</a></li>
 						<li><a class="dropdown-item" href="#">Another action</a></li>
@@ -177,11 +179,11 @@
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
 			                    <ul class="dropdown-menu" style="padding: 0px">
-			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
+			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_email}</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
 			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(0)</a></li>
-			                        <li><a class="dropdown-item" href="member.info" style="color: #01a1dd;">회원정보</a></li>
-			                        <li><a class="dropdown-item" href="member.withdrawal" style="color: #01a1dd;">회원탈퇴</a></li>
+			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">회원정보</a></li>
+			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">회원탈퇴</a></li>
 			                        <li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
 								</ul> 
 						</div>

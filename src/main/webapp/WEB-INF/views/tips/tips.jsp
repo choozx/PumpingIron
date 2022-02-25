@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,7 @@
 
 
 </head>
+${r }
 <body style="z-index: 0;">
 <div class="title-center text-center">
 
@@ -34,30 +37,23 @@
     </tr>
   </thead>
   <tbody>
+  <c:forEach var="m" items="${reviews }" >
     <tr>
-      <th scope="row">1</th>
-      <td><a href="watchContents.go"><span>Mark</span></a></td>
-      <td>Otto</td>
-      <td>2022-02-15</td>
-      <td>0</td>
-      <td>0</td>
+      <th scope="row">${m.cr_no}</th>
+      <td><a href="watchContents.go"><span>${m.cr_title}</span></a></td>
+      <td>${m.cr_writer }</td>
+      <td><fmt:formatDate value="${m.cr_date}" type="date" dateStyle="short" />
+      </td>
+      <c:forEach var="n" items="${m.cr_views }">
+      <td>${n.cr_views }</td>
+      </c:forEach>
+      
+      <c:forEach var="n" items="${m.cr_like }">
+      <td>${m.cr_like }</td>
+      </c:forEach>
+      
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>2022-02-15</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>LeBrone</td>
-      <td>2022-02-15</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
+  </c:forEach>
   </tbody>
 </table>
 
