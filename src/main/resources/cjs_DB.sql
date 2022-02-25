@@ -44,7 +44,9 @@ cr_date date not null
 
 create sequence calendar_routine_seq;
 
-insert into calendar_routine values(calendar_routine_seq.nextval, '?', '스쿼트 100개', '2000-05-03');
+insert into calendar_routine values(calendar_routine_seq.nextval, '?', '스쿼트 100개', '2022-02-25');
+
+select * from calendar_routine;
 
 
 
