@@ -18,16 +18,16 @@
 </head>
 <body>
 	<div class="main">
-		<div class="content-wrap">
+		<div class="content-wrap" style="width: 62%;">
 			<div class="content-left">
 				<div class="main-wrap" style="color: white;">
 					<div id="main-day" class="main-day" style="color: white;"></div>
 					<div id="main-date" class="main-date" style="color: white;"></div>
 				</div>
 				<div class="todo-wrap">
-					<div class="todo-title" style="color: white;"> 루틴 기록 </div>
+					<div class="todo-title pt-3" style="color: white;"> 루틴 기록 </div>
 					<div class="input-wrap">
-						<input type="text" placeholder=" today's routine "
+						<input type="text" placeholder=" 아래에 루틴이 기록됩니다 "
 							id="input-box" class="input-box">
 						<button type="button" id="input-data" class="input-data">기록</button>
 						<div id="input-list" class="input-list" ></div>
@@ -35,13 +35,13 @@
 				</div>
 			</div>
 			
-			<div class="content-right">
-				<table id="calendar" align="center">
+			<div class="content-right" >
+				<table id="calendar" class="ms-3" align="center" style="width: 600px;" >
 					<thead>
-						<tr class="btn-wrap clearfix">
-							<td><label id="prev"> &#60; </label></td>
+						<tr class="btn-wrap clearfix" >
+							<td id="prev" class="prev"><label  > &#60; </label></td>
 							<td align="center" id="current-year-month" colspan="5"></td>
-							<td><label id="next"> &#62; </label></td>
+							<td class="next" id="next"><label > &#62; </label></td>
 						</tr>
 						<tr>
 							<td class="sun" align="center">Sun</td>

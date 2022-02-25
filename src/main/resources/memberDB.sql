@@ -14,6 +14,7 @@ CONSTRAINT member_pk PRIMARY KEY (m_email, m_name, m_phone) -- 이메일, 이름
 
 insert into member values
 ('1234@gmail.com', '1234', 01067019501, '몰라', '김두', 'test.jpg', 0, 0, sysdate, '0');
+insert into member values ('admin@pumping.com', 'admin5959^^', 00000000000, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y');
 
 select * from member;
 

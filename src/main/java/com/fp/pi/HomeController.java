@@ -13,7 +13,6 @@ public class HomeController {
 	public String home(HttpServletRequest request) {
 		
 		request.setAttribute("contentPage", "home.jsp");
-		
 		return "index";
 	}
 	

@@ -31,16 +31,16 @@
 			<div class="centerInfo_fhoto ratio ratio-1x1"
 				style=" width: 450px;">
 					<div class="row row-cols-2">
-						<div class="col ms-2 ratio ratio-1x1" style="width: 200px; border: 1px solid;">
+						<div class="col ms-2 ratio ratio-1x1" style="width: 220px; border: 1px solid;">
 						<img class="img-fluid" src="resources/img/infoMap/샘플 사진 홍키통키 (1).jpg">
 						</div>
-						<div class="col ratio ratio-1x1" style="width: 200px; border: 1px solid;">
+						<div class="col ratio ratio-1x1" style="width: 220px; border: 1px solid;">
 						<img class="img-fluid" src="resources/img/infoMap/샘플 사진 홍키통키 (2).jpg">
 						</div>
-						<div class="col ms-2 ratio ratio-1x1" style="width: 200px; border: 1px solid;">
+						<div class="col ms-2 ratio ratio-1x1" style="width: 220px; border: 1px solid;">
 						<img class="img-fluid" src="resources/img/infoMap/샘플 사진 홍키통키 (3).jpg">
 						</div>
-						<div class="col ratio ratio-1x1" style="width: 200px; border: 1px solid;">
+						<div class="col ratio ratio-1x1" style="width: 220px; border: 1px solid;">
 						<img class="img-fluid" src="resources/img/infoMap/샘플 사진 홍키통키 (4).jpg">
 						</div>
 					</div>
@@ -50,10 +50,10 @@
 				style=" font-size: 14pt;">
 				<!-- 가데이터 -->
 				
-				<b class="partnership_center">▷ PUMPING IRON과 파트너십 업체 ◁</b> <br><br>
+				<b class="partnership_center">▷ with PUMPING IRON◁</b> <br><br>
 				
 				▷업체명<br>
-				 홍키통키 휘트니스 <p>
+				 홍키통키 휘트니스 <p><br>
 				 
 				▷위   치<br>
 				 경기 동두천시 중앙로 125 영스포츠타운 4층. <br>
