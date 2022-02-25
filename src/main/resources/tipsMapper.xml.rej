@@ -1,0 +1,27 @@
+diff a/src/main/resources/tipsMapper.xml b/src/main/resources/tipsMapper.xml	(rejected hunks)
+@@ -7,12 +7,24 @@
+ select * from community_review 
+ 
+ 
++</select>
++
++<select id="getDetail" resultType="com.fp.pi.tips.community_review">
++
++select * from community_review where cr_no = #{cr_no}
++
++
+ </select>
+ 
+ 
+ <insert id="writeCon" parameterType="com.fp.pi.tips.community_review">
+ 
+-insert into community_review values(community_review_seq.nextval, #{cr_title}, #{cr_text}, #{cr_writer}, 0, 0, #{cr_img}, #{cr_tips}, #{cr_bodyProfile}, #{cr_productReview}, sysdate)
++insert into community_review values(community_review_seq.nextval,
++ #{cr_title}, #{cr_content}, 0, 0, 
++ #{cr_tips}, #{cr_bodyProfile},
++  #{cr_productReview},
++   #{cr_email}, 
++   #{cr_nickname}, sysdate)
+  
+ 
+ 

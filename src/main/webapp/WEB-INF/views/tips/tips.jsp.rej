@@ -1,0 +1,26 @@
+diff a/src/main/webapp/WEB-INF/views/tips/tips.jsp b/src/main/webapp/WEB-INF/views/tips/tips.jsp	(rejected hunks)
+@@ -29,19 +29,19 @@
+   <thead>
+     <tr>
+       <th scope="col" style="width: 10%">번호</th>
+-      <th scope="col" style="width: 56%">글 제목</th>
++      <th scope="col" style="width: 60%">글 제목</th>
+       <th scope="col" style="width: 10%">작성자</th>
+       <th scope="col" style="width: 10%">날짜</th>
+-      <th scope="col" style="width: 7%">조회수</th>
+-      <th scope="col" style="width: 7%">추천수</th>
++      <th scope="col" style="width: 5%">조회수</th>
++      <th scope="col" style="width: 5%">추천수</th>
+     </tr>
+   </thead>
+   <tbody>
+   <c:forEach var="m" items="${reviews }" >
+     <tr>
+       <th scope="row">${m.cr_no}</th>
+-      <td><a href="watchContents.go?cr_no=${m.cr_no}"><span>${m.cr_title}</span></a></td>
+-      <td>${m.cr_nickname }</td>
++      <td><a href="watchContents.go"><span>${m.cr_title}</span></a></td>
++      <td>${m.cr_writer }</td>
+       <td><fmt:formatDate value="${m.cr_date}" type="date" dateStyle="short" />
+       </td>
+       <c:forEach var="n" items="${m.cr_views }">

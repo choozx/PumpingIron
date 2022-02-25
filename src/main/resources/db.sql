@@ -76,18 +76,20 @@ select * from community_info_reply;
 -------------------------------------------------------
 
 create table community_review(
-cr_no number(7),
-cr_title varchar2(30 char) not null,
-cr_text varchar2(200 char) not null,
-cr_writer varchar2(20 char) not null,
-cr_like varchar2(20 char) not null,
-cr_views varchar2(20 char) not null,
-cr_img varchar2(200 char) not null,
+ cr_no number(7),
+
+cr_title varchar2(100 char) not null,
+cr_content varchar2(4000 char) not null,
+cr_like varchar2(20 char) default 0 not null,
+cr_views varchar2(20 char) default 0 not null,
 cr_tips varchar2(200 char) not null,
-cr_bodyProfile varchar2(200 char) not null,
-cr_productReview varchar2(200 char) not null,
-cr_date date not null,
-CONSTRAINT community_review_pk PRIMARY KEY (cr_no, cr_writer)
+ cr_bodyProfile varchar2(200 char) not null,
+ cr_productReview varchar2(200 char) not null,
+cr_email varchar2(100) not null,
+cr_nickname varchar2(100),
+ cr_date date not null,
+
+CONSTRAINT community_review_pk PRIMARY KEY (cr_no, cr_nickname)
 )
 
 create sequence community_review_seq;

@@ -33,17 +33,13 @@ public class reviewDAO {
 	public void upload(HttpServletRequest req, community_review cr) {
 
 		String path = req.getSession().getServletContext().getRealPath("resources/file");
-		MultipartRequest mr = null;
 		
 		try {
-			mr = new MultipartRequest(req, path, 1500 * 1024 * 1024, "urf-8", new DefaultFileRenamePolicy());
+			System.out.println(cr.getCr_title());
 			Member m = (Member) req.getSession().getAttribute("loginMember");
-			cr.setCr_writer(m.getM_name());
-			cr.setCr_title(mr.getParameter("cr_title"));
-			cr.setCr_text(mr.getParameter("cr_text"));
-			String cr_img = mr.getFilesystemName("cr_img");
-			cr_img = URLEncoder.encode(cr_img, "utf-8");
-			cr.setCr_img(cr_img);
+			cr.setCr_nickname(m.getM_name());
+			cr.setCr_title("cr_title");
+			cr.setCr_content("cr_content");
 			
 			if (ss.getMapper(ReviewMapper.class).upload(cr) == 1) {
 				req.setAttribute("result", "등록성공");

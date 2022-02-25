@@ -2,10 +2,12 @@ package com.fp.pi.tips;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fp.pi.member.MemberDAO;
 
@@ -39,9 +41,12 @@ public class tipsController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/write.do", method = RequestMethod.GET)
-	public String writeDo(HttpServletRequest req) {
-			tDAO.insertCon(req);
+	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
+	public String writeDo(HttpServletRequest req, community_review cr) {
+		System.out.println("컨트롤러");
+		System.out.println(cr.getCr_title());	
+		System.out.println(cr.getCr_content());	
+			tDAO.insertCon(req, cr);
 			tDAO.getContent(req);
 		
 		req.setAttribute("contentPage", "tips/tips.jsp");
@@ -49,10 +54,17 @@ public class tipsController {
 	}
 
 	@RequestMapping(value = "/watchContents.go", method = RequestMethod.GET)
-	public String watchGo(HttpServletRequest req) {
+	public String watchGo(HttpServletRequest req, community_review cr) {
+		tDAO.getDetail(req, cr);
 		
 		req.setAttribute("contentPage", "tips/watchContents.jsp");
 		return "index";
+	}
+	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody String summerUpload(HttpServletRequest req) {
+		return tDAO.getSummorJSON(req);
+		
+		
 	}
 
 	

@@ -31,8 +31,7 @@ public class tipsDAO {
 
 	public void insertCon(HttpServletRequest req, community_review cr) {
 		try {
-		Member m = (Member) req.getSession().getAttribute("loginMember");
-			
+		System.out.println(cr.getCr_title());	
 		Member mmm = (Member) req.getSession().getAttribute("loginMember");
 		
 		cr.setCr_nickname(mmm.getM_name());
@@ -57,6 +56,9 @@ public class tipsDAO {
 	}
 
 	public void getDetail(HttpServletRequest req, community_review cr) {
+		
+		
+		
 		
 	req.setAttribute("tippp", ss.getMapper(TipsMapper.class).getDetail(cr));	
 		
