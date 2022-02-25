@@ -18,7 +18,9 @@
 </head>
 <body>
 	<div class="main">
-		<div class="content-wrap" style="width: 62%;">
+		<div class="content-wrap bg-info" style="width: 62%;">
+		
+		<form action="routine.insert">
 			<div class="content-left">
 				<div class="main-wrap" style="color: white;">
 					<div id="main-day" class="main-day" style="color: white;"></div>
@@ -34,6 +36,7 @@
 					</div>
 				</div>
 			</div>
+		</form>
 			
 			<div class="content-right" >
 				<table id="calendar" class="ms-3" align="center" style="width: 600px;" >

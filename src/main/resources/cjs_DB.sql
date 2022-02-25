@@ -13,17 +13,6 @@
 
 
 
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
--- 아직 덜 완성됐어요! 추가하시면 안 됩니다!!!
-
 create table info_price(
 ip_no number(7) primary key,
 ip_name varchar2(30 char) not null, 
@@ -55,7 +44,7 @@ cr_date date not null
 
 create sequence calendar_routine_seq;
 
-
+insert into calendar_routine values(calendar_routine_seq.nextval, '?', '스쿼트 100개', '2000-05-03');
 
 
 

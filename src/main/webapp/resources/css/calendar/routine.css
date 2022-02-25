@@ -247,13 +247,13 @@ html, body{
 
 
 .prev:hover{
-	background-color: #f0d515;
+	background-color: #00ffff;
 	border-radius: 800px;
 	
 }
 
 .next:hover{
-	background-color: #f0d515;
+	background-color: #00ffff;
 	border-radius: 800px;
 	
 }

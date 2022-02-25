@@ -3,4 +3,9 @@
 <mapper namespace="com.fp.pi.calendar.CalendarMapper">
 
 
+<insert id="recordRoutine" parameterType="com.fp.pi.calendar.RoutineBean">
+	
+</insert>
+
+
 </mapper>

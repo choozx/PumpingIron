@@ -30,6 +30,7 @@ $(function() {
 	
 	
 	
+	
 	function showCalendar() {
 
 		let monthCnt = 100;
@@ -126,6 +127,7 @@ $(function() {
 		}
 		today = new Date(today.getFullYear(), today.getMonth() + 1, today
 				.getDate());
+		
 		currentTitle.innerHTML = monthList[first.getMonth()]
 				+ '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
 		removeCalendar();
@@ -153,11 +155,21 @@ $(function() {
 	prevBtn.addEventListener('click', prev);
 	nextBtn.addEventListener('click', next);
 	var tdGroup = [];
+	
+	
+	const selectedDate = new Date();
+	
+	const year = today.getFullYear();
+	const month = today.getMonth() + 1;
+	const date = clickedDate1.id;
+
+	
 
 	function clickStart() {
 		for (let i = 1; i <= pageYear[first.getMonth()]; i++) {
 			tdGroup[i] = document.getElementById(i);
 			tdGroup[i].addEventListener('click', changeToday);
+			
 		}
 	}
 
@@ -166,6 +178,7 @@ $(function() {
 			if (tdGroup[i].classList.contains('active')) {
 				tdGroup[i].classList.remove('active');
 			}
+			
 		}
 		clickedDate1 = e.currentTarget;
 		clickedDate1.classList.add('active');
@@ -174,8 +187,9 @@ $(function() {
 		keyValue = today.getFullYear() + '' + today.getMonth() + ''
 				+ today.getDate();
 		reshowingList();
+		console.log(selectedDate.toISOString());
 	}
-
+	
 	function reshowingList() {
 		keyValue = today.getFullYear() + '' + today.getMonth() + ''
 				+ today.getDate();
