@@ -61,7 +61,6 @@ public class tipsDAO {
 		
 		
 	req.setAttribute("tippp", ss.getMapper(TipsMapper.class).getDetail(cr));	
-		
 	
 		
 		

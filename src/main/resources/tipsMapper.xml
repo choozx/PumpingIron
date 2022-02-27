@@ -9,6 +9,13 @@ select * from community_review
 
 </select>
 
+<select id="getDetail" resultType="com.fp.pi.tips.community_review">
+
+select * from community_review where cr_no = #{cr_no}
+
+
+</select>
+
 
 <insert id="writeCon" parameterType="com.fp.pi.tips.community_review">
 

@@ -57,7 +57,8 @@ public class tipsController {
 	public String watchGo(HttpServletRequest req, community_review cr) {
 		tDAO.getDetail(req, cr);
 		
-		req.setAttribute("contentPage", "tips/watchContents.jsp");
+		req.setAttribute("contentPage", "tips/watchContents2.jsp");
+		System.out.println(cr.getCr_nickname());
 		return "index";
 	}
 	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
