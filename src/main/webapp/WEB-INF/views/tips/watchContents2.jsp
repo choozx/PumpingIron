@@ -71,7 +71,7 @@ width: 100%;
 <div class="text-bottom d-flex align-items-center">
 <span class="noto-pb">${tippp.cr_nickname }</span>
 <p class="d-flex align-items-center ml-3 m-0 noto-pb">
-<span class="viewer-like viewer-like-count noto-h4">0</span>
+<span class="viewer-like viewer-like-count noto-h4">0</span>&nbsp
 <span class="material-icons viewer-like-icon ml-1 cursor" data-type="0"
  data-like-cnt="0" data-islike="0" onclick="" >
  <img alt="" src="resources/img/tips/love.png" style="width: 18px">
@@ -91,7 +91,7 @@ width: 100%;
 
 <div class="viewer-view-count mr-3">
 <span class="count-text mr-2 noto-pb">조회수</span>
-<span class="count-number noto-pb">0</span>
+<span class="count-number noto-pb">0</span>&nbsp
 
 </div>
 <div class="viewer-view-data">
@@ -271,7 +271,7 @@ class="bg-whtie comment-textarea"></textarea>
 <button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"
 onclick="">수정</button>
 <button class="ml-3 border-b-btn board-btn noto-h4 item-delete" data-type="board" name="button"
-onclick="">삭제</button>
+onclick="location.href = 'deleteContent(${cr_no});'">삭제</button>
 
 
 

@@ -1,5 +1,8 @@
 package com.fp.pi.tips;
 
+import java.io.File;
+
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Enumeration;
@@ -93,6 +96,29 @@ public class tipsDAO {
 		jobj.put("url", uploadPath);
 		
 		return jobj.toJSONString();
+	}
+
+	public void delete(HttpServletRequest req, community_review cr) {
+
+		try {
+			
+			if (ss.getMapper(TipsMapper.class).delete(cr) == 1) {
+				req.setAttribute("result", "삭제성공");
+				String path = req.getSession().getServletContext().getRealPath("resources/file");
+				new File(path + "/" + URLDecoder.decode(cr.getCr_content(), "utf-8")).delete();
+			} else {
+				req.setAttribute("result", "삭제실패");
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "삭제실패");
+		}
+		
+		
+		
 	}
 	
 	

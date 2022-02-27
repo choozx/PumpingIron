@@ -23,6 +23,7 @@
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/member/member.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
+<script type="text/javascript" src="resources/js/del/delcon.js"></script>
 <script type="text/javascript">
 	$(document).ready(
 			function() {

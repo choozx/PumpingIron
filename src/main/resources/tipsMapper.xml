@@ -25,7 +25,12 @@ insert into community_review values(community_review_seq.nextval, #{cr_title}, #
 
 </insert>
 
+<delete id="delete" parameterType="com.fp.pi.tips.community_review">
 
+delete from community_review where cr_no = #{cr_no}
+
+
+</delete>
 
 
 

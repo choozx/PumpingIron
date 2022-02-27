@@ -1,9 +1,0 @@
-diff a/src/main/java/com/fp/pi/tips/tipsController.java b/src/main/java/com/fp/pi/tips/tipsController.java	(rejected hunks)
-@@ -52,6 +52,7 @@
- 	@RequestMapping(value = "/watchContents.go", method = RequestMethod.GET)
- 	public String watchGo(HttpServletRequest req, community_review cr) {
- 		
-+		tDAO.getDetail(req, cr);
- 		req.setAttribute("contentPage", "tips/watchContents2.jsp");
- 		return "index";
- 	}

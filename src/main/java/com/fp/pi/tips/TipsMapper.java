@@ -10,6 +10,8 @@ public interface TipsMapper {
 	
 	public abstract int writeCon(community_review cr);
 
+	public int delete(community_review cr);
+
 	
 
 	

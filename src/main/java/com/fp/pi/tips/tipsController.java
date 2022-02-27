@@ -3,6 +3,7 @@ package com.fp.pi.tips;
 import javax.servlet.http.HttpServletRequest;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,12 +62,21 @@ public class tipsController {
 		System.out.println(cr.getCr_nickname());
 		return "index";
 	}
+	
+	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	public String deletDo(HttpServletRequest req, community_review cr) {
+		tDAO.delete(req, cr);
+		tDAO.getContent(req);
+		req.setAttribute("contentPage", "tips/tips.jsp");
+		return "index";
+	}
 	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody String summerUpload(HttpServletRequest req) {
 		return tDAO.getSummorJSON(req);
 		
 		
 	}
+	
 
 	
 	
