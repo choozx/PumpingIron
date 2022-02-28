@@ -100,12 +100,15 @@ public class tipsDAO {
 
 	public void delete(HttpServletRequest req, community_review cr) {
 
+		System.out.println(cr.getCr_no());
+		System.out.println(cr.getCr_content());
 		try {
 			
 			if (ss.getMapper(TipsMapper.class).delete(cr) == 1) {
 				req.setAttribute("result", "삭제성공");
 				String path = req.getSession().getServletContext().getRealPath("resources/file");
 				new File(path + "/" + URLDecoder.decode(cr.getCr_content(), "utf-8")).delete();
+				
 			} else {
 				req.setAttribute("result", "삭제실패");
 			}
@@ -114,7 +117,7 @@ public class tipsDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("result", "삭제실패");
+			req.setAttribute("result", "db서버문제");
 		}
 		
 		

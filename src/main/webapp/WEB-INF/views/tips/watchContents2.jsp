@@ -271,7 +271,7 @@ class="bg-whtie comment-textarea"></textarea>
 <button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"
 onclick="">수정</button>
 <button class="ml-3 border-b-btn board-btn noto-h4 item-delete" data-type="board" name="button"
-onclick="location.href = 'deleteContent(${cr_no});'">삭제</button>
+onclick = "deleteContent(${tippp.cr_no},'${tippp.cr_content }');">삭제</button>
 
 
 

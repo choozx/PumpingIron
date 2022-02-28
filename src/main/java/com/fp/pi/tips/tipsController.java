@@ -45,8 +45,6 @@ public class tipsController {
 	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
 	public String writeDo(HttpServletRequest req, community_review cr) {
 		System.out.println("컨트롤러");
-		System.out.println(cr.getCr_title());	
-		System.out.println(cr.getCr_content());	
 			tDAO.insertCon(req, cr);
 			tDAO.getContent(req);
 		
@@ -59,12 +57,13 @@ public class tipsController {
 		tDAO.getDetail(req, cr);
 		
 		req.setAttribute("contentPage", "tips/watchContents2.jsp");
-		System.out.println(cr.getCr_nickname());
 		return "index";
 	}
 	
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
 	public String deletDo(HttpServletRequest req, community_review cr) {
+		tDAO.getDetail(req, cr);
+		System.out.println(cr.getCr_no());
 		tDAO.delete(req, cr);
 		tDAO.getContent(req);
 		req.setAttribute("contentPage", "tips/tips.jsp");
