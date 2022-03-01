@@ -34,7 +34,12 @@ delete from community_review where cr_no = #{cr_no}
 
 
 
+<update id="update" parameterType="com.fp.pi.tips.community_review">
+update community_review set cr_content = #{cr_content}, cr_title = #{cr_title} where cr_no = #{cr_no}
 
+
+
+</update>
 
 
 

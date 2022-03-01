@@ -2,6 +2,7 @@ package com.fp.pi.tips;
 
 import java.io.File;
 
+
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,17 @@ public class tipsDAO {
 		cr.setCr_bodyProfile("aaaa");
 		cr.setCr_productReview("굿");
 		cr.setCr_email("zzz");
+		
+	//	String replace2 = replace1.replaceAll("<img[^>]*src=[\" ']?([^>\"']+)[\"']?[^>]*>","");
+		
+		
+		System.out.println("============================================================");
+		//System.out.println(replace2);
+		
+		
+		
+		
+		
 		
 		
 		if (ss.getMapper(TipsMapper.class).writeCon(cr) == 1) {
@@ -100,15 +113,18 @@ public class tipsDAO {
 
 	public void delete(HttpServletRequest req, community_review cr) {
 
-		System.out.println(cr.getCr_no());
 		System.out.println(cr.getCr_content());
+		String iii = req.getParameter("iii");
+		System.out.println(iii);
+		iii = iii.replace("resources/file/", "");
+		System.out.println(iii);
 		try {
 			
 			if (ss.getMapper(TipsMapper.class).delete(cr) == 1) {
 				req.setAttribute("result", "삭제성공");
 				String path = req.getSession().getServletContext().getRealPath("resources/file");
-				new File(path + "/" + URLDecoder.decode(cr.getCr_content(), "utf-8")).delete();
-				
+				new File(path + "/" + iii).delete();
+				System.out.println("삭제성공");
 			} else {
 				req.setAttribute("result", "삭제실패");
 			}
@@ -123,10 +139,50 @@ public class tipsDAO {
 		
 		
 	}
+
+	public void update(HttpServletRequest req, community_review cr) {
+		
+		//System.out.println(cr.getCr_content());
+		String iii = req.getParameter("iii");
+		System.out.println(iii);
+		iii = iii.replace("resources/file/", "");
+		System.out.println(cr.getCr_title());
+		System.out.println(cr.getCr_content());
+		
+		try {
+			if (ss.getMapper(TipsMapper.class).update(cr) == 1) {
+				
+				if (cr.getCr_content() != null) {  //이미지 존재할경우 
+						String path = req.getSession().getServletContext().getRealPath("resources/file");
+						new File(path + "/" + iii).delete(); // 기존이미지 삭제 
+					cr.getCr_content();
+					
+					
+				}else { // 이미지 없을경우
+					cr.getCr_content();
+				}
+				
+				
+				req.setAttribute("result", "글수정성공");
+			} else {
+				req.setAttribute("result", "글수정실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "db서버문제");
+		}
+	}
+		
+		
+		
+		
+		
+		
+	}
 	
 	
 	
 	
 	
 	
-}
+

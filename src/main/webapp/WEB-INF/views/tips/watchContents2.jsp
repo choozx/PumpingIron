@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
+<link rel="stylesheet" href="resources/css/tips1.css">
 <link rel="stylesheet" href="resources/css/index.css">
 <style>
 .reply-write-btn {
@@ -96,7 +98,7 @@ width: 100%;
 </div>
 <div class="viewer-view-data">
 <span class="count-text mr-2 noto-pb">작성시간</span>
-<span class="count-data noto-pb">${tippp.cr_date }</span>
+<span class="count-data noto-pb" >${tippp.cr_date }</span>
 
 
 
@@ -220,8 +222,8 @@ width: 100%;
 
 <!-- 댓글등록 -->
 <div class="comment-edit-wrapper">
-<form id="comment-form">
-<div class="reply-write-box comment-content border border-dark d-flex">
+<form id="comment-form" class="1">
+<div class="reply-write-box comment-content border border-dark d-flex" style="">
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
 class="bg-whtie comment-textarea"></textarea>
@@ -269,9 +271,9 @@ class="bg-whtie comment-textarea"></textarea>
 <div class="viewer-bottom-right d-flex align-items-center">
 <div class="d-inline-block is-mine">
 <button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"
-onclick="">수정</button>
+onclick="location.href = 'update.go?cr_no=${tippp.cr_no}'">수정</button>
 <button class="ml-3 border-b-btn board-btn noto-h4 item-delete" data-type="board" name="button"
-onclick = "deleteContent(${tippp.cr_no},'${tippp.cr_content }');">삭제</button>
+onclick = "deleteContent(${tippp.cr_no});">삭제</button>
 
 
 

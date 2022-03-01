@@ -39,7 +39,12 @@ public class reviewDAO {
 			Member m = (Member) req.getSession().getAttribute("loginMember");
 			cr.setCr_nickname(m.getM_name());
 			cr.setCr_title("cr_title");
-			cr.setCr_content("cr_content");
+		
+			
+			
+			
+			
+			
 			
 			if (ss.getMapper(ReviewMapper.class).upload(cr) == 1) {
 				req.setAttribute("result", "등록성공");

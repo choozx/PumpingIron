@@ -12,6 +12,8 @@ public interface TipsMapper {
 
 	public int delete(community_review cr);
 
+	public int update(community_review cr);
+
 	
 
 	

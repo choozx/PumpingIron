@@ -95,6 +95,8 @@ CONSTRAINT community_review_pk PRIMARY KEY (cr_no, cr_nickname)
 create sequence community_review_seq;
 
 insert into community_review values(community_review_seq.nextval, '1', '1', 'gw', '1', '1', '1', '1', '1', '1', sysdate);
+update community_review set cr_content = 'ㅁ', cr_title = '와'
+where cr_no = '163';
 
 select * from community_review;
 

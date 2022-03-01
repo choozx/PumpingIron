@@ -44,7 +44,7 @@ public class tipsController {
 
 	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
 	public String writeDo(HttpServletRequest req, community_review cr) {
-		System.out.println("컨트롤러");
+			System.out.println("컨트롤러");
 			tDAO.insertCon(req, cr);
 			tDAO.getContent(req);
 		
@@ -69,6 +69,24 @@ public class tipsController {
 		req.setAttribute("contentPage", "tips/tips.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/update.go", method = RequestMethod.GET)
+	public String updateGo(HttpServletRequest req, community_review cr) {
+		
+		req.setAttribute("contentPage", "tips/update.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/update.Do", method = RequestMethod.POST)
+	public String updateDo(HttpServletRequest req, community_review cr) {
+		tDAO.update(req, cr);
+		tDAO.getContent(req);
+		req.setAttribute("contentPage", "tips/tips.jsp");
+		return "index";
+	}
+	
+	
 	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody String summerUpload(HttpServletRequest req) {
 		return tDAO.getSummorJSON(req);
