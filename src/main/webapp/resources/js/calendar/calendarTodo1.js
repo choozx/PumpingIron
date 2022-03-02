@@ -25,6 +25,7 @@ $(function() {
 	showCalendar();
 	showMain();
 	
+	
 	//alert(today);
 	
 	
@@ -103,6 +104,9 @@ $(function() {
 		clickedDate1.classList.add('active');
 		clickStart();
 		reshowingList();
+		
+		var today111 = dateFormat(today);
+		$('input[name=cr_date]').attr('value', today111);
 	}
 	
 	function next() {
@@ -140,6 +144,11 @@ $(function() {
 		clickedDate1.classList.add('active');
 		clickStart();
 		reshowingList();
+		
+		var today111 = dateFormat(today);
+		$('input[name=cr_date]').attr('value', today111);
+		
+//		alert(today111);
 	}
 
 	function showMain() {
@@ -185,7 +194,10 @@ $(function() {
 				+ today.getDate();
 		reshowingList();
 		
-		console.log(dateFormat(today));
+		var today111 = dateFormat(today);
+		$('input[name=cr_date]').attr('value', today111);
+		
+		console.log(today111);
 //		alert(dateFormat(today));
 	}
 	
@@ -254,6 +266,7 @@ $(function() {
 			+ today.getDate();
 	let todoList = [];
 	todoList[keyValue] = [];
+	
 	function addTodoList() {
 		var $div = document.createElement('div');
 		$div.textContent = '-' + inputBox.value;
@@ -267,9 +280,11 @@ $(function() {
 		inputList.appendChild($btn);
 		todoList[keyValue].push(inputBox.value);
 		dataCnt++;
-		inputBox.value = '';
+		alert(document.getElementById('input-box').value);
+		/*inputBox.value = '';*/
 		$div.addEventListener('click', checkList);
 		$btn.addEventListener('click', deleteTodo);
+		
 		function deleteTodo() {
 			$div.remove();
 			$btn.remove();
@@ -312,7 +327,24 @@ $(function() {
 	$("#prev").trigger("click");
 	$("#next").trigger("click");
 	
+	
+	
+	$("button").click(function(){
+//		alert(today111);
+	});
+	
 
+/*	function call() {
+		 $('#paramDate').html(dateFormat(today));
+	}*/
+	
+	
+/*	var today111 = dateFormat(today);
+	$('input[name=cr_date]').attr('value', today111);
+	
+	$("button").click(function(){
+		alert(today111);
+	});*/
 	
 
 });

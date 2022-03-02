@@ -8,13 +8,13 @@ public class RoutineBean {
 	private BigDecimal cr_no;
 	private String cr_id;
 	private String cr_text;
-	private Date cr_date;
+	private String cr_date;
 	
 	public RoutineBean() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RoutineBean(BigDecimal cr_no, String cr_id, String cr_text, Date cr_date) {
+	public RoutineBean(BigDecimal cr_no, String cr_id, String cr_text, String cr_date) {
 		super();
 		this.cr_no = cr_no;
 		this.cr_id = cr_id;
@@ -46,11 +46,11 @@ public class RoutineBean {
 		this.cr_text = cr_text;
 	}
 
-	public Date getCr_date() {
+	public String getCr_date() {
 		return cr_date;
 	}
 
-	public void setCr_date(Date cr_date) {
+	public void setCr_date(String cr_date) {
 		this.cr_date = cr_date;
 	}
 	

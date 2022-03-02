@@ -4,6 +4,6 @@ import com.fp.pi.member.Member;
 
 public interface CalendarMapper {
 
-	int recordRoutine(Member m);
+	int recordRoutine(RoutineBean r);
 
 }

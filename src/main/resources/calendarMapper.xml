@@ -3,8 +3,8 @@
 <mapper namespace="com.fp.pi.calendar.CalendarMapper">
 
 
-<insert id="recordRoutine" parameterType="com.fp.pi.calendar.RoutineBean">
-	
+<insert id="recordRoutine" parameterType="com.fp.pi.calendar.RoutineBean" >
+	insert into calendar_routine values(calendar_routine_seq.nextval, #{cr_id}, #{cr_text}, #{cr_date})
 </insert>
 
 

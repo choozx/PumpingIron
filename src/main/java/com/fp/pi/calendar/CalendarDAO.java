@@ -21,9 +21,19 @@ public class CalendarDAO {
 		
 	}
 
-	public void insertRoutine(Member m, HttpServletRequest req) {
+	public void insertRoutine(RoutineBean r, HttpServletRequest req) {
 
-		if (ss.getMapper(CalendarMapper.class).recordRoutine(m) == 1) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		
+		System.out.println(m.getM_email());
+		
+		r.setCr_id(m.getM_email());
+		
+		System.out.println(r.getCr_id());
+		System.out.println(r.getCr_text());
+		System.out.println(r.getCr_date());
+		
+		if (ss.getMapper(CalendarMapper.class).recordRoutine(r) == 1) {
 			System.out.println("등록 성공");
 			req.setAttribute("result", "등록 성공");
 		} else {

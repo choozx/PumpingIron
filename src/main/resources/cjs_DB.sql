@@ -39,14 +39,18 @@ create table calendar_routine(
 cr_no number(7) primary key,
 cr_id varchar2(50 char) not null,
 cr_text varchar2(200 char) not null,
-cr_date date not null
+cr_date varchar2(50 char) not null
 );
 
 create sequence calendar_routine_seq;
 
 insert into calendar_routine values(calendar_routine_seq.nextval, '?', '스쿼트 100개', '2022-02-25');
+insert into calendar_routine values(calendar_routine_seq.nextval, 
+(select m_email from member where m_email = '1234@gmail.com'), '스쿼트 100개', '2022-02-28');
 
 select * from calendar_routine;
+
+-- drop table calendar_routine;
 
 
 

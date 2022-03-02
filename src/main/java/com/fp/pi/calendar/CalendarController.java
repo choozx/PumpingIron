@@ -42,10 +42,10 @@ public class CalendarController {
 	
 	
 	@RequestMapping(value = "/routine.insert", method = RequestMethod.GET)
-	public String routineInsert(Member m, HttpServletRequest req) {
+	public String routineInsert(RoutineBean r, HttpServletRequest req) {
 		
 		mDAO.loginCheck(req);
-		cDAO.insertRoutine(m, req);
+		cDAO.insertRoutine(r, req);
 		
 		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
 		return "index";
