@@ -17,4 +17,6 @@ insert into member values
 
 select * from member;
 
+delete member where m_email = '@naver.com'
+
 drop table member cascade constraint purge;
