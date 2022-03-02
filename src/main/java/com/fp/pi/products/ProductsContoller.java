@@ -19,13 +19,13 @@ public class ProductsContoller {
 		pDAO.getProducts(request);
 		request.setAttribute("contentPage", "products/productsMain.jsp");
 		
-		return "index";  
+		return "index";
 	}
 	
-	@RequestMapping(value = "/products.sort", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/products.sort", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
 	public @ResponseBody Products ProductsMainSort(ProductSort ps) {
 		Products products = pDAO.getProductsSort(ps);
-		return products;  
+		return products;
 	}
 	
 	//상품 디테일 페이지

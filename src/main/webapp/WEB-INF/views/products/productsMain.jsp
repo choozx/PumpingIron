@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }">보충제</div>
+	<div id="products_banner"><input id="p_type" type="hidden" value="${param.p_type }">보충제</div>
 	<div id="products_select_div">
 		<select id="p_main_sort" name="p_sort">			
 			<option value="p_name">이름순</option>
@@ -20,16 +20,17 @@
 	</div>
 	<div style="clear: both;"></div>
 	
-	<table id="product_tb">
-	</table>
- 	<%-- <c:forEach var="p" items="${products }">
-		<div id="product_div">
+	<div id="products_div">
+	</div>
+	
+ 	<c:forEach var="p" items="${products }">
+		<div class="product_div" id="product_div">
 			<a href="product.detail?p_no=${p.p_no }">
 				<div id="product_img_div"><img class="container" src="resources/img/products/${p.p_img }.jpg"></div>
 				<div id="product_name_div">${p.p_name }</div>
 				<div id="product_price_div">${p.p_price }</div>
 			</a>
 		</div>
-	</c:forEach> --%>
+	</c:forEach>
 </body>
 </html>
