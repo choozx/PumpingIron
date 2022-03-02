@@ -72,13 +72,14 @@ public class tipsController {
 	
 	@RequestMapping(value = "/update.go", method = RequestMethod.GET)
 	public String updateGo(HttpServletRequest req, community_review cr) {
+		tDAO.getDetail(req, cr);
 		
 		req.setAttribute("contentPage", "tips/update.jsp");
 		return "index";
 	}
 	
 	
-	@RequestMapping(value = "/update.Do", method = RequestMethod.GET)
+	@RequestMapping(value = "/update.do", method = RequestMethod.GET)
 	public String updateDo(HttpServletRequest req, community_review cr) {
 		tDAO.update(req, cr);
 		tDAO.getContent(req);

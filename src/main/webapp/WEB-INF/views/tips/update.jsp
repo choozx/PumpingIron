@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/index.css">
+<style type="text/css">
+img {
+max-width: 200px;}
+</style>
 </head>
 <body class="main-bg">
 <div class="title-center text-center ">
@@ -35,7 +40,14 @@
 
 </div>
 
-<form id="common-edit-form" onsubmit="true" action="updateCon(${tippp.cr_no});" >
+<form action="update.do" id="common-edit-form" onsubmit="return updateContennt();" method="get">
+
+
+<script type="text/javascript">
+var up = "<c:out value="${tippp.cr_no}"></c:out>";
+
+
+</script> 
 <div class="d-flex justify-content-center mb-4">
 <span class="m-0 sub-title noto-pb pt-3">제목</span>
 <input class="common-oneline-input" type="text" name="cr_title"
@@ -84,13 +96,12 @@
 <a class="border-b-btn board-btn noto-h4 text-center"
 href="javascript:history.back();" type="button">취소</a>
 
-<button class="ml-3 background-b-btn board-btn noto-h4" name="button" data-type="board" data-category-id="8"
- data-id>수정</button>
-
-
+<button class="ml-3 background-b-btn board-btn noto-h4" data-type="board" data-category-id="8"
+ data-id >수정</button>
+<input name="cr_no" value="${param.cr_no }">
+<input id="iii" name="iii">
 
 </div>
-
 </form>
 
 </div>
