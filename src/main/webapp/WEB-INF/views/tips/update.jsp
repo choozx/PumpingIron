@@ -35,7 +35,7 @@
 
 </div>
 
-<form id="common-edit-form" onsubmit="true" action="updateCon(${tippp.cr_no});" method="post">
+<form id="common-edit-form" onsubmit="true" action="updateCon(${tippp.cr_no});" >
 <div class="d-flex justify-content-center mb-4">
 <span class="m-0 sub-title noto-pb pt-3">제목</span>
 <input class="common-oneline-input" type="text" name="cr_title"
@@ -85,7 +85,7 @@
 href="javascript:history.back();" type="button">취소</a>
 
 <button class="ml-3 background-b-btn board-btn noto-h4" name="button" data-type="board" data-category-id="8"
- data-id >수정</button>
+ data-id>수정</button>
 
 
 

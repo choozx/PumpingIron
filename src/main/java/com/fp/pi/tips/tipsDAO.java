@@ -118,6 +118,7 @@ public class tipsDAO {
 		System.out.println(iii);
 		iii = iii.replace("resources/file/", "");
 		System.out.println(iii);
+		
 		try {
 			
 			if (ss.getMapper(TipsMapper.class).delete(cr) == 1) {
@@ -148,7 +149,7 @@ public class tipsDAO {
 		iii = iii.replace("resources/file/", "");
 		System.out.println(cr.getCr_title());
 		System.out.println(cr.getCr_content());
-		
+		System.out.println(cr.getCr_no());
 		try {
 			if (ss.getMapper(TipsMapper.class).update(cr) == 1) {
 				
