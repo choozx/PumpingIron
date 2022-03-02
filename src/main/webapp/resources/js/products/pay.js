@@ -3,6 +3,7 @@ function payment() {
 	let p_name = $('#product_name').text();
 	let p_price = $('#product_price').val();
 	let p_quantity = $('#quantity').val();
+	let p_no = $('#product_no').val();
 	
 	let m_name = $('#member_name').val();
 	let m_email = $('#member_email').val();
@@ -12,11 +13,7 @@ function payment() {
 	let m_addr_split = m_addr.split('!');
 	
 	let total_amount = p_price * p_quantity;
-	
-	alert(p_price);
-	alert(p_quantity);
-	alert(total_amount);
-	
+		
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp60273439');
 	IMP.request_pay({
@@ -36,6 +33,7 @@ function payment() {
 	}, function (rsp) {
 		console.log(rsp);
 		if (rsp.success) {
+			location.href='product.buycount?p_no=' + p_no + '&p_cnt=' + p_quantity;
 			var msg = '결제가 완료되었습니다.';
 			msg += '고유ID : ' + rsp.imp_uid;
 			msg += '상점 거래ID : ' + rsp.merchant_uid;

@@ -132,6 +132,12 @@ public class MemberDAO {
 	public void login(Member m, HttpServletRequest req) {
 
 		Member dbMember = ss.getMapper(MemberMapper.class).getMemberByID(m); // db에 있는 비밀번호 가져오기 위함
+		// 인증 안 했을 경우 인증하란 메세지 발생
+		/*String y = "Y";
+		if (!(dbMember.getM_key().equals(y))) {
+			result = -2;
+			return result;
+		}*/
 
 		if (dbMember != null) {
 			if (m.getM_pw().equals(dbMember.getM_pw())) {
