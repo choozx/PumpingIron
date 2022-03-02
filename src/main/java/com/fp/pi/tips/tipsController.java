@@ -78,7 +78,7 @@ public class tipsController {
 	}
 	
 	
-	@RequestMapping(value = "/update.Do", method = RequestMethod.POST)
+	@RequestMapping(value = "/update.Do", method = RequestMethod.GET)
 	public String updateDo(HttpServletRequest req, community_review cr) {
 		tDAO.update(req, cr);
 		tDAO.getContent(req);
