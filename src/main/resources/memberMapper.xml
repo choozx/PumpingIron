@@ -22,17 +22,4 @@
 		select * from member where m_email = #{m_email}
 </select>
 
-<insert id="GetKey" parameterType="Map">
-	update member set m_key = #{param2} where m_email = #{param1}
-</insert>
-
-<!--  -->
-<update id="alter_userKey" parameterType="Map">
-	update member set m_key = 'Y' where m_email = #{param1} and m_key = #{param2}
-</update>
-
-<select id="loginUser" resultType="com.fp.pi.member.Member">
-		select * from member where m_email = #{m_email}
-</select>
-
 </mapper>

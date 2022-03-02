@@ -8,9 +8,4 @@ public interface MemberMapper {
 
 	Member getMemberByID(Member m);
 
-	int GetKey(String m_email, String m_key);
-	
-	int alter_userKey(String m_email, String key);
-
-	Member loginUser(String user_id);
 }
