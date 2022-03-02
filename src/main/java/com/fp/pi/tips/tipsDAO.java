@@ -143,17 +143,18 @@ public class tipsDAO {
 
 	public void update(HttpServletRequest req, community_review cr) {
 		
-		//System.out.println(cr.getCr_content());
+		System.out.println(cr.getCr_content());
 		String iii = req.getParameter("iii");
 		System.out.println(iii);
 		iii = iii.replace("resources/file/", "");
 		System.out.println(cr.getCr_title());
 		System.out.println(cr.getCr_content());
 		System.out.println(cr.getCr_no());
+		
 		try {
 			if (ss.getMapper(TipsMapper.class).update(cr) == 1) {
 				
-				if (cr.getCr_content() != null) {  //이미지 존재할경우 
+				/*if (cr.getCr_content() != null) {  //이미지 존재할경우 
 						String path = req.getSession().getServletContext().getRealPath("resources/file");
 						new File(path + "/" + iii).delete(); // 기존이미지 삭제 
 					cr.getCr_content();
@@ -161,7 +162,7 @@ public class tipsDAO {
 					
 				}else { // 이미지 없을경우
 					cr.getCr_content();
-				}
+				}*/
 				
 				
 				req.setAttribute("result", "글수정성공");

@@ -8,13 +8,18 @@ function deleteContent(n) {
 	}
 }
 
-function updateCon(n) {
+function updateContennt() {
 	
-	let aa = $("span p img").attr("src");
+	
+	let aa = $("p img").attr("src");
 	console.log(aa);
+	$("#iii").val(aa);
+	
 	var ok = confirm("정말 수정하시겠습니까?");
 	if (ok) {
-		location.href = "update.Do?cr_no=" + n + "&iii=" + aa ;
+		return true;
+	}else{
+		return false;
 	}
 }
 
