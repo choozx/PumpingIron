@@ -1,9 +1,11 @@
 package com.fp.pi.calendar;
 
-import com.fp.pi.member.Member;
+import java.util.List;
 
 public interface CalendarMapper {
 
 	int recordRoutine(RoutineBean r);
+
+	List<RoutineBean> showRoutine();
 
 }

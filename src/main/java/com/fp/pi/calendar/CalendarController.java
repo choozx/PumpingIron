@@ -30,11 +30,16 @@ public class CalendarController {
 	
 	
 	
+	
+	
+	
+	/////////////////////// 루틴 캘린더//////////////////////////
+	
 	@RequestMapping(value = "/routine.go", method = RequestMethod.GET)
-	public String routineGo(Member m, HttpServletRequest req) {
+	public String routineGo(RoutineBean r, HttpServletRequest req) {
 		
 		mDAO.loginCheck(req);
-//		cDAO.getID(m, req);
+		cDAO.getRoutine(r, req);
 		
 		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
 		return "index";
@@ -46,6 +51,7 @@ public class CalendarController {
 		
 		mDAO.loginCheck(req);
 		cDAO.insertRoutine(r, req);
+		cDAO.getRoutine(r, req);
 		
 		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
 		return "index";

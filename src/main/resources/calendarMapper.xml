@@ -7,5 +7,9 @@
 	insert into calendar_routine values(calendar_routine_seq.nextval, #{cr_id}, #{cr_text}, #{cr_date})
 </insert>
 
+<select id="showRoutine" resultType="com.fp.pi.calendar.RoutineBean">
+	select * from calendar_routine
+</select>
+
 
 </mapper>

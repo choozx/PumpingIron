@@ -50,6 +50,8 @@ insert into calendar_routine values(calendar_routine_seq.nextval,
 
 select * from calendar_routine;
 
+delete calendar_routine;
+
 -- drop table calendar_routine;
 
 
