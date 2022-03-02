@@ -98,8 +98,8 @@ href="javascript:history.back();" type="button">취소</a>
 
 <button class="ml-3 background-b-btn board-btn noto-h4" data-type="board" data-category-id="8"
  data-id >수정</button>
-<input name="cr_no" value="${param.cr_no }">
-<input id="iii" name="iii">
+<input name="cr_no" value="${param.cr_no }" type="hidden">
+<input id="iii" name="iii" type="hidden">
 
 </div>
 </form>

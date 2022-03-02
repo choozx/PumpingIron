@@ -52,7 +52,7 @@
         height: 400,
         callbacks:{
         	onImageUpload: function (files, editor, welEditable) {
-				console.log('aaaaa')
+				console.log('aaaaa');
                 sendFile(files[0], this);
         	}
         }
