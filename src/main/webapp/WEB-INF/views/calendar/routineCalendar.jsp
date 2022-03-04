@@ -20,6 +20,8 @@
 </head>
 <body>
 	<div class="main">
+	
+	 
 		<div class="content-wrap bg-info" style="width: 62%;">
 		
 		
@@ -32,38 +34,64 @@
 					<div id="main-day" class="main-day" style="color: white;"></div>
 					<div id="main-date" class="main-date" style="color: white;"></div>
 				</div>
-					    <input name="cr_date" type="hidden" id="paramDate" value=""> 
 					 
-		<form action="routine.insert" >
 		
 				<div class="todo-wrap">
 					<div class="todo-title pt-3" style="color: white;"> 루틴 기록 </div>
 					<div class="input-wrap">
 					
-					
 						<%-- <span style="color: white;"> ${result} </span> <br> --%>
-						<!-- <b style="color: white;" id="paramDate"> / </b> -->
+						<%-- <input name="cr_date" type="hidden" id="paramDate" value="${param.cr_date}"> 
+						<input name="cr_id" type="hidden" id="paramId" value="${sessionScope.loginMember.m_email}">  --%>
 						
-						<input type="text" placeholder=" 아래에 루틴이 기록됩니다 " name="cr_text" id="input-box" class="input-box">
-						<!-- // 회원 전용 기능// -->
-						<button name="routineInsert" id="input-data" class="input-data">기록</button>
+				<c:if test="${sessionScope.loginMember == null}" >
+				
+				<input name="cr_date" type="hidden" id="paramDate" value=""> 
+					<input type="text" placeholder="로그인을 해주세요." id="input-box" class="input-box">
+					<button type="button" name="routineInsert" id="input-data" class="input-data" onclick="return pleaseLogin_calendar()">기록</button>
+				
+				</c:if>
+				
+				
+				
+				
+				<c:if test="${sessionScope.loginMember != null}" >
+	
+				
+						<form action="routine.insert">
 						
+						<input name="cr_id" type="hidden" id="paramId" value="${sessionScope.loginMember.m_email}"> 
+						<input name="cr_date" type="hidden" id="paramDate" value="${param.cr_date}"> 
 						
-	<%--  <c:if test="${routine.cr_id == sessionScope.loginMember.m_email && routine.cr_date == param.cr_date}" > --%>
-						<c:if test="${sessionScope.loginMember != null}">
-
-							<div>
-							<div style="color: white;">${routine}</div>
-							<div style="color: white;">-  <a href="routine.delete">X</a></div>
-						
-							<!-- 	<div id="input-list" class="input-list"></div -->>
-							</div>
+						<input name="cr_text"  type="text" placeholder=" 아래에 루틴이 기록됩니다 " id="input-box" class="input-box">
+						<button id="input-data" class="input-data" >기록</button>
 							
-						</c:if>
+						</form>
 						
+						
+				<%--  <c:if test="${routine.cr_id == sessionScope.loginMember.m_email && routine.cr_date == param.cr_date}" > --%>
+				
+						
+							<c:forEach var="r" items="${routine}">
+							
+								<form action="routine.delete">
+							<div style="color: white;">
+							<input name="cr_no" type="hidden" value="${r.cr_no}">
+							- ${r.cr_text} <a href="routine.delete?cr_no=${r.cr_no}" style="color: white;" >x</a>
+							</div>
+								</form>
+							
+							</c:forEach>
+							
+				
+				</c:if> 
+				
+							
+						<!-- <div id="input-list" class="input-list"></div> -->
+						<input type="hidden" id="input-list" class="input-list">
+							
 					</div>
 				</div>
-			</form>
 					 
 			</div>
 			

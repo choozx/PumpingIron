@@ -146,7 +146,7 @@
 						루틴</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="schedule.go">대회 정보</a></li>
-						<li><a class="dropdown-item" href="routine.go">운동 루틴 기록</a></li>
+						<li><a class="dropdown-item" href="routine.date">운동 루틴 기록</a></li>
 					</ul></li>
 
 			</div>

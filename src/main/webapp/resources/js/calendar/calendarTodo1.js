@@ -19,7 +19,7 @@ $(function() {
 	}
 	var inputBox = document.getElementById('input-box');
 	var inputDate = document.getElementById('input-data');
-	var inputList = document.getElementById('input-list');
+//	var inputList = document.getElementById('input-list');
 	
 	currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
 	showCalendar();
@@ -72,15 +72,17 @@ $(function() {
 
 	
 	function prev() {
-		inputBox.value = "";
-		const $divs = document.querySelectorAll('#input-list > div');
-		$divs.forEach(function(e) {
-			e.remove();
-		});
-		const $btns = document.querySelectorAll('#input-list > button');
-		$btns.forEach(function(e1) {
-			e1.remove();
-		});
+		
+//		inputBox.value = "";
+//		const $divs = document.querySelectorAll('#input-list > div');
+//		$divs.forEach(function(e) {
+//			e.remove();
+//		});
+//		const $btns = document.querySelectorAll('#input-list > button');
+//		$btns.forEach(function(e1) {
+//			e1.remove();
+//		});
+		
 		if (pageFirst.getMonth() === 1) {
 			pageFirst = new Date(first.getFullYear() - 1, 12, 1);
 			first = pageFirst;
@@ -93,17 +95,20 @@ $(function() {
 			pageFirst = new Date(first.getFullYear(), first.getMonth() - 1, 1);
 			first = pageFirst;
 		}
+		
 		today = new Date(today.getFullYear(), today.getMonth() - 1, today
 				.getDate());
+		
 		currentTitle.innerHTML = monthList[first.getMonth()]
 				+ '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
+		
 		removeCalendar();
 		showCalendar();
 		showMain();
 		clickedDate1 = document.getElementById(today.getDate());
 		clickedDate1.classList.add('active');
 		clickStart();
-		reshowingList();
+//		reshowingList();
 		
 		var today111 = dateFormat(today);
 		$('input[name=cr_date]').attr('value', today111);
@@ -111,15 +116,16 @@ $(function() {
 	
 	function next() {
 		
-		inputBox.value = "";
-		const $divs = document.querySelectorAll('#input-list > div');
-		$divs.forEach(function(e) {
-			e.remove();
-		});
-		const $btns = document.querySelectorAll('#input-list > button');
-		$btns.forEach(function(e1) {
-			e1.remove();
-		});
+//		inputBox.value = "";
+//		const $divs = document.querySelectorAll('#input-list > div');
+//		$divs.forEach(function(e) {
+//			e.remove();
+//		});
+//		const $btns = document.querySelectorAll('#input-list > button');
+//		$btns.forEach(function(e1) {
+//			e1.remove();
+//		});
+		
 		if (pageFirst.getMonth() === 12) {
 			pageFirst = new Date(first.getFullYear() + 1, 1, 1);
 			first = pageFirst;
@@ -143,7 +149,7 @@ $(function() {
 		clickedDate1 = document.getElementById(today.getDate());
 		clickedDate1.classList.add('active');
 		clickStart();
-		reshowingList();
+//		reshowingList();
 		
 		var today111 = dateFormat(today);
 		$('input[name=cr_date]').attr('value', today111);
@@ -192,7 +198,7 @@ $(function() {
 		showMain();
 		keyValue = today.getFullYear() + '' + today.getMonth() + ''
 				+ today.getDate();
-		reshowingList();
+//		reshowingList();
 		
 		var today111 = dateFormat(today);
 		$('input[name=cr_date]').attr('value', today111);
@@ -201,101 +207,103 @@ $(function() {
 //		alert(dateFormat(today));
 	}
 	
-	function reshowingList() {
-		keyValue = today.getFullYear() + '' + today.getMonth() + ''
-				+ today.getDate();
-		if (todoList[keyValue] === undefined) {
-			inputList.textContent = '';
-			todoList[keyValue] = [];
-			const $divs = document.querySelectorAll('#input-list > div');
-			$divs.forEach(function(e) {
-				e.remove();
-			});
-			const $btns = document.querySelectorAll('#input-list > button');
-			$btns.forEach(function(e1) {
-				e1.remove();
-			});
-		} else if (todoList[keyValue].length === 0) {
-			inputList.textContent = "";
-			const $divs = document.querySelectorAll('#input-list > div');
-			$divs.forEach(function(e) {
-				e.remove();
-			});
-			const $btns = document.querySelectorAll('#input-list > button');
-			$btns.forEach(function(e1) {
-				e1.remove();
-			});
-		} else {
-			const $divs = document.querySelectorAll('#input-list > div');
-			$divs.forEach(function(e) {
-				e.remove();
-			});
-			const $btns = document.querySelectorAll('#input-list > button');
-			$btns.forEach(function(e1) {
-				e1.remove();
-			});
-			var $div = document.createElement('div');
-			for (var i = 0; i < todoList[keyValue].length; i++) {
-				var $div = document.createElement('div');
-				$div.textContent = '-' + todoList[keyValue][i];
-				var $btn = document.createElement('button');
-				$btn.setAttribute('type', 'button');
-				$btn.setAttribute('id', 'del-ata');
-				$btn.setAttribute('id', dataCnt + keyValue);
-				$btn.setAttribute('class', 'del-data');
-				$btn.textContent = delText;
-				inputList.appendChild($div);
-				inputList.appendChild($btn);
-				$div.addEventListener('click', checkList);
-				$btn.addEventListener('click', deleteTodo);
-				inputBox.value = '';
-				function deleteTodo() {
-					$div.remove();
-					$btn.remove();
-				}
-			}
-		}
+//	function reshowingList() {
+//		keyValue = today.getFullYear() + '' + today.getMonth() + ''
+//				+ today.getDate();
+//		if (todoList[keyValue] === undefined) {
+//			inputList.textContent = '';
+//			todoList[keyValue] = [];
+//			const $divs = document.querySelectorAll('#input-list > div');
+//			$divs.forEach(function(e) {
+//				e.remove();
+//			});
+//			const $btns = document.querySelectorAll('#input-list > button');
+//			$btns.forEach(function(e1) {
+//				e1.remove();
+//			});
+//		} else if (todoList[keyValue].length === 0) {
+//			inputList.textContent = "";
+//			const $divs = document.querySelectorAll('#input-list > div');
+//			$divs.forEach(function(e) {
+//				e.remove();
+//			});
+//			const $btns = document.querySelectorAll('#input-list > button');
+//			$btns.forEach(function(e1) {
+//				e1.remove();
+//			});
+//		} else {
+//			const $divs = document.querySelectorAll('#input-list > div');
+//			$divs.forEach(function(e) {
+//				e.remove();
+//			});
+//			const $btns = document.querySelectorAll('#input-list > button');
+//			$btns.forEach(function(e1) {
+//				e1.remove();
+//			});
+//			
+//			var $div = document.createElement('div');
+//			for (var i = 0; i < todoList[keyValue].length; i++) {
+//				var $div = document.createElement('div');
+//				$div.textContent = '-' + todoList[keyValue][i];
+//				var $btn = document.createElement('button');
+//				$btn.setAttribute('type', 'button');
+//				$btn.setAttribute('id', 'del-ata');
+//				$btn.setAttribute('id', dataCnt + keyValue);
+//				$btn.setAttribute('class', 'del-data');
+//				$btn.textContent = delText;
+//				inputList.appendChild($div);
+//				inputList.appendChild($btn);
+//				$div.addEventListener('click', checkList);
+//				$btn.addEventListener('click', deleteTodo);
+//				inputBox.value = '';
+//				
+//				function deleteTodo() {
+//					$div.remove();
+//					$btn.remove();
+//				}
+//			}
+//		}
+//
+//	}
 
-	}
 
-
-	var delText = 'X';
-	inputDate.addEventListener('click', addTodoList);
-	var dataCnt = 1;
-	var keyValue = today.getFullYear() + '' + today.getMonth() + ''
-			+ today.getDate();
-	let todoList = [];
-	todoList[keyValue] = [];
+//	var delText = 'X';
+//	inputDate.addEventListener('click', addTodoList);
+//	var dataCnt = 1;
+//	var keyValue = today.getFullYear() + '' + today.getMonth() + ''
+//			+ today.getDate();
+//	let todoList = [];
+//	todoList[keyValue] = [];
 	
 	
-	function addTodoList() {
-		var $div = document.createElement('div');
-		$div.textContent = '-' + inputBox.value;
-		var $btn = document.createElement('button');
-		$btn.setAttribute('type', 'button');
-		$btn.setAttribute('id', 'del-ata');
-		$btn.setAttribute('id', dataCnt + keyValue);
-		$btn.setAttribute('class', "del-data");
-		$btn.textContent = delText;
-		inputList.appendChild($div);
-		inputList.appendChild($btn);
-		todoList[keyValue].push(inputBox.value);
-		dataCnt++;
-		alert(document.getElementById('input-box').value);
-		/*inputBox.value = '';*/
-		$div.addEventListener('click', checkList);
-		$btn.addEventListener('click', deleteTodo);
-		
-		function deleteTodo() {
-			$div.remove();
-			$btn.remove();
-		}
-	}
+//	function addTodoList() {
+//		var $div = document.createElement('div');
+//		$div.textContent = '-' + inputBox.value;
+//		var $btn = document.createElement('button');
+//		$btn.setAttribute('type', 'button');
+//		$btn.setAttribute('id', 'del-ata');
+//		$btn.setAttribute('id', dataCnt + keyValue);
+//		$btn.setAttribute('class', "del-data");
+//		$btn.textContent = delText;
+//		inputList.appendChild($div);
+//		inputList.appendChild($btn);
+//		todoList[keyValue].push(inputBox.value);
+//		dataCnt++;
+//		// alert(document.getElementById('input-box').value);
+//		inputBox.value = '';
+//		$div.addEventListener('click', checkList);
+//		$btn.addEventListener('click', deleteTodo);
+//		
+//		function deleteTodo() {
+//			$div.remove();
+//			$btn.remove();
+//		}
+
 
 	
-	function checkList(e) {
-		e.currentTarget.classList.add('checked');
-	}
+//	function checkList(e) {
+//		e.currentTarget.classList.add('checked');
+//	}
 	
 	
 	
@@ -330,22 +338,11 @@ $(function() {
 	
 	
 	
-	$("button").click(function(){
-//		alert(today111);
+	$('td[id != null]').click(function() {
+		
+		location.href = 'routine.go?cr_id=' + document.getElementById('paramId').value + '&cr_date=' + dateFormat(today);
+		
 	});
-	
-
-/*	function call() {
-		 $('#paramDate').html(dateFormat(today));
-	}*/
-	
-	
-/*	var today111 = dateFormat(today);
-	$('input[name=cr_date]').attr('value', today111);
-	
-	$("button").click(function(){
-		alert(today111);
-	});*/
 	
 
 });

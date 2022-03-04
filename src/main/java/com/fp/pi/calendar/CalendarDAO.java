@@ -20,13 +20,11 @@ public class CalendarDAO {
 
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
-//		System.out.println(m.getM_email());
-		
 		r.setCr_id(m.getM_email());
 		
-		System.out.println(r.getCr_id());
-		System.out.println(r.getCr_text());
-		System.out.println(r.getCr_date());
+//		System.out.println(r.getCr_id());
+//		System.out.println(r.getCr_text());
+//		System.out.println(r.getCr_date());
 		
 		if (ss.getMapper(CalendarMapper.class).recordRoutine(r) == 1) {
 			System.out.println("등록 성공");
@@ -39,13 +37,25 @@ public class CalendarDAO {
 		
 	}
 
+	
 	public void getRoutine(RoutineBean r, HttpServletRequest req) {
 		
-		List<RoutineBean> routines = ss.getMapper(CalendarMapper.class).showRoutine();
-		
-		//System.out.println(r.getCr_text());
+		List<RoutineBean> routines = ss.getMapper(CalendarMapper.class).showRoutine(r);
 		
 		req.setAttribute("routine", routines);
+		
+	}
+
+	
+	public void deletetRoutine(RoutineBean r, HttpServletRequest req) {
+
+		if (ss.getMapper(CalendarMapper.class).delRoutine(r) == 1) {
+			System.out.println("삭제 성공");
+			req.setAttribute("result", "삭제 성공");
+		} else {
+			System.out.println("삭제 실패");
+			req.setAttribute("result", "삭제 실패");
+		}
 		
 	}
 	

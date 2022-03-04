@@ -1,5 +1,38 @@
 $(function() {
 	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*$('#input-data').click(function() {
 		
 		let routineVal = $('#input-box').val();
@@ -52,17 +85,12 @@ $(function() {
 	}*/
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 });
+
+
+
+function pleaseLogin_calendar() {
+	
+	alert('로그인을 해주세요!');
+	
+}

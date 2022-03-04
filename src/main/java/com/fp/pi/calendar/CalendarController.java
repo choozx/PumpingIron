@@ -35,6 +35,17 @@ public class CalendarController {
 	
 	/////////////////////// 루틴 캘린더//////////////////////////
 	
+	@RequestMapping(value = "/routine.date", method = RequestMethod.GET)
+	public String routineDate(RoutineBean r, HttpServletRequest req) {
+		
+		mDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "calendar/routineDate.jsp");
+		return "index";
+	}
+	
+	
+	
 	@RequestMapping(value = "/routine.go", method = RequestMethod.GET)
 	public String routineGo(RoutineBean r, HttpServletRequest req) {
 		
@@ -49,11 +60,22 @@ public class CalendarController {
 	@RequestMapping(value = "/routine.insert", method = RequestMethod.GET)
 	public String routineInsert(RoutineBean r, HttpServletRequest req) {
 		
-		mDAO.loginCheck(req);
-		cDAO.insertRoutine(r, req);
-		cDAO.getRoutine(r, req);
+			mDAO.loginCheck(req);
+			cDAO.insertRoutine(r, req);
+			cDAO.getRoutine(r, req);
 		
 		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/routine.delete", method = RequestMethod.GET)
+	public String routineDelete(RoutineBean r, HttpServletRequest req) {
+		
+		mDAO.loginCheck(req);
+		cDAO.deletetRoutine(r, req);
+		
+		req.setAttribute("contentPage", "calendar/routineDate.jsp");
 		return "index";
 	}
 	

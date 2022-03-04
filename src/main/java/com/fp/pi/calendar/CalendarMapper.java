@@ -6,6 +6,8 @@ public interface CalendarMapper {
 
 	int recordRoutine(RoutineBean r);
 
-	List<RoutineBean> showRoutine();
+	List<RoutineBean> showRoutine(RoutineBean r);
+
+	int delRoutine(RoutineBean r);
 
 }
