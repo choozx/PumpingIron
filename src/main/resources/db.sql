@@ -91,7 +91,8 @@ cr_nickname varchar2(100),
 
 CONSTRAINT community_review_pk PRIMARY KEY (cr_no, cr_nickname)
 )
-
+delete COMMUNITY_REVIEW;
+drop sequence community_review_seq
 create sequence community_review_seq;
 
 insert into community_review values(community_review_seq.nextval, '1', '1', 'gw', '1', '1', '1', '1', '1', '1', sysdate);
@@ -115,13 +116,17 @@ create table community_review_reply(
 
 crr_no number(7) primary key,
 crr_text varchar2(200 char) not null,
-crr_img varchar2(200 char) not null,
 crr_writer varchar2(20 char) not null,
 crr_date date not null
 )
 
 create sequence community_review_reply_seq;
 
-insert into community_review_reply values(community_review_reply_seq.nextval, '1', '1', 'gw', sysdate);
+insert into community_review_reply values(community_review_reply_seq.nextval, '1', 'gw', sysdate);
+insert into community_review_reply values(community_review_reply_seq.nextval, '1222', 'gw2', sysdate);
 
 select * from community_review_reply;
+
+
+DROP SEQUENCE community_review_reply_seq;
+DROP TABLE community_review_reply CASCADE CONSTRAINTS;

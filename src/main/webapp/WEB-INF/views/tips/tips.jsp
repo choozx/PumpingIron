@@ -14,11 +14,11 @@
 
 
 </head>
+
 ${result }
+
+
 <body style="z-index: 0;">
-
-
-
 
 
 <div class="title-center text-center">
@@ -64,28 +64,68 @@ ${result }
 
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
+  
+  
+  
+    <li class="page-item">
+    
+    <c:choose>
+    
+    <c:when test="${curPage < 2 }">
+    
+      <a class="page-link" href="" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
+    </c:when>
+
+
+<c:otherwise>
+
+
+      <a class="page-link" href="page.change?p=${curPage - 1 }" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+
+
+</c:otherwise>   
+   
+   
+    </c:choose>
     </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+    
+    
+    <c:forEach var="p" begin="1" end="${pageCount }">
+    	<li class="page-item"><a class="page-link" href="page.change?p=${p }">${p }</a></li>
+ 	</c:forEach>
+    
+    
+    
+    
+    
+     <li class="page-item">
+    <c:choose>
+    <c:when test="${curPage == pageCount }">
+         
+      <a class="page-link" href="" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
+ 
+    </c:when>
+    <c:otherwise>
+      <a class="page-link" href="page.change?p=${curPage + 1 }" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </c:otherwise>
+    </c:choose>
+ 
     </li>
   </ul>
 </nav>
 
-
-
 <c:choose>
 <c:when test="${sessionScope.loginMember != null }">
-<div class="viewer-bottom d-flex align-items-center justify-content-between mt-4 mb-5">
-<div class="viewer-bottom-left"></div>
+<div class="viewer-bottom d-flex align-items-center justify-content-between mt-4 mb-5 container">
+<div class="viewer-bottom-left container"></div>
 <button class="background-b-btn board-btn noto-h4"
  type="button" name="button" data-category-id="8"
   data-auth-write="1" 

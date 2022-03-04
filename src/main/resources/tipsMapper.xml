@@ -4,7 +4,7 @@
 
 <select id="reviews" resultType="com.fp.pi.tips.community_review">
 
-select * from community_review 
+select * from community_review order by cr_date desc
 
 
 </select>
@@ -12,6 +12,17 @@ select * from community_review
 <select id="getDetail" resultType="com.fp.pi.tips.community_review">
 
 select * from community_review where cr_no = #{cr_no}
+
+
+</select>
+
+
+<select id="getMsgCount" resultType="com.fp.pi.tips.community_review" parameterType="Selector">
+select * from (select rownum as rn, cr_no, cr_title, cr_content, cr_like, cr_views, 
+cr_tips, cr_bodyProfile, cr_productReview, cr_email, cr_nickname, cr_date from 
+
+			(select * from community_review	order by cr_date desc)	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
 
 
 </select>
@@ -42,8 +53,22 @@ update community_review set cr_content = #{cr_content}, cr_title = #{cr_title} w
 </update>
 
 
+<select id="getmsgcount" resultType="int">
+ select count(*) from community_review
+</select>
 
 
+
+<select id="replys" resultType="com.fp.pi.tips.community_review_reply">
+
+select * from community_review_reply order by crr_date desc
+</select>
+
+<insert id="" parameterType="com.fp.pi.tips.community_review_reply">
+
+insert into community_review_reply values(community_review_reply_seq.nextval, #{crr_text}, #{crr_writer}, sysdate);
+
+</insert>
 
 
 

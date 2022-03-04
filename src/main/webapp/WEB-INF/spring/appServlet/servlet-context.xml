@@ -59,4 +59,7 @@
 			ref="sqlSessionFactory" />
 	</beans:bean>
 
+	<beans:bean id="so" class="com.fp.pi.SiteOption">
+		<beans:constructor-arg value="5" />
+	</beans:bean>
 </beans:beans>

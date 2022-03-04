@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -158,67 +159,57 @@ width: 100%;
 
 </div>
 <!-- 댓글 영역 -->
+<!-- foreach 로 돌리기 -->
+<c:forEach var="p" items="${re }">
 <div class="comment-content border border-dark border-top-0">
 
-<!-- foreach 로 돌리기 -->
 <div class="comment-box-elem">
 <div class="comment-box">
-
 <div class>
-
 <div class="d-flex align-items-start justify-content-between">
 <div class="comment-content-left d-flex align-items-start justify-content-center">
 <div class="comment-left-text">
 <div class="text-id noto-pb mb-1 d-flex align-items-center">
-<span class="noto-pb">${tipp.cr_nickname }</span>
+<span class="noto-pb">${p.crr_writer }</span>
 <div class="comment-item">
-<span class="noto-pm text-break comment-text">####</span>
-
-
-
+<span class="noto-pm text-break comment-text">${p.crr_text }</span>
 </div>
-
-
 </div>
-
-
 </div>
-
 
 <div class="comment-content-right" style="margin-left: 1013px;">
 
+
+
+<c:if test="${p.crr_writer == sessionScope.loginMember.m_name }">
 <div class="d-flex align-items-center comment-right" style="float: right;">
 <button class="update" onclick="" style="float: right;">수정</button>
 <button class="delete" onclick="" style="float: right;">삭제</button>
-
 </div>
-
-</div>
-
+</c:if>
 
 
 
 
 </div>
-
-
 </div>
-
-
-
+</div>
 </div>
 
 
 
 </div>
 <div class="recomment-elem recomment-box-0 hidden"></div>
-
 </div>
 
 
 
+
+
+
 </div>
 
+</c:forEach>
 
 <!-- 댓글등록 -->
 <div class="comment-edit-wrapper">
@@ -226,7 +217,7 @@ width: 100%;
 <div class="reply-write-box comment-content border border-dark d-flex" style="">
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
-class="bg-whtie comment-textarea"></textarea>
+class="bg-whtie comment-textarea" name="crr_text"></textarea>
 
 </div>
 
@@ -237,7 +228,7 @@ class="bg-whtie comment-textarea"></textarea>
 <div class="reply-write-btn">
 <div class="write-btn-center">
 <button class="noto-pb submit-btn" type="button" name="button"
- onclick="">댓글등록</button>
+ onclick="reply.write">댓글등록</button>
 
 
 

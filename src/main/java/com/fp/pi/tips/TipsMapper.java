@@ -2,6 +2,7 @@ package com.fp.pi.tips;
 
 import java.util.List;
 
+
 public interface TipsMapper {
 	
 	List<community_review> reviews();
@@ -14,7 +15,13 @@ public interface TipsMapper {
 
 	public int update(community_review cr);
 
-	
+	List<community_review> getMsgCount(Selector search);
+
+	int getReply(community_review cr);
+	int getmsgcount();
+
+	List<community_review_reply> replys(community_review_reply crr);
+
 
 	
 

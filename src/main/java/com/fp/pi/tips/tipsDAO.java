@@ -1,23 +1,18 @@
 package com.fp.pi.tips;
 
 import java.io.File;
-
-
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
+import java.math.BigDecimal;
 import java.util.Enumeration;
 import java.util.List;
-
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fp.pi.SiteOption;
 import com.fp.pi.member.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -27,11 +22,57 @@ public class tipsDAO {
 
 	@Autowired
 	private SqlSession ss;
-
-	public void getContent(HttpServletRequest req) {
-		List<community_review> reviews = ss.getMapper(TipsMapper.class).reviews();
 	
+	@Autowired
+	private SiteOption so;
+	
+	
+private int allMsgCount;
+	
+	public int getAllMsgCount() {
+		allMsgCount = ss.getMapper(TipsMapper.class).getmsgcount();
+		return allMsgCount;
+	}
+	public void setAllMsgCount(int allMsgCount) {
+		this.allMsgCount = allMsgCount;
+	}
+
+	
+	public void getMsg(int pageNo, HttpServletRequest req) {
+		allMsgCount = ss.getMapper(TipsMapper.class).getmsgcount();	
+		int count = so.getSnsCountPerpage();
+		int start = (pageNo - 1) * count + 1;  // 0
+		int end = start + (count - 1);   		//	1
+
+		Selector search = (Selector) req.getSession().getAttribute("search");
+		int msgCount = 0;
+
+		if (search == null) {
+			search = new Selector("", new BigDecimal(start), new BigDecimal(end));
+			msgCount = getContent(req); // 전체 개시글 수     
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+		}
+		
+		List<community_review> reviews = ss.getMapper(TipsMapper.class).getMsgCount(search);
+		
 		req.setAttribute("reviews", reviews);
+		int pageCount = (int) Math.ceil(msgCount / (double) count);
+		System.out.println(msgCount);
+		System.out.println(count);
+		req.setAttribute("pageCount", pageCount);
+		System.out.println(pageCount);
+		req.setAttribute("curPage", pageNo);
+
+	}
+	
+	
+
+	public int getContent(HttpServletRequest req) {
+		List<community_review> reviews = ss.getMapper(TipsMapper.class).reviews();
+		allMsgCount = reviews.size();
+		return reviews.size();
 	}
 
 	public void insertCon(HttpServletRequest req, community_review cr) {
@@ -44,19 +85,7 @@ public class tipsDAO {
 		cr.setCr_bodyProfile("aaaa");
 		cr.setCr_productReview("굿");
 		cr.setCr_email("zzz");
-		
-	//	String replace2 = replace1.replaceAll("<img[^>]*src=[\" ']?([^>\"']+)[\"']?[^>]*>","");
-		
-		
-		System.out.println("============================================================");
-		//System.out.println(replace2);
-		
-		
-		
-		
-		
-		
-		
+	
 		if (ss.getMapper(TipsMapper.class).writeCon(cr) == 1) {
 			req.setAttribute("result", "등록성공");
 		}
@@ -173,6 +202,22 @@ public class tipsDAO {
 			e.printStackTrace();
 			req.setAttribute("result", "db서버문제");
 		}
+	}
+	public void writeReply(HttpServletRequest req, community_review_reply crr) {
+
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		crr.setCrr_writer(m.getM_name());
+		crr.setCrr_text("crr_text");
+		//crr.setCrr_date("crr_date");
+		
+		
+	}
+	public void getReply(HttpServletRequest req, community_review_reply crr) {
+
+		List<community_review_reply> replys = ss.getMapper(TipsMapper.class).replys(crr);
+		req.setAttribute("re", replys);
+		System.out.println(crr.getCrr_text());
+		
 	}
 		
 		
