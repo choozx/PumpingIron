@@ -1,7 +1,5 @@
 package com.fp.pi.member;
 
-import org.apache.ibatis.annotations.Param;
-
 public interface MemberMapper {
 
 	int join(Member m);
@@ -10,6 +8,7 @@ public interface MemberMapper {
 
 	Member getMemberByID(Member m);
 
+<<<<<<< HEAD
 	int GetKey(String m_email, String m_key);
 	
 	int alter_userKey(String m_email, String key);
@@ -52,4 +51,6 @@ public interface MemberMapper {
 
 
 	 
+=======
+>>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 }

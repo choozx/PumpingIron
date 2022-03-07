@@ -5,7 +5,6 @@ package com.fp.pi.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,21 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberDAO mDAO;
-	
-	@Autowired
-	private UserMailSendService mailsender;
 
+<<<<<<< HEAD
 	
 //	@Autowired
 //	private LoginService lg;
 	
 	
+=======
+>>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 	// 로그인 폼
 	@RequestMapping(value = "/member.login.go", method = RequestMethod.GET)
 	public String login(HttpServletRequest req) {
@@ -40,17 +38,12 @@ public class MemberController {
 	
 	// 로그인하기
 	@RequestMapping(value = "/member.login.do", method = RequestMethod.POST)
-	@ResponseBody
-	public int login(Member m, HttpServletRequest req, HttpServletResponse response, HttpSession httpSession, String user_check) {
+	public String login(Member m, HttpServletRequest req, HttpServletResponse respons) {
 			
-		user_check = req.getParameter("remember_userId");
-	
-		int result = mDAO.userLogin(m, httpSession, response, req, user_check);
-//		int result = lg.userLogin(m, httpSession, response, req);
+		mDAO.login(m, req);
 		mDAO.loginCheck(req);
-		
-		
-		return result;
+		req.setAttribute("contentPage", "home.jsp");
+		return "index";
 	}
 	
 	// 로그아웃
@@ -77,7 +70,6 @@ public class MemberController {
 	public String joinGo(Member m, HttpServletRequest req, HttpServletResponse respons) {
 		
 		mDAO.join(m, req, respons);
-		mailsender.mailSendWithUserKey(m.getM_email(), req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
@@ -102,29 +94,14 @@ public class MemberController {
 			return mDAO.emailCheck(m_email);
 		}
 	
-	// e-mail 인증 컨트롤러
-		@RequestMapping(value = "/user/key_alter", method = RequestMethod.GET)
-		public String key_alterConfirm(@RequestParam("m_email") String m_email, @RequestParam("m_key") String key) {
-
-			mailsender.alter_userKey_service(m_email, key); // mailsender의 경우 @Autowired
-
-			
-			
-			return "member/loginSuccess";
+	
+	
+	
 	}
-		// 메뉴 - 회원탈퇴
-		@RequestMapping(value = "/member.withdrawal", method = RequestMethod.GET)
-		public String withdrawal(Member m,HttpServletRequest req, HttpServletResponse response) {
 
-		 
-			mDAO.loginCheck(req);
-			req.setAttribute("contentPage", "member/withdrawlGo.jsp");
-			return "index";
-		}	
-		// 회원탈퇴 페이지 이동
-		@RequestMapping(value = "/member.withdrawal.go", method = RequestMethod.GET)
-		public String withdrawalGo(Member m,HttpServletRequest req, HttpServletResponse response) {
+	
 
+<<<<<<< HEAD
 			mDAO.loginCheck(req);
 			req.setAttribute("contentPage", "member/withdrawlDo.jsp");
 			return "index";
@@ -285,3 +262,5 @@ public class MemberController {
 				return "index";
 			}	
 }
+=======
+>>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f

@@ -5,10 +5,18 @@
 	width: 90%;
 	height: 300px;
 }
-#product_div{
+.product_div{
 	float: left;
 	height: 320px;
 	width: 230px;
+}
+
+#products_select_div{
+	margin-bottom: 50px;
+}
+
+#p_main_sort{
+	float: right;
 }
 
 #product_img_div{

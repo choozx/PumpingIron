@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.products.ProductsMapper">
+
 	<select id="getProducts" parameterType="java.lang.String" resultType="com.fp.pi.products.Product">
-		select * from products where p_type = #{choose}
+		select * from products where p_type = #{type}
+	</select>
+	
+	<select id="getProductSort" parameterType="com.fp.pi.products.ProductSort" resultType="com.fp.pi.products.Product">
+		select * from products where p_type = #{p_type} ORDER BY #{p_sort} DESC
 	</select>
 	
 	<select id="getProduct" parameterType="com.fp.pi.products.Product" resultType="com.fp.pi.products.Product">
 		select * from products where p_no = #{p_no}
 	</select>
+	
+	<update id="increaseBuyCount" parameterType="com.fp.pi.products.Product">
+		update products set p_cnt = p_cnt + #{p_cnt} where p_no = #{p_no} 
+	</update>
 	
 	<!-- <insert id="regProducts" parameterType="com.fp.pi.products.Product">
 		insert into products values(products_seq.nextval, #{p_name}, #{p_type}, #{p_price}, #{p_img}, #{p_cnt})

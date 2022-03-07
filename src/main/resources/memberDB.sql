@@ -13,6 +13,7 @@ m_type varchar2(20 char) not null -- 일반회원인지 카카오톡 회원인�
 );
 
 insert into member values
+<<<<<<< HEAD
 ('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
 
 select * from member;
@@ -21,3 +22,12 @@ drop table member cascade constraint purge;
 
 delete member where m_email = '@naver.com'
 
+=======
+('1234@gmail.com', '1234', 01067019501, '몰라', '김두', 'test.jpg', 0, 0, sysdate, '0');
+
+select * from member;
+
+delete member where m_email = '@naver.com'
+
+drop table member cascade constraint purge;
+>>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f

@@ -20,6 +20,7 @@
 		select * from member where m_email = #{m_email}
 </select>
 
+<<<<<<< HEAD
 <!-- 이메일 인증 시도 -->
 <insert id="GetKey" parameterType="Map">
 	update member set m_key = #{param2} where m_email = #{param1}
@@ -101,4 +102,6 @@
 </delete>
 
 
+=======
+>>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 </mapper>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,13 @@
 
 
 </head>
+${result }
 <body style="z-index: 0;">
+
+
+
+
+
 <div class="title-center text-center">
 
 <a href="tips/tips.jsp">
@@ -26,38 +34,31 @@
   <thead>
     <tr>
       <th scope="col" style="width: 10%">번호</th>
-      <th scope="col" style="width: 60%">글 제목</th>
+      <th scope="col" style="width: 54%">글 제목</th>
       <th scope="col" style="width: 10%">작성자</th>
       <th scope="col" style="width: 10%">날짜</th>
-      <th scope="col" style="width: 5%">조회수</th>
-      <th scope="col" style="width: 5%">추천수</th>
+      <th scope="col" style="width: 8%">조회수</th>
+      <th scope="col" style="width: 8%">추천수</th>
     </tr>
   </thead>
   <tbody>
+  <c:forEach var="m" items="${reviews }" >
     <tr>
-      <th scope="row">1</th>
-      <td><a href="watchContents.go"><span>Mark</span></a></td>
-      <td>Otto</td>
-      <td>2022-02-15</td>
-      <td>0</td>
-      <td>0</td>
+      <th scope="row">${m.cr_no}</th>
+      <td><a href="watchContents.go?cr_no=${m.cr_no }"><span>${m.cr_title}</span></a></td>
+      <td>${m.cr_nickname }</td>
+      <td><fmt:formatDate value="${m.cr_date}" type="date" dateStyle="short" />
+      </td>
+      <c:forEach var="n" items="${m.cr_views }">
+      <td>${n.cr_views }</td>
+      </c:forEach>
+      
+      <c:forEach var="n" items="${m.cr_like }">
+      <td>${m.cr_like }</td>
+      </c:forEach>
+      
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>2022-02-15</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>LeBrone</td>
-      <td>2022-02-15</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
+  </c:forEach>
   </tbody>
 </table>
 
@@ -79,18 +80,27 @@
   </ul>
 </nav>
 
+
+
+<c:choose>
+<c:when test="${sessionScope.loginMember != null }">
 <div class="viewer-bottom d-flex align-items-center justify-content-between mt-4 mb-5">
 <div class="viewer-bottom-left"></div>
 <button class="background-b-btn board-btn noto-h4"
  type="button" name="button" data-category-id="8"
   data-auth-write="1" 
-  onclick= "location.href='write.go'">글쓰기</button>
-
-
+  onclick= "location.href='write.go'" value="${sessionScope.loginMember.m_name}">글쓰기</button>
 </div>
+</c:when>
+<c:otherwise>
 
 
 
+
+</c:otherwise>
+
+
+</c:choose>
 
 
 </body>

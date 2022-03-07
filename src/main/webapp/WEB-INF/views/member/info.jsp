@@ -6,8 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body style="height: 400px;">
+<body>
 
+<<<<<<< HEAD
 
 	<form action="member.info.go" name="infoPwForm" onsubmit="return infoPwCheck();">
 	<div class="wrap" style="heigth:400px;">
@@ -32,5 +33,7 @@
 </form>
 
 	
+=======
+>>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 </body>
 </html>
