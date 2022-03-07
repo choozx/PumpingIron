@@ -177,7 +177,7 @@ $(function() {
 	}
 
 //	var clickedDate1 = document.getElementById(today.getDate());
-	var clickedDate1 = document.getElementById(selectedDate.getDate());
+	var clickedDate1 = document.getElementById(today.getDate());
 	clickedDate1.classList.add('active');
 	var prevBtn = document.getElementById('prev');
 	var nextBtn = document.getElementById('next');
@@ -210,21 +210,10 @@ $(function() {
 //				+ today.getDate();
 //		reshowingList();
 		
-//		$.ajax({
-//			url : '/pi/routine.go',
-//			data : {'cr_id' : document.getElementById('paramId').value, 'cr_date' : dateFormat(today)},
-//			type : 'GET',
-//			success : function(data) {
-//				console.log(data);
-//				$('<html>').empty();
-//				$('<html').append(data);
-//				resultHtml(data);
-////				showMain();
-//			}
-//		});
-		
 //		var today111 = dateFormat(today);
 		$('input[name=cr_date]').attr('value', dateFormat(today));
+		
+		// 
 		
 		location.href = 'routine.go?cr_id=' + document.getElementById('paramId').value + '&cr_date=' + dateFormat(today);
 		

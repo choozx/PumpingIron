@@ -44,8 +44,7 @@ public class CalendarController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		req.setAttribute("cr_date", sdf.format(d));
 		mDAO.loginCheck(req);
-		cDAO.getRoutine(r, req);
-		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
+		req.setAttribute("contentPage", "calendar/routineDate.jsp");
 		return "index";
 	}
 	
