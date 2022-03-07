@@ -1,3 +1,133 @@
+// 회원 탈퇴
+function withdraw() {
+	var ok = confirm("정말 탈퇴하시겠습니까?");
+	let withdrawPw = document.getElementById('m_pw');
+
+	if (isEmpty(withdrawPw)) {
+
+		alert('비밀번호를 입력해주세요')
+
+		withdrawPw.focus();
+		withdrawPw.value == "";
+
+		return false;
+
+	}
+
+	
+	if (ok) {
+		return true;
+	} else{
+		return false;
+	}
+}
+
+
+// 아이디/비밀번호 찾기 체크 버튼에 따라
+function search_check(num) {
+	if (num == '1') {
+		document.getElementById("searchP").style.display = "none";
+		document.getElementById("searchI").style.display = "";	
+	} else {
+		document.getElementById("searchI").style.display = "none";
+		document.getElementById("searchP").style.display = "";
+	}
+}
+
+
+
+$(function() {
+	
+	
+// 아이디 값 받고 출력하는 ajax
+$('#searchBtn').click(function(){
+	var idV = "";
+	var m_name = $('#m_name').val();
+	var m_phone = $('#m_phone').val();
+	
+	function masking(email) {
+
+		   const len = email.split('@')[0].length - 3;
+
+		   return email.replace(new RegExp('.(?=.{0,' + len + '}@)', 'g'), '*');
+
+		}
+	//	console.log(masking('test0808@naver.com'));
+
+	//  console.log(masking('hello@google.com'));
+	
+	
+	$.ajax({
+		type:"POST",
+		url:"/pi/member.searchId.do",
+		data : {
+					m_name : m_name,
+					m_phone : m_phone
+					},	
+		success:function(data){
+			if(data == 0){
+				$('#id_value').text("존재하지 않는 회원입니다.");	
+			} else {
+		//		console.log(masking(data));
+		// 아이디 찾기(마스킹)		
+				$('#id_value').text(masking(data));
+				
+			}
+		}
+	});
+});
+
+
+// 아이디 찾기 후에 비밀번호 찾기 눌렀을 때
+$('#pwSearch_btn').click(function(){		
+	
+	
+	// 1. 패스워드 찾기 창으로 이어지고
+	$('#search_2').prop("checked", true);
+	
+	// 2. 메서드 호출
+	search_check(2);
+	
+	// 3. 모달창 닫기
+	$('#staticBackdrop').modal('hide');
+	
+	
+});
+
+
+//비밀번호 찾기 이메일로 보내기
+$('#searchBtn2').click(function(){
+	console.log("패스워드 찾기 : ajax 들어가기 전");
+	console.log($('#inputEmail_2').val());
+	console.log($('#inputPhone_2').val());
+	var m_email = $('#inputEmail_2').val();
+	var m_phone = $('#inputPhone_2').val();
+	$.ajax({
+		type : "get",
+		url : "member.searchPw.do",
+		data : {
+			m_email : m_email,
+			m_phone : m_phone
+		},
+		success : function(data){
+					
+			if(data == 0){
+			   alert("존재하지 않는 회원입니다.")
+			} else if (data == -4) { // 비밀번호 오류라면?
+				alert("회원정보를 올바르게 입력해주세요.")
+			}else {
+				alert("해당 이메일로 임시 비밀번호를 발송하였습니다.");
+			}
+		}
+	});
+	
+});
+
+
+
+
+
+});
 // 주소 찾기
 function connectAddrSearchEvent() {
 
@@ -14,7 +144,9 @@ function connectAddrSearchEvent() {
 $(function() {
 
 	connectAddrSearchEvent();
-
+	
+	
+	
 });
 
 
@@ -33,6 +165,9 @@ $(function() {
 	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	// 휴대폰 번호 정규식
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+	
+	
+	
 	
 	
 
@@ -56,8 +191,9 @@ $(function() {
 					$("#phone2").attr("disabled", false);
 					$("#phoneChk2").css("display", "inline-block");
 					$(".successPhoneChk").text("인증번호를 입력한 뒤 확인을 눌러주십시오.");
-					$(".successPhoneChk").css("color", "green");
+					$(".successPhoneChk").css("color", "red");
 					$("#phone").attr("readonly", true);
+					$("#reg_submit").attr("disabled", true)
 					code2 = data;
 				}
 			}
@@ -71,11 +207,13 @@ $(function() {
 			$(".successPhoneChk").css("color", "green");
 			$("#phoneDoubleChk").val("true");
 			$("#phone2").attr("disabled", true);
+			$("#reg_submit").attr("disabled", false)
 		} else {
 			$(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
 			$(".successPhoneChk").css("color", "red");
 			$("#phoneDoubleChk").val("false");
 			$(this).attr("autofocus", true);
+			$("#reg_submit").attr("disabled", true)
 		}
 	});
 
@@ -144,4 +282,55 @@ $(function() {
 
 	
 	
+	
+// 로그인 할 때 유효성 검사
+	$('#loginBtn').click(function() {
+		var m_email = $('#m_email').val();
+		var m_pw = $('#m_pw').val();
+		var remember_us = $('#remember_us').is(':checked');
+		
+
+		if (m_email == "" || m_pw == "") {
+			alert('정보를 올바르게 입력해주세요.')
+			return false;
+		}
+		
+		$.ajax({
+			type : 'post',
+			url : "/pi/member.login.do",
+			data : {
+				m_email : m_email,
+				m_pw : m_pw,
+				remember_userId : remember_us
+				},
+				success : function(data) {
+		
+					console.log(data);
+					if (data == 0) { // 없는 회원일 경우
+						$('#spanLoginCheck').text('존재하지 않는 회원입니다.');
+						$("#spanLoginCheck").css("color", "red"); 
+					} else if (data == -2) { //인증하지 않았다면?
+						console.log(data);
+						$('#spanLoginCheck').text('이메일을 통하여 이메일인증을 해주시길 바랍니다.');
+						$("#spanLoginCheck").css("color", "red"); 
+						
+					} else if (data == -3) { // 아이디가 사용중이라면?
+						console.log(data);
+						location.href = '/pi/member.login.go?m_email=' + m_email + '&m_pw=' + m_pw + '&remember_userId=' + remember_us;
+						
+					} else if (data == -4) { // 비밀번호 오류라면?
+						console.log(data);
+						$('#spanLoginCheck').text('로그인 정보를 정확히 입력해주세요.');	
+						$("#spanLoginCheck").css("color", "red"); 
+					} else { //로그인 성공시
+						console.log(data);
+						location.href = '/pi/index.go';
+					}
+				}
+			});
+		});
+	
+
+	
 });
+

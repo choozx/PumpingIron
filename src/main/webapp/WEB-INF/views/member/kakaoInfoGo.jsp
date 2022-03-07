@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+div h4{
+	color: #333;
+	
+}
+
 
 </style>
 <script type="text/javascript">
@@ -109,52 +116,30 @@ $("#m_email").keyup(function() {
 </head>
 <body>
 
-<form action="member.join.do" method="post" enctype="multipart/form-data" name="joinForm" onsubmit="return joinCheck();">
+<form action="member.kakaoUpdate" method="post" enctype="multipart/form-data" name="kakaoInfoForm" onsubmit="return kakaoInfoCheck();">
 	<div class="wrap contain">
 		<div class="join" style="border: 1px solid gray; margin-top: 70px;">
-			<h1 class="mb-3" style="color: black; text-align: center;">Sing
-				up</h1>
+			<h1 class="mb-3" style="color: black; text-align: center;">회원정보 수정</h1>
 			<div class="join_id">
 				<div style="display: flex; align-items: center;">
-				<h4>Email</h4><span class="ps-1" style="color: #50bcdf;">※ 아이디 비밀번호 분실시 필요한 정보이므로 정확하게 기입해주세요.</span>
+				<h4>Email</h4>
 				</div>
-				<input type="email" name="m_email" id="m_email" placeholder="Email" style="width: 100%" required="required">
-				<span class="ps-1" id="id_check" style="color: green;"></span>
-				<input type="hidden" id=""/>
-			</div>
-			<div class="join_pw">
-				<div style="display: flex; align-items: center;">
-				<h4>Password</h4>
+				<div>
+					<h5>${sessionScope.loginMember.m_email}</h5>
 				</div>
-				<input type="password" name="m_pw" id="userpass" placeholder="Password" maxlength="16" autocomplete="off">
-					<span class="ps-1 successPw" style="color: green;"></span>
-			</div>
-			<div class="join_pw">
-				<div style="display: flex; align-items: center;">
-				<h4>Confirm Password</h4>
-				</div>
-				<input type="password" name="m_pw2" id="userpasschk" placeholder="Confirm Password" maxlength="16" autocomplete="off" required="required">
-				<input type="hidden" id="pwDoubleChk"/>
-				   <span class="ps-1 successPwChk" style="color: green;"></span>
 			</div>
 			<div class="join_pw">
 				<h4>Name</h4>
-				<input type="text" name="m_name" id="m_name" placeholder="Name">
-				   <span class="ps-1" id="name_check" style="color: #50bcdf;"></span>
+				<div>
+					<input name="m_name" value="${sessionScope.loginMember.m_name}">
+				</div>
 			</div>
 			<div class="join_pn">
 				<div style="display: flex; align-items: center;">
-				<h4>Phone Number</h4><span class="ps-1" style="color: #50bcdf;">※ '-'없이 번호만 입력해주세요</span>
+				<h4>Phone Number</h4>
 				</div>
-				<div style="display: flex;">
-				<input type="tel" name='m_phone' maxlength="11" id="phone" placeholder="휴대폰 번호 11자리를 입력해주세요" style="width: 75%" required="required" > 
-				<input type="button" name='' id="phoneChk" value="휴대폰 인증" style="text-align: center; width: 25%" disabled="disabled">
-				</div>
-				<span class="ps-1" id="phone_check"></span>
-				<div style="display: flex; align-items: center;">
-				<input type="number" id="phone2" name="phone2"  maxlength="4"  style="width: 38%" placeholder="인증번호를 입력해주세요."  disabled="disabled">
-				<input type="button" id="phoneChk2" style="width: 25%; display: none;" value="확인" style="text-align: center">
-				<span class="successPhoneChk mt-1 ps-1" style="color: #50bcdf;">※ 휴대폰 번호 입력 후 휴대폰 인증을 해주세요.</span>
+				<div>
+					<input type="tel" name='m_phone' maxlength="11" id="m_phone" placeholder="휴대폰 번호 11자리를 입력해주세요" required="required" value="${sessionScope.loginMember.m_phone}" style="width: 100%;"> 
 				</div>
 				<input type="hidden" id="phoneDoubleChk"/>
 			</div>
@@ -164,18 +149,19 @@ $("#m_email").keyup(function() {
 					style="display: flex; justify-content: center; align-items: center;">
 					<input id="jm_addr3Input" readonly="readonly" name="m_addr3"
 						maxlength="5" autocomplete="off" placeholder="Postal Code"
-						style="width: 92%"> <span id="addrSearchBtn">[Search]</span>
+						style="width: 92%" value="${addr[2] }"> <span id="addrSearchBtn">[Search]</span>
 				</div>
 				<input id="jm_addr1Input" readonly="readonly" name="m_addr1"
-					maxlength="30" autocomplete="off" placeholder="Address line1"><br>
+					maxlength="30" autocomplete="off" placeholder="Address line1" value="${addr[0] }"><br>
 				<input name="m_addr2" maxlength="30" autocomplete="off"
-					placeholder="Address line2">
+					placeholder="Address line2" value="${addr[1] }">
 			</div>
 			<div class="image-container">
 				<h4>Profile Picture</h4>
+				<img src="resources/files/${sessionScope.loginMember.m_photo }" style="width: 200px; height: 200px;">
 				<input style="display: block;" type="file" id="input-image" name="m_photo"
 					class="mt-3" accept="image/*" /> <img
-					style="width: 100%; height: 250px; max-width:750px; display: visibility:;"
+					style="width: 100%; height: 250px; max-width:750px; display: visibility:; text-align: center;"
 					id="preview-image"
 					src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
 			</div>
