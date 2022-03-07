@@ -192,6 +192,7 @@ $(function() {
 			}
 			
 		}
+		
 		clickedDate1 = e.currentTarget;
 		clickedDate1.classList.add('active');
 		today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id);
