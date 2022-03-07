@@ -1,5 +1,8 @@
 package com.fp.pi.calendar;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +40,12 @@ public class CalendarController {
 	
 	@RequestMapping(value = "/routine.date", method = RequestMethod.GET)
 	public String routineDate(RoutineBean r, HttpServletRequest req) {
-		
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		req.setAttribute("cr_date", sdf.format(d));
 		mDAO.loginCheck(req);
-		
-		req.setAttribute("contentPage", "calendar/routineDate.jsp");
+		cDAO.getRoutine(r, req);
+		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
 		return "index";
 	}
 	
@@ -48,7 +53,7 @@ public class CalendarController {
 	
 	@RequestMapping(value = "/routine.go", method = RequestMethod.GET)
 	public String routineGo(RoutineBean r, HttpServletRequest req) {
-		
+	
 		mDAO.loginCheck(req);
 		cDAO.getRoutine(r, req);
 		

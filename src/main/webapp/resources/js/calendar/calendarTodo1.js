@@ -21,6 +21,16 @@ $(function() {
 	var inputDate = document.getElementById('input-data');
 //	var inputList = document.getElementById('input-list');
 	
+	
+	var param_date = document.getElementById('paramDate').value;
+	console.log(param_date);
+	var selectedDate = new Date(param_date);
+	console.log(selectedDate.getDate());
+	
+//	(today.getFullYear(), today.getMonth(), clickedDate1.id);
+	
+	
+	
 	currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
 	showCalendar();
 	showMain();
@@ -166,7 +176,8 @@ $(function() {
 		mainTodayDate.innerHTML = today.getDate();
 	}
 
-	var clickedDate1 = document.getElementById(today.getDate());
+//	var clickedDate1 = document.getElementById(today.getDate());
+	var clickedDate1 = document.getElementById(selectedDate.getDate());
 	clickedDate1.classList.add('active');
 	var prevBtn = document.getElementById('prev');
 	var nextBtn = document.getElementById('next');
@@ -190,21 +201,34 @@ $(function() {
 			if (tdGroup[i].classList.contains('active')) {
 				tdGroup[i].classList.remove('active');
 			}
-			
 		}
-		
 		clickedDate1 = e.currentTarget;
 		clickedDate1.classList.add('active');
 		today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id);
 		showMain();
-		keyValue = today.getFullYear() + '' + today.getMonth() + ''
-				+ today.getDate();
+//		keyValue = today.getFullYear() + '' + today.getMonth() + ''
+//				+ today.getDate();
 //		reshowingList();
 		
-		var today111 = dateFormat(today);
-		$('input[name=cr_date]').attr('value', today111);
+//		$.ajax({
+//			url : '/pi/routine.go',
+//			data : {'cr_id' : document.getElementById('paramId').value, 'cr_date' : dateFormat(today)},
+//			type : 'GET',
+//			success : function(data) {
+//				console.log(data);
+//				$('<html>').empty();
+//				$('<html').append(data);
+//				resultHtml(data);
+////				showMain();
+//			}
+//		});
 		
-		console.log(today111);
+//		var today111 = dateFormat(today);
+		$('input[name=cr_date]').attr('value', dateFormat(today));
+		
+		location.href = 'routine.go?cr_id=' + document.getElementById('paramId').value + '&cr_date=' + dateFormat(today);
+		
+//		console.log(today111);
 //		alert(dateFormat(today));
 	}
 	
@@ -311,8 +335,6 @@ $(function() {
 	
 	
 
-	today = new Date();
-	
 	
 	function dateFormat(today) {
 		let month = today.getMonth() + 1;
@@ -333,17 +355,22 @@ $(function() {
 	
 	
 	
+	
+	
 
 	$("#prev").trigger("click");
 	$("#next").trigger("click");
 	
 	
 	
-	$('td[id != null]').click(function() {
+	/*$('td[id != null]').click(function(e) {
 		
 		location.href = 'routine.go?cr_id=' + document.getElementById('paramId').value + '&cr_date=' + dateFormat(today);
 		
-	});
+		changeToday(e);
+		
+		
+	});*/
 	
-
+	
 });

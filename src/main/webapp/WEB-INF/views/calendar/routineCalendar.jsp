@@ -61,7 +61,7 @@
 						<form action="routine.insert">
 						
 						<input name="cr_id" type="hidden" id="paramId" value="${sessionScope.loginMember.m_email}"> 
-						<input name="cr_date" type="hidden" id="paramDate" value="${param.cr_date}"> 
+						<input name="cr_date" type="hidden" id="paramDate" value="${cr_date}"> 
 						
 						<input name="cr_text"  type="text" placeholder=" 아래에 루틴이 기록됩니다 " id="input-box" class="input-box">
 						<button id="input-data" class="input-data" >기록</button>
