@@ -12,9 +12,9 @@ import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.Cookie;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
@@ -228,8 +228,123 @@ public int userLogin(Member m, HttpSession httpSession, HttpServletResponse resp
 	}
 
 
-	
+// 회원탈퇴
+	public void withdrawal(Member m, HttpServletRequest req, HttpServletResponse response) {
+		
+		try {
+			
+			// 입력받은 비밀번호 값
+			System.out.println("회원 탈퇴시에 입력받은 비밀번호 : " + m.getM_pw());
+			
+			// 회원정보 세션 받아오기
+			Member m2 = (Member) req.getSession().getAttribute("loginMember");
+			// DB 비밀번호
+			System.out.println("DB 비밀번호 : " + m2.getM_pw());
+			
+			if(m.getM_pw().equals(m2.getM_pw())) {
+				if(ss.getMapper(MemberMapper.class).withdrawal(m2) == 1) {
+					System.out.println("회원탈퇴 성공");
+					String path = req.getSession().getServletContext().getRealPath("resources/files");
+					String jm_photo = m2.getM_photo();
+					jm_photo = URLDecoder.decode(jm_photo, "utf-8");
+					new File(path + "/" + jm_photo).delete();  // 폴더에 저장되있는 사진 삭제
 
+					logout(req);  // 로그아웃 시켜주면 값들 null로 바뀜
+					
+					response.setContentType("text/html; charset=euc-kr");
+					PrintWriter script = response.getWriter();
+					script.println("<script>");
+					script.println("alert('회원탈퇴가 완료되었습니다.');");
+					script.println("location.href = 'index.go';");
+					script.println("</script>");
+					script.close();
+				}
+			} else {
+				System.out.println("비밀번호 불일치로 인한 회원탈퇴 실패");
+				response.setContentType("text/html; charset=euc-kr");
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('비밀번호가 일치하지 않습니다.');");
+				script.println("history.go(-1);");
+				script.println("</script>");
+				script.close();
+			}
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB서버 문제..");
+		}
+		
+	}
+
+
+// 아이디 찾기
+	public String get_searchId(String m_name, String m_phone, HttpServletRequest req) {
+
+		mDAO = ss.getMapper(MemberMapper.class);
+		
+		String result = "";
+		
+			 
+		try {
+			if(req.getParameter("m_name") != "" && req.getParameter("m_phone") != "") {
+				result = mDAO.searchId(m_name, m_phone);
+				System.out.println("아이디 찾기");
+								
+			} else {
+				System.out.println("존재하지 않는 회원입니다.");
+			}
+	
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB서버 오류..");
+		}
+		
+		
+		return result;
+	}
+
+
+// 회원정보 조회 전에 비밀번호 확인
+	public void infoPwCheck(Member m, HttpServletRequest req, HttpServletResponse response)  {
+
+		try {
+			// 입력받은 비밀번호 값
+			System.out.println("회원정보 확인시에 입력받은 비밀번호 : " + m.getM_pw());
+			
+			// 회원정보 세션 받아오기
+			Member m2 = (Member) req.getSession().getAttribute("loginMember");
+			// DB 비밀번호
+			System.out.println("DB 비밀번호 : " + m2.getM_pw());
+			
+			if(m.getM_pw().equals(m2.getM_pw())) {
+				ss.getMapper(MemberMapper.class).infoPwChek(m);  
+					System.out.println("회원정보 페이지로 이동 성공");
+					
+				
+			} else {
+				System.out.println("비밀번호 불일치로 인한 회원정보 조회 실패");
+				response.setContentType("text/html; charset=euc-kr");
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('비밀번호가 일치하지 않습니다.');");
+				script.println("history.go(-1);");
+				script.println("</script>");
+				script.close();
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB서버 오류..");
+		}
+		
+		
+		
+	}
+	
 	// 정보 조회할 때 주소 
 	public void splitAddr(HttpServletRequest req) { // 내 정보조회 할 때 db에 !로 주소를 구분한거를 안나오게 하기 위함
 		Member m = (Member) req.getSession().getAttribute("loginMember");
@@ -237,8 +352,8 @@ public int userLogin(Member m, HttpSession httpSession, HttpServletResponse resp
 		String[] addr2 = addr.split("!");
 		req.setAttribute("addr", addr2);
 
-
 	}
+
 
 	// 회원정보 수정
 	public void update(Member m, HttpServletRequest req, HttpServletResponse response) {

@@ -20,7 +20,7 @@ public class MemberController {
 
 	@Autowired
 	private MemberDAO mDAO;
-	
+
 	@Autowired
 	private UserMailSendService mailsender;
 
@@ -224,10 +224,10 @@ public class MemberController {
 			} else {
 				
 				if(req.getParameter("email") == "") {
-					req.setAttribute("contentPage", "member/kakaoLogin.jsp");					
-				} else {
-					req.setAttribute("contentPage", "member/kakaoLogin2.jsp");	
-				}
+                    req.setAttribute("contentPage", "member/kakaoLogin.jsp");                    
+                } else {
+                    req.setAttribute("contentPage", "member/kakaoLogin2.jsp");    
+                }
 			}
 			
 			return "index";

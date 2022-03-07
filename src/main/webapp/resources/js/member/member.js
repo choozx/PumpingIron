@@ -1,4 +1,3 @@
-
 // 회원 탈퇴
 function withdraw() {
 	var ok = confirm("정말 탈퇴하시겠습니까?");
@@ -145,7 +144,9 @@ function connectAddrSearchEvent() {
 $(function() {
 
 	connectAddrSearchEvent();
-
+	
+	
+	
 });
 
 
@@ -164,6 +165,9 @@ $(function() {
 	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	// 휴대폰 번호 정규식
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+	
+	
+	
 	
 	
 
@@ -187,7 +191,7 @@ $(function() {
 					$("#phone2").attr("disabled", false);
 					$("#phoneChk2").css("display", "inline-block");
 					$(".successPhoneChk").text("인증번호를 입력한 뒤 확인을 눌러주십시오.");
-					$(".successPhoneChk").css("color", "green");
+					$(".successPhoneChk").css("color", "red");
 					$("#phone").attr("readonly", true);
 					$("#reg_submit").attr("disabled", true)
 					code2 = data;
@@ -277,7 +281,7 @@ $(function() {
 				$("#reg_submit").attr("disabled", true); } });
 
 	
-
+	
 	
 // 로그인 할 때 유효성 검사
 	$('#loginBtn').click(function() {
@@ -328,6 +332,5 @@ $(function() {
 	
 
 	
-
 });
 

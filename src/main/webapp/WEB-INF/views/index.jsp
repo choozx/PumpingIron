@@ -18,27 +18,19 @@
 <link href="resources/css/member/join.css" rel="stylesheet">
 <link href="resources/css/centerInfo/info.css" rel="stylesheet">
 <link href="resources/css/products/products.css" rel="stylesheet">
-<<<<<<< HEAD
 <link href="resources/css/member/withdrawlDo.css" rel="stylesheet">
 <link href="resources/css/member/memberSearch.css" rel="stylesheet">
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-=======
->>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 <script src="https://kit.fontawesome.com/f44a228655.js"
 	crossorigin="anonymous"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>	
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript" src="resources/js/jQuery.js"  charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/member/member.js" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/member/memberCheck.js"></script>
-=======
-<script type="text/javascript" src="resources/js/jQuery.js"></script>
-<script type="text/javascript" src="resources/js/member/member.js"></script>
->>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
-<script type="text/javascript" src="resources/js/del/delcon.js"></script>
-<script type="text/javascript" src="resources/js/products/product.js"></script>
+<script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
@@ -161,7 +153,10 @@
 				<li class="nav-item dropdown flex"> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="products.go?products=supplements">보충제</a></li>
+						<li>
+							<input type="hidden">
+							<a class="dropdown-item" href="products.go?products=supplements">보충제</a>
+						</li>
 						<li><a class="dropdown-item" href="products.go?products=gripStrap">그립/스트랩</a></li>
 						<li><a class="dropdown-item" href="products.go?products=elbowProtecter">팔꿈치 보호대</a></li>
 						<li><a class="dropdown-item" href="products.go?products=backWaist" >등/허리</a></li>
@@ -174,20 +169,17 @@
                         <li><a class="dropdown-item" href="priceInfo.go">가격 정보 모아보기</a></li>
                  
                     </ul>
-                    
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
-                        <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
+                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
+                        <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="#">바디프로필</a></li>
                         <li>
 							<hr class="dropdown-divider">
 						</li>
-						
-						<li><a class="dropdown-item" href="info.go">운동영상</a></li>
-					</ul>
-
+						<li><a class="dropdown-item" href="#">Separated link</a></li>
+					</ul> 
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 					href="#" role="button" aria-expanded="false" style="color: black;">대회/운동
 						루틴</a>
@@ -219,9 +211,8 @@
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
 			                    <ul class="dropdown-menu" style="padding: 0px">
-			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_email}</a></li>
+			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
-<<<<<<< HEAD
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">고객센터</a></li>	
 			                		  <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
@@ -250,12 +241,6 @@
                                         <c:if test="${m_type eq 'normal'}">
 			                        	<li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
 			                        	</c:if>
-=======
-			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(0)</a></li>
-			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">회원정보</a></li>
-			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">회원탈퇴</a></li>
-			                        <li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
->>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 								</ul> 
 						</div>
 					</c:otherwise>
