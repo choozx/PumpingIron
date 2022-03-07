@@ -116,7 +116,7 @@ $("#m_email").keyup(function() {
 </head>
 <body>
 
-<form action="member.kakaoUpdate" method="post" enctype="multipart/form-data">
+<form action="member.kakaoUpdate" method="post" enctype="multipart/form-data" name="kakaoInfoForm" onsubmit="return kakaoInfoCheck();">
 	<div class="wrap contain">
 		<div class="join" style="border: 1px solid gray; margin-top: 70px;">
 			<h1 class="mb-3" style="color: black; text-align: center;">회원정보 수정</h1>
@@ -139,7 +139,7 @@ $("#m_email").keyup(function() {
 				<h4>Phone Number</h4>
 				</div>
 				<div>
-					<input type="tel" name='m_phone' maxlength="11" id="phone" placeholder="휴대폰 번호 11자리를 입력해주세요" required="required" value="${sessionScope.loginMember.m_phone}" style="width: 100%;"> 
+					<input type="tel" name='m_phone' maxlength="11" id="m_phone" placeholder="휴대폰 번호 11자리를 입력해주세요" required="required" value="${sessionScope.loginMember.m_phone}" style="width: 100%;"> 
 				</div>
 				<input type="hidden" id="phoneDoubleChk"/>
 			</div>

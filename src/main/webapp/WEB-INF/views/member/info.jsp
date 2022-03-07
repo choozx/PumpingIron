@@ -9,7 +9,7 @@
 <body style="height: 400px;">
 
 
-	<form action="member.info.go">
+	<form action="member.info.go" name="infoPwForm" onsubmit="return infoPwCheck();">
 	<div class="wrap" style="heigth:400px;">
 		<div class="withdraw container" style="border: 1px solid gray; margin-top: 70px;">
 			<div class="withdraw_header mb-5">

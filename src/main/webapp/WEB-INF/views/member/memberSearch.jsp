@@ -5,6 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+</style>
 </head>
 <body>
 
@@ -37,7 +52,7 @@
 						<label class="font-weight-bold text-black  mb-1" for="inputPhone_1">휴대폰번호</label>
 						<span style="font-size: 12px; color: #50bcdf;">※ '-'없이 번호만 입력해주세요</span>
 						<div>
-							<input type="text" class="form-control" id="m_phone" name="inputPhone_1" placeholder="Phone">
+							<input type="number" class="form-control" id="m_phone" name="inputPhone_1" placeholder="Phone">
 						</div>
 					</div>
 					<div class="form-group mt-3">

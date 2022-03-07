@@ -60,55 +60,6 @@ inputImage.addEventListener("change", e => {
     readImage(e.target)
 });
 
-
-
-// 이메일 중복 검사(1 = 중복 / 0 != 중복)
-$("#m_email").keyup(function() {
-	// id = "m_email"
-	var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-	var user_id = $('#m_email').val();
-	// alert(user_id)
-	$.ajax({
-		url : '${pageContext.request.contextPath}/member.emailCheck?m_email='+ user_id,
-		type : 'get',
-		success : function(data) {
-			console.log("1 = 중복o / 0 = 중복x : "+ data);							
-			
-			if (data == 1) {
-					// 1 : 아이디가 중복되는 문구
-					$("#id_check").text("이미 사용중인 이메일입니다.");
-					$("#id_check").css("color", "red");
-					$("#m_email").focus();
-					$("#reg_submit").attr("disabled", true); // reg_submit 버튼
-				} else {
-					if(regEmail.test(user_id)){
-						// 0 : 아이디 길이 / 문자열 검사
-						$("#id_check").text("사용 가능한 이메일입니다.");
-						$("#id_check").css("color", "green");
-						$("#reg_submit").attr("disabled", false);
-			
-					} 
-					
-					else if(user_id == ""){
-						$('#id_check').text('이메일을 입력해주세요.');
-						$('#id_check').css('color', 'red');
-						$("#m_email").focus();
-						$("#reg_submit").attr("disabled", true);				
-						
-					} else {
-						$('#id_check').text("이메일을 올바르게 입력해주세요.");
-						$('#id_check').css('color', 'red');
-						$("#m_email").focus();
-						$("#reg_submit").attr("disabled", true);
-					}
-				}
-			}, error : function() {
-					console.log("실패");
-			}
-		});
-	});
-
-
 });
 
 
@@ -116,7 +67,7 @@ $("#m_email").keyup(function() {
 </head>
 <body>
 
-<form action="member.update" method="post" enctype="multipart/form-data">
+<form action="member.update" method="post" enctype="multipart/form-data" name="infoForm" onsubmit="return infoCheck();">
 	<div class="wrap contain">
 		<div class="join" style="border: 1px solid gray; margin-top: 70px;">
 			<h1 class="mb-3" style="color: black; text-align: center;">회원정보 수정</h1>
@@ -133,21 +84,20 @@ $("#m_email").keyup(function() {
 				<h4>Password</h4>
 				</div>
 				<input type="password" name="m_pw" id="userpas" placeholder="Password" maxlength="16" autocomplete="off">
-					<span class="ps-1 successPw" style="color: green;"></span>
 			</div>
 			<div class="join_pw">
 				<div style="display: flex; align-items: center;">
 				<h4>New Password</h4>
 				</div>
-				<input type="password" name="m_pw2" id="userpassch" placeholder="Confirm Password" maxlength="16" autocomplete="off" >
+				<input type="password" name="m_pw2" id="userpassch" placeholder="New Password" maxlength="16" autocomplete="off" >
 				<input type="hidden" id="pwDoubleChk"/>
-				   <span class="ps-1 successPwChk" style="color: green;"></span>
+				   <span class="ps-1 successPw" style="color: green;"></span>
 			</div>
 			<div class="join_pw">
 				<div style="display: flex; align-items: center;">
 				<h4>Confirm New Password</h4>
 				</div>
-				<input type="password" id="userpassch" placeholder="Confirm Password" maxlength="16" autocomplete="off" >
+				<input type="password" id="userpassch2" name="m_pw2Chk" placeholder="Confirm New Password" maxlength="16" autocomplete="off" >
 				<input type="hidden" id="pwDoubleChk"/>
 				   <span class="ps-1 successPwChk" style="color: green;"></span>
 			</div>

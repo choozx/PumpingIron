@@ -193,6 +193,7 @@ $(function() {
 					$(".successPhoneChk").text("인증번호를 입력한 뒤 확인을 눌러주십시오.");
 					$(".successPhoneChk").css("color", "red");
 					$("#phone").attr("readonly", true);
+					$("#reg_submit").attr("disabled", true)
 					code2 = data;
 				}
 			}
@@ -206,11 +207,13 @@ $(function() {
 			$(".successPhoneChk").css("color", "green");
 			$("#phoneDoubleChk").val("true");
 			$("#phone2").attr("disabled", true);
+			$("#reg_submit").attr("disabled", false)
 		} else {
 			$(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
 			$(".successPhoneChk").css("color", "red");
 			$("#phoneDoubleChk").val("false");
 			$(this).attr("autofocus", true);
+			$("#reg_submit").attr("disabled", true)
 		}
 	});
 

@@ -56,7 +56,7 @@ public class UserMailSendService {
 	
 	
 	
-	
+	// 이메일 인증 보내기
 	public void mailSendWithUserKey(String m_email, HttpServletRequest req) {
 		
 		String key = getKey(false, 20);
@@ -92,7 +92,7 @@ public class UserMailSendService {
 		return resultCnt;	
 	}
 
-
+	// 비밀번호 찾기
 	public int mailSendWithPassword(String m_email, String m_phone, HttpServletRequest req) {
 		
 		// 임시 비밀번호는 6자리로 보내고 데이터베이스 비밀번호를 바꿔준다
@@ -120,7 +120,7 @@ public class UserMailSendService {
 						+ "<h3><a href='http://localhost" + req.getContextPath() + "/index.go" + "'>Pumping Iron 홈페이지 접속 </a></h3><br><br>"
 						+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다.)";
 				try {
-					if(dbMember.getM_email().equals(m_email) && dbMember.getM_phone().equals(m_phone)) {
+					if(dbMember.getM_email().equals(m_email) && dbMember.getM_phone().equals(m_phone) && dbMember.getM_key().equals("Y")) {
 					mail.setSubject("[Pumping Iron] 임시 비밀번호가 발급되었습니다", "utf-8");
 					mail.setText(htmlStr, "utf-8", "html");
 					mail.addRecipient(RecipientType.TO, new InternetAddress(dbMember.getM_email()));

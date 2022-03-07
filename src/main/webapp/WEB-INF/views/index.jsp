@@ -28,6 +28,7 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="resources/js/jQuery.js"  charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/member/member.js" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/member/memberCheck.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript">
@@ -106,6 +107,13 @@
 		      })
 		    }
 	  }
+	 // 카톡상담(카톡채널)
+	 function chatChannel() {
+		    Kakao.Channel.chat({
+		      channelPublicId: '_qCLFb',
+		    });
+		    
+		  }
 </script>
 </head>
 <body>
@@ -206,14 +214,17 @@
 			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
+			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">고객센터</a></li>	
 			                		  <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
                                         <c:if test="${m_type eq 'kakao'}">
 			                             <li><a class="dropdown-item" href="member.kakaoInfo.go" style="color: #01a1dd;">회원정보</a></li>
+			                              <li><a class="dropdown-item" id="channel-chat-button" href="#" onclick="void chatChannel();" style="color: #F0A836;">카톡상담</a></li>
                                         </c:if>
                                         <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
                                         <c:if test="${m_type eq 'normal'}">
 			                        	<li><a class="dropdown-item" href="member.info" style="color: #01a1dd;">회원정보</a></li>
 			                        	</c:if>
+			                          
 			                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
                                         <c:if test="${m_type eq 'kakao'}">
 			                             <li><a class="dropdown-item" href="member.withdrawal" style="color: #01a1dd;">회원탈퇴</a></li>

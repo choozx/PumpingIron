@@ -223,7 +223,11 @@ public class MemberController {
 				req.setAttribute("contentPage", "home.jsp");
 			} else {
 				
-				req.setAttribute("contentPage", "member/kakaoLogin.jsp");
+				if(req.getParameter("email") == "") {
+					req.setAttribute("contentPage", "member/kakaoLogin.jsp");					
+				} else {
+					req.setAttribute("contentPage", "member/kakaoLogin2.jsp");	
+				}
 			}
 			
 			return "index";
