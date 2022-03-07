@@ -4200,7 +4200,7 @@ var FullCalendar = (function (exports) {
             week: 'week',
             day: 'day',
             list: '대회 일정 모아보기',
-           // addEvent: '대회 일정 추가'
+//            addEvent: '대회 일정 추가'
         },
         weekText: 'W',
         weekTextLong: 'Week',

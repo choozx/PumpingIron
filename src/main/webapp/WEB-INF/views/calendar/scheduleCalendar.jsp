@@ -10,11 +10,17 @@
 <script type="text/javascript" src='resources/js/calendar/main.js'></script>
 <script type="text/javascript"
 	src='resources/js/calendar/locales-all.js'></script>
+	
+	<%-- let checkingL = document.getElementId('login_check').value; --%>
 
 <script type="text/javascript">
 
-      document.addEventListener('DOMContentLoaded', function() {
+      $(function() {
+    	var checkingL = document.getElementById('login_check').value;
+    	console.log(checkingL);
+    	
         var calendarEl = document.getElementById('calendar');
+        
         var calendar = new FullCalendar.Calendar(calendarEl, {
           timeZone: 'local',
           initialView: 'dayGridMonth',
@@ -31,7 +37,7 @@
                               var start_date = $("#calendar_start_date").val();
                               var end_date = $("#calendar_end_date").val();
                               
-                              //내용 입력 여부 확인
+                              // emptyCheck
                               if(content == null || content == ""){
                                   alert("내용을 입력하세요.");
                               }else if(start_date == "" || end_date ==""){
@@ -57,11 +63,12 @@
         });
         calendar.render();
         
+
+        
         calendar.on('dateClick', function(info) {
       	 console.log('clicked on ' + info.dateStr);
       	//alert('Clicked on: ' + info.dateStr);
       	});
-        
         
       });
       
@@ -74,8 +81,9 @@
 </head>
 <body>
 
-	<div id='calendar' class="container"></div>
+	<input id="login_check" type="hidden" value="${sessionScope.loginMember.m_email}">
 
+	<div id='calendar' class="container"></div>
 
  <!-- modal 추가 -->
     <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -107,7 +115,6 @@
             </div>
         </div>
     </div>
-
 
 </body>
 </html>

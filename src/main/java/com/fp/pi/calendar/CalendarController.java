@@ -22,6 +22,17 @@ public class CalendarController {
 	@Autowired
 	CalendarDAO cDAO;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	/////////////////////// 대회 일정 캘린더//////////////////////////
+	
+	
 	@RequestMapping(value = "/schedule.go", method = RequestMethod.GET)
 	public String scheduleGo(HttpServletRequest req) {
 		
