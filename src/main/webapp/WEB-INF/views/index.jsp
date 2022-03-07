@@ -20,6 +20,7 @@
 <link href="resources/css/products/products.css" rel="stylesheet">
 <link href="resources/css/member/withdrawlDo.css" rel="stylesheet">
 <link href="resources/css/member/memberSearch.css" rel="stylesheet">
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://kit.fontawesome.com/f44a228655.js"
 	crossorigin="anonymous"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>	
@@ -80,6 +81,31 @@
 				}
 
 			});
+	
+	Kakao.init("d8c700a991666a81ea5a505838e662a1");
+	Kakao.isInitialized();
+
+
+	 function kakaoLogout() {
+		    if (Kakao.Auth.getAccessToken()) {
+		      //토큰이 있으면
+		      Kakao.API.request({
+		        //로그아웃하고
+		        url: '/v1/user/unlink',
+		        success: function (response) {
+		      	//토큰도 삭제
+		     	 	Kakao.Auth.setAccessToken(undefined)
+			  	 //	alert(response.access_token);
+		         // alert(response)
+		        // 로그아웃 시키기
+		         location.href="member.logout"
+		        },
+		        fail: function (error) {
+		          console.log(error)
+		        },
+		      })
+		    }
+	  }
 </script>
 </head>
 <body>
@@ -106,7 +132,6 @@
 			</div>
 		</div>
 	</div>
-
 
 
 	<div class="header">
@@ -180,10 +205,31 @@
 			                    <ul class="dropdown-menu" style="padding: 0px">
 			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
-			                        <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(0)</a></li>
-			                        <li><a class="dropdown-item" href="member.info" style="color: #01a1dd;">회원정보</a></li>
-			                        <li><a class="dropdown-item" href="member.withdrawal" style="color: #01a1dd;">회원탈퇴</a></li>
-			                        <li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
+			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
+			                		  <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'kakao'}">
+			                             <li><a class="dropdown-item" href="member.kakaoInfo.go" style="color: #01a1dd;">회원정보</a></li>
+                                        </c:if>
+                                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'normal'}">
+			                        	<li><a class="dropdown-item" href="member.info" style="color: #01a1dd;">회원정보</a></li>
+			                        	</c:if>
+			                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'kakao'}">
+			                             <li><a class="dropdown-item" href="member.withdrawal" style="color: #01a1dd;">회원탈퇴</a></li>
+                                        </c:if>
+                                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'normal'}">
+			                        	<li><a class="dropdown-item" href="member.withdrawal" style="color: #01a1dd;">회원탈퇴</a></li></li>
+			                        	</c:if>	
+			                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'kakao'}">
+			                             <li><a class="btn btn-primary" href="javascript:kakaoLogout();" role="button" style="border-radius: 0; border: 0" id="">로그아웃</a></li>
+                                        </c:if>
+                                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'normal'}">
+			                        	<li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
+			                        	</c:if>
 								</ul> 
 						</div>
 					</c:otherwise>

@@ -9,7 +9,7 @@
 <body style="height: 400px;">
 
 
-	<form action="member.info.go" method="post">
+	<form action="member.info.go">
 	<div class="wrap" style="heigth:400px;">
 		<div class="withdraw container" style="border: 1px solid gray; margin-top: 70px;">
 			<div class="withdraw_header mb-5">

@@ -116,7 +116,7 @@ $("#m_email").keyup(function() {
 </head>
 <body>
 
-<form action="member.update" method="post" enctype="multipart/form-data">
+<form action="member.kakaoUpdate" method="post" enctype="multipart/form-data">
 	<div class="wrap contain">
 		<div class="join" style="border: 1px solid gray; margin-top: 70px;">
 			<h1 class="mb-3" style="color: black; text-align: center;">회원정보 수정</h1>
@@ -129,32 +129,9 @@ $("#m_email").keyup(function() {
 				</div>
 			</div>
 			<div class="join_pw">
-				<div style="display: flex; align-items: center;">
-				<h4>Password</h4>
-				</div>
-				<input type="password" name="m_pw" id="userpas" placeholder="Password" maxlength="16" autocomplete="off">
-					<span class="ps-1 successPw" style="color: green;"></span>
-			</div>
-			<div class="join_pw">
-				<div style="display: flex; align-items: center;">
-				<h4>New Password</h4>
-				</div>
-				<input type="password" name="m_pw2" id="userpassch" placeholder="Confirm Password" maxlength="16" autocomplete="off" >
-				<input type="hidden" id="pwDoubleChk"/>
-				   <span class="ps-1 successPwChk" style="color: green;"></span>
-			</div>
-			<div class="join_pw">
-				<div style="display: flex; align-items: center;">
-				<h4>Confirm New Password</h4>
-				</div>
-				<input type="password" id="userpassch" placeholder="Confirm Password" maxlength="16" autocomplete="off" >
-				<input type="hidden" id="pwDoubleChk"/>
-				   <span class="ps-1 successPwChk" style="color: green;"></span>
-			</div>
-			<div class="join_pw">
 				<h4>Name</h4>
 				<div>
-					<h5>${sessionScope.loginMember.m_name}</h5>
+					<input name="m_name" value="${sessionScope.loginMember.m_name}">
 				</div>
 			</div>
 			<div class="join_pn">

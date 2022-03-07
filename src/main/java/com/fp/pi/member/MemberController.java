@@ -1,7 +1,7 @@
 package com.fp.pi.member;
 
-import java.io.IOException;
-import java.net.http.HttpResponse;
+
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +24,7 @@ public class MemberController {
 	@Autowired
 	private UserMailSendService mailsender;
 
+	
 //	@Autowired
 //	private LoginService lg;
 	
@@ -183,7 +184,7 @@ public class MemberController {
 		
 		
 		// 회원정보 페이지로 이동
-		@RequestMapping(value = "/member.info.go", method = RequestMethod.POST)
+		@RequestMapping(value = "/member.info.go", method = RequestMethod.GET)
 		public String infoGo(Member m,HttpServletRequest req, HttpServletResponse response)  {
 			
 			mDAO.loginCheck(req);
@@ -192,4 +193,91 @@ public class MemberController {
 			req.setAttribute("contentPage", "member/infoGo.jsp");
 			return "index";
 		}
+		
+		// 회원정보 수정
+		@RequestMapping(value = "/member.update", method = RequestMethod.POST)
+		public String memberUpdate(Member m,HttpServletRequest req, HttpServletResponse response)  {
+			
+			if(mDAO.loginCheck(req)) {
+				mDAO.update(m, req, response);
+				mDAO.loginCheck(req);
+				mDAO.splitAddr(req);
+				req.setAttribute("contentPage", "member/infoGo.jsp");
+			} else {
+				req.setAttribute("contentPage", "member/login.jsp");
+			}
+			
+			return "index";
+		}
+		// 카카오 로그인 페이지
+		@RequestMapping(value = "/member.kakaoGO", method = RequestMethod.GET)
+		public String kakaoGo(Member m, HttpServletRequest req, HttpServletResponse response, String m_email) {
+			
+			System.out.println(req.getParameter("name"));
+			System.out.println(req.getParameter("email"));
+			System.out.println(req.getParameter("profile_image"));
+			
+			m_email = req.getParameter("email");
+			mDAO.loginKakao(m, req, response, m_email);
+			if(mDAO.loginCheck(req)) {
+				req.setAttribute("contentPage", "home.jsp");
+			} else {
+				
+				req.setAttribute("contentPage", "member/kakaoLogin.jsp");
+			}
+			
+			return "index";
+		}
+		
+		// 카카오 회원가입
+		@RequestMapping(value = "/member.kakaoDo", method = RequestMethod.POST)
+		public String kakaoDo(Member m, HttpServletRequest req, HttpServletResponse response, String m_email) {
+			
+			
+
+			m_email = req.getParameter("email");
+			mDAO.joinKakao(m, req, response, m_email);
+			mDAO.loginCheck(req);
+			req.setAttribute("contentPage", "home.jsp");
+			return "index";
+		}
+		// 카카오 회원정보 수정 페이지
+		@RequestMapping(value = "/member.kakaoInfo.go", method = RequestMethod.GET)
+		public String kakaoInfoGo(Member m,HttpServletRequest req, HttpServletResponse response)  {
+			
+		if(mDAO.loginCheck(req)) {
+			mDAO.splitAddr(req);
+			req.setAttribute("contentPage", "member/kakaoInfoGo.jsp");
+			
+		}
+			return "index";
+		}
+		
+		// 카카오 회원정보 수정 페이지
+		@RequestMapping(value = "/member.kakaoUpdate", method = RequestMethod.POST)
+		public String kakaoUpdate(Member m,HttpServletRequest req, HttpServletResponse response)  {
+			
+			if(mDAO.loginCheck(req)) {
+				mDAO.updateKakao(m, req, response);
+				mDAO.splitAddr(req);
+				req.setAttribute("contentPage", "member/kakaoInfoGo.jsp");
+			} else {
+				req.setAttribute("contentPage", "member/login.jsp");
+			}
+			
+			return "index";
+		
+		
+		}
+		
+		// 카카오 회원탈퇴 수행
+			@RequestMapping(value = "/member.kakaoWithdrawal", method = RequestMethod.GET)
+			public String kakaoWithdrawal(Member m,HttpServletRequest req, HttpServletResponse response) {
+
+			if(mDAO.loginCheck(req)) {
+			mDAO.kakaoWithdrawal(m, req, response);
+			}
+				req.setAttribute("contentPage", "home.jsp");
+				return "index";
+			}	
 }

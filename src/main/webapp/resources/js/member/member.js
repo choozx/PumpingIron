@@ -37,12 +37,26 @@ function search_check(num) {
 
 
 $(function() {
+	
+	
 // 아이디 값 받고 출력하는 ajax
 $('#searchBtn').click(function(){
 	var idV = "";
 	var m_name = $('#m_name').val();
 	var m_phone = $('#m_phone').val();
+	
+	function masking(email) {
 
+		   const len = email.split('@')[0].length - 3;
+
+		   return email.replace(new RegExp('.(?=.{0,' + len + '}@)', 'g'), '*');
+
+		}
+	//	console.log(masking('test0808@naver.com'));
+
+	//  console.log(masking('hello@google.com'));
+	
+	
 	$.ajax({
 		type:"POST",
 		url:"/pi/member.searchId.do",
@@ -54,10 +68,10 @@ $('#searchBtn').click(function(){
 			if(data == 0){
 				$('#id_value').text("존재하지 않는 회원입니다.");	
 			} else {
+		//		console.log(masking(data));
+		// 아이디 찾기(마스킹)		
+				$('#id_value').text(masking(data));
 				
-				$('#id_value').text(data);
-				// 아이디값 별도로 저장
-				idV = data;
 			}
 		}
 	});
@@ -76,8 +90,7 @@ $('#pwSearch_btn').click(function(){
 	
 	// 3. 모달창 닫기
 	$('#staticBackdrop').modal('hide');
-	// 4.아이디 
-//	$('#inputEmail_2').attr("value", idV);
+	
 	
 });
 
@@ -272,6 +285,13 @@ $(function() {
 		var m_email = $('#m_email').val();
 		var m_pw = $('#m_pw').val();
 		var remember_us = $('#remember_us').is(':checked');
+		
+
+		if (m_email == "" || m_pw == "") {
+			alert('정보를 올바르게 입력해주세요.')
+			return false;
+		}
+		
 		$.ajax({
 			type : 'post',
 			url : "/pi/member.login.do",
@@ -310,3 +330,4 @@ $(function() {
 
 	
 });
+
