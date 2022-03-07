@@ -23,5 +23,12 @@ function updateContennt() {
 	}
 }
 
+function deleteReply(n) {
+	
+	var ok = confirm("정말 삭제하겠습니까?");
+	if (ok) {
+		location.href = "delReply.do?cr_no=" + n ;
+	}
+}
 
 

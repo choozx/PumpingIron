@@ -1,6 +1,7 @@
 package com.fp.pi.tips;
 
 import java.io.File;
+
 import java.math.BigDecimal;
 import java.util.Enumeration;
 import java.util.List;
@@ -64,7 +65,6 @@ private int allMsgCount;
 		req.setAttribute("pageCount", pageCount);
 		System.out.println(pageCount);
 		req.setAttribute("curPage", pageNo);
-
 	}
 	
 	
@@ -203,20 +203,62 @@ private int allMsgCount;
 			req.setAttribute("result", "db서버문제");
 		}
 	}
-	public void writeReply(HttpServletRequest req, community_review_reply crr) {
+	public void writeReply(HttpServletRequest req, community_review_reply crr, community_review cr) {
+		try {
+			String token = req.getParameter("token");
+			String successToken = (String) req.getSession().getAttribute("successToken");
+			
+			if (successToken != null && token.equals(successToken)) {
+				return;
+			}
 
+			
 		Member m = (Member) req.getSession().getAttribute("loginMember");
-		crr.setCrr_writer(m.getM_name());
-		crr.setCrr_text("crr_text");
-		//crr.setCrr_date("crr_date");
+		crr.setCrr_cr_nickname(m.getM_name());
+		System.out.println(crr.getCrr_cr_nickname());
+		System.out.println(crr.getCrr_text());
 		
+		if (ss.getMapper(TipsMapper.class).getReply(crr) == 1) {
+			req.setAttribute("result", "댓글쓰기성공");
+		} else {
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+		
+		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "db문제");		}
 		
 	}
 	public void getReply(HttpServletRequest req, community_review_reply crr) {
 
-		List<community_review_reply> replys = ss.getMapper(TipsMapper.class).replys(crr);
-		req.setAttribute("re", replys);
+		List<community_review_reply> replyss = ss.getMapper(TipsMapper.class).replys(crr);
+		req.setAttribute("re", replyss);
+		System.out.println(crr.getCrr_no());
 		System.out.println(crr.getCrr_text());
+	}
+	public void delReply(HttpServletRequest req, community_review_reply crr) {
+		
+	try {
+			
+			if (ss.getMapper(TipsMapper.class).delReply(crr) == 1) {
+				req.setAttribute("result", "삭제성공");
+				
+				System.out.println("삭제성공");
+			} else {
+				req.setAttribute("result", "삭제실패");
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "db서버문제");
+		}
+		
+		
+		
 		
 	}
 		

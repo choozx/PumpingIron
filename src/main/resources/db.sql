@@ -77,7 +77,6 @@ select * from community_info_reply;
 
 create table community_review(
  cr_no number(7),
-
 cr_title varchar2(100 char) not null,
 cr_content varchar2(4000 char) not null,
 cr_like varchar2(20 char) default 0 not null,
@@ -96,6 +95,7 @@ drop sequence community_review_seq
 create sequence community_review_seq;
 
 insert into community_review values(community_review_seq.nextval, '1', '1', 'gw', '1', '1', '1', '1', '1', '1', sysdate);
+insert into community_review values(community_review_seq.nextval, '1', '1', '1', '1', '1', '1', '1', '1', 'gw', sysdate);
 update community_review set cr_content = 'ㅁ', cr_title = '와'
 where cr_no = '163';
 
@@ -106,26 +106,32 @@ DROP TABLE community_review CASCADE CONSTRAINTS;
 
 
 
-
-
-
-
 ------------------------------------------------------
 
 create table community_review_reply(
-
-crr_no number(7) primary key,
+crr_no number(7),
+crr_cr_no number(7) not null,
 crr_text varchar2(200 char) not null,
-crr_writer varchar2(20 char) not null,
-crr_date date not null
+crr_cr_nickname varchar2(20 char),
+crr_date date not null,
+
+constraint cr_crr
+		foreign key(crr_cr_no, crr_cr_nickname)
+		references community_review(cr_no, cr_nickname)
+		on delete cascade
+
 )
 
 create sequence community_review_reply_seq;
 
-insert into community_review_reply values(community_review_reply_seq.nextval, '1', 'gw', sysdate);
-insert into community_review_reply values(community_review_reply_seq.nextval, '1222', 'gw2', sysdate);
+insert into community_review_reply values(community_review_reply_seq.nextval,'1', '1', 'gw', sysdate);
+insert into community_review_reply values(community_review_reply_seq.nextval,'1', '개멋있다 후', 'hooooollly', sysdate);
+insert into community_review_reply values(community_review_reply_seq.nextval,'101', '개멋있다 후', 'hooooollly', sysdate);
 
 select * from community_review_reply;
+
+
+select community_review,community_review_reply,status 2 from user_constraints;
 
 
 DROP SEQUENCE community_review_reply_seq;

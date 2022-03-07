@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fp.pi.member.MemberDAO;
 import com.fp.pi.SiteOption;
+import com.fp.pi.TokenMaker;
 
 @Controller
 public class tipsController {
@@ -23,7 +24,7 @@ public class tipsController {
 	
 	@RequestMapping(value = "/tips.go", method = RequestMethod.GET) 
 	public String indexGo(HttpServletRequest req ) {
-		
+		TokenMaker.make(req);
 		tDAO.getContent(req);
 		tDAO.getMsg(1, req);
 		SiteOption.clearSearch(req);
@@ -33,6 +34,7 @@ public class tipsController {
 	
 	@RequestMapping(value = "/page.change", method = RequestMethod.GET)
 	public String PageChange(HttpServletRequest req) {
+		TokenMaker.make(req);
 		mDAO.loginCheck(req);
 		
 		int p = Integer.parseInt(req.getParameter("p"));
@@ -53,8 +55,10 @@ public class tipsController {
 
 	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
 	public String writeDo(HttpServletRequest req, community_review cr) {
+		TokenMaker.make(req);
+		if (mDAO.loginCheck(req)) {
 			tDAO.insertCon(req, cr);
-			//tDAO.getContent(req);
+		}
 			tDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "tips/tips.jsp");
 		return "index";
@@ -70,17 +74,20 @@ public class tipsController {
 	
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
 	public String deletDo(HttpServletRequest req, community_review cr) {
+		TokenMaker.make(req);
 		tDAO.getDetail(req, cr);
 		System.out.println(cr.getCr_no());
-		tDAO.delete(req, cr);
+		if (mDAO.loginCheck(req)) {
+			tDAO.delete(req, cr);
+		}
 		tDAO.getMsg(1, req);
-		//tDAO.getContent(req);
 		req.setAttribute("contentPage", "tips/tips.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/update.go", method = RequestMethod.GET)
 	public String updateGo(HttpServletRequest req, community_review cr) {
+		TokenMaker.make(req);
 		tDAO.getDetail(req, cr);
 		
 		req.setAttribute("contentPage", "tips/update.jsp");
@@ -90,8 +97,10 @@ public class tipsController {
 	
 	@RequestMapping(value = "/update.do", method = RequestMethod.GET)
 	public String updateDo(HttpServletRequest req, community_review cr) {
-		tDAO.update(req, cr);
-		//tDAO.getContent(req);
+		TokenMaker.make(req);
+		if (mDAO.loginCheck(req)) {
+			tDAO.update(req, cr);
+		}
 		tDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "tips/tips.jsp");
 		return "index";
@@ -102,21 +111,24 @@ public class tipsController {
 
 	@RequestMapping(value = "/reply.write", method = RequestMethod.GET)
 	public String replyWrite(HttpServletRequest req, community_review cr, community_review_reply crr) {
-		tDAO.writeReply(req, crr); // insert
+		TokenMaker.make(req);
+		if (mDAO.loginCheck(req)) {
+			tDAO.writeReply(req, crr,cr); // insert
+		}
 		tDAO.getReply(req, crr);
-		
+		tDAO.getDetail(req, cr);
 		req.setAttribute("contentPage", "tips/watchContents2.jsp");
 		return "index";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value = "/delReply.do", method = RequestMethod.GET)
+	public String replyDel(HttpServletRequest req, community_review cr, community_review_reply crr) {
+		TokenMaker.make(req);
+		tDAO.delReply(req, crr);
+		
+		req.setAttribute("contentPage", "tips/watchContents2.jsp");
+		return "index";
+	}
 	
 	
 	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
@@ -125,8 +137,6 @@ public class tipsController {
 		
 		
 	}
-	
-
 	
 	
 

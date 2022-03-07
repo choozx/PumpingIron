@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface TipsMapper {
 	
+
+
 	List<community_review> reviews();
 	
 	community_review getDetail(community_review cr);
@@ -17,10 +19,12 @@ public interface TipsMapper {
 
 	List<community_review> getMsgCount(Selector search);
 
-	int getReply(community_review cr);
+	int getReply(community_review_reply crr);
 	int getmsgcount();
 
 	List<community_review_reply> replys(community_review_reply crr);
+
+	int delReply(community_review_reply crr);
 
 
 	

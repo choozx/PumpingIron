@@ -25,6 +25,7 @@ width: 100%;
 }
 </style>
 </head>
+${result }
 <body>
 
 
@@ -168,20 +169,39 @@ width: 100%;
 <div class>
 <div class="d-flex align-items-start justify-content-between">
 <div class="comment-content-left d-flex align-items-start justify-content-center">
+<div class="comment-picture mr-4">
+<img alt="" src="" class="rounded-circle cursor">
+</div>
+
+
 <div class="comment-left-text">
-<div class="text-id noto-pb mb-1 d-flex align-items-center">
-<span class="noto-pb">${p.crr_writer }</span>
-<div class="comment-item">
+
+<div class="text-id noto-pb mb-1 d-flex align-items-center">&nbsp&nbsp
+<span class="noto-pb">${p.crr_cr_nickname }</span>&nbsp
+
+<c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
+<div class="reply-writer ml-1 noto-sm hidden">작성자</div>
+</c:if>
+
+<p class="d-flex align-items-center ml-2 m-0 noto-sm color-gray">
+<span class="comment-time"></span>
+</p>
+</div>
+<div class="comment-item">&nbsp
+
 <span class="noto-pm text-break comment-text">${p.crr_text }</span>
 </div>
+<div class="hidden comment-file-264785">
+<img alt="" src="">
 </div>
+
 </div>
 
 <div class="comment-content-right" style="margin-left: 1013px;">
 
 
 
-<c:if test="${p.crr_writer == sessionScope.loginMember.m_name }">
+<c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
 <div class="d-flex align-items-center comment-right" style="float: right;">
 <button class="update" onclick="" style="float: right;">수정</button>
 <button class="delete" onclick="" style="float: right;">삭제</button>
@@ -213,23 +233,30 @@ width: 100%;
 
 <!-- 댓글등록 -->
 <div class="comment-edit-wrapper">
-<form id="comment-form" class="1">
+
+<form id="comment-form" action="reply.write">
 <div class="reply-write-box comment-content border border-dark d-flex" style="">
+<!-- <button type="button" class="update-cancel hidden" onclick="initComment();"></button> -->
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
 class="bg-whtie comment-textarea" name="crr_text"></textarea>
-
 </div>
 
 <div class="reply-write-wrapper">
 <div class="preview-wrapper p-3">
+<input type="hidden" class="input-delete" value="0">
+<!-- <button class="delete-btn position-absolute mr-2 border-0 material-icons hidden" type="button" onclick="deleteImage(this);">
+</button> -->
 
 </div>
-<div class="reply-write-btn">
-<div class="write-btn-center">
-<button class="noto-pb submit-btn" type="button" name="button"
- onclick="reply.write">댓글등록</button>
+<div class="reply-write-btn container" style="margin-right: 2px">
 
+<div class="write-btn-right">
+<input type="hidden" value="${tippp.cr_no }" name="cr_no">
+<input type="hidden" name="token" value="${token }">
+<%--  <input type="hidden" value="${re.crr_no }" name="crr_no"> --%> 
+<button class="noto-pb submit-btn"  name="button"
+ style="margin-right: 70px;">댓글등록</button>
 
 
 </div>
@@ -255,10 +282,12 @@ class="bg-whtie comment-textarea" name="crr_text"></textarea>
 <div class="bottom-btn-wrapper">
 <div class="viewer-bottom d-flex align-items-center justify-content-between mt-5 mb-5">
 
-<a href="javascript:history.back();" class="viewer-bottom-left">
+<a href="tips.go" class="viewer-bottom-left">
 <button class="border-b-btn board-btn noto-h4" type="button" name="button" style="background-color: black; color: white">
 목록</button>
 </a>
+
+<c:if test="${tippp.cr_nickname == sessionScope.loginMember.m_name }">
 <div class="viewer-bottom-right d-flex align-items-center">
 <div class="d-inline-block is-mine">
 <button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"
@@ -267,10 +296,14 @@ onclick="location.href = 'update.go?cr_no=${tippp.cr_no}'">수정</button>
 onclick = "deleteContent(${tippp.cr_no});">삭제</button>
 
 
-
 </div>
 
 </div>
+
+</c:if>
+
+
+
 
 
 </div>
