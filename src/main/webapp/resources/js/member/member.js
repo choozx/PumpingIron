@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // 회원 탈퇴
 function withdraw() {
 	var ok = confirm("정말 탈퇴하시겠습니까?");
@@ -129,8 +129,6 @@ $('#searchBtn2').click(function(){
 
 
 });
-=======
->>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
 // 주소 찾기
 function connectAddrSearchEvent() {
 
@@ -279,8 +277,7 @@ $(function() {
 				$("#reg_submit").attr("disabled", true); } });
 
 	
-	
-<<<<<<< HEAD
+
 	
 // 로그인 할 때 유효성 검사
 	$('#loginBtn').click(function() {
@@ -331,7 +328,6 @@ $(function() {
 	
 
 	
-=======
->>>>>>> e4f458a338bf593ec468558ca5ffd26e704ab97f
+
 });
 
