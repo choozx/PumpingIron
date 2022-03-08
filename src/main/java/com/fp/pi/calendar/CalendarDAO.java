@@ -22,10 +22,6 @@ public class CalendarDAO {
 		
 		r.setCr_id(m.getM_email());
 		
-//		System.out.println(r.getCr_id());
-//		System.out.println(r.getCr_text());
-//		System.out.println(r.getCr_date());
-		
 		if (ss.getMapper(CalendarMapper.class).recordRoutine(r) == 1) {
 			System.out.println("등록 성공");
 			req.setAttribute("result", "등록 성공");
@@ -34,16 +30,20 @@ public class CalendarDAO {
 			req.setAttribute("result", "등록 실패");
 		}
 		
+		System.out.println(r.getCr_id());
+		System.out.println(r.getCr_no());
+		System.out.println(r.getCr_text());
+		System.out.println(r.getCr_date());
 		
 	}
 
 	
-	public void getRoutine(RoutineBean r, HttpServletRequest req) {
+	public List<RoutineBean> getRoutine(RoutineBean r, HttpServletRequest req) {
 		
 		List<RoutineBean> routines = ss.getMapper(CalendarMapper.class).showRoutine(r);
 		
 		req.setAttribute("routine", routines);
-		
+		return routines;
 	}
 
 	

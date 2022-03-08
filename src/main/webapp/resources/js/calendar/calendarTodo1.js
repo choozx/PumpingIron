@@ -1,8 +1,9 @@
 $(function() {
-
+	
 	var currentTitle = document.getElementById('current-year-month');
 	var calendarBody = document.getElementById('calendar-body');
 	var today = new Date();
+	
 	var first = new Date(today.getFullYear(), today.getMonth(), 1);
 	var dayList = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
 			'Friday', 'Saturday' ];
@@ -19,28 +20,23 @@ $(function() {
 	}
 	var inputBox = document.getElementById('input-box');
 	var inputDate = document.getElementById('input-data');
-//	var inputList = document.getElementById('input-list');
-	
-	
-	var param_date = document.getElementById('paramDate').value;
-	console.log(param_date);
-	var selectedDate = new Date(param_date);
-	console.log(selectedDate.getDate());
-	
-//	(today.getFullYear(), today.getMonth(), clickedDate1.id);
-	
-	
+	var inputList = document.getElementById('input-list');
 	
 	currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
 	showCalendar();
 	showMain();
 	
+	function dateFormat(today) {
+		let month = today.getMonth() + 1;
+		let date = today.getDate();
+
+        month = month >= 10 ? month : '0' + month;
+        date = date >= 10 ? date : '0' + date;
+
+        return today.getFullYear() + '-' + month + '-' + date;
+}
 	
-	//alert(today);
-	
-	
-	
-	
+	getRoutine();
 	
 	
 	
@@ -106,8 +102,7 @@ $(function() {
 			first = pageFirst;
 		}
 		
-		today = new Date(today.getFullYear(), today.getMonth() - 1, today
-				.getDate());
+		today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
 		
 		currentTitle.innerHTML = monthList[first.getMonth()]
 				+ '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
@@ -120,8 +115,8 @@ $(function() {
 		clickStart();
 //		reshowingList();
 		
-		var today111 = dateFormat(today);
-		$('input[name=cr_date]').attr('value', today111);
+		$('input[name=cr_date]').attr('value', dateFormat(today));
+		
 	}
 	
 	function next() {
@@ -148,8 +143,7 @@ $(function() {
 			pageFirst = new Date(first.getFullYear(), first.getMonth() + 1, 1);
 			first = pageFirst;
 		}
-		today = new Date(today.getFullYear(), today.getMonth() + 1, today
-				.getDate());
+		today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
 		
 		currentTitle.innerHTML = monthList[first.getMonth()]
 				+ '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
@@ -161,10 +155,8 @@ $(function() {
 		clickStart();
 //		reshowingList();
 		
-		var today111 = dateFormat(today);
-		$('input[name=cr_date]').attr('value', today111);
+		$('input[name=cr_date]').attr('value', dateFormat(today));
 		
-//		alert(today111);
 	}
 
 	function showMain() {
@@ -176,7 +168,6 @@ $(function() {
 		mainTodayDate.innerHTML = today.getDate();
 	}
 
-//	var clickedDate1 = document.getElementById(today.getDate());
 	var clickedDate1 = document.getElementById(today.getDate());
 	clickedDate1.classList.add('active');
 	var prevBtn = document.getElementById('prev');
@@ -189,13 +180,15 @@ $(function() {
 	
 
 	function clickStart() {
+			
 		for (let i = 1; i <= pageYear[first.getMonth()]; i++) {
 			tdGroup[i] = document.getElementById(i);
 			tdGroup[i].addEventListener('click', changeToday);
 			
 		}
 	}
-
+	
+		
 	function changeToday(e) {
 		for (let i = 1; i <= pageYear[first.getMonth()]; i++) {
 			if (tdGroup[i].classList.contains('active')) {
@@ -206,20 +199,97 @@ $(function() {
 		clickedDate1.classList.add('active');
 		today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id);
 		showMain();
+		
+		$('input[name=cr_date]').attr('value', dateFormat(today));
+		
+		getRoutine();
+		
+		
+//		location.href = 'routine.go?cr_id=' + document.getElementById('paramId').value + '&cr_date=' + dateFormat(today);
+		
+		
 //		keyValue = today.getFullYear() + '' + today.getMonth() + ''
 //				+ today.getDate();
 //		reshowingList();
 		
-//		var today111 = dateFormat(today);
-		$('input[name=cr_date]').attr('value', dateFormat(today));
+//		function dateFormat(today) {
+//			let month = today.getMonth() + 1;
+//			let date = today.getDate();
+//
+//	        month = month >= 10 ? month : '0' + month;
+//	        date = date >= 10 ? date : '0' + date;
+//
+//	        return selectedDate.getFullYear() + '-' + month + '-' + date;
+//	}
 		
-		// 
-		
-		location.href = 'routine.go?cr_id=' + document.getElementById('paramId').value + '&cr_date=' + dateFormat(today);
-		
-//		console.log(today111);
-//		alert(dateFormat(today));
+	
+	
 	}
+	
+
+	$("#prev").trigger("click");
+	$("#next").trigger("click");
+	
+	
+	
+	
+	$(document).on("click", ".delRoutine", function(){
+		let h5 = $(this).parent();
+		let no = $(h5).attr("value");
+		console.log(no);
+//		alert(no);
+		$.ajax({
+			url : "routine.delete",
+			data : {"cr_no" : no},
+			type : "GET",
+			success : function(data) {
+//				console.log(data);
+				getRoutine();
+				}
+		});
+	});
+	
+	
+	
+	$('#input-data').click(function() {
+		$.ajax({
+			url : "routine.insert",
+			data : {"cr_text" : document.getElementById('input-box').value, "cr_date" : dateFormat(today)},
+			type : "GET",
+			success : function(data) {
+//				console.log(data);
+				getRoutine();
+				}
+		});
+		
+	});
+	
+	
+	
+	
+		function getRoutine() {
+			$.ajax({
+				url : "routine.getData",
+				data : {"cr_id" : document.getElementById('paramId').value, "cr_date": dateFormat(today)},
+				dataType : "json",
+				type : "GET",
+				success : function(data) {
+					$("#routineDIV").empty();
+					console.log(data)
+					$.each(data, function(i,c) {
+//						console.log(c.cr_text);
+						$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<a href="" class="delRoutine" style="color: white;"> x </a></h6>');
+//						console.log('--------')
+					});
+					
+					
+					
+				}
+			});
+		}
+	
+	
+	
 	
 //	function reshowingList() {
 //		keyValue = today.getFullYear() + '' + today.getMonth() + ''
@@ -321,45 +391,23 @@ $(function() {
 	
 	
 	
-	
-	
 
 	
-	function dateFormat(today) {
-		let month = today.getMonth() + 1;
-		let date = today.getDate();
-	/*	let hour = today.getHours();
-		let minute = today.getMinutes();
-		let second = today.getSeconds();*/
-
-        month = month >= 10 ? month : '0' + month;
-        date = date >= 10 ? date : '0' + date;
-      /*  hour = hour >= 10 ? hour : '0' + hour;
-        minute = minute >= 10 ? minute : '0' + minute;
-        second = second >= 10 ? second : '0' + second;*/
-
-        return today.getFullYear() + '-' + month + '-' + date;
-        // return today.getFullYear() + '-' + month + '-' + date + ' ' + hour + ':' + minute + ':' + second;
-}
+//	function dateFormat(today) {
+//		let month = today.getMonth() + 1;
+//		let date = today.getDate();
+//		let hour = today.getHours();
+//		let minute = today.getMinutes();
+//		let second = today.getSeconds();
+//
+//        month = month >= 10 ? month : '0' + month;
+//        date = date >= 10 ? date : '0' + date;
+//        hour = hour >= 10 ? hour : '0' + hour;
+//        minute = minute >= 10 ? minute : '0' + minute;
+//        second = second >= 10 ? second : '0' + second;
+//
+//        return today.getFullYear() + '-' + month + '-' + date;
+//}
 	
-	
-	
-	
-	
-
-	$("#prev").trigger("click");
-	$("#next").trigger("click");
-	
-	
-	
-	/*$('td[id != null]').click(function(e) {
 		
-		location.href = 'routine.go?cr_id=' + document.getElementById('paramId').value + '&cr_date=' + dateFormat(today);
-		
-		changeToday(e);
-		
-		
-	});*/
-	
-	
 });
