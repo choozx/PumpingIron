@@ -175,7 +175,7 @@ ${result }
 
 
 <div class="comment-left-text">
-
+<%-- <input type="hidden" name="crr_no" value="${re.crr_no}"> --%>
 <div class="text-id noto-pb mb-1 d-flex align-items-center">&nbsp&nbsp
 <span class="noto-pb">${p.crr_cr_nickname }</span>&nbsp
 
@@ -204,7 +204,7 @@ ${result }
 <c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
 <div class="d-flex align-items-center comment-right" style="float: right;">
 <button class="update" onclick="" style="float: right;">수정</button>
-<button class="delete" onclick="" style="float: right;">삭제</button>
+<button class="delete" onclick="deleteReply(${p.crr_no})" style="float: right;">삭제</button>
 </div>
 </c:if>
 
@@ -236,7 +236,6 @@ ${result }
 
 <form id="comment-form" action="reply.write">
 <div class="reply-write-box comment-content border border-dark d-flex" style="">
-<!-- <button type="button" class="update-cancel hidden" onclick="initComment();"></button> -->
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
 class="bg-whtie comment-textarea" name="crr_text"></textarea>
@@ -245,36 +244,21 @@ class="bg-whtie comment-textarea" name="crr_text"></textarea>
 <div class="reply-write-wrapper">
 <div class="preview-wrapper p-3">
 <input type="hidden" class="input-delete" value="0">
-<!-- <button class="delete-btn position-absolute mr-2 border-0 material-icons hidden" type="button" onclick="deleteImage(this);">
-</button> -->
-
 </div>
 <div class="reply-write-btn container" style="margin-right: 2px">
 
 <div class="write-btn-right">
 <input type="hidden" value="${tippp.cr_no }" name="cr_no">
 <input type="hidden" name="token" value="${token }">
-<%--  <input type="hidden" value="${re.crr_no }" name="crr_no"> --%> 
+<%-- <input type="hidden" value="${re.crr_no }" name="crr_no">  --%>
 <button class="noto-pb submit-btn"  name="button"
  style="margin-right: 70px;">댓글등록</button>
 
-
 </div>
-
-
 </div>
-
 </div>
-
-
 </div>
-
-
-
 </form>
-
-
-
 </div>
 
 

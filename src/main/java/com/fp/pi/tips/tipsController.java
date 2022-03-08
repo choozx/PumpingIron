@@ -124,8 +124,11 @@ public class tipsController {
 	@RequestMapping(value = "/delReply.do", method = RequestMethod.GET)
 	public String replyDel(HttpServletRequest req, community_review cr, community_review_reply crr) {
 		TokenMaker.make(req);
-		tDAO.delReply(req, crr);
-		
+		if (mDAO.loginCheck(req)) {
+			tDAO.delReply(req, crr);
+		}
+		tDAO.getReply(req, crr);
+		tDAO.getDetail(req, cr);
 		req.setAttribute("contentPage", "tips/watchContents2.jsp");
 		return "index";
 	}

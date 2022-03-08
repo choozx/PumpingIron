@@ -102,12 +102,7 @@ private int allMsgCount;
 
 	public void getDetail(HttpServletRequest req, community_review cr) {
 		
-		
-		
-		
 	req.setAttribute("tippp", ss.getMapper(TipsMapper.class).getDetail(cr));	
-	
-		
 		
 	}
 
@@ -215,11 +210,18 @@ private int allMsgCount;
 			
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		crr.setCrr_cr_nickname(m.getM_name());
+		crr.setCrr_cr_no(Integer.parseInt(req.getParameter("cr_no")));
+		crr.setCrr_text(req.getParameter("crr_text"));
+		System.out.println("=================================");
 		System.out.println(crr.getCrr_cr_nickname());
 		System.out.println(crr.getCrr_text());
+		System.out.println(crr.getCrr_no());
 		
 		if (ss.getMapper(TipsMapper.class).getReply(crr) == 1) {
 			req.setAttribute("result", "댓글쓰기성공");
+			req.getSession().setAttribute("successToken", token);
+
+			
 		} else {
 			req.setAttribute("result", "댓글쓰기실패");
 		}
@@ -231,25 +233,29 @@ private int allMsgCount;
 			req.setAttribute("result", "db문제");		}
 		
 	}
+	
+	
 	public void getReply(HttpServletRequest req, community_review_reply crr) {
-
+		crr.setCrr_cr_no(Integer.parseInt(req.getParameter("cr_no")));
 		List<community_review_reply> replyss = ss.getMapper(TipsMapper.class).replys(crr);
 		req.setAttribute("re", replyss);
-		System.out.println(crr.getCrr_no());
-		System.out.println(crr.getCrr_text());
 	}
+	
+	
+	
+	
 	public void delReply(HttpServletRequest req, community_review_reply crr) {
 		
 	try {
+		System.out.println("======================");
+		System.out.println(crr.getCrr_no());
 			
 			if (ss.getMapper(TipsMapper.class).delReply(crr) == 1) {
 				req.setAttribute("result", "삭제성공");
-				
 				System.out.println("삭제성공");
 			} else {
 				req.setAttribute("result", "삭제실패");
 			}
-			
 			
 			
 		} catch (Exception e) {
@@ -258,20 +264,6 @@ private int allMsgCount;
 		}
 		
 		
-		
-		
 	}
 		
-		
-		
-		
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-

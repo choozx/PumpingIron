@@ -58,20 +58,22 @@ update community_review set cr_content = #{cr_content}, cr_title = #{cr_title} w
 </select>
 
 
+<!-- 댓글 조회 -->
+<select id="replys" resultType="com.fp.pi.tips.community_review_reply" parameterType="com.fp.pi.tips.community_review_reply">
 
-<select id="replys" resultType="com.fp.pi.tips.community_review_reply">
-
-select * from community_review_reply order by crr_date desc
+select * from community_review_reply  where crr_cr_no = #{crr_cr_no} order by crr_date desc
 </select>
 
+
+
+<!-- 댓글 등록 -->
 <insert id="getReply" parameterType="com.fp.pi.tips.community_review_reply">
 
 insert into community_review_reply values(community_review_reply_seq.nextval, #{crr_cr_no}, #{crr_text}, #{crr_cr_nickname}, sysdate)
-
 </insert>
 
-
-<delete id="delReply">
+<!-- 댓글 삭제  -->
+<delete id="delReply" parameterType="com.fp.pi.tips.community_review_reply">
 
 delete from community_review_reply where crr_no = #{crr_no}
 
