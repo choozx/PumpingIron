@@ -45,4 +45,20 @@ public class ProductsContoller {
 		
 		return "index";  
 	}
+	
+	@RequestMapping(value = "/regProduct.go", method = RequestMethod.GET)
+	public String regProductGo(HttpServletRequest request) {
+		request.setAttribute("contentPage", "products/regProduct.jsp");
+		
+		return "index";  
+	}
+	
+	@RequestMapping(value = "/regProduct.do", method = RequestMethod.POST)
+	public String regProductDo(Product p, HttpServletRequest request) {
+		
+		pDAO.regProduct(p, request);
+		request.setAttribute("contentPage", "home.jsp");
+		
+		return "index";  
+	}
 }

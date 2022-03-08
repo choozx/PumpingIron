@@ -201,6 +201,24 @@
 							<a href="member.login.go">로그인</a>
 						</div>
 					</c:when>
+					<c:when test="${sessionScope.loginMember.m_email eq '1234@gmail.com'}">
+						<div class="login-item01">
+							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
+			                    <ul class="dropdown-menu" style="padding: 0px">
+			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
+			                         <li><a class="dropdown-item" href="regProduct.go" style="color: #01a1dd;">상품등록</a></li>
+			                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'kakao'}">
+			                             <li><a class="btn btn-primary" href="javascript:kakaoLogout();" role="button" style="border-radius: 0; border: 0" id="">로그아웃</a></li>
+                                        </c:if>
+                                        <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
+                                        <c:if test="${m_type eq 'normal'}">
+			                        	<li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
+			                        	</c:if>
+								</ul> 
+						</div>
+					</c:when>
 					<c:otherwise>
 					<!-- 로그인 했을 경우  -->
 						<div class="login-item02">

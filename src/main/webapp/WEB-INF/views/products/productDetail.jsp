@@ -17,7 +17,7 @@
 		<input type="button" value="신발">
 	</div>
 	<div id="product_detail_div" class="container">
-		<div id="product_detail_img_div"><img id="product_detail_img" src="resources/img/products/${productDetail.p_img }.jpg"></div>
+		<div id="product_detail_img_div"><img id="product_detail_img" src="resources/img/products/${productDetail.p_img }"></div>
 		<div id="product_info">
 			<div id="product_name">${productDetail.p_name }</div>
 			<div id="product_star">별점</div>
@@ -33,7 +33,7 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div id="#product_detail_info" class="container">
-		<h1>상품 내용</h1>
+		<h1>${productDetail.p_info }</h1>
 	</div>
 </body>
 </html>

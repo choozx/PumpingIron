@@ -8,6 +8,7 @@ create table products(
 	p_type varchar2(40 char) not null,
 	p_price number(10) not null,
 	p_img varchar2(200 char) not null,
+	p_info varchar2(1000 char) not null,
 	p_cnt number(7) not null
 )
 

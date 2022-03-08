@@ -11,4 +11,6 @@ public interface ProductsMapper {
 	public int increaseBuyCount(Product p);
 
 	public List<Product> getProductSort(ProductSort ps);
+
+	public int regProduct(Product p);
 }

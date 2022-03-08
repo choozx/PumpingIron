@@ -22,7 +22,7 @@
 
 <div class="write-wrapper container">
 
-	<form id="common-edit-form" onsubmit="true" action="product.reg.do" method="post" enctype="multipart/form-data">
+	<form id="common-edit-form" onsubmit="true" action="regProduct.do" method="post" enctype="multipart/form-data">
 		<div class="d-flex justify-content-center mb-4">
 			<div>
 			<span class="m-0 sub-title noto-pb pt-3">상품명</span>
