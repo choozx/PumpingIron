@@ -46,11 +46,21 @@ public class ProductsDAO {
 	}
 
 	public Products getProductsSort(ProductSort ps) {
-		System.out.println(ps.getP_sort());
-		System.out.println(ps.getP_type());
-		List<Product> products = ss.getMapper(ProductsMapper.class).getProductSort(ps);
 		
-		Products p = new Products(products);
+		if (ps.getP_sort().equals("p_priceToLow")) {
+			ps.setP_sort("p_price");
+			ps.setOrder("ASC");
+		} else if(ps.getP_sort().equals("p_priceTohigh")) {
+			ps.setP_sort("p_price");
+			ps.setOrder("DESC");
+		} else if(ps.getP_sort().equals("p_cnt")) {
+			ps.setOrder("DESC");			
+		}
+		
+		
+		List<Product> product = ss.getMapper(ProductsMapper.class).getProductSort(ps);
+		
+		Products p = new Products(product);
 		return p;
 	}
 	

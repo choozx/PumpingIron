@@ -23,9 +23,9 @@ public class ProductsContoller {
 	}
 	
 	@RequestMapping(value = "/products.sort", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
-	public @ResponseBody Products ProductsMainSort(ProductSort ps) {
-		Products products = pDAO.getProductsSort(ps);
-		return products;
+	public @ResponseBody Products ProductsMainSort(ProductSort ps, HttpServletRequest request) {
+		Products pproducts = pDAO.getProductsSort(ps);
+		return pproducts;
 	}
 	
 	//상품 디테일 페이지

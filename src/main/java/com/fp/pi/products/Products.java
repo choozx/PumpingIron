@@ -7,25 +7,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Products {
-	private List<Product> products;
+	private List<Product> pproducts;
 	
 	public Products() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Products(List<Product> products) {
+	public Products(List<Product> pproducts) {
 		super();
-		this.products = products;
+		this.pproducts = pproducts;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public List<Product> getPproducts() {
+		return pproducts;
 	}
 
-	@XmlElement
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setPproducts(List<Product> pproducts) {
+		this.pproducts = pproducts;
 	}
-	
+
 	
 }
