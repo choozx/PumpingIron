@@ -109,7 +109,7 @@ $("#m_email").keyup(function() {
 </head>
 <body>
 
-<form action="member.join.do" method="post" enctype="multipart/form-data">
+<form action="member.join.do" method="post" enctype="multipart/form-data" name="joinForm" onsubmit="return joinCheck();">
 	<div class="wrap contain">
 		<div class="join" style="border: 1px solid gray; margin-top: 70px;">
 			<h1 class="mb-3" style="color: black; text-align: center;">Sing

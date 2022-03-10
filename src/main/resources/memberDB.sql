@@ -1,5 +1,5 @@
 create table member(
-m_email varchar2(50 char), -- 회원 이메일
+m_email varchar2(50 char) primary key, -- 회원 이메일
 m_pw varchar2(30 char) not null, -- 비밀번호
 m_phone varchar2(11 char), -- 폰 번호
 m_addr varchar2(100 char) not null, -- 회원 주소
@@ -9,16 +9,21 @@ m_pay number(20) not null, -- 회원 결제 금액
 m_point number(20) not null, -- 회원 포인트
 m_regdate date not null, -- 회원 가입 날짜
 m_key varchar2(100 char) not null, -- 회원 이메일 인증 여부
-CONSTRAINT member_pk PRIMARY KEY (m_email, m_name, m_phone) -- 이메일, 이름, 폰 번호 pk : 1명의 1계정으로
+m_type varchar2(20 char) not null -- 일반회원인지 카카오톡 회원인지 구분
 );
 
 insert into member values
+<<<<<<< HEAD
 ('1234@gmail.com', '1234', 01067019501, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y');
 
 delete MEMBER where m_email = '1234@gmail.com';
+=======
+('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
+>>>>>>> 3ddeb2b901b64d2811855a23204c99e4fcc3de9e
 
 select * from member;
 
+drop table member cascade constraint purge;
+
 delete member where m_email = '@naver.com'
 
-drop table member cascade constraint purge;

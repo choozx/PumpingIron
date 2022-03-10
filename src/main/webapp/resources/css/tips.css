@@ -55,8 +55,16 @@
     padding: 40px;
 }
 
+
 .mb-4, .my-4 {
     margin-bottom: 1.5rem!important;
+        margin-top: -18px;
+}
+
+#copy-url {
+    position: absolute;
+    height: 0;
+    top: -100px;
 }
 
 .sub-title {
@@ -72,6 +80,10 @@
     letter-spacing: -0.58px;
     
 }
+.comment-content-right{
+	position: relative;
+	}
+
 .m-0 {
     margin: 0!important;
 }
@@ -125,11 +137,12 @@ input {
 .text-center {
     text-align: center!important;
 }
-
+ 
 .board-btn {
     width: 145px;
     line-height: 45px;
 }
+
 .background-b-btn {
     border-radius: 4px;
     background: #231916;
@@ -146,3 +159,215 @@ input {
 .ml-3, .mx-3 {
     margin-left: 1rem!important;
 }
+
+
+.comment-icon{
+	margin-right: 5px;
+	width: 20px;
+}
+
+.point-color{
+	color: #ea533c;
+}
+
+.comment-edit-wrapper {
+    border-top: 0!important;
+    border-bottom: 1px solid #343a40;
+    padding: 40px;
+    border: 1px solid;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.reply-write-box {
+    position: relative;
+    background: #fff;
+    width: 100%;
+    height: 171px;
+    border-top: 0!important;
+}
+
+.reply-write-textarea {
+    width: 85%;
+    height: 170px;
+}
+
+
+.reply-write-textarea > textarea {
+    border: none;
+    outline: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 170px;
+    width: 100%;
+    padding: 15px 25px;
+    resize: none;
+}
+
+.write-btn-right {
+    width: 100%;
+    height: 47px;
+    border-top: solid 1px;
+}
+.write-btn-right > button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+}
+.reply-write-wrapper {
+    width: 15%;
+    height: 100%;
+}
+.reply-write-wrapper .preview-wrapper {
+    height: calc(100% - 47px);
+}
+.p-3 {
+    padding: 1rem!important;
+}
+.reply-write-btn {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 15%;
+}
+
+
+.viewer-right {
+    width: 40%;
+}
+
+.mb-5, .my-5 {
+    margin-bottom: 3rem!important;
+}
+.write-btn-right {
+    width: 100%;
+    height: 47px;
+    border-top: solid 1px;
+}
+
+.viewer-left{
+	width:60%;
+}
+
+a {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+
+.board-btn {
+    width: 145px;
+    line-height: 45px;
+}
+.border-b-btn {
+    border-radius: 4px;
+    border: solid 1px #b5b5b5;
+    background: #fff;
+    color: black;
+    transition: ease-in-out 0.2s;
+}
+.noto-h4 {
+    font-family: 'Noto Sans KR' !important;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: -0.75px;
+}
+.border {
+    border: 1px solid;
+}
+
+.board-header-wrapper {
+    padding: 40px 50px;
+}
+
+.viewer-picture {
+    margin-right: 25px;
+}
+
+.viewer-picture > img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+
+.text-overflow-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.point-color {
+    color: #ea533c;
+}
+
+
+.point-color {
+    color: #ea533c;
+}
+.comment-icon {
+    margin-right: 5px;
+    width: 20px;
+}
+
+.viewer-like-icon {
+    font-size: 18px;
+}
+.cursor {
+    cursor: pointer;
+}
+.comment-top {
+    padding: 15px 30px;
+}
+
+.viewer-content {
+    height: 100%;
+    position: relative;
+    border-bottom: 0!important;
+}
+
+.text-bottom {
+    font-size: 12px;
+}
+.viewer-like {
+    font-size: 15px;
+    color: #ea533c;
+}
+
+.noto-pb {
+    font-family: 'Noto Sans KR' !important;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: -0.58px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
