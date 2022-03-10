@@ -103,14 +103,6 @@ select * from community_review;
 DROP SEQUENCE community_review_seq;
 DROP TABLE community_review CASCADE CONSTRAINTS;
 
-
-
-
-
-
-
-
-
 ------------------------------------------------------
 
 create table community_review_reply(

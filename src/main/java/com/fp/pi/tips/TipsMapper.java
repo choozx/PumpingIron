@@ -26,7 +26,9 @@ public interface TipsMapper {
 
 	int delReply(community_review_reply crr);
 
+	int upReply(community_review_reply crr);
 
+	int views(community_review cr);
 	
 
 }

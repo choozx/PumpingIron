@@ -178,15 +178,6 @@ private int allMsgCount;
 		try {
 			if (ss.getMapper(TipsMapper.class).update(cr) == 1) {
 				
-				/*if (cr.getCr_content() != null) {  //이미지 존재할경우 
-						String path = req.getSession().getServletContext().getRealPath("resources/file");
-						new File(path + "/" + iii).delete(); // 기존이미지 삭제 
-					cr.getCr_content();
-					
-					
-				}else { // 이미지 없을경우
-					cr.getCr_content();
-				}*/
 				
 				
 				req.setAttribute("result", "글수정성공");
@@ -236,9 +227,12 @@ private int allMsgCount;
 	
 	
 	public void getReply(HttpServletRequest req, community_review_reply crr) {
+		
+		
 		crr.setCrr_cr_no(Integer.parseInt(req.getParameter("cr_no")));
 		List<community_review_reply> replyss = ss.getMapper(TipsMapper.class).replys(crr);
 		req.setAttribute("re", replyss);
+		req.setAttribute("recnt", replyss.size());
 	}
 	
 	
@@ -255,6 +249,7 @@ private int allMsgCount;
 				System.out.println("삭제성공");
 			} else {
 				req.setAttribute("result", "삭제실패");
+				System.out.println("삭제실패");
 			}
 			
 			
@@ -263,6 +258,30 @@ private int allMsgCount;
 			req.setAttribute("result", "db서버문제");
 		}
 		
+		
+	}
+	public void updateReply(HttpServletRequest req, community_review_reply crr) {
+
+		
+		try {
+			if (ss.getMapper(TipsMapper.class).upReply(crr) == 1) {
+				
+				req.setAttribute("result", "댓글 수정성공");
+				System.out.println("댓글수정 성공");
+			} else {
+				req.setAttribute("result", "댓글 수정실패");
+				System.out.println("댓글수정 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "db서버문제");
+			System.out.println("db 서버문제");
+		}
+		
+	}
+	public void viewCount(HttpServletRequest req, community_review cr) {
+		
+		ss.getMapper(TipsMapper.class).views(cr);
 		
 	}
 		

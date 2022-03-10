@@ -79,6 +79,25 @@ delete from community_review_reply where crr_no = #{crr_no}
 
 </delete>
 
+<!-- 댓글 수정 -->
+<update id="upReply" parameterType="com.fp.pi.tips.community_review_reply">
+
+update community_review_reply set crr_text = #{crr_text} where crr_no = #{crr_no}
+
+</update>
+
+<!-- 조회수 -->
+
+<update id="views" parameterType="com.fp.pi.tips.community_review">
+	UPDATE
+		community_review
+	SET
+		cr_views = cr_views + 1
+	WHERE
+		cr_no = #{cr_no}
+</update>
+
+
 
 
 </mapper>

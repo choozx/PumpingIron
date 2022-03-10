@@ -11,7 +11,15 @@
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/index.css">
 
-
+<script>
+ window.onpageshow = function(event) {
+	let check = true;
+	 
+	 if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+	 location.href="/pi/tips.go";
+	 }
+	}
+</script>
 
 </head>
 
@@ -49,11 +57,9 @@ ${result }
       <td>${m.cr_nickname }</td>
       <td><fmt:formatDate value="${m.cr_date}" type="date" dateStyle="short" />
       </td>
-      <c:forEach var="n" items="${m.cr_views }">
-      <td>${n.cr_views }</td>
-      </c:forEach>
+      <td>${m.cr_views }</td>
       
-      <c:forEach var="n" items="${m.cr_like }">
+      <c:forEach var="m" items="${m.cr_like }">
       <td>${m.cr_like }</td>
       </c:forEach>
       

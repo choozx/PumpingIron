@@ -66,6 +66,8 @@ public class tipsController {
 
 	@RequestMapping(value = "/watchContents.go", method = RequestMethod.GET)
 	public String watchGo(HttpServletRequest req, community_review cr, community_review_reply crr) {
+		
+		tDAO.viewCount(req, cr);
 		tDAO.getDetail(req, cr);
 		tDAO.getReply(req, crr);
 		req.setAttribute("contentPage", "tips/watchContents2.jsp");
@@ -127,11 +129,25 @@ public class tipsController {
 		if (mDAO.loginCheck(req)) {
 			tDAO.delReply(req, crr);
 		}
-		tDAO.getReply(req, crr);
 		tDAO.getDetail(req, cr);
+		tDAO.getReply(req, crr);
 		req.setAttribute("contentPage", "tips/watchContents2.jsp");
 		return "index";
 	}
+	
+	
+	@RequestMapping(value = "/upReply.Do", method = RequestMethod.GET)
+	public String upReplyDo(HttpServletRequest req, community_review cr, community_review_reply crr) {
+		TokenMaker.make(req);
+		if (mDAO.loginCheck(req)) {
+			tDAO.updateReply(req, crr);
+		}
+		tDAO.getDetail(req, cr);
+		tDAO.getReply(req, crr);
+		req.setAttribute("contentPage", "tips/watchContents2.jsp");
+		return "index";
+	}
+
 	
 	
 	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
