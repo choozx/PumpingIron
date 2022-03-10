@@ -22,15 +22,16 @@
 
 <div class="write-wrapper container">
 
-	<form id="common-edit-form" onsubmit="true" action="regProduct.do" method="post" enctype="multipart/form-data">
+	<form id="common-edit-form" onsubmit="true" action="updateProduct.do" method="post" enctype="multipart/form-data">
+		<input name="p_no" type="hidden" value="${productDetail.p_no }">
 		<div class="d-flex justify-content-center mb-4">
 			<div>
 				<span class="m-0 sub-title noto-pb pt-3">상품명</span>
-				<input class="common-oneline-input" type="text" name="p_name" maxlength="100" placeholder="상품명을 입력해주세요">
+				<input class="common-oneline-input" type="text" name="p_name" maxlength="100" placeholder="상품명을 입력해주세요" value="${productDetail.p_name }">
 			</div>
 			<div>
 				<span class="m-0 sub-title noto-pb pt-3">상품가격</span>
-				<input class="common-oneline-input" type="text" name="p_price" maxlength="100" placeholder="가격입력">
+				<input class="common-oneline-input" type="text" name="p_price" maxlength="100" placeholder="가격입력" value="${productDetail.p_price }">
 			</div>
 			<div>
 				<span class="m-0 sub-title noto-pb pt-3">상품 타입</span>
@@ -48,7 +49,7 @@
 				<input class="common-oneline-input" type="file" name="p_img" maxlength="100">
 			</div>
 		</div>
-		<textarea id="summernote" name="p_info"></textarea>
+		<textarea id="summernote" name="p_info">${productDetail.p_info }</textarea>
  
  
  
