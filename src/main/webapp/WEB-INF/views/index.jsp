@@ -30,6 +30,7 @@
 <script type="text/javascript" src="resources/js/member/member.js" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/member/memberCheck.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
+<script type="text/javascript" src="resources/js/products/product.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript">
 

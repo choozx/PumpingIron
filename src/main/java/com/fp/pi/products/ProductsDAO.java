@@ -50,6 +50,9 @@ public class ProductsDAO {
 
 	public Products getProductsSort(ProductSort ps) {
 		
+		System.out.println(ps.getP_sort());
+		System.out.println(ps.getP_type());
+		
 		if (ps.getP_sort().equals("p_priceToLow")) {
 			ps.setP_sort("p_price");
 			ps.setOrder("ASC");
@@ -62,6 +65,8 @@ public class ProductsDAO {
 		
 		
 		List<Product> product = ss.getMapper(ProductsMapper.class).getProductSort(ps);
+		
+		product.get(0).getP_name();
 		
 		Products p = new Products(product);
 		return p;

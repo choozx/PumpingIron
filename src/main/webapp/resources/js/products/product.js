@@ -4,7 +4,6 @@ function productsSort() {
 		let sort_type = $('#p_main_sort option:selected').val();
 		let p_type = $('#p_type').val();
 		
-		
 		$.ajax({
 			url: "/pi/products.sort",
 			type: 'GET',
@@ -16,8 +15,9 @@ function productsSort() {
 			success : function(data) {
 				$("#products_div").empty();
 				console.log(data);
-			
-				data = $(data).find('products');
+				$("#products_div_first").hide();
+				
+				data = $(data).find('pproducts');
 				$.each(data, function(i, p) { 
 					
 					let img = $(p).find("p_img").text();
@@ -82,5 +82,4 @@ function productsFirstSort() {
 
 $(function () {
 	productsSort();
-	productsFirstSort();
 })

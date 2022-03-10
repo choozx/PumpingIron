@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="getProductSort" parameterType="com.fp.pi.products.ProductSort" resultType="com.fp.pi.products.Product">
-		select * from products where p_type = #{p_type} ORDER BY #{p_sort} DESC
+		select * from products where p_type = #{p_type} ORDER BY ${p_sort} ${order} 
 	</select>
 	
 	<select id="getProduct" parameterType="com.fp.pi.products.Product" resultType="com.fp.pi.products.Product">
