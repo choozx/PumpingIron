@@ -6,19 +6,21 @@ public class Product {
 	private String p_type;
 	private int p_price;
 	private String p_img;
+	private String p_info;
 	private int p_cnt;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(int p_no, String p_name, String p_type, int p_price, String p_img, int p_cnt) {
+	public Product(int p_no, String p_name, String p_type, int p_price, String p_img, String p_info, int p_cnt) {
 		super();
 		this.p_no = p_no;
 		this.p_name = p_name;
 		this.p_type = p_type;
 		this.p_price = p_price;
 		this.p_img = p_img;
+		this.p_info = p_info;
 		this.p_cnt = p_cnt;
 	}
 
@@ -62,6 +64,14 @@ public class Product {
 		this.p_img = p_img;
 	}
 
+	public String getP_info() {
+		return p_info;
+	}
+
+	public void setP_info(String p_info) {
+		this.p_info = p_info;
+	}
+
 	public int getP_cnt() {
 		return p_cnt;
 	}
@@ -69,6 +79,7 @@ public class Product {
 	public void setP_cnt(int p_cnt) {
 		this.p_cnt = p_cnt;
 	}
+	
 	
 	
 }
