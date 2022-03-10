@@ -12,7 +12,7 @@ function login_check() {
 	
 	if (login == '' || login == null) {
 		alert('회원전용 기능입니다!');
-		return false;
+//		return false;
 	}
 	
 }

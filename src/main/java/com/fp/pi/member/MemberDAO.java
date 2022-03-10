@@ -209,7 +209,7 @@ public class MemberDAO {
 		if (m != null) {
 			return true;
 		} else {
-			req.setAttribute("loginPage", "member/login.jsp");
+			req.setAttribute("contentPage", "member/login.jsp");
 			return false;
 		}
 	}
