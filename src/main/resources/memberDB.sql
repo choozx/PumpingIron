@@ -13,7 +13,7 @@ m_type varchar2(20 char) not null -- 일반회원인지 카카오톡 회원인�
 );
 
 insert into member values ('1234@gmail.com', '1234', 01067019501, '몰라', '김두', 'test.jpg', 0, 0, sysdate, '0');
-insert into member values ('admin@pumping.com', 'admin5959^^', 00000000000, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y');
+insert into member values ('admin@pumping.com', 'admin5959^^', 00000000000, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y', 'normal');
 insert into member values ('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
 
 delete MEMBER where m_email = '1234@gmail.com';

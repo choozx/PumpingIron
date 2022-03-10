@@ -117,6 +117,7 @@ $(function() {
 		
 		$('input[name=cr_date]').attr('value', dateFormat(today));
 		
+		$('#input-box22').val('');
 	}
 	
 	function next() {
@@ -156,6 +157,8 @@ $(function() {
 //		reshowingList();
 		
 		$('input[name=cr_date]').attr('value', dateFormat(today));
+		
+		$('#input-box22').val('');
 		
 	}
 
@@ -204,7 +207,7 @@ $(function() {
 		
 		$('input[name=cr_date]').attr('value', dateFormat(today));
 		
-		$('#input-box').val('');
+		$('#input-box22').val('');
 		getRoutine();
 		
 		
