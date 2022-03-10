@@ -26,6 +26,7 @@
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/member/member.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
+<script type="text/javascript" src="resources/js/calendar/calendarTodo2.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
@@ -144,9 +145,10 @@
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 					href="#" role="button" aria-expanded="false" style="color: black;">대회/운동
 						루틴</a>
+					 <input type="hidden" id="loginCheck" value="${sessionScope.loginMember.m_email}">
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="schedule.go">대회 정보</a></li>
-						<li><a class="dropdown-item" href="routine.date">운동 루틴 기록</a></li>
+						<li><a class="dropdown-item" href="routine.date" onclick="return login_check();">운동 루틴 기록</a></li>
 					</ul></li>
 
 			</div>

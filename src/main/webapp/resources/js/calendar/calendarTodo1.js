@@ -19,7 +19,7 @@ $(function() {
 		pageYear = notLeapYear;
 	}
 	var inputBox = document.getElementById('input-box');
-	var inputDate = document.getElementById('input-data');
+//	var inputDate = document.getElementById('input-data');
 	var inputList = document.getElementById('input-list');
 	
 	currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
@@ -200,8 +200,11 @@ $(function() {
 		today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id);
 		showMain();
 		
+		dateFormat(today);
+		
 		$('input[name=cr_date]').attr('value', dateFormat(today));
 		
+		$('#input-box').val('');
 		getRoutine();
 		
 		
@@ -211,18 +214,6 @@ $(function() {
 //		keyValue = today.getFullYear() + '' + today.getMonth() + ''
 //				+ today.getDate();
 //		reshowingList();
-		
-//		function dateFormat(today) {
-//			let month = today.getMonth() + 1;
-//			let date = today.getDate();
-//
-//	        month = month >= 10 ? month : '0' + month;
-//	        date = date >= 10 ? date : '0' + date;
-//
-//	        return selectedDate.getFullYear() + '-' + month + '-' + date;
-//	}
-		
-	
 	
 	}
 	
@@ -230,8 +221,7 @@ $(function() {
 	$("#prev").trigger("click");
 	$("#next").trigger("click");
 	
-	
-	
+
 	
 	$(document).on("click", ".delRoutine", function(){
 		let h5 = $(this).parent();
@@ -240,30 +230,39 @@ $(function() {
 //		alert(no);
 		$.ajax({
 			url : "routine.delete",
-			data : {"cr_no" : no},
+			data : {"cr_no" : no, "cr_date" : dateFormat(today)},
 			type : "GET",
 			success : function(data) {
+				$('#input-box22').val('');
 //				console.log(data);
 				getRoutine();
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 		});
 	});
 	
 	
-	
-	$('#input-data').click(function() {
+	$('#input-data22').click(function() {
+		let inputVal = document.getElementById('input-box22').value
+		let id = document.getElementById('paramId').value
+		let d = document.getElementById('paramDate').value
 		$.ajax({
-			url : "routine.insert",
-			data : {"cr_text" : document.getElementById('input-box').value, "cr_date" : dateFormat(today)},
+			url : "routine.reg.do",
+			data : {"cr_text" : inputVal,"cr_id" : id, "cr_date" : d},
 			type : "GET",
 			success : function(data) {
-//				console.log(data);
+				$('#input-box22').val('');
+				console.log(data);
 				getRoutine();
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 		});
 		
 	});
-	
 	
 	
 	
@@ -278,7 +277,7 @@ $(function() {
 					console.log(data)
 					$.each(data, function(i,c) {
 //						console.log(c.cr_text);
-						$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<a href="" class="delRoutine" style="color: white;"> x </a></h6>');
+						$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<span class="delRoutine" style="color: white;"> x </span></h6>');
 //						console.log('--------')
 					});
 					
@@ -287,6 +286,12 @@ $(function() {
 				}
 			});
 		}
+		
+		
+		
+		
+		
+		
 	
 	
 	

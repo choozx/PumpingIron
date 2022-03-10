@@ -1,38 +1,29 @@
+function pleaseLogin_calendar() {
+	
+	alert('로그인을 해주세요!');
+	
+}
+
+
+
+function login_check() {
+	
+	login = document.getElementById('loginCheck').value;
+	
+	if (login == '' || login == null) {
+		alert('회원전용 기능입니다!');
+		return false;
+	}
+	
+}
+
+
+
+
+
 $(function() {
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/*$('#input-data').click(function() {
 		
 		let routineVal = $('#input-box').val();
@@ -40,7 +31,7 @@ $(function() {
 		if ($('#input-box').val() != "") {
 			
 			$.ajax({
-				url : '/pi/calendar/routine.insert',
+				url : 'routine.insert',
 				
 				type : 'GET',
 				
@@ -87,10 +78,3 @@ $(function() {
 	
 });
 
-
-
-function pleaseLogin_calendar() {
-	
-	alert('로그인을 해주세요!');
-	
-}

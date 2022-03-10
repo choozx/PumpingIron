@@ -16,7 +16,7 @@ public class CalendarDAO {
 	@Autowired
 	private SqlSession ss;
 
-	public void insertRoutine(RoutineBean r, HttpServletRequest req) {
+	public int insertRoutine(RoutineBean r, HttpServletRequest req) {
 
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		
@@ -25,15 +25,17 @@ public class CalendarDAO {
 		if (ss.getMapper(CalendarMapper.class).recordRoutine(r) == 1) {
 			System.out.println("등록 성공");
 			req.setAttribute("result", "등록 성공");
+			return 1;
 		} else {
 			System.out.println("등록 실패");
 			req.setAttribute("result", "등록 실패");
+			return 0;
 		}
 		
-		System.out.println(r.getCr_id());
-		System.out.println(r.getCr_no());
-		System.out.println(r.getCr_text());
-		System.out.println(r.getCr_date());
+//		System.out.println(r.getCr_id());
+////		System.out.println(r.getCr_no());
+//		System.out.println(r.getCr_text());
+//		System.out.println(r.getCr_date());
 		
 	}
 

@@ -53,9 +53,6 @@ public class CalendarController {
 	
 	@RequestMapping(value = "/routine.date", method = RequestMethod.GET)
 	public String routineDate(RoutineBean r, HttpServletRequest req) {
-//		Date d = new Date();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		req.setAttribute("cr_date", sdf.format(d));
 		mDAO.loginCheck(req);
 		req.setAttribute("contentPage", "calendar/routineDate.jsp");
 		return "index";
@@ -85,13 +82,14 @@ public class CalendarController {
 	}
 	
 	
-	@RequestMapping(value = "/routine.insert", method = RequestMethod.GET)
-	public void routineInsert(RoutineBean r, HttpServletRequest req) {
-		
-			if(mDAO.loginCheck(req)) {
-				cDAO.insertRoutine(r, req);
-				cDAO.getRoutine(r, req);
+	@RequestMapping(value = "/routine.reg.do", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody int routineInsert(RoutineBean r, HttpServletRequest req) {
+		int a = 0;	
+		if(mDAO.loginCheck(req)) {
+				a =  cDAO.insertRoutine(r, req);
 			}
+		System.out.println(a);
+			return a;
 		
 //		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
 //		return "index";
@@ -100,11 +98,13 @@ public class CalendarController {
 	
 	
 	@RequestMapping(value = "/routine.delete", method = RequestMethod.GET)
-	public void routineDelete(RoutineBean r, HttpServletRequest req) {
+	public @ResponseBody int routineDelete(RoutineBean r, HttpServletRequest req) {
 		
 		if(mDAO.loginCheck(req)) {
 		cDAO.deletetRoutine(r, req);
+		return 1;
 		}
+		return 0;
 	}
 	
 	

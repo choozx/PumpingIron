@@ -246,14 +246,14 @@ html, body{
 
 
 
-.prev:hover{
+td:hover{
 	background-color: #00ffff;
 	border-radius: 800px;
 	
 }
 
-.next:hover{
+/* .next:hover{
 	background-color: #00ffff;
 	border-radius: 800px;
 	
-}
+} */
