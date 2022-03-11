@@ -5,15 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+
+</script>
 </head>
-<body style="height: 400px;">
+<body>
 
-
-	<form action="member.info.go" name="infoPwForm" onsubmit="return infoPwCheck();">
-	<div class="wrap" style="heigth:400px;">
-		<div class="withdraw container" style="border: 1px solid gray; margin-top: 70px;">
+<form action="member.withdrawal.do" method="post" onsubmit="return withdraw();">
+	<div class="wrap">
+		<div class="withdraw" style="border: 1px solid gray; margin-top: 70px;">
 			<div class="withdraw_header mb-5">
-				<h3 style="text-align: center;">회원정보확인</h3>
+				<h3 style="text-align: center;">회원탈퇴 신청</h3>
 				<input type="hidden" name="m_email" value="${sessionScope.loginMember.m_email}">
 			</div>
 			<div class="withdraw_pw">
@@ -24,13 +29,12 @@
 				<span id="spanLoginCheck"></span>
 			</div>
 			<div class="mt-5" style="width:100%; display:flex; justify-content: center;">
-				<button class="btn btn-primary" style="width: 160px;">확인</button>
+				<button class="btn btn-warning" style="width: 160px;">회원탈퇴 신청</button>
 				<button type="button" class="btn btn-secondary" style="margin-left: 10px; width: 160px;" onclick="location.href='index.go'">취소</button>
 			</div>
 		</div>
 	</div>
 </form>
 
-	
 </body>
 </html>

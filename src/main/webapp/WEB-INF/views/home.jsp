@@ -56,10 +56,41 @@
 				class="visually-hidden">Next</span>
 		</button>
 	</div>
-
+	
+	
 
 <!-- SHOP -->
 	<div class="main container">
+		<div class="row mt-5 mb-5">
+				<div class="col-sm-6 col-lg-3">
+					<div class="card flex-center">
+						<div class="card-body">
+							<h5 class="card-text text-center">Pumping Iron에 바란다</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="card flex-center">
+						<div class="card-body">
+							<h5 class="card-text text-center">고객센터</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="card flex-center">
+						<div class="card-body">
+							<h5 class="card-text text-center">공지사항</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="card flex-center">
+						<div class="card-body">
+							<h5 class="card-text text-center">제휴문의</h5>
+						</div>
+					</div>
+				</div>
+			</div>
 		<header class="header-card pb-3 mt-5">
 			<h1>SHOP</h1>
 		</header>
@@ -296,6 +327,7 @@
 				</div>
 			</div>
 		</div>
+
 		
 		
 		
