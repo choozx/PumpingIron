@@ -179,9 +179,6 @@
                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="">바디프로필</a></li>
-                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
-                        <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
-                        <li><a class="dropdown-item" href="#">바디프로필</a></li>
                         <li>
 							<hr class="dropdown-divider">
 						</li>

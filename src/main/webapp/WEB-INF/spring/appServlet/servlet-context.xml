@@ -75,7 +75,9 @@
 		</beans:property>
 	</beans:bean>
 
-
+	<beans:bean id="so" class="com.fp.pi.SiteOption">
+		<beans:constructor-arg value="5"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
+	</beans:bean>
 	
 
 
