@@ -61,4 +61,29 @@ public class ProductsContoller {
 		
 		return "index";  
 	}
+	
+	@RequestMapping(value = "/deletePeoduct.do", method = RequestMethod.GET)
+	public String deleteProduct(HttpServletRequest request) {
+		
+		pDAO.delProduct(request);
+		request.setAttribute("contentPage", "home.jsp");
+		
+		return "index";  
+	}
+	
+	@RequestMapping(value = "/updateProduct.go", method = RequestMethod.GET)
+	public String updateProduct(Product p, HttpServletRequest request) {
+		pDAO.getProductDetail(p, request);
+		request.setAttribute("contentPage", "products/updateProduct.jsp");
+		return "index";  
+	}
+	
+	@RequestMapping(value = "/updateProduct.do", method = RequestMethod.POST)
+	public String updateProductDo(Product p, HttpServletRequest request) {
+		
+		pDAO.updateProduct(p, request);
+		request.setAttribute("contentPage", "home.jsp");
+		
+		return "index";  
+	}
 }
