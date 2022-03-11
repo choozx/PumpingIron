@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
-<link rel="stylesheet" href="resources/css/index.css">
 <style>
 .reply-write-btn {
 position: absolute;
@@ -25,6 +25,7 @@ width: 100%;
 </style>
 </head>
 <body>
+${result }
 
 
 
@@ -42,13 +43,7 @@ width: 100%;
 </a>
 </div>
 
-
-
-
-
 </div>
-
-
 
 </div>
 <div class="viewer-wrapper mt-3">
@@ -66,8 +61,6 @@ width: 100%;
 <div class="viewer-left-text">
 <div class="text-top mb-1">
 <span class="noto-h3 text-over-flow-2">${tippp.cr_title }</span>
-
-
 
 </div>
 <div class="text-bottom d-flex align-items-center">
@@ -93,7 +86,7 @@ width: 100%;
 
 <div class="viewer-view-count mr-3">
 <span class="count-text mr-2 noto-pb">조회수</span>
-<span class="count-number noto-pb">0</span>&nbsp
+<span class="count-number noto-pb">${tippp.cr_views }</span>&nbsp
 
 </div>
 <div class="viewer-view-data">
@@ -142,7 +135,7 @@ width: 100%;
 <div class="d-flex align-items-center comment-left">
 <img alt="" src="resources/img/tips/comment.png" class="comment-icon">
 <div>
-<span class="point-color noto-pb comment-cnt">0</span>
+<span class="point-color noto-pb comment-cnt">${recnt }</span>
 <span class="text-muted noto-pb">댓글</span>
 
 
@@ -158,105 +151,104 @@ width: 100%;
 
 </div>
 <!-- 댓글 영역 -->
+<!-- foreach 로 돌리기 -->
+<c:forEach var="p" items="${re }">
 <div class="comment-content border border-dark border-top-0">
 
-<!-- foreach 로 돌리기 -->
 <div class="comment-box-elem">
 <div class="comment-box">
-
 <div class>
-
 <div class="d-flex align-items-start justify-content-between">
 <div class="comment-content-left d-flex align-items-start justify-content-center">
+<div class="comment-picture mr-4">
+<img alt="" src="" class="rounded-circle cursor">
+</div>
+
+
 <div class="comment-left-text">
-<div class="text-id noto-pb mb-1 d-flex align-items-center">
-<span class="noto-pb">${tipp.cr_nickname }</span>
-<div class="comment-item">
-<span class="noto-pm text-break comment-text">####</span>
+<%-- <input type="hidden" name="crr_no" value="${re.crr_no}"> --%>
+<div class="text-id noto-pb mb-1 d-flex align-items-center">&nbsp&nbsp
+<span class="noto-pb">${p.crr_cr_nickname }</span>&nbsp
 
+<c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
+<div class="reply-writer ml-1 noto-sm hidden">작성자</div>
+</c:if>
 
+<p class="d-flex align-items-center ml-2 m-0 noto-sm color-gray">
+<span class="comment-time"></span>
+</p>
+</div>
+<div class="comment-item">&nbsp
 
+<span class="noto-pm text-break comment-text">${p.crr_text }</span>
+</div>
+<div class="hidden comment-file-264785">
+<img alt="" src="">
 </div>
 
-
 </div>
-
-
-</div>
-
 
 <div class="comment-content-right" style="margin-left: 1013px;">
 
+
+
+<c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
 <div class="d-flex align-items-center comment-right" style="float: right;">
-<button class="update" onclick="" style="float: right;">수정</button>
-<button class="delete" onclick="" style="float: right;">삭제</button>
-
+<button class="update" onclick="updateReply('${p.crr_no}','${p.crr_cr_no}','${p.crr_text}')" style="float: right;">수정</button>
+<button class="delete" onclick="deleteReply(${p.crr_no},${p.crr_cr_no})" style="float: right;">삭제</button>
 </div>
-
-</div>
-
-
+</c:if>
 
 
 
 </div>
-
-
 </div>
-
-
-
+</div>
 </div>
 
 
 
 </div>
 <div class="recomment-elem recomment-box-0 hidden"></div>
-
 </div>
 
 
 
+
+
+
 </div>
 
+</c:forEach>
 
 <!-- 댓글등록 -->
 <div class="comment-edit-wrapper">
-<form id="comment-form" class="1">
+
+<form id="comment-form" action="reply.write">
 <div class="reply-write-box comment-content border border-dark d-flex" style="">
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
-class="bg-whtie comment-textarea"></textarea>
-
+class="bg-whtie comment-textarea" name="crr_text"></textarea>
 </div>
 
 <div class="reply-write-wrapper">
 <div class="preview-wrapper p-3">
+<input type="hidden" class="input-delete" value="0">
+</div>
+<div class="reply-write-btn container" style="margin-right: 2px">
+
+<div class="write-btn-right">
+<input type="hidden" value="${tippp.cr_no }" name="cr_no">
+<input type="hidden" name="token" value="${token }">
+<%-- <input type="hidden" value="${re.crr_no }" name="crr_no">  --%>
+<button class="noto-pb submit-btn"  name="button"
+ style="margin-right: 70px;">댓글등록</button>
 
 </div>
-<div class="reply-write-btn">
-<div class="write-btn-center">
-<button class="noto-pb submit-btn" type="button" name="button"
- onclick="">댓글등록</button>
-
-
-
 </div>
-
-
 </div>
-
 </div>
-
-
-</div>
-
-
-
 </form>
-
-
-
 </div>
 
 
@@ -264,10 +256,12 @@ class="bg-whtie comment-textarea"></textarea>
 <div class="bottom-btn-wrapper">
 <div class="viewer-bottom d-flex align-items-center justify-content-between mt-5 mb-5">
 
-<a href="javascript:history.back();" class="viewer-bottom-left">
+<a href="tips.go" class="viewer-bottom-left">
 <button class="border-b-btn board-btn noto-h4" type="button" name="button" style="background-color: black; color: white">
 목록</button>
 </a>
+
+<c:if test="${tippp.cr_nickname == sessionScope.loginMember.m_name }">
 <div class="viewer-bottom-right d-flex align-items-center">
 <div class="d-inline-block is-mine">
 <button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"
@@ -276,10 +270,14 @@ onclick="location.href = 'update.go?cr_no=${tippp.cr_no}'">수정</button>
 onclick = "deleteContent(${tippp.cr_no});">삭제</button>
 
 
-
 </div>
 
 </div>
+
+</c:if>
+
+
+
 
 
 </div>

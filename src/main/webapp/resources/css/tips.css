@@ -12,6 +12,16 @@
     color: #000 !important;
     text-decoration: none !important;
 }
+.preview-wrapper .delete-btn {
+    right: 0;
+    background: transparent;
+}
+.preview-wrapper .preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    text-align: center;
+}
 
 .prompt-h1 {
     font-family: facon;
@@ -21,8 +31,33 @@
     src: url("/resources/css/font_facon/facon.ttf");
     
 }
+.write-btn-left {
+    height: 47px;
+    border: solid 1px;
+    border-bottom: none;
+}
 
-.board-btn {
+.write-btn-right {
+    width: 100%;
+    height: 47px;
+    border-top: solid 1px;
+}
+.write-btn-left input[type="file"] {
+    position: relative;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.write-btn-right > button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+}.board-btn {
     width: 145px;
     line-height: 45px;
 }
@@ -189,7 +224,17 @@ form {
     height: 171px;
     border-top: 0!important;
 }
-
+.update-cancel {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    background: transparent;
+    border: 1px solid #666;
+    border-radius: 15px;
+}
+input {
+    border-radius: 0;
+}
 .reply-write-textarea {
     width: 85%;
     height: 170px;
@@ -215,7 +260,7 @@ form {
 .write-btn-right > button {
     width: 100%;
     height: 100%;
-    border: none;
+    border: solid 1px;
     background: #fff;
 }
 .reply-write-wrapper {
@@ -230,7 +275,7 @@ form {
 }
 .reply-write-btn {
     display: flex;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 15%;
 }
@@ -246,7 +291,7 @@ form {
 .write-btn-right {
     width: 100%;
     height: 47px;
-    border-top: solid 1px;
+    border-top: none;
 }
 
 .viewer-left{
@@ -262,6 +307,20 @@ a {
 .board-btn {
     width: 145px;
     line-height: 45px;
+}
+.comment-time {
+    font-size: 12px;
+}
+.reply-writer {
+    background: #ea533c;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 50px;
 }
 .border-b-btn {
     border-radius: 4px;

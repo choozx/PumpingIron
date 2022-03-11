@@ -25,27 +25,27 @@
 	<form id="common-edit-form" onsubmit="true" action="regProduct.do" method="post" enctype="multipart/form-data">
 		<div class="d-flex justify-content-center mb-4">
 			<div>
-			<span class="m-0 sub-title noto-pb pt-3">상품명</span>
-			<input class="common-oneline-input" type="text" name="p_name" maxlength="100" placeholder="제목을 입력해주세요" >
+				<span class="m-0 sub-title noto-pb pt-3">상품명</span>
+				<input class="common-oneline-input" type="text" name="p_name" maxlength="100" placeholder="상품명을 입력해주세요">
 			</div>
 			<div>
-			<span class="m-0 sub-title noto-pb pt-3">상품가격</span>
-			<input class="common-oneline-input" type="text" name="p_price" maxlength="100" placeholder="입력" >
+				<span class="m-0 sub-title noto-pb pt-3">상품가격</span>
+				<input class="common-oneline-input" type="text" name="p_price" maxlength="100" placeholder="가격입력">
 			</div>
 			<div>
-			<span class="m-0 sub-title noto-pb pt-3">상품 타입</span>
-			<select name="p_type" >
-				<option value="supplements">보충제</option>
-				<option value="gripStrap">그립/스트랩</option>
-				<option value="elbowProtecter">팔꿈치보호대</option>
-				<option value="backWaist">등/허리ㅣ</option>
-				<option value="kneeProtecter">무릅보호대</option>
-				<option value="shoes">신발</option>
-			</select>
+				<span class="m-0 sub-title noto-pb pt-3">상품 타입</span>
+				<select name="p_type" >
+					<option value="supplements">보충제</option>
+					<option value="gripStrap">그립/스트랩</option>
+					<option value="elbowProtecter">팔꿈치보호대</option>
+					<option value="backWaist">등/허리ㅣ</option>
+					<option value="kneeProtecter">무릅보호대</option>
+					<option value="shoes">신발</option>
+				</select>
 			</div>
 			<div>
-			<span class="m-0 sub-title noto-pb pt-3">상품이미지</span>
-			<input class="common-oneline-input" type="file" name="p_img" maxlength="100">
+				<span class="m-0 sub-title noto-pb pt-3">상품이미지</span>
+				<input class="common-oneline-input" type="file" name="p_img" maxlength="100">
 			</div>
 		</div>
 		<textarea id="summernote" name="p_info"></textarea>
