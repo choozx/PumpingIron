@@ -172,15 +172,12 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
                     <ul class="dropdown-menu">
-<<<<<<< HEAD
                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="">바디프로필</a></li>
-=======
                          <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="#">바디프로필</a></li>
->>>>>>> 3ddeb2b901b64d2811855a23204c99e4fcc3de9e
                         <li>
 							<hr class="dropdown-divider">
 						</li>
