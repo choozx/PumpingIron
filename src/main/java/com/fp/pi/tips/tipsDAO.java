@@ -188,7 +188,6 @@ private int allMsgCount;
 		try {
 			if (ss.getMapper(TipsMapper.class).update(cr) == 1) {
 				
-<<<<<<< HEAD
 				/*if (cr.getCr_content() != null) {  //이미지 존재할경우 
 						String path = req.getSession().getServletContext().getRealPath("resources/file");
 						new File(path + "/" + iii).delete(); // 기존이미지 삭제 
@@ -198,8 +197,7 @@ private int allMsgCount;
 				}else { // 이미지 없을경우
 					cr.getCr_content();
 				}*/
-=======
->>>>>>> 24574dbc3bfbd516915ceb566c8a6696914221d7
+
 				
 				
 				req.setAttribute("result", "글수정성공");
