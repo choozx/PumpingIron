@@ -14,10 +14,32 @@ m_type varchar2(20 char) not null -- 일반회원인지 카카오톡 회원인�
 
 insert into member values
 ('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
+insert into member values
+('admin', '1234', '01067019501', '몰라', 'admin', 'test,jpg', 0, 300000, sysdate, 'Y', 'normal');
 
 select * from member;
 
 drop table member cascade constraint purge;
 
-delete member where m_email = '@naver.com'
+delete member where m_email = 'admin'
 
+---------------------------------------------
+--- 공지사항&이벤트 테이블 ---
+create table event(
+e_no number(5) primary key,
+e_title varchar2(100 char) not null,
+e_content varchar2(4000 char) not null,
+e_date date not null,
+e_type varchar2(50 char) not null
+);
+
+create sequence event_seq;
+
+insert into event values(event_seq.nextval, '공지1', '공지사항1입니다.', sysdate, 'announcement');
+insert into event values(event_seq.nextval, '이벤트1', '이벤트1입니다.', sysdate, 'event');
+
+select * from event;
+
+drop table event cascade constraint purge;
+
+DROP SEQUENCE event_seq;

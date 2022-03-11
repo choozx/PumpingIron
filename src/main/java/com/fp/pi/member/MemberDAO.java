@@ -215,7 +215,7 @@ public int userLogin(Member m, HttpSession httpSession, HttpServletResponse resp
 		if (m != null) {
 			return true;
 		} else {
-			req.setAttribute("loginPage", "member/login.jsp");
+			req.setAttribute("contentPage", "member/login.jsp");
 			return false;
 		}
 	}

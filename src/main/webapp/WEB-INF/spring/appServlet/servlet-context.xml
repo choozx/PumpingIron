@@ -48,6 +48,7 @@
 				<beans:value>classpath:infoMapMapper.xml</beans:value>
 				<beans:value>classpath:calendarMapper.xml</beans:value>
 				<beans:value>classpath:productsMapper.xml</beans:value>
+				<beans:value>classpath:customerServiceMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -73,5 +74,8 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
+
+	
+
 
 </beans:beans>
