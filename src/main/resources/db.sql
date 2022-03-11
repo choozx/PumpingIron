@@ -90,8 +90,8 @@ cr_tips varchar2(200 char) not null,
 cr_email varchar2(100) not null,
 cr_nickname varchar2(100) not null,
  cr_date date not null
-
 )
+
 delete COMMUNITY_REVIEW;
 drop sequence community_review_seq
 create sequence community_review_seq;
