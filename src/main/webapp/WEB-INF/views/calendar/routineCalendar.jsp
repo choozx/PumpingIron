@@ -65,7 +65,7 @@
 						<input name="cr_date" type="hidden" id="paramDate" value="${param.cr_date}"> 
 						
 						<input name="cr_text"  type="text" placeholder=" 아래에 루틴이 기록됩니다 " id="input-box22" class="input-box">
-						<button id="input-data22" class="input-data" >기록</button>
+						<button id="input-data22" class="input-data" onclick="isEmpty(input-box22);">기록</button>
 							
 						
 							<div style="color: white;" id="routineDIV"></div>

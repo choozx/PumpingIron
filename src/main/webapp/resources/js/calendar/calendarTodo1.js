@@ -251,6 +251,12 @@ $(function() {
 		let inputVal = document.getElementById('input-box22').value
 		let id = document.getElementById('paramId').value
 		let d = document.getElementById('paramDate').value
+		
+		if (inputVal == '') {
+			alert('내용을 입력해주세요');
+			return false;
+		} else {
+			
 		$.ajax({
 			url : "routine.reg.do",
 			data : {"cr_text" : inputVal,"cr_id" : id, "cr_date" : d},
@@ -260,10 +266,12 @@ $(function() {
 				console.log(data);
 				getRoutine();
 				},
-				error : function(request,status,error){
-			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				}
+//				error : function(request,status,error){
+//			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//				}
 		});
+		
+		}
 		
 	});
 	
