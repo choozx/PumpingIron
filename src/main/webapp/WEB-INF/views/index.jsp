@@ -13,6 +13,9 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+	type="text/css" rel="stylesheet" />	
 <link href="resources/css/index.css" rel="stylesheet">
 <link href="resources/css/member/login.css" rel="stylesheet">
 <link href="resources/css/member/join.css" rel="stylesheet">
@@ -31,6 +34,7 @@
 <script type="text/javascript" src="resources/js/member/memberCheck.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
+<script type="text/javascript" src="resources/js/customerservice/customerservice.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
@@ -175,9 +179,6 @@
                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="">바디프로필</a></li>
-                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
-                        <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
-                        <li><a class="dropdown-item" href="#">바디프로필</a></li>
                         <li>
 							<hr class="dropdown-divider">
 						</li>
@@ -232,14 +233,6 @@
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
 			                    <ul class="dropdown-menu" style="padding: 0px">
-<<<<<<< HEAD
-			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_email}</a></li>
-			                         <li><a class="dropdown-item" href="" style="color: #01a1dd;">주문조회</a></li>
-			                        <li><a class="dropdown-item" href="" style="color: #01a1dd;">보유 포인트(0)</a></li>
-			                        <li><a class="dropdown-item" href="" style="color: #01a1dd;">회원정보</a></li>
-			                        <li><a class="dropdown-item" href="" style="color: #01a1dd;">회원탈퇴</a></li>
-			                        <li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
-=======
 			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
@@ -270,7 +263,6 @@
                                         <c:if test="${m_type eq 'normal'}">
 			                        	<li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
 			                        	</c:if>
->>>>>>> 3ddeb2b901b64d2811855a23204c99e4fcc3de9e
 								</ul> 
 						</div>
 					</c:otherwise>
