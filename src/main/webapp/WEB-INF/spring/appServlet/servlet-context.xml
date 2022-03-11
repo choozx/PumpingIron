@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
@@ -16,7 +18,6 @@
 	<context:annotation-config />
 	<tx:annotation-driven />
 	<resources mapping="/resources/**" location="/resources/" />
-
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -27,7 +28,8 @@
 
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<beans:property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<beans:property name="username" value="yjh" />
 		<beans:property name="password" value="yjh" />
 	</beans:bean>
@@ -44,6 +46,7 @@
 			<beans:list>
 				<beans:value>classpath:memberMapper.xml</beans:value>
 				<beans:value>classpath:tipsMapper.xml</beans:value>
+				<beans:value>classpath:reviewMapper.xml</beans:value>
 				<beans:value>classpath:infoMapMapper.xml</beans:value>
 				<beans:value>classpath:calendarMapper.xml</beans:value>
 				<beans:value>classpath:productsMapper.xml</beans:value>
@@ -73,4 +76,11 @@
 		</beans:property>
 	</beans:bean>
 
+	<beans:bean id="so" class="com.fp.pi.SiteOption">
+		<beans:constructor-arg value="5" />
+	</beans:bean>
+	
+	
+	
+	
 </beans:beans>
