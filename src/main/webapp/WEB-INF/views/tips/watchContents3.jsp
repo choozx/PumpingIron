@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
+<link rel="stylesheet" href="resources/css/index.css">
 <style>
 .reply-write-btn {
 position: absolute;
@@ -24,8 +25,8 @@ width: 100%;
 }
 </style>
 </head>
-<body>
 ${result }
+<body>
 
 
 
@@ -43,7 +44,13 @@ ${result }
 </a>
 </div>
 
+
+
+
+
 </div>
+
+
 
 </div>
 <div class="viewer-wrapper mt-3">
@@ -61,6 +68,8 @@ ${result }
 <div class="viewer-left-text">
 <div class="text-top mb-1">
 <span class="noto-h3 text-over-flow-2">${tippp.cr_title }</span>
+
+
 
 </div>
 <div class="text-bottom d-flex align-items-center">
@@ -86,7 +95,7 @@ ${result }
 
 <div class="viewer-view-count mr-3">
 <span class="count-text mr-2 noto-pb">조회수</span>
-<span class="count-number noto-pb">${tippp.cr_views }</span>&nbsp
+<span class="count-number noto-pb">0</span>&nbsp
 
 </div>
 <div class="viewer-view-data">
@@ -135,7 +144,7 @@ ${result }
 <div class="d-flex align-items-center comment-left">
 <img alt="" src="resources/img/tips/comment.png" class="comment-icon">
 <div>
-<span class="point-color noto-pb comment-cnt">${recnt }</span>
+<span class="point-color noto-pb comment-cnt">0</span>
 <span class="text-muted noto-pb">댓글</span>
 
 
@@ -192,12 +201,7 @@ ${result }
 
 
 
-<c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
-<div class="d-flex align-items-center comment-right" style="float: right;">
-<button class="update" onclick="updateReply('${p.crr_no}','${p.crr_cr_no}','${p.crr_text}')" style="float: right;">수정</button>
-<button class="delete" onclick="deleteReply(${p.crr_no},${p.crr_cr_no})" style="float: right;">삭제</button>
-</div>
-</c:if>
+
 
 
 
@@ -224,11 +228,11 @@ ${result }
 <!-- 댓글등록 -->
 <div class="comment-edit-wrapper">
 
-<form id="comment-form" action="reply.write">
+<form id="comment-form" action="upReply.Do">
 <div class="reply-write-box comment-content border border-dark d-flex" style="">
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
-class="bg-whtie comment-textarea" name="crr_text"></textarea>
+class="bg-whtie comment-textarea" name="crr_text">${re.crr_text }</textarea>
 </div>
 
 <div class="reply-write-wrapper">
@@ -240,9 +244,8 @@ class="bg-whtie comment-textarea" name="crr_text"></textarea>
 <div class="write-btn-right">
 <input type="hidden" value="${tippp.cr_no }" name="cr_no">
 <input type="hidden" name="token" value="${token }">
-<%-- <input type="hidden" value="${re.crr_no }" name="crr_no">  --%>
 <button class="noto-pb submit-btn"  name="button"
- style="margin-right: 70px;">댓글등록</button>
+ style="margin-right: 70px;">수정</button>
 
 </div>
 </div>
@@ -261,20 +264,6 @@ class="bg-whtie comment-textarea" name="crr_text"></textarea>
 목록</button>
 </a>
 
-<c:if test="${tippp.cr_nickname == sessionScope.loginMember.m_name }">
-<div class="viewer-bottom-right d-flex align-items-center">
-<div class="d-inline-block is-mine">
-<button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"
-onclick="location.href = 'update.go?cr_no=${tippp.cr_no}'">수정</button>
-<button class="ml-3 border-b-btn board-btn noto-h4 item-delete" data-type="board" name="button"
-onclick = "deleteContent(${tippp.cr_no});">삭제</button>
-
-
-</div>
-
-</div>
-
-</c:if>
 
 
 
