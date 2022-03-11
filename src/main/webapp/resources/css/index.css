@@ -29,7 +29,7 @@ body{
     display: flex;
     justify-content: space-between;
     heigth:70px;
-    z-index: 1;
+    z-index: 3;
 
     
 }

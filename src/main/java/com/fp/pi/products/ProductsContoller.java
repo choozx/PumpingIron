@@ -23,9 +23,9 @@ public class ProductsContoller {
 	}
 	
 	@RequestMapping(value = "/products.sort", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
-	public @ResponseBody Products ProductsMainSort(ProductSort ps) {
-		Products products = pDAO.getProductsSort(ps);
-		return products;
+	public @ResponseBody Products ProductsMainSort(ProductSort ps, HttpServletRequest request) {
+		Products pproducts = pDAO.getProductsSort(ps);
+		return pproducts;
 	}
 	
 	//상품 디테일 페이지
@@ -42,6 +42,22 @@ public class ProductsContoller {
 		pDAO.IncreaseBuyCount(p, request);
 		pDAO.getProductDetail(p, request);
 		request.setAttribute("contentPage", "products/productDetail.jsp");
+		
+		return "index";  
+	}
+	
+	@RequestMapping(value = "/regProduct.go", method = RequestMethod.GET)
+	public String regProductGo(HttpServletRequest request) {
+		request.setAttribute("contentPage", "products/regProduct.jsp");
+		
+		return "index";  
+	}
+	
+	@RequestMapping(value = "/regProduct.do", method = RequestMethod.POST)
+	public String regProductDo(Product p, HttpServletRequest request) {
+		
+		pDAO.regProduct(p, request);
+		request.setAttribute("contentPage", "home.jsp");
 		
 		return "index";  
 	}

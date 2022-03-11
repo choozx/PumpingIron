@@ -23,5 +23,18 @@ function updateContennt() {
 	}
 }
 
+function deleteReply(n,n2) {
+	
+	var ok = confirm("정말 삭제하겠습니까?");
+	if (ok) {
+		location.href = "delReply.do?crr_no=" + n + '&cr_no=' + n2;
+	}
+}
 
+function updateReply(n, n2, t) {
+	t = prompt("댓글", t);
+	if (t != null && t.length > 0 && t.length < 250) {
+		location.href = "upReply.Do?crr_no=" + n + "&crr_text=" + t + "&cr_no=" + n2;
+	}
+}
 
