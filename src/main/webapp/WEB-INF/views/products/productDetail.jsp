@@ -16,7 +16,7 @@
 		</div>
 	</c:if>
 	<div id="product_detail_div" class="container">
-		<div id="product_detail_img_div"><img id="product_detail_img" src="resources/img/products/${productDetail.p_img }"></div>
+		<div id="product_detail_img_div"><img id="product_detail_img" src="resources/file/${productDetail.p_img }"></div>
 		<div id="product_info">
 			<div id="product_name">${productDetail.p_name }</div>
 			<div id="product_star">별점</div>

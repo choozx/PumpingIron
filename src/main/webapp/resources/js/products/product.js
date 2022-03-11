@@ -17,6 +17,7 @@ function productsSort() {
 				console.log(data);
 				$("#products_div_first").hide();
 				
+				$('#products_div').append("<div class='row' id='products_div_in'></div>")
 				data = $(data).find('pproducts');
 				$.each(data, function(i, p) { 
 					
@@ -25,9 +26,9 @@ function productsSort() {
 					let price = $(p).find("p_price").text();
 					let no = $(p).find("p_no").text();
 					
-					$('#products_div').append("<div class='product_div' id='product_div" + i + "'><a id='product_a" + i + "' href='product.detail?p_no="+ no +"'></a></div>");
+					$('#products_div_in').append("<div class='col-sm-12 col-lg-3 product_div' id='product_div" + i + "'><a id='product_a" + i + "' href='product.detail?p_no="+ no +"'></a></div>");
 					
-					$('#product_a' + i).append("<div id='product_img_div'><img class='container' src='resources/img/products/"+ img +".jpg'></div>");
+					$('#product_a' + i).append("<div><img id='product_img_div' class='container' src='resources/file/"+ img +"'></div>");
 					$('#product_a' + i).append("<div id='product_name_div'>"+ name +"</`div>");
 					$('#product_a' + i).append("<div id='product_price_div'>"+ price +"</div>");
 				})

@@ -21,16 +21,20 @@
 	
 	<div id="products_div">
 	</div>
+	
 	<div id="products_div_first">
-	 	<c:forEach var="p" items="${products }">
-			<div class="product_div" id="product_div">
-				<a href="product.detail?p_no=${p.p_no }">
-					<div id="product_img_div"><img class="container" src="resources/img/products/${p.p_img }"></div>
-					<div id="product_name_div">${p.p_name }</div>
-					<div id="product_price_div">${p.p_price }</div>
-				</a>
-			</div>
-		</c:forEach>
+		<div class="row">
+		 	<c:forEach var="p" items="${products }">
+				<div class="col-sm-12 col-lg-3 product_div" id="product_div">
+					<a href="product.detail?p_no=${p.p_no }">
+						<div><img id="product_img_div" class="container" src="resources/file/${p.p_img }"></div>
+						<div id="product_name_div">${p.p_name }</div>
+						<div id="product_price_div">${p.p_price }</div>
+					</a>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
+	
 </body>
 </html>
