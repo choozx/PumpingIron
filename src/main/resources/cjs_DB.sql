@@ -28,10 +28,13 @@ create sequence info_price_seq;
 create table calendar_contest(
 cc_no number(7) primary key,
 cc_text varchar2(200 char) not null,
-cc_date date not null
+cc_startDate date not null,
+cc_endDate date not null
 );
 
 create sequence calendar_conteste_seq;
+
+--drop table calendar_contest;
 
 
 

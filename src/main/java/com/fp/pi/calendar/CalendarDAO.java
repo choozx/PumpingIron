@@ -60,6 +60,12 @@ public class CalendarDAO {
 		}
 		
 	}
+
+
+	public void insertSchedule(HttpServletRequest req) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

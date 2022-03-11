@@ -25,20 +25,26 @@ public class CalendarController {
 	CalendarDAO cDAO;
 
 	
-	
-	
-	
-	
-	
-	
-	
 	/////////////////////// 대회 일정 캘린더//////////////////////////
 	
 	
 	@RequestMapping(value = "/schedule.go", method = RequestMethod.GET)
 	public String scheduleGo(HttpServletRequest req) {
 		
-		mDAO.loginCheck(req);
+		if (mDAO.loginCheck(req)) {
+			
+		}
+		
+		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/schedule.reg", method = RequestMethod.GET)
+	public String scheduleReg(HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+			cDAO.insertSchedule(req);
+		}
 		
 		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";

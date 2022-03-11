@@ -51,8 +51,16 @@
                                       "end" : end_date
                                   }//전송할 객체 생성
                                   console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
+                                  
+                                  location.href = ''
+                                  
                               }
                           });
+                          
+                          $('#sprintSettingModalClose').on("click", function() {
+							$('#calendarModal').click();
+						});
+                          
                       }
                   }
               },
@@ -92,24 +100,24 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button> -->
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="taskId" class="col-form-label">일정 내용</label>
-                        <input type="text" class="form-control" id="calendar_content" name="calendar_content">
+                        <input type="text" class="form-control" id="calendar_content" name="cc_text">
                         <label for="taskId" class="col-form-label">시작 날짜</label>
-                        <input type="date" class="form-control" id="calendar_start_date" name="calendar_start_date">
+                        <input type="date" class="form-control" id="calendar_start_date" name="cc_startDate">
                         <label for="taskId" class="col-form-label">종료 날짜</label>
-                        <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
+                        <input type="date" class="form-control" id="calendar_end_date" name="cc_endDate">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="sprintSettingModalClose">취소</button>
+                        id="sprintSettingModalClose" onclick="">취소</button>
                 </div>
     
             </div>
