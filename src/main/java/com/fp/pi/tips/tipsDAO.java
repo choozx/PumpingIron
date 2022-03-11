@@ -6,7 +6,9 @@ import java.math.BigDecimal;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.simple.JSONObject;
@@ -101,9 +103,17 @@ private int allMsgCount;
 	}
 
 	public void getDetail(HttpServletRequest req, community_review cr) {
+	
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
 		
-	req.setAttribute("tippp", ss.getMapper(TipsMapper.class).getDetail(cr));	
+		if (successToken != null && token.equals(successToken)) {
+			return;
+		}
 		
+	    req.setAttribute("tippp", ss.getMapper(TipsMapper.class).getDetail(cr));	
+	    
+	    req.getSession().setAttribute("successToken", token);
 	}
 
 	public String getSummorJSON(HttpServletRequest request) {
@@ -283,6 +293,15 @@ private int allMsgCount;
 		
 		ss.getMapper(TipsMapper.class).views(cr);
 		
-	}
+		
+		}
+		
+		
+		
+	
+	
+	
+	
+	
 		
 	}

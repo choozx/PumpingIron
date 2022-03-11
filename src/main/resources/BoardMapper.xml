@@ -8,20 +8,6 @@
 	SELECT COUNT(*) FROM BOARD
 </select>
 
-<!-- 페이징 처리 후 게시글 조회 -->
- <select id="selectBoard" resultType="com.fp.pi.paging.PagingVo">
-	SELECT * 
-		FROM (
-			SELECT ROWNUM RN, A.* 
-				FROM (
-						SELECT * 
-						FROM BOARD 
-						ORDER BY SEQ DESC 
-						) A
-				)
-	WHERE RN BETWEEN #{start} AND #{end}
-</select>
- 
 
 
 

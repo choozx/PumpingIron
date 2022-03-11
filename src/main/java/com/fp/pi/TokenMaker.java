@@ -14,7 +14,7 @@ public class TokenMaker {
 		String token = sdf.format(d);
 		req.setAttribute("token", token);
 		
-		System.out.println(token);
+		System.out.println(token + "-----------");
 		
 		
 	}

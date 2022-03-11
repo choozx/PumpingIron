@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fp.pi.member.MemberDAO;
 import com.fp.pi.SiteOption;
 import com.fp.pi.TokenMaker;
+import com.fp.pi.member.MemberDAO;
 
 @Controller
 public class tipsController {
@@ -66,7 +66,8 @@ public class tipsController {
 
 	@RequestMapping(value = "/watchContents.go", method = RequestMethod.GET)
 	public String watchGo(HttpServletRequest req, community_review cr, community_review_reply crr) {
-		
+		TokenMaker.make(req);
+		System.out.println(111);
 		tDAO.viewCount(req, cr);
 		tDAO.getDetail(req, cr);
 		tDAO.getReply(req, crr);
@@ -156,6 +157,11 @@ public class tipsController {
 		
 		
 	}
+
+	
+
+	
+	
 	
 	
 

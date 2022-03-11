@@ -16,7 +16,8 @@
 	let check = true;
 	 
 	 if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
-	 location.href="/pi/tips.go";
+		 window.location.reload()
+			
 	 }
 	}
 </script>

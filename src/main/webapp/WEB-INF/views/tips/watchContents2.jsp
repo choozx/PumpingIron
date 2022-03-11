@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
-<link rel="stylesheet" href="resources/css/index.css">
 <style>
 .reply-write-btn {
 position: absolute;
@@ -25,8 +24,8 @@ width: 100%;
 }
 </style>
 </head>
-${result }
 <body>
+${result }
 
 
 
@@ -44,13 +43,7 @@ ${result }
 </a>
 </div>
 
-
-
-
-
 </div>
-
-
 
 </div>
 <div class="viewer-wrapper mt-3">
@@ -68,8 +61,6 @@ ${result }
 <div class="viewer-left-text">
 <div class="text-top mb-1">
 <span class="noto-h3 text-over-flow-2">${tippp.cr_title }</span>
-
-
 
 </div>
 <div class="text-bottom d-flex align-items-center">
