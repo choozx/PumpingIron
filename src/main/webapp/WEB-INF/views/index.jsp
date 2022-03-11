@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Pumping Iron</title>
-  <link rel="shortcut icon" href="#">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
@@ -171,13 +171,16 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
+                        <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
+                        <li><a class="dropdown-item" href="">바디프로필</a></li>
                          <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="#">바디프로필</a></li>
                         <li>
 					</ul> 
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-					href="#" role="button" aria-expanded="false" style="color: black;">대회/운동
+					href="" role="button" aria-expanded="false" style="color: black;">대회/운동
 						루틴</a>
 					 <input type="hidden" id="loginCheck" value="${sessionScope.loginMember.m_email}">
 					<ul class="dropdown-menu">
@@ -191,7 +194,7 @@
 					<c:when test="${sessionScope.loginMember == null}">
 					<!-- 로그인 안했을 경우   -->
 						<div class="login-item02">
-							<a href="#"><i class="fa-solid fa-cart-shopping"
+							<a href=""><i class="fa-solid fa-cart-shopping"
 								style="color: black;"><span>장바구니</span></i></a>
 						</div>					
 						<div class="login-item01">
@@ -219,13 +222,14 @@
 					<c:otherwise>
 					<!-- 로그인 했을 경우  -->
 						<div class="login-item02">
-							<a href="#"><i class="fa-solid fa-cart-shopping"
+							<a href=""><i class="fa-solid fa-cart-shopping"
 								style="color: black;"><span>장바구니</span></i></a>
 						</div>
 						<div class="login-item01">
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                    href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
+                    href="" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
 			                    <ul class="dropdown-menu" style="padding: 0px">
+			                    
 			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
