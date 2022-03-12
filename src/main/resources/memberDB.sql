@@ -17,10 +17,41 @@ insert into member values ('admin@pumping.com', 'admin5959^^', 00000000000, '몰
 insert into member values ('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
 
 delete MEMBER where m_email = '1234@gmail.com';
+<<<<<<< HEAD
+=======
+=======
+('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
+<<<<<<< HEAD
+>>>>>>> 3ddeb2b901b64d2811855a23204c99e4fcc3de9e
+=======
+insert into member values
+('admin', '1234', '01067019501', '몰라', 'admin', 'test,jpg', 0, 300000, sysdate, 'Y', 'normal');
+>>>>>>> 04b2b844ad29341a9c748ebe79f245cdf3f8e188
+>>>>>>> dev
 
 select * from member;
 
 drop table member cascade constraint purge;
 
-delete member where m_email = '@naver.com'
+delete member where m_email = 'admin'
 
+---------------------------------------------
+--- 공지사항&이벤트 테이블 ---
+create table event(
+e_no number(5) primary key,
+e_title varchar2(100 char) not null,
+e_content varchar2(4000 char) not null,
+e_date date not null,
+e_type varchar2(50 char) not null
+);
+
+create sequence event_seq;
+
+insert into event values(event_seq.nextval, '공지1', '공지사항1입니다.', sysdate, 'announcement');
+insert into event values(event_seq.nextval, '이벤트1', '이벤트1입니다.', sysdate, 'event');
+
+select * from event;
+
+drop table event cascade constraint purge;
+
+DROP SEQUENCE event_seq;
