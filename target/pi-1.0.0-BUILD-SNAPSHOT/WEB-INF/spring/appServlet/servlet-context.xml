@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<annotation-driven />
+	<context:annotation-config />
+	<tx:annotation-driven />
+	<resources mapping="/resources/**" location="/resources/" />
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<context:component-scan base-package="com.fp.pi" />
+
+	<beans:bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<beans:property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<beans:property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<beans:property name="username" value="c##jss" />
+		<beans:property name="password" value="jss" />
+	</beans:bean>
+
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+
+	<beans:bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="typeAliasesPackage"
+			value="com.fp.pi" />
+		<beans:property name="mapperLocations">
+			<beans:list>
+				<beans:value>classpath:memberMapper.xml</beans:value>
+				<beans:value>classpath:tipsMapper.xml</beans:value>
+				<beans:value>classpath:reviewMapper.xml</beans:value>
+				<beans:value>classpath:infoMapMapper.xml</beans:value>
+				<beans:value>classpath:calendarMapper.xml</beans:value>
+				<beans:value>classpath:productsMapper.xml</beans:value>
+				<beans:value>classpath:customerServiceMapper.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+	</beans:bean>
+
+	<!-- 회원가입 메일 인증 -->
+	<beans:bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.gmail.com" />
+		<beans:property name="port" value="587" /><!-- 465 or 25 -->
+		<beans:property name="username"
+			value="gr9501@gmail.com" />
+		<beans:property name="password" value="14ic035C!@" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+				<beans:prop key="mail.debug">true</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="so" class="com.fp.pi.SiteOption">
+		<beans:constructor-arg value="5"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
+	</beans:bean>
+	
+
+
+
+</beans:beans>
