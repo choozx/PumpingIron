@@ -4,7 +4,9 @@ import java.io.File;
 
 import java.math.BigDecimal;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -103,17 +105,8 @@ private int allMsgCount;
 	}
 
 	public void getDetail(HttpServletRequest req, community_review cr) {
-	
-		String token = req.getParameter("token");
-		String successToken = (String) req.getSession().getAttribute("successToken");
-		
-		if (successToken != null && token.equals(successToken)) {
-			return;
-		}
 		
 	    req.setAttribute("tippp", ss.getMapper(TipsMapper.class).getDetail(cr));	
-	    
-	    req.getSession().setAttribute("successToken", token);
 	}
 
 	public String getSummorJSON(HttpServletRequest request) {
@@ -300,11 +293,41 @@ private int allMsgCount;
 		
 	}
 	public void viewCount(HttpServletRequest req, community_review cr) {
-		
+		String token = req.getParameter("token2");
+		String successToken = (String) req.getSession().getAttribute("successToken2");
+	    System.out.println("토큰 값" + token);
+	    System.out.println("--------------" + successToken);
+		if (successToken != null) {
+			if (token.equals(successToken)) {
+				
+				return;
+			}	
+		}
+	    
+	    req.getSession().setAttribute("successToken2", token);
+	    System.out.println("토큰 값" + token);
+	    System.out.println("--------------" + successToken);
 		ss.getMapper(TipsMapper.class).views(cr);
 		
 		
 		}
+	public int likeOfTips(HttpServletRequest req) {
+		Map<String, String> vals = new HashMap<String, String>();
+		String aa = req.getParameter("ajaxId");
+		String bb = req.getParameter("ajaxEmail");
+		
+		vals.put("idd", aa);
+		vals.put("emaill", bb);
+		
+		HeartDTO heart = ss.getMapper(TipsMapper.class).likeOfTips(vals);
+		System.out.println(heart);
+		if(heart == null) {
+			return 0;
+		}else {
+			return 1;
+		}
+		
+	}
 		
 		
 		

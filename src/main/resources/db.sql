@@ -96,10 +96,6 @@ delete COMMUNITY_REVIEW;
 drop sequence community_review_seq
 create sequence community_review_seq;
 
-insert into community_review values(community_review_seq.nextval, '1', '1', 'gw', '1', '1', '1', '1', '1', '1', sysdate);
-insert into community_review values(community_review_seq.nextval, '1', '1', '1', '1', '1', '1', '1', '1', 'gw', sysdate);
-update community_review set cr_content = 'ㅁ', cr_title = '와'
-where cr_no = '163';
 
 select * from community_review;
 
@@ -140,3 +136,15 @@ select community_review,community_review_reply,status 2 from user_constraints;
 
 DROP SEQUENCE community_review_reply_seq;
 DROP TABLE community_review_reply CASCADE CONSTRAINTS;
+
+----------------------------------------------------------
+
+create table heart_table(
+h_no  number(7) primary key,
+h_cr_no  number(7) not null, --게시글 넘버
+h_m_email varchar2(50 char) not null, -- 회원 이메일 
+constraint h_for_no
+		foreign key(h_cr_no) references community_review(cr_no) on delete cascade,
+		foreign key(h_m_email) references member(m_email) on delete cascade);
+
+create sequence heart_table_seq;

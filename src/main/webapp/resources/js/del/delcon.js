@@ -38,3 +38,38 @@ function updateReply(n, n2, t) {
 	}
 }
 
+$(function() {
+	
+	
+	$('.material-icons').click(function() {
+		
+	let idd = $("#likeId").val();
+	let emaill = $("#likeEmail").val();
+		
+	$.ajax({
+		url : "/pi/tipsLikes",
+		data : {'ajaxId' : idd, 'ajaxEmail' : emaill},
+		success : function(data) {
+			if(data == 1){
+				// 하트 빨강색으로
+				$(this).append('<img alt="" src="resources/img/tips/heart-fill.svg" style="width: 18px" value="1">');
+				
+			}else{
+				// 빈 하트로
+				$(this).append('<img alt="" src="resources/img/tips/heart.svg" style="width: 18px" value="0">');
+			}
+		}
+	
+	});
+	
+	
+	
+	
+	
+	});
+	
+	
+	
+	
+	
+});

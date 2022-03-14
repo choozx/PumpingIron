@@ -97,7 +97,13 @@ update community_review_reply set crr_text = #{crr_text} where crr_no = #{crr_no
 		cr_no = #{cr_no}
 </update>
 
+<select id="likeOfTips" parameterType="map" resultType="com.fp.pi.tips.HeartDTO">
+	select * from heart_table where h_cr_no = #{idd} and h_m_email = #{emaill}
+</select>
 
+<!-- <insert id="likeOfTips" parameterType="">
+	insert into heart_table values('heart_table_seq.nextval', #{cr_no},#{m_email})
+</insert> -->
 
 
 </mapper>

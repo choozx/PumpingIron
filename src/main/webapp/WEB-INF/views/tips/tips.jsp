@@ -54,7 +54,7 @@ ${result }
   <c:forEach var="m" items="${reviews }" >
     <tr>
       <th scope="row">${m.cr_no}</th>
-      <td><a href="watchContents.go?cr_no=${m.cr_no }"><span>${m.cr_title}</span></a></td>
+      <td><a href="watchContents.go?cr_no=${m.cr_no }&token2=${token2}"><span>${m.cr_title}</span></a></td>
       <td>${m.cr_nickname }</td>
       <td><fmt:formatDate value="${m.cr_date}" type="date" dateStyle="short" />
       </td>
