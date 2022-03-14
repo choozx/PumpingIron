@@ -27,10 +27,12 @@
 	margin-right: auto;
 }
 
-#product_detail_img_div{
-	width: 300px;
+#product_detail_img{
+	width: 500px;
+	height: 500px;
 	margin-left: 100px;
 	float: left;
+	object-fit: cover;
 	
 }
 

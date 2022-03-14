@@ -3,6 +3,7 @@ function productsSort() {
 		
 		let sort_type = $('#p_main_sort option:selected').val();
 		let p_type = $('#p_type').val();
+		let pageNo = $('#pageNo').val();
 		
 		$.ajax({
 			url: "/pi/products.sort",
@@ -10,7 +11,8 @@ function productsSort() {
 			datatype: 'xml',
 			data: {
 				"p_sort" : sort_type,
-				"p_type" : p_type
+				"p_type" : p_type,
+				"pageNo" : pageNo
 			},
 			success : function(data) {
 				$("#products_div").empty();

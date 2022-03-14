@@ -31,8 +31,8 @@
 		</div>
 	</div>
 	<div style="clear: both;"></div>
-	<div id="#product_detail_info" class="container">
-		<h1>${productDetail.p_info }</h1>
+	<div id="#product_detail_info" class="container mt-5" style="text-align: center;">
+		${productDetail.p_info }
 	</div>
 </body>
 </html>
