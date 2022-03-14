@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.calendar.CalendarMapper">
 
-
+<!--  __________루틴 캘린더______________-  -->
 <insert id="recordRoutine" parameterType="com.fp.pi.calendar.RoutineBean" >
 	insert into calendar_routine values(calendar_routine_seq.nextval, #{cr_id}, #{cr_text}, #{cr_date})
 </insert>
@@ -16,5 +16,19 @@
 	delete calendar_routine where cr_no = #{cr_no}
 </delete>
 
+
+
+
+
+
+<!-- ___________대회일정 캘린더___________ -->
+
+<insert id="regSchedule" parameterType="com.fp.pi.calendar.ContestBean">
+ 	insert into calendar_contest values (calendar_conteste_seq.nextval, #{cc_text}, #{cc_startDate}, #{cc_endDate})
+</insert>
+
+<select id="contestSchedule" resultType="com.fp.pi.calendar.ContestBean">
+	select * from calendar_contest
+</select>
 
 </mapper>

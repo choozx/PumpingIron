@@ -62,9 +62,31 @@ public class CalendarDAO {
 	}
 
 
-	public void insertSchedule(HttpServletRequest req) {
-		// TODO Auto-generated method stub
+	public void insertSchedule(ContestBean c, HttpServletRequest req) {
 		
+		System.out.println(c.getCc_text());
+		System.out.println(c.getCc_startDate());
+		System.out.println(c.getCc_endDate());
+
+		if (ss.getMapper(CalendarMapper.class).regSchedule(c) == 1) {
+			System.out.println("등록 성공");
+			req.setAttribute("result", "등록 성공");
+//			return 1;
+		} else {
+			System.out.println("등록 실패");
+			req.setAttribute("result", "등록 실패");
+//			return 0;
+		}
+		
+	}
+
+
+	public void selectSchdule(HttpServletRequest req) {
+
+		List<ContestBean> contests = ss.getMapper(CalendarMapper.class).contestSchedule();
+		
+		req.setAttribute("contest", contests);
+	
 	}
 	
 	

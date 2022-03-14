@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,19 +31,20 @@ public class CalendarController {
 	public String scheduleGo(HttpServletRequest req) {
 		
 		if (mDAO.loginCheck(req)) {
-			
 		}
+		cDAO.selectSchdule(req);
 		
 		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/schedule.reg", method = RequestMethod.GET)
-	public String scheduleReg(HttpServletRequest req) {
+	public String scheduleReg(ContestBean c, HttpServletRequest req) {
 		
 		if (mDAO.loginCheck(req)) {
-			cDAO.insertSchedule(req);
+			cDAO.insertSchedule(c, req);
 		}
+		cDAO.selectSchdule(req);
 		
 		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";

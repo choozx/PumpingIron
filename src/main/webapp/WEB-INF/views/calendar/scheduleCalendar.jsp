@@ -6,10 +6,18 @@
 <head>
 <meta charset="UTF-8">
 
-<link href='resources/css/calendar/main.css' rel='stylesheet' />
-<script type="text/javascript" src='resources/js/calendar/main.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+ <link href='resources/css/calendar/main.css' rel='stylesheet' />
+<script type="text/javascript" src='resources/js/calendar/main.js'></script> 
 <script type="text/javascript"
 	src='resources/js/calendar/locales-all.js'></script>
+	
+
+     <!--  fullcalendar -->
+<!--     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>  -->
 	
 	<%-- let checkingL = document.getElementId('login_check').value; --%>
 
@@ -30,6 +38,12 @@
         		  addEvent: { // 추가한 버튼 설정
                       text : "대회 일정 추가",  // 버튼 내용
                       click : function(){ // 버튼 클릭 시 이벤트 추가
+                    	  
+                    	  if (checkingL != 'admin') {
+							alert('관리자 전용 기능입니다.');
+							return false;
+						}
+                    	  
                           $("#calendarModal").modal("show"); // modal 나타내기
 
                           $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
@@ -50,9 +64,9 @@
                                       "start" : start_date,
                                       "end" : end_date
                                   }//전송할 객체 생성
+                                  location.href = 'schedule.reg?cc_text=' + content + '&cc_startDate=' + start_date + '&cc_endDate=' + end_date;
                                   console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
                                   
-                                  location.href = ''
                                   
                               }
                           });
@@ -83,15 +97,33 @@
     </script>
     
     
-    
+     <style>
+        #calendarBox{
+        }
+    </style>
+
 
 <title>Insert title here</title>
 </head>
 <body>
 
+	<!-- admin 확인 -->
 	<input id="login_check" type="hidden" value="${sessionScope.loginMember.m_email}">
+	
+	<c:forEach items="${contest}" var="con">
+	<input id="toConsole_text" type="hidden" value="${con.cc_text}">
+	<input id="toConsole_sDate" type="hidden" value="${con.cc_startDate}">
+	<input id="toConsole_eDate" type="hidden" value="${con.cc_endDate}">
+	</c:forEach>
+	
 
-	<div id='calendar' class="container"></div>
+
+	<!-- Calendar div -->
+	  <div id="calendarBox">
+        <div id="calendar" class="container"></div>
+    </div>
+
+
 
  <!-- modal 추가 -->
     <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
