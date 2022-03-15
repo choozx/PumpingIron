@@ -19,7 +19,6 @@ public class HomeController {
 	public String home(HttpServletRequest request) {
 		mDAO.loginCheck(request);
 		request.setAttribute("contentPage", "home.jsp");
-		
 		return "index";
 	}
 	

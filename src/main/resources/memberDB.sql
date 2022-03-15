@@ -12,19 +12,13 @@ m_key varchar2(100 char) not null, -- 회원 이메일 인증 여부
 m_type varchar2(20 char) not null -- 일반회원인지 카카오톡 회원인지 구분
 );
 
-insert into member values
-<<<<<<< HEAD
-('1234@gmail.com', '1234', 01067019501, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y');
+insert into member values ('admin@pumping.com', 'admin5959^^', 00000000000, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y', 'normal');
 
-delete MEMBER where m_email = '1234@gmail.com';
-=======
+insert into member values
 ('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
-<<<<<<< HEAD
->>>>>>> 3ddeb2b901b64d2811855a23204c99e4fcc3de9e
-=======
+
 insert into member values
 ('admin', '1234', '01067019501', '몰라', 'admin', 'test,jpg', 0, 300000, sysdate, 'Y', 'normal');
->>>>>>> 04b2b844ad29341a9c748ebe79f245cdf3f8e188
 
 select * from member;
 

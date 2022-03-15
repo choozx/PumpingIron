@@ -3,7 +3,7 @@
     
     
     
-    <wb-module deploy-name="pi-1.0.0-BUILD-SNAPSHOT">
+    <wb-module deploy-name="PumpingIron">
                                         
         
         
@@ -24,6 +24,10 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
                                 		
         
