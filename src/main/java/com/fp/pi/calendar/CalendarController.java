@@ -28,28 +28,43 @@ public class CalendarController {
 	
 	
 	@RequestMapping(value = "/schedule.go", method = RequestMethod.GET)
-	public String scheduleGo(HttpServletRequest req) {
+	public String scheduleGo(ContestBean c, HttpServletRequest req) {
 		
 		if (mDAO.loginCheck(req)) {
 		}
-		cDAO.selectSchdule(req);
+		cDAO.selectSchdule(c, req);
 		
 		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "/schedule.reg", method = RequestMethod.GET)
-	public String scheduleReg(ContestBean c, HttpServletRequest req) {
+	@RequestMapping(value = "/schedule.reg", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody int scheduleReg(ContestBean c, HttpServletRequest req) {
 		
+		int a = 0;	
 		if (mDAO.loginCheck(req)) {
-			cDAO.insertSchedule(c, req);
+			a = cDAO.insertSchedule(c, req);
 		}
-		cDAO.selectSchdule(req);
+		cDAO.selectSchdule(c, req);
 		
-		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
-		return "index";
+//		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+//		return "index";
+		
+		System.out.println(a);
+		return a;
 	}
 	
+	
+	@RequestMapping(value = "/schedule.getData", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody List<ContestBean> routineData(ContestBean c, HttpServletRequest req) {
+		
+		if(mDAO.loginCheck(req)) {
+			cDAO.selectSchdule(c, req);
+		}
+		
+		return cDAO.selectSchdule(c, req);
+	}
+		
 	
 	
 	
@@ -97,8 +112,6 @@ public class CalendarController {
 		System.out.println(a);
 			return a;
 		
-//		req.setAttribute("contentPage", "calendar/routineCalendar.jsp");
-//		return "index";
 	}
 	
 	

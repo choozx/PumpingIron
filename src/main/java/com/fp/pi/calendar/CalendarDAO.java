@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.fp.pi.member.Member;
 
+import oracle.net.aso.c;
+
 @Service
 public class CalendarDAO {
 	
@@ -62,30 +64,32 @@ public class CalendarDAO {
 	}
 
 
-	public void insertSchedule(ContestBean c, HttpServletRequest req) {
+	public int insertSchedule(ContestBean c, HttpServletRequest req) {
 		
-		System.out.println(c.getCc_text());
-		System.out.println(c.getCc_startDate());
-		System.out.println(c.getCc_endDate());
+//		System.out.println(c.getCc_text());
+//		System.out.println(c.getCc_startDate());
+//		System.out.println(c.getCc_endDate());
 
 		if (ss.getMapper(CalendarMapper.class).regSchedule(c) == 1) {
 			System.out.println("등록 성공");
 			req.setAttribute("result", "등록 성공");
-//			return 1;
+			return 1;
 		} else {
 			System.out.println("등록 실패");
 			req.setAttribute("result", "등록 실패");
-//			return 0;
+			return 0;
 		}
 		
 	}
 
 
-	public void selectSchdule(HttpServletRequest req) {
+	public List<ContestBean> selectSchdule(ContestBean c, HttpServletRequest req) {
 
 		List<ContestBean> contests = ss.getMapper(CalendarMapper.class).contestSchedule();
 		
 		req.setAttribute("contest", contests);
+		
+		return contests;
 	
 	}
 	

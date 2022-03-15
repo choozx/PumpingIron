@@ -14,26 +14,19 @@
 <script type="text/javascript"
 	src='resources/js/calendar/locales-all.js'></script>
 	
-
-     <!--  fullcalendar -->
-<!--     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>  -->
 	
-	<%-- let checkingL = document.getElementId('login_check').value; --%>
-
 <script type="text/javascript">
 
       $(function() {
     	var checkingL = document.getElementById('login_check').value;
-    	console.log(checkingL);
-    	
+//    	console.log(checkingL);
+
         var calendarEl = document.getElementById('calendar');
         
         var calendar = new FullCalendar.Calendar(calendarEl, {
           timeZone: 'local',
           initialView: 'dayGridMonth',
           selectable: true,
-          
           customButtons: {
         		  addEvent: { // 추가한 버튼 설정
                       text : "대회 일정 추가",  // 버튼 내용
@@ -54,39 +47,57 @@
                               // emptyCheck
                               if(content == null || content == ""){
                                   alert("내용을 입력하세요.");
+                                  return false;
                               }else if(start_date == "" || end_date ==""){
                                   alert("날짜를 입력하세요.");
+                                  return false;
                               }else if(new Date(end_date)- new Date(start_date) < 0){ // date 타입으로 변경 후 확인
                                   alert("종료일이 시작일보다 먼저입니다.");
+                                  return false;
                               }else{ // 정상적인 입력 시
                                   var obj = {
                                       "title" : content,
                                       "start" : start_date,
                                       "end" : end_date
                                   }//전송할 객체 생성
-                                  location.href = 'schedule.reg?cc_text=' + content + '&cc_startDate=' + start_date + '&cc_endDate=' + end_date;
+                                  
+                                  /* location.href = 'schedule.reg?cc_text=' + content + '&cc_startDate=' + start_date + '&cc_endDate=' + end_date; */
                                   console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
                                   
-                                  
+                                  $.ajax({
+                          			url : "schedule.reg",
+                          			data : {"cc_text" : content,"cc_startDate" : start_date, "cc_endDate" : end_date},
+                          			type : "GET",
+                          			success : function(data) {
+                          				console.log(data);
+                          				$('#calendar_content').val('');
+                          				$('#calendar_start_date').val('');
+                          				$('#calendar_end_date').val('');
+                          				$('#calendarModal').click();
+                          				getContestSchedule();
+                          				},
+                         				error : function(request,status,error){
+                        			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                          				}
+                          		});
                               }
+                              
                           });
                           
-                          $('#sprintSettingModalClose').on("click", function() {
-							$('#calendarModal').click();
+                        $('#sprintSettingModalClose').on("click", function() {
+						$('#calendarModal').click();
 						});
                           
                       }
                   }
               },
               
-              editable: true, // false로 변경 시 draggable 작동 x 
+              editable: false, // false로 변경 시 draggable 작동 x 
               displayEventTime: false // 시간 표시 x
 
         });
         calendar.render();
-        
 
-        
         calendar.on('dateClick', function(info) {
       	 console.log('clicked on ' + info.dateStr);
       	//alert('Clicked on: ' + info.dateStr);
@@ -94,14 +105,35 @@
         
       });
       
+      
+      
+      function getContestSchedule() {
+    	  
+    	  var content = $("#calendar_content").val();
+          var start_date = $("#calendar_start_date").val();
+          var end_date = $("#calendar_end_date").val();
+    	  
+    	  $.ajax({
+				url : "routine.getData",
+				data : {"cc_text" : content,"cc_startDate" : start_date, "cc_endDate" : end_date},
+				dataType : "json",
+				type : "GET",
+				success : function(data) {
+					// $("#routineDIV").empty();
+					console.log(data);
+					$.each(data, function(i,c) {
+						console.log(c.cc_text);
+//						$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<span class="delRoutine" style="color: white;"> x </span></h6>');
+						console.log('--------');
+					});
+	}
+					});
+	}
+      
+      
+      
     </script>
     
-    
-     <style>
-        #calendarBox{
-        }
-    </style>
-
 
 <title>Insert title here</title>
 </head>
