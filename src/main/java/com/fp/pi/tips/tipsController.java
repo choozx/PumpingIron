@@ -151,12 +151,23 @@ public class tipsController {
 
 	
 	
+	@RequestMapping(value = "/tipsLikes.cnt", method = RequestMethod.GET)
+	public @ResponseBody int likeCnt(HttpServletRequest req) {
+		return tDAO.likeCnt(req);
+	}
 	@RequestMapping(value = "/tipsLikes", method = RequestMethod.GET)
 	public @ResponseBody int likeControl(HttpServletRequest req) {
 		return tDAO.likeOfTips(req);
-		
-		
 	}
+	@RequestMapping(value = "/tipsLikes.update", method = RequestMethod.GET)
+	public @ResponseBody int likeUpdate(HttpServletRequest req) {
+		return tDAO.likeOfTipsUpdate(req);
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody String summerUpload(HttpServletRequest req) {
 		return tDAO.getSummorJSON(req);

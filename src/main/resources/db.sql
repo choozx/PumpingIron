@@ -148,3 +148,5 @@ constraint h_for_no
 		foreign key(h_m_email) references member(m_email) on delete cascade);
 
 create sequence heart_table_seq;
+insert into heart_table values(heart_table_seq.nextval, 101, '1234@gmail.com')
+select * from heart_table;	

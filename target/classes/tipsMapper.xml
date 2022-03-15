@@ -101,9 +101,21 @@ update community_review_reply set crr_text = #{crr_text} where crr_no = #{crr_no
 	select * from heart_table where h_cr_no = #{idd} and h_m_email = #{emaill}
 </select>
 
-<!-- <insert id="likeOfTips" parameterType="">
-	insert into heart_table values('heart_table_seq.nextval', #{cr_no},#{m_email})
-</insert> -->
+ <insert id="likeOfTipsInsert" parameterType="HeartDTO">
+	insert into heart_table values(heart_table_seq.nextval, #{h_cr_no}, #{h_m_email})
+</insert>
+
+ <delete id="likeOfTipsDelete" parameterType="HeartDTO">
+	delete heart_table where h_m_email = #{h_m_email}
+</delete>
+
+<select id="allLike" resultType="int">
+	select count(*) from heart_table
+</select>
+
+
+
+
 
 
 </mapper>

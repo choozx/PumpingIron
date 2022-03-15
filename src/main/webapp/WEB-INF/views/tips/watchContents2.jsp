@@ -10,6 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
+<script src="resources/js/del/like.js"></script>
 <style>
 .reply-write-btn {
 position: absolute;
@@ -24,7 +25,7 @@ width: 100%;
 }
 </style>
 </head>
-<body>
+<body onload="likeCheck();">
 ${result }
 
 
@@ -68,10 +69,10 @@ ${result }
 
 <!-- 좋아요 -->
 <p class="d-flex align-items-center ml-3 m-0 noto-pb">
-<span class="viewer-like viewer-like-count noto-h4">0</span>&nbsp
+<span class="viewer-like viewer-like-count noto-h4">${likeCnt }</span>&nbsp
 <span class="material-icons viewer-like-icon ml-1 cursor" data-type="0"
- data-like-cnt="0" data-islike="0">
- <!-- <img alt="" src="resources/img/tips/heart.svg" style="width: 18px"> -->
+ data-like-cnt="" data-islike="0">
+  <img id="likeImg" src="resources/img/tips/heart.svg" style="width: 18px">
  </span>
 
 
@@ -241,10 +242,13 @@ class="bg-whtie comment-textarea" name="crr_text"></textarea>
 <div class="reply-write-btn container" style="margin-right: 2px">
 
 <div class="write-btn-right">
-<input type="hidden" value="${tippp.cr_no }"id="likeId">
+
+<input type="hidden" value="${tippp.cr_no}" name="crr_cr_no" id="likeId">
 <input type="hidden" value="${sessionScope.loginMember.m_email }"id="likeEmail">
 <input type="hidden" name="token" value="${token }">
-<%-- <input type="hidden" value="${re.crr_no }" name="crr_no">  --%>
+<input type="hidden" name="cr_no" value="${tippp.cr_no }">
+
+<%-- <input type="hidden" value="${re.crr_no }" name="crr_no"> --%>
 <button class="noto-pb submit-btn"  name="button"
  style="margin-right: 70px;">댓글등록</button>
 

@@ -205,16 +205,18 @@ private int allMsgCount;
 	public void writeReply(HttpServletRequest req, community_review_reply crr, community_review cr) {
 		try {
 			String token = req.getParameter("token");
-			String successToken = (String) req.getSession().getAttribute("successToken");
+			String successToken = (String) req.getSession().getAttribute("successToken2");
 			
-			if (successToken != null && token.equals(successToken)) {
+		if (successToken != null && token.equals(successToken)) {
 				return;
 			}
 
+			System.out.println("++++++++++++++++++++++++++++++++++++");
+			
 			
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		crr.setCrr_cr_nickname(m.getM_name());
-		crr.setCrr_cr_no(Integer.parseInt(req.getParameter("cr_no")));
+		System.out.println(crr.getCrr_cr_no());
 		crr.setCrr_text(req.getParameter("crr_text"));
 		System.out.println("=================================");
 		System.out.println(crr.getCrr_cr_nickname());
@@ -223,7 +225,7 @@ private int allMsgCount;
 		
 		if (ss.getMapper(TipsMapper.class).getReply(crr) == 1) {
 			req.setAttribute("result", "댓글쓰기성공");
-			req.getSession().setAttribute("successToken", token);
+			req.getSession().setAttribute("successToken2", token);
 
 			
 		} else {
@@ -243,6 +245,7 @@ private int allMsgCount;
 		
 		
 		crr.setCrr_cr_no(Integer.parseInt(req.getParameter("cr_no")));
+		
 		List<community_review_reply> replyss = ss.getMapper(TipsMapper.class).replys(crr);
 		req.setAttribute("re", replyss);
 		req.setAttribute("recnt", replyss.size());
@@ -311,6 +314,10 @@ private int allMsgCount;
 		
 		
 		}
+	public int likeCnt(HttpServletRequest req) {
+		return ss.getMapper(TipsMapper.class).allLike();
+	}
+	
 	public int likeOfTips(HttpServletRequest req) {
 		Map<String, String> vals = new HashMap<String, String>();
 		String aa = req.getParameter("ajaxId");
@@ -321,6 +328,8 @@ private int allMsgCount;
 		
 		HeartDTO heart = ss.getMapper(TipsMapper.class).likeOfTips(vals);
 		System.out.println(heart);
+		req.setAttribute("likeCnt", ss.getMapper(TipsMapper.class).allLike());
+	System.out.println(req.getAttribute("likeCnt"));
 		if(heart == null) {
 			return 0;
 		}else {
@@ -328,6 +337,25 @@ private int allMsgCount;
 		}
 		
 	}
+	public int likeOfTipsUpdate(HttpServletRequest req) {
+		
+		int aa = Integer.parseInt(req.getParameter("ajaxId"));
+		String bb = req.getParameter("ajaxEmail");
+		HeartDTO h = new HeartDTO(0, aa, bb);
+		System.out.println(aa);
+		System.out.println(bb);
+		System.out.println(h.getH_cr_no());
+		System.out.println(h.getH_m_email());
+		
+		int val = Integer.parseInt(req.getParameter("val"));
+		if(val == 0) {
+			ss.getMapper(TipsMapper.class).likeOfTipsInsert(h);
+		}else {
+			ss.getMapper(TipsMapper.class).likeOfTipsDelete(h);
+		}
+		return likeOfTips(req);
+	}
+
 		
 		
 		

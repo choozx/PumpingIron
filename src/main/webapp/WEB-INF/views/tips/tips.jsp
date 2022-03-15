@@ -10,7 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/index.css">
-
+<script src="resources/js/del/like.js"></script>
 <script>
  window.onpageshow = function(event) {
 	let check = true;
@@ -51,7 +51,7 @@ ${result }
     </tr>
   </thead>
   <tbody>
-  <c:forEach var="m" items="${reviews }" >
+  <c:forEach var="m" items="${reviews }">
     <tr>
       <th scope="row">${m.cr_no}</th>
       <td><a href="watchContents.go?cr_no=${m.cr_no }&token2=${token2}"><span>${m.cr_title}</span></a></td>
@@ -60,9 +60,8 @@ ${result }
       </td>
       <td>${m.cr_views }</td>
       
-      <c:forEach var="m" items="${m.cr_like }">
-      <td>${m.cr_like }</td>
-      </c:forEach>
+      <td class="viewer-like" style="color: black;">${likeCnt }</td>
+
       
     </tr>
   </c:forEach>

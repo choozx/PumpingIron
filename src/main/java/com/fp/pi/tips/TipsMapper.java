@@ -34,6 +34,12 @@ public interface TipsMapper {
 	void likeOfTips();
 
 	HeartDTO likeOfTips(Map<String, String> vals);
+
+	int likeOfTipsInsert(HeartDTO vals);
+
+	int likeOfTipsDelete(HeartDTO vals);
+
+	int allLike();
 	
 
 }
