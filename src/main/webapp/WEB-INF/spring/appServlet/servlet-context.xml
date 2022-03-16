@@ -57,6 +57,7 @@
 				<beans:value>classpath:calendarMapper.xml</beans:value>
 				<beans:value>classpath:productsMapper.xml</beans:value>
 				<beans:value>classpath:customerServiceMapper.xml</beans:value>
+				<beans:value>classpath:cartMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

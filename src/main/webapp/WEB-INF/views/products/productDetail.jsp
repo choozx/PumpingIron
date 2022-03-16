@@ -23,11 +23,13 @@
 			<div id="product_price_div">${productDetail.p_price }<input id="product_price" type="hidden" value="${productDetail.p_price }"></div>
 			<div id="product_quantity">수량<p><input class="container" type="text" value="1" id='quantity'></div>
 			<input id="product_no" type="hidden" value="${productDetail.p_no }">
+			<input id="member" type="hidden" value="${sessionScope.loginMember }">
 			<input id="member_addr" type="hidden" value="${sessionScope.loginMember.m_addr }">
 			<input id="member_email" type="hidden" value="${sessionScope.loginMember.m_email }">
 			<input id="member_name" type="hidden" value="${sessionScope.loginMember.m_name }">			
 			<input id="member_phone" type="hidden" value="${sessionScope.loginMember.m_phone }">			
-			<div><img id="kakao_pay" src="resources/img/products/payment_icon_yellow_small.png"></div>
+			<div id="kakao_pay_div"><img id="kakao_pay" src="resources/img/products/payment_icon_yellow_small.png"></div>
+			<div id="addCart">장바구니</div>
 		</div>
 	</div>
 	<div style="clear: both;"></div>

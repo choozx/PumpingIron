@@ -36,6 +36,7 @@
 <script type="text/javascript" src="resources/js/products/product.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/customerservice/customerservice.js"></script>
+<script type="text/javascript" src="resources/js/products/cart.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
