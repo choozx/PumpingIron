@@ -21,7 +21,8 @@ insert into PRODUCTS values(products_seq.nextval, '밸트', 'backWaist', 50000, 
 insert into PRODUCTS values(products_seq.nextval, '무릅보호대1', 'kneeProtecter', 11000, 'kneeProtecter1', 0);
 insert into PRODUCTS values(products_seq.nextval, '신발', 'shoes', 11000, 'shoes1', 0);
 
-
+select * from (select rownum as rn,p_no,p_name,p_type,p_price,p_img,p_info,p_cnt from products where p_type = 'supplements') where rn >= 1 and rn <= 10;
+select * from (select rownum as rn, products.* from (select * from products where p_type = 'supplements' ORDER BY p_price DESC)products) where rn >= 1 and rn <= 10;
 --------------------------------------------------------------------
 create table product_review(
 

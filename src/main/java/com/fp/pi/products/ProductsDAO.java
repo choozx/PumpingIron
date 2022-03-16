@@ -1,5 +1,6 @@
 package com.fp.pi.products;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fp.pi.SiteOption;
+import com.fp.pi.tips.Selector;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -17,10 +20,53 @@ public class ProductsDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	public void getProducts(HttpServletRequest request) {
+	@Autowired
+	private SiteOption so;
+	
+	private int allProductCount;
+	
+	public int getAllProductCount() {
+		return allProductCount;
+	}
+
+	public void setAllProductCount(int allProductCount) {
+		this.allProductCount = allProductCount;
+	}
+
+	
+	public void getProducts(int pageNo, HttpServletRequest request) {
 		try {
-			String type = request.getParameter("products");
-			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts(type));
+			String p_type = request.getParameter("p_type");
+			
+			allProductCount = ss.getMapper(ProductsMapper.class).getproductcount(p_type);
+			int count = so.getSnsCountPerpage();
+			int start = (pageNo - 1) * count + 1;
+			int end = start + (count - 1);
+			
+			//Selector search = (Selector) request.getSession().getAttribute("search");
+			ProductSort ps = (ProductSort) request.getSession().getAttribute("search");
+			int productCount = 0;
+			
+			if (ps == null) {
+				//search = new Selector("", new BigDecimal(start), new BigDecimal(end));
+				ps = new ProductSort("", p_type, "", new BigDecimal(start), new BigDecimal(end));
+				productCount = allProductCount; // 전체 개시글 수     
+			} else {
+				//search.setStart(new BigDecimal(start));
+				//search.setEnd(new BigDecimal(end));
+				ps.setStart(new BigDecimal(start));
+				ps.setEnd(new BigDecimal(end));
+			}
+			
+			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts(ps));
+			
+			int pageCount = (int) Math.ceil(productCount / (double) count);
+			System.out.println(productCount);
+			System.out.println(count);
+			request.setAttribute("pageCount", pageCount);
+			System.out.println(pageCount);
+			request.setAttribute("curPage", pageNo);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -48,10 +94,34 @@ public class ProductsDAO {
 		}
 	}
 
-	public Products getProductsSort(ProductSort ps) {
+	public Products getProductsSort(int pageNo, ProductSort ps) {
 		
 		System.out.println(ps.getP_sort());
 		System.out.println(ps.getP_type());
+		
+		
+		//allProductCount = ss.getMapper(ProductsMapper.class).getproductcount(p_type);
+		int count = so.getSnsCountPerpage();
+		int start = (pageNo - 1) * count + 1;
+		int end = start + (count - 1);
+		
+		//Selector search = (Selector) request.getSession().getAttribute("search");
+		//ProductSort ps = (ProductSort) request.getSession().getAttribute("search");
+		int productCount = 0;
+		
+		ps.setStart(new BigDecimal(start));
+		ps.setEnd(new BigDecimal(end));
+		
+		/*if (ps == null) {
+			//search = new Selector("", new BigDecimal(start), new BigDecimal(end));
+			ps = new ProductSort("", ps.getP_type(), "", new BigDecimal(start), new BigDecimal(end));
+			productCount = allProductCount; // 전체 개시글 수     
+		} else {
+			//search.setStart(new BigDecimal(start));
+			//search.setEnd(new BigDecimal(end));
+			ps.setStart(new BigDecimal(start));
+			ps.setEnd(new BigDecimal(end));
+		}*/
 		
 		if (ps.getP_sort().equals("p_priceToLow")) {
 			ps.setP_sort("p_price");
@@ -65,9 +135,7 @@ public class ProductsDAO {
 		
 		
 		List<Product> product = ss.getMapper(ProductsMapper.class).getProductSort(ps);
-		
-		product.get(0).getP_name();
-		
+				
 		Products p = new Products(product);
 		return p;
 	}

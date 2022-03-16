@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.pi.SiteOption;
+import com.fp.pi.TokenMaker;
+
 @Controller
 public class ProductsContoller {
 	
@@ -16,15 +19,26 @@ public class ProductsContoller {
 	
 	@RequestMapping(value = "/products.go", method = RequestMethod.GET)
 	public String ProductsMain(HttpServletRequest request) {
-		pDAO.getProducts(request);
+		pDAO.getProducts(1, request);
+		SiteOption.clearSearch(request);
 		request.setAttribute("contentPage", "products/productsMain.jsp");
 		
 		return "index";
 	}
 	
+	@RequestMapping(value = "/products.page.change", method = RequestMethod.GET)
+	public String PageChange(HttpServletRequest request) {
+		
+		int p = Integer.parseInt(request.getParameter("p"));
+		pDAO.getProducts(p, request);
+		request.setAttribute("contentPage", "products/productsMain.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/products.sort", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
 	public @ResponseBody Products ProductsMainSort(ProductSort ps, HttpServletRequest request) {
-		Products pproducts = pDAO.getProductsSort(ps);
+		int p = Integer.parseInt(request.getParameter("pageNo"));
+		Products pproducts = pDAO.getProductsSort(p ,ps);
 		return pproducts;
 	}
 	

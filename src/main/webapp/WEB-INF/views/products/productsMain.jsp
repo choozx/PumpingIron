@@ -8,7 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }">보충제</div>
+	<div id="products_banner">
+		<input id="p_type" type="hidden" value="${param.p_type }">보충제
+		<input id="pageNo" type="hidden" value="${param.p}">
+	</div>
 	<div id="products_select_div">
 		<select id="p_main_sort" name="p_sort">			
 			<option value="p_cnt">구매순</option>
@@ -35,6 +38,44 @@
 			</c:forEach>
 		</div>
 	</div>
+	
+	<nav aria-label="Page navigation example">
+  		<ul class="pagination justify-content-center">
+			<li class="page-item">
+    		<c:choose>
+    			<c:when test="${curPage < 2 }">
+   					<a class="page-link" href="" aria-label="Previous">
+   		     			<span aria-hidden="true">&laquo;</span>
+      				</a>
+   				</c:when>
+   				<c:otherwise>
+					<a class="page-link" href="products.page.change?p_type=${param.p_type }&p=${curPage - 1 }" aria-label="Previous">
+        				<span aria-hidden="true">&laquo;</span>
+     				</a>
+				</c:otherwise>   
+			</c:choose>
+    		</li>
+    
+   			<c:forEach var="p" begin="1" end="${pageCount }">
+    			<li class="page-item"><a class="page-link" href="products.page.change?p_type=${param.p_type }&p=${p }">${p }</a></li>
+ 			</c:forEach>
+    
+    		<li class="page-item">
+    		<c:choose>
+    			<c:when test="${curPage == pageCount }">
+         			<a class="page-link" href="" aria-label="Next">
+        				<span aria-hidden="true">&raquo;</span>
+      				</a>
+ 				</c:when>
+    			<c:otherwise>
+      				<a class="page-link" href="products.page.change?p_type=${param.p_type }&p=${curPage + 1 }" aria-label="Next">
+      					<span aria-hidden="true">&raquo;</span>
+      				</a>
+    			</c:otherwise>
+    		</c:choose>
+ 			</li>
+  		</ul>
+	</nav>
 	
 </body>
 </html>

@@ -37,6 +37,7 @@
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/customerservice/customerservice.js"></script>
 <script type="text/javascript" src="resources/js/del/delcon.js"></script>
+<script type="text/javascript" src="resources/js/products/cart.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
@@ -161,13 +162,13 @@
 					<ul class="dropdown-menu">
 						<li>
 							<input type="hidden">
-							<a class="dropdown-item" href="products.go?products=supplements">보충제</a>
+							<a class="dropdown-item" href="products.go?p_type=supplements&p=1">보충제</a>
 						</li>
-						<li><a class="dropdown-item" href="products.go?products=gripStrap">그립/스트랩</a></li>
-						<li><a class="dropdown-item" href="products.go?products=elbowProtecter">팔꿈치 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?products=backWaist" >등/허리</a></li>
-						<li><a class="dropdown-item" href="products.go?products=kneeProtecter">무릎 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?products=shoes">신발</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=gripStrap&p=1">그립/스트랩</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=elbowProtecter&p=1">팔꿈치 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=backWaist&p=1" >등/허리</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=kneeProtecter&p=1">무릎 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=shoes&p=1">신발</a></li>
 					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">헬스장 정보</a>
                     <ul class="dropdown-menu">
