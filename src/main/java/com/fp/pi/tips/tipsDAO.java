@@ -61,6 +61,13 @@ private int allMsgCount;
 		}
 		
 		List<community_review> reviews = ss.getMapper(TipsMapper.class).getMsgCount(search);
+		for (community_review r : reviews) {
+			System.out.println(r.getCr_no()+"----");
+			r.setCr_like(likeCnt(req, r));
+			System.out.println(r.getCr_like() +"~~~~~~~");
+			
+		}
+		
 		
 		req.setAttribute("reviews", reviews);
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
@@ -76,6 +83,7 @@ private int allMsgCount;
 	public int getContent(HttpServletRequest req) {
 		List<community_review> reviews = ss.getMapper(TipsMapper.class).reviews();
 		allMsgCount = reviews.size();
+		System.out.println(allMsgCount);
 		return reviews.size();
 	}
 
@@ -83,7 +91,11 @@ private int allMsgCount;
 		try {
 		System.out.println(cr.getCr_title());	
 		Member mmm = (Member) req.getSession().getAttribute("loginMember");
-		
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		if (successToken != null && token.equals(successToken)) {
+			return;
+		}
 		cr.setCr_nickname(mmm.getM_name());
 		cr.setCr_tips("zz");
 		cr.setCr_bodyProfile("aaaa");
@@ -92,6 +104,7 @@ private int allMsgCount;
 	
 		if (ss.getMapper(TipsMapper.class).writeCon(cr) == 1) {
 			req.setAttribute("result", "등록성공");
+			req.getSession().setAttribute("successToken", token);
 		}
 			
 			
@@ -298,8 +311,8 @@ private int allMsgCount;
 	public void viewCount(HttpServletRequest req, community_review cr) {
 		String token = req.getParameter("token2");
 		String successToken = (String) req.getSession().getAttribute("successToken2");
-	    System.out.println("토큰 값" + token);
-	    System.out.println("--------------" + successToken);
+	    System.out.println("토큰 값111" + token);
+	    System.out.println("--------------111" + successToken);
 		if (successToken != null) {
 			if (token.equals(successToken)) {
 				
@@ -308,14 +321,14 @@ private int allMsgCount;
 		}
 	    
 	    req.getSession().setAttribute("successToken2", token);
-	    System.out.println("토큰 값" + token);
-	    System.out.println("--------------" + successToken);
+	    System.out.println("토큰 값222" + token);
+	    System.out.println("--------------222" + successToken);
 		ss.getMapper(TipsMapper.class).views(cr);
 		
 		
 		}
-	public int likeCnt(HttpServletRequest req) {
-		return ss.getMapper(TipsMapper.class).allLike();
+	public int likeCnt(HttpServletRequest req, community_review cr) {
+		return ss.getMapper(TipsMapper.class).allLike(cr);
 	}
 	
 	public int likeOfTips(HttpServletRequest req) {
@@ -328,8 +341,7 @@ private int allMsgCount;
 		
 		HeartDTO heart = ss.getMapper(TipsMapper.class).likeOfTips(vals);
 		System.out.println(heart);
-		req.setAttribute("likeCnt", ss.getMapper(TipsMapper.class).allLike());
-	System.out.println(req.getAttribute("likeCnt"));
+	
 		if(heart == null) {
 			return 0;
 		}else {

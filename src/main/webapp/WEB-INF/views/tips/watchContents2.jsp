@@ -25,7 +25,7 @@ width: 100%;
 }
 </style>
 </head>
-<body onload="likeCheck();">
+<body>
 ${result }
 
 
@@ -69,7 +69,7 @@ ${result }
 
 <!-- 좋아요 -->
 <p class="d-flex align-items-center ml-3 m-0 noto-pb">
-<span class="viewer-like viewer-like-count noto-h4">${likeCnt }</span>&nbsp
+<span class="viewer-like viewer-like-count noto-h4"></span>&nbsp
 <span class="material-icons viewer-like-icon ml-1 cursor" data-type="0"
  data-like-cnt="" data-islike="0">
   <img id="likeImg" src="resources/img/tips/heart.svg" style="width: 18px">

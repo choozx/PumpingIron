@@ -39,7 +39,7 @@ public interface TipsMapper {
 
 	int likeOfTipsDelete(HeartDTO vals);
 
-	int allLike();
+	int allLike(community_review aa);
 	
 
 }

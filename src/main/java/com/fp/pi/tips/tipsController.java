@@ -36,6 +36,7 @@ public class tipsController {
 	@RequestMapping(value = "/page.change", method = RequestMethod.GET)
 	public String PageChange(HttpServletRequest req) {
 		TokenMaker.make(req);
+		TokenMaker.make2(req);
 		mDAO.loginCheck(req);
 		
 		int p = Integer.parseInt(req.getParameter("p"));
@@ -47,6 +48,7 @@ public class tipsController {
 	
 	@RequestMapping(value = "/write.go", method = RequestMethod.GET)
 	public String writeGo(HttpServletRequest req) {
+		TokenMaker.make(req);
 	//	tDAO.insertCon(req);
 	//	tDAO.getContent(req);
 		
@@ -152,8 +154,8 @@ public class tipsController {
 	
 	
 	@RequestMapping(value = "/tipsLikes.cnt", method = RequestMethod.GET)
-	public @ResponseBody int likeCnt(HttpServletRequest req) {
-		return tDAO.likeCnt(req);
+	public @ResponseBody int likeCnt(HttpServletRequest req, community_review cr) {
+		return tDAO.likeCnt(req, cr);
 	}
 	@RequestMapping(value = "/tipsLikes", method = RequestMethod.GET)
 	public @ResponseBody int likeControl(HttpServletRequest req) {

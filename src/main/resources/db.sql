@@ -42,47 +42,59 @@ select * from PRODUCT_REVIEW;
 
 --------------------------------------------------------------------
 
-create table community_info(
-ci_no number(7) primary key,
-ci_title varchar2(30 char) not null,
-ci_text varchar2(200 char) not null,
-ci_writer varchar2(20 char) not null,
-ci_media varchar2(200 char) not null,
-ci_img varchar2(200 char) not null,
-ci_date date not null
+create table community_review2(
+c2_no number(7) primary key,
+c2_title varchar2(100 char) not null,
+c2_content varchar2(4000 char) not null,
+c2_like number(5) not null,
+c2_views varchar2(20 char) default 0 not null,
+c2_tips varchar2(200 char) not null,
+c2_bodyProfile varchar2(200 char) not null,
+c2_productReview varchar2(200 char) not null,
+c2_email varchar2(100) not null,
+c2_nickname varchar2(100) not null,
+c2_date date not null
 )
 
-create sequence community_info_seq;
+create sequence community_review2_seq;
 
-DROP SEQUENCE community_info_seq;
+DROP SEQUENCE community_review2_seq;
 
-insert into community_info values(community_info_seq.nextval, '1', '1', 'gw', '1', '1', sysdate);
+insert into community_review2 values(community_review2_seq.nextval, '1', '1', 1, '1', '1', '1', '1', '1', 'gw', sysdate);
 
-select * from community_info;
+select * from community_review2;
 
 -----------------------------------------------
 
-create table community_info_reply(
-cir_no number(7) primary key,
-cir_text varchar2(200 char) not null,
-cir_img varchar2(200 char) not null,
-cir_writer varchar2(20 char) not null,
-cir_date date not null
+create table community_review2_reply(
+c2r_no number(7) primary key, --댓글 번호
+c2r_c2_no number(7) not null, -- 게시판 번호 
+c2r_text varchar2(200 char) not null,
+c2r_c2_nickname varchar2(20 char) not null,-- 아이디
+c2r_date date not null,
+
+constraint c2r_for_no
+		foreign key(c2r_c2_no)
+		references community_review2(c2_no)
+		on delete cascade
+
 )
 
-create sequence community_info_reply_seq;
+create sequence community_review2_reply_seq;
 
-insert into community_info_reply values(community_info_reply_seq.nextval, '1', '1', 'gw', sysdate);
+insert into community_review2_reply values(community_review2_reply_seq.nextval, '1', '1', 'gw', sysdate);
 
-select * from community_info_reply;
+select * from community_review2_reply;
 
+DROP SEQUENCE community_review2_reply_seq;
+DROP TABLE community_review2_reply CASCADE CONSTRAINTS;
 -------------------------------------------------------
 
 create table community_review(
  cr_no number(7) primary key,
 cr_title varchar2(100 char) not null,
 cr_content varchar2(4000 char) not null,
-cr_like varchar2(20 char) default 0 not null,
+cr_like number(5) not null,
 cr_views varchar2(20 char) default 0 not null,
 cr_tips varchar2(200 char) not null,
  cr_bodyProfile varchar2(200 char) not null,
@@ -100,7 +112,7 @@ create sequence community_review_seq;
 select * from community_review;
 
 DROP SEQUENCE community_review_seq;
-DROP TABLE community_review CASCADE CONSTRAINTS;
+DROP TABLE community_review CASCADE CONSTRAINTS purge;
 
 ------------------------------------------------------
 
@@ -150,3 +162,6 @@ constraint h_for_no
 create sequence heart_table_seq;
 insert into heart_table values(heart_table_seq.nextval, 101, '1234@gmail.com')
 select * from heart_table;	
+
+select count(*) from heart_table where h_cr_no = 101
+

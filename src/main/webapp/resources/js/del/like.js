@@ -1,9 +1,9 @@
 
 $(function() {
-	likeCnt();
 	let idd = $("#likeId").val();
 	let emaill = $("#likeEmail").val();
 	let imgTag = $('.material-icons').children();
+	likeCnt(idd);
 
 	// 디테일 글 진임시 하트 표기 (채운거 or 빈거)
 	$.ajax({
@@ -28,10 +28,13 @@ $(function() {
 	});
 
 	// 좋아요 개수
-	function likeCnt() {
+	function likeCnt(idd) {
+		console.log(idd);
 		$.ajax({
 			url : "/pi/tipsLikes.cnt",
+			data : {'cr_no' : idd},
 			success : function(data) {
+				console.log(data + '??????????');
 				$('.viewer-like').text(data)
 			}
 		});
@@ -62,7 +65,7 @@ $(function() {
 					imgTag.attr("src", "resources/img/tips/heart.svg");
 					imgTag.attr("value", "0");
 				}
-				likeCnt();
+				likeCnt(idd);
 			}
 
 		});
