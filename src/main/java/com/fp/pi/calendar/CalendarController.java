@@ -34,7 +34,7 @@ public class CalendarController {
 		}
 		cDAO.selectSchdule(c, req);
 		
-		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+		req.setAttribute("contentPage", "calendar/scheduleCalendar2.jsp");
 		return "index";
 	}
 	
@@ -47,7 +47,7 @@ public class CalendarController {
 		}
 		cDAO.selectSchdule(c, req);
 		
-//		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+//		req.setAttribute("contentPage", "calendar/scheduleCalendar2.jsp");
 //		return "index";
 		
 		System.out.println(a);

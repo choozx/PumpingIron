@@ -11,8 +11,7 @@
     
  <link href='resources/css/calendar/main.css' rel='stylesheet' />
 <script type="text/javascript" src='resources/js/calendar/main.js'></script> 
-<script type="text/javascript"
-	src='resources/js/calendar/locales-all.js'></script>
+<script type="text/javascript" src='resources/js/calendar/locales-all.js'></script>
 	
 	
 <script type="text/javascript">
