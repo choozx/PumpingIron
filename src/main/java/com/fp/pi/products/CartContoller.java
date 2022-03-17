@@ -1,5 +1,8 @@
 package com.fp.pi.products;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +20,14 @@ public class CartContoller {
 	@Autowired
 	private CartDAO cDAO;
 	
-	@RequestMapping(value = "/add.cart", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
+	@RequestMapping(value = "/add.cart", method = RequestMethod.GET)
 	public @ResponseBody int addCart(HttpSession session, Cart cart) {
 		
 		Member member = (Member) session.getAttribute("loginMember");
 		cart.setM_email(member.getM_email());
 		
+		System.out.println(cart.getM_email());
+		System.out.println(cart.getP_no());
 		if (cDAO.cartMemCheck(cart) != 0) {
 			System.out.println("cp0");			
 			return 2;
@@ -30,6 +35,17 @@ public class CartContoller {
 		cDAO.cartInsert(cart);
 		System.out.println("cp1");
 		return 1;
+	}
+	
+	@RequestMapping(value = "/cart.go", method = RequestMethod.GET)
+	public String ProductDetail(Cart cart, HttpSession session, HttpServletRequest request) {
+		
+		Member member = (Member) session.getAttribute("loginMember");
+		cart.setM_email(member.getM_email());
+		
+		cDAO.getCart(cart, request);
+		request.setAttribute("contentPage", "products/cart.jsp");
+		return "index";  
 	}
 	
 	

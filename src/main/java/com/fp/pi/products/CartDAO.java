@@ -1,11 +1,12 @@
 package com.fp.pi.products;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Service
 public class CartDAO {
@@ -32,6 +33,13 @@ public class CartDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public void getCart(Cart cart, HttpServletRequest request) {
+		List<Product> p = ss.getMapper(CartMapper.class).getcart(cart);
+		System.out.println(p.get(0).getP_name());
+		System.out.println(p.get(1).getP_name());
+		request.setAttribute("myCart", p);
 	}
 
 }

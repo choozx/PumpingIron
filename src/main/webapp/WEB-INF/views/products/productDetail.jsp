@@ -10,12 +10,12 @@
 <body>
 	<c:if test="${sessionScope.loginMember.m_email eq '1234@gmail.com'}">
 		<div id="product_controll" class="container">
-			<input id="p_no" type="hidden" value="${productDetail.p_no }">
 			<button id="delBtn">삭제</button>
 			<button id="updateBtn" onclick="location.href='updateProduct.go?p_no='+${productDetail.p_no }">수정</button>
 		</div>
 	</c:if>
 	<div id="product_detail_div" class="container">
+		<input id="p_no" type="hidden" value="${productDetail.p_no }">
 		<div id="product_detail_img_div"><img id="product_detail_img" src="resources/file/${productDetail.p_img }"></div>
 		<div id="product_info">
 			<div id="product_name">${productDetail.p_name }</div>

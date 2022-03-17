@@ -197,11 +197,7 @@
 			<div class="nav-login">
 				<c:choose>
 					<c:when test="${sessionScope.loginMember == null}">
-					<!-- 로그인 안했을 경우   -->
-						<div class="login-item02">
-							<a href=""><i class="fa-solid fa-cart-shopping"
-								style="color: black;"><span>장바구니</span></i></a>
-						</div>					
+					<!-- 로그인 안했을 경우   -->			
 						<div class="login-item01">
 							<a href="member.login.go">로그인</a>
 						</div>
@@ -227,7 +223,7 @@
 					<c:otherwise>
 					<!-- 로그인 했을 경우  -->
 						<div class="login-item02">
-							<a href=""><i class="fa-solid fa-cart-shopping"
+							<a href="cart.go"><i class="fa-solid fa-cart-shopping"
 								style="color: black;"><span>장바구니</span></i></a>
 						</div>
 						<div class="login-item01">

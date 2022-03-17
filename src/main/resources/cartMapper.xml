@@ -6,6 +6,10 @@
 		select count(*) from cart where m_email = #{m_email} and p_no = #{p_no}
 	</select>
 	
+	<select id="getcart" parameterType="com.fp.pi.products.Cart" resultType="com.fp.pi.products.Product">
+		select * from products where p_no in (select p_no from cart where m_email = #{m_email})
+	</select>
+	
 	<insert id="addCart" parameterType="com.fp.pi.products.Cart">
 		insert into cart values(cart_seq.nextval, #{m_email}, #{p_no})
 	</insert>

@@ -43,7 +43,6 @@ public class ProductsDAO {
 			int start = (pageNo - 1) * count + 1;
 			int end = start + (count - 1);
 			
-			//Selector search = (Selector) request.getSession().getAttribute("search");
 			ProductSort ps = (ProductSort) request.getSession().getAttribute("search");
 			int productCount = 0;
 			
@@ -52,8 +51,6 @@ public class ProductsDAO {
 				ps = new ProductSort("", p_type, "", new BigDecimal(start), new BigDecimal(end));
 				productCount = allProductCount; // 전체 개시글 수     
 			} else {
-				//search.setStart(new BigDecimal(start));
-				//search.setEnd(new BigDecimal(end));
 				ps.setStart(new BigDecimal(start));
 				ps.setEnd(new BigDecimal(end));
 			}
@@ -94,7 +91,7 @@ public class ProductsDAO {
 		}
 	}
 
-	public Products getProductsSort(int pageNo, ProductSort ps) {
+	public Products getProductsSort(int pageNo, ProductSort ps, HttpServletRequest request) {
 		
 		System.out.println(ps.getP_sort());
 		System.out.println(ps.getP_type());
@@ -135,6 +132,13 @@ public class ProductsDAO {
 		
 		
 		List<Product> product = ss.getMapper(ProductsMapper.class).getProductSort(ps);
+		
+		int pageCount = (int) Math.ceil(productCount / (double) count);
+		System.out.println(productCount);
+		System.out.println(count);
+		request.setAttribute("pageCount", pageCount);
+		System.out.println(pageCount);
+		request.setAttribute("curPage", pageNo);
 				
 		Products p = new Products(product);
 		return p;

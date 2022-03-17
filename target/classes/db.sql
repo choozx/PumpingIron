@@ -34,7 +34,12 @@ create table cart(
 )
 create sequence cart_seq;
 
+insert into cart values(cart_seq.nextval, 'admin', 1)
 select * from CART
+
+delete CART;
+
+select * from products where p_no in (select p_no from cart where m_email = 'admin')
 --------------------------------------------------------------------
 create table product_review(
 

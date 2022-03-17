@@ -12,11 +12,11 @@ function addCart() {
 		$.ajax({
 			url: "/pi/add.cart",
 			type: 'GET',
-			datatype: 'xml',
 			data: {
 				"p_no" : p_no
 			},
 			success : function(data) {
+				console.log(data)
 				if (data == 1) {
 					alert("장바구니 추가 완료");
 				} else if (data == 2) {
