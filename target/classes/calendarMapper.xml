@@ -31,4 +31,8 @@
 	select * from calendar_contest
 </select>
 
+<delete id="delSchedule" parameterType="com.fp.pi.calendar.ContestBean">
+	delete calendar_contest where cc_no = #{cc_no}
+</delete>
+
 </mapper>

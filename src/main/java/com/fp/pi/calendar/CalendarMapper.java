@@ -9,9 +9,13 @@ public interface CalendarMapper {
 	List<RoutineBean> showRoutine(RoutineBean r);
 
 	int delRoutine(RoutineBean r);
-
+	
+	/////////////////////////////////////////////////////
+	
 	int regSchedule(ContestBean c);
 	
 	List<ContestBean> contestSchedule();
+
+	int delSchedule(ContestBean c);
 
 }

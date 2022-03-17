@@ -63,6 +63,12 @@ public class CalendarDAO {
 		
 	}
 
+	
+	
+	
+	
+	
+	
 
 	public int insertSchedule(ContestBean c, HttpServletRequest req) {
 		
@@ -91,6 +97,21 @@ public class CalendarDAO {
 		
 		return contests;
 	
+	}
+
+
+	public int deleteScheldule(ContestBean c, HttpServletRequest req) {
+		
+		if (ss.getMapper(CalendarMapper.class).delSchedule(c) == 1) {
+			System.out.println("삭제 성공");
+			req.setAttribute("result", "삭제 성공");
+			return 1;
+		} else {
+			System.out.println("삭제 실패");
+			req.setAttribute("result", "삭제 실패");
+			return 0;
+		}
+		
 	}
 	
 	

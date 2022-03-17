@@ -6,6 +6,16 @@
 <head>
 <meta charset="UTF-8">
 
+ 
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<!-- fullcalendar -->
  <link href='resources/css/calendar/main.css' rel='stylesheet' />
 <script type="text/javascript" src='resources/js/calendar/main.js'></script> 
 <script type="text/javascript" src='resources/js/calendar/locales/ko.js'></script>
@@ -100,31 +110,6 @@
       	});
         
       });
-      
-      
-      
-      function getContestSchedule() {
-    	  
-    	  var content = $("#calendar_content").val();
-          var start_date = $("#calendar_start_date").val();
-          var end_date = $("#calendar_end_date").val();
-    	  
-    	  $.ajax({
-				url : "routine.getData",
-				data : {"cc_text" : content,"cc_startDate" : start_date, "cc_endDate" : end_date},
-				dataType : "json",
-				type : "GET",
-				success : function(data) {
-					// $("#routineDIV").empty();
-					console.log(data);
-					$.each(data, function(i,c) {
-						console.log(c.cc_text);
-//						$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<span class="delRoutine" style="color: white;"> x </span></h6>');
-						console.log('--------');
-					});
-	}
-					});
-	}
       
       
       

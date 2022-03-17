@@ -34,7 +34,7 @@ public class CalendarController {
 		}
 		cDAO.selectSchdule(c, req);
 		
-		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+		req.setAttribute("contentPage", "calendar/scheduleCalendar2.jsp");
 		return "index";
 	}
 	
@@ -47,16 +47,14 @@ public class CalendarController {
 		}
 		cDAO.selectSchdule(c, req);
 		
-//		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
-//		return "index";
-		
 		System.out.println(a);
 		return a;
 	}
 	
 	
+	
 	@RequestMapping(value = "/schedule.getData", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<ContestBean> routineData(ContestBean c, HttpServletRequest req) {
+	public @ResponseBody List<ContestBean> scheduleData(ContestBean c, HttpServletRequest req) {
 		
 		if(mDAO.loginCheck(req)) {
 			cDAO.selectSchdule(c, req);
@@ -64,6 +62,19 @@ public class CalendarController {
 		
 		return cDAO.selectSchdule(c, req);
 	}
+	
+	
+	
+	@RequestMapping(value = "/schedule.del", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody int scheduleDel(ContestBean c, HttpServletRequest req) {
+		
+		if(mDAO.loginCheck(req)) {
+			cDAO.deleteScheldule(c, req);
+			return 1;
+			}
+			return 0;
+	}
+
 		
 	
 	
