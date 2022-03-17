@@ -45,8 +45,20 @@ insert into calendar_contest values(calendar_contest_seq.nextval, '대회1', '20
 select * from calendar_contest;
 select cc_text, cc_startDate, cc_endDate from calendar_contest
 
-drop table calendar_contest;
-drop sequence calendar_contest_seq;
+-- drop table calendar_contest;
+-- drop sequence calendar_contest_seq;
+
+
+-- 아직 생성 안 함 ㅇㅇ
+create table calendar_contest_detail(
+ccd_no number(7) primary key, -- setCc_no로 설정
+ccd_img varchar2(500 char) not null,
+ccd_text varchar2(200 char) not null
+);
+
+delete calendar_contest, calendar_contest_detail where cc_no and ccd_no;
+
+select * from calendar_contest_detail;
 
 
 

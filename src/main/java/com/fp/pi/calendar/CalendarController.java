@@ -34,7 +34,7 @@ public class CalendarController {
 		}
 		cDAO.selectSchdule(c, req);
 		
-		req.setAttribute("contentPage", "calendar/scheduleCalendar2.jsp");
+		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";
 	}
 	
@@ -73,6 +73,18 @@ public class CalendarController {
 			return 1;
 			}
 			return 0;
+	}
+	
+	
+	// ajax로 바꾸기
+	@RequestMapping(value = "/schedule.detail", method = RequestMethod.GET)
+	public String scheduleDetail(ContestBean c, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+		}
+		
+		return "";
+		
 	}
 
 		

@@ -32,6 +32,7 @@
 </select>
 
 <delete id="delSchedule" parameterType="com.fp.pi.calendar.ContestBean">
+	<!-- delete calendar_contest, calendar_contest_detail where cc_no = #{cc_no} and ccd_no = #{cc_no}; -->
 	delete calendar_contest where cc_no = #{cc_no}
 </delete>
 

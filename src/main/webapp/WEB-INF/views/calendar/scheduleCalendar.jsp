@@ -6,45 +6,41 @@
 <head>
 <meta charset="UTF-8">
 
- 
-    <!-- bootstrap 4 -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 
 <!-- fullcalendar -->
- <link href='resources/css/calendar/main.css' rel='stylesheet' />
+<link href='resources/css/calendar/main.css' rel='stylesheet' />
 <script type="text/javascript" src='resources/js/calendar/main.js'></script> 
 <script type="text/javascript" src='resources/js/calendar/locales/ko.js'></script>
 	
 	
 <script type="text/javascript">
 
-      $(function() {
+$(function() {
     	var checkingL = document.getElementById('login_check').value;
 //    	console.log(checkingL);
 
         var calendarEl = document.getElementById('calendar');
+        var calendar;
         
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+        if (checkingL == 'admin') {
+        // 로그인 id가 admin일 때 /////////////////
+        
+        calendar = new FullCalendar.Calendar(calendarEl, {
           timeZone: 'local',
           initialView: 'dayGridMonth',
           selectable: true,
+          headerToolbar: {
+              start: 'dayGridMonth listMonth addEventButton',
+              center: 'title',
+              end: 'today prevYear,prev,next,nextYear',
+          },
           customButtons: {
-        		  addEvent: { // 추가한 버튼 설정
+        	  addEventButton: { // 추가한 버튼 설정
                       text : "대회 일정 추가",  // 버튼 내용
                       click : function(){ // 버튼 클릭 시 이벤트 추가
                     	  
-                    	  if (checkingL != 'admin') {
-							alert('관리자 전용 기능입니다.');
-							return false;
-						}
-                    	  
                           $("#calendarModal").modal("show"); // modal 나타내기
-
+                          
                           $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
                               var content = $("#calendar_content").val();
                               var start_date = $("#calendar_start_date").val();
@@ -67,7 +63,6 @@
                                       "end" : end_date
                                   }//전송할 객체 생성
                                   
-                                  /* location.href = 'schedule.reg?cc_text=' + content + '&cc_startDate=' + start_date + '&cc_endDate=' + end_date; */
                                   console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
                                   
                                   $.ajax({
@@ -80,10 +75,8 @@
                           				$('#calendar_start_date').val('');
                           				$('#calendar_end_date').val('');
                           				$('#calendarModal').click();
-                          				getContestSchedule();
-                          				},
-                         				error : function(request,status,error){
-                        			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                          				alert('일정을 추가했습니다.');
+                          				location.reload();
                           				}
                           		});
                               }
@@ -98,21 +91,102 @@
                   }
               },
               
+          
+               events: [ //DB에서 event 불러오기
+				$.ajax({
+					type: "GET",
+					url: "schedule.getData",
+					data: {},
+					success: function(response) {
+//						console.log(response);
+						for (var i = 0; i < response.length; i++) {
+							calendar.addEvent({
+								id: response[i] ['cc_no'],
+								title: response[i] ['cc_text'],
+								start: response[i] ['cc_startDate'],
+								end: response[i] ['cc_endDate']
+							})
+						}
+					}
+				})            	  
+              ],
+              
+               eventClick: function(info) { // 관리자가 아닐 경우 => 클릭시 삭제
+            	let numSchedule = info.event.id;
+               
+				if (confirm(info.event.title + ' - 해당 일정을 삭제하시겠습니까?')) {
+					$.ajax({
+						type: "GET",
+						url: "schedule.del",
+						data: {	'cc_no' : numSchedule },
+						success : function () {
+							location.reload();
+						}	
+						
+					});
+				} 
+			},
+              
               editable: false, // false로 변경 시 draggable 작동 x 
               displayEventTime: false // 시간 표시 x
 
         });
+        }  else {
+        // 로그인 id가 admin이 아닐 때 /////////////////
+        	
+        calendar = new FullCalendar.Calendar(calendarEl, {
+          timeZone: 'local',
+          initialView: 'dayGridMonth',
+          selectable: true,
+          headerToolbar: {
+              start: 'dayGridMonth listMonth',
+              center: 'title',
+              end: 'today prevYear,prev,next,nextYear',
+          },
+               events: [ //DB에서 event 불러오기
+				$.ajax({
+					type: "GET",
+					url: "schedule.getData",
+					data: {},
+					success: function(response) {
+//						console.log(response);
+						for (var i = 0; i < response.length; i++) {
+							calendar.addEvent({
+								id: response[i] ['cc_no'],
+								title: response[i] ['cc_text'],
+								start: response[i] ['cc_startDate'],
+								end: response[i] ['cc_endDate']
+							})
+						}
+					}
+				})            	  
+              ],
+              
+              eventClick: function(info) { // 관리자가 아닐 경우 => 클릭시 상세 페이지
+              	let numSchedule = info.event.id;
+                 
+              	location.href = '';
+  				
+  			},
+              
+              editable: false, // false로 변경 시 draggable 작동 x 
+              displayEventTime: false // 시간 표시 x
+
+        });
+        }
         calendar.render();
 
         calendar.on('dateClick', function(info) {
       	 console.log('clicked on ' + info.dateStr);
       	//alert('Clicked on: ' + info.dateStr);
       	});
+      
+      
         
-      });
-      
-      
-      
+        
+        
+});    
+
     </script>
     
 
@@ -120,21 +194,20 @@
 </head>
 <body>
 
-	<!-- admin 확인 -->
+	<!-- admin 확인 
 	<input id="login_check" type="hidden" value="${sessionScope.loginMember.m_email}">
 	
 	<c:forEach items="${contest}" var="con">
-	<input id="toConsole_text" type="hidden" value="${con.cc_text}">
-	<input id="toConsole_sDate" type="hidden" value="${con.cc_startDate}">
-	<input id="toConsole_eDate" type="hidden" value="${con.cc_endDate}">
-	</c:forEach>
+	<input class="toConsole_no" type="hidden" value="${con.cc_no}">
+	<input class="toConsole_text" type="hidden" value="${con.cc_text}">
+	<input class="toConsole_sDate" type="hidden" value="${con.cc_startDate}">
+	<input class="toConsole_eDate" type="hidden" value="${con.cc_endDate}">
+	</c:forEach> -->
 	
 
 
 	<!-- Calendar div -->
-	  <div id="calendarBox">
         <div id="calendar" class="container"></div>
-    </div>
 
 
 
