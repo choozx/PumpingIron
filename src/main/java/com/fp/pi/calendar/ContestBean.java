@@ -52,6 +52,7 @@ public class ContestBean {
 	public void setCc_endDate(String cc_endDate) {
 		this.cc_endDate = cc_endDate;
 	}
+
 	
 	
 	

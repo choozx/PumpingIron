@@ -37,15 +37,16 @@ cc_startDate date not null,
 cc_endDate date not null
 );
 
-create sequence calendar_conteste_seq;
+create sequence calendar_contest_seq;
 
 
-insert into calendar_contest values(calendar_conteste_seq.nextval, '대회1', '2022-03-14', '2022-03-14');
+insert into calendar_contest values(calendar_contest_seq.nextval, '대회1', '2022-03-14', '2022-03-14');
 
 select * from calendar_contest;
 select cc_text, cc_startDate, cc_endDate from calendar_contest
 
---drop table calendar_contest;
+drop table calendar_contest;
+drop sequence calendar_contest_seq;
 
 
 

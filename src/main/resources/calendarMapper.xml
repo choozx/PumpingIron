@@ -24,7 +24,7 @@
 <!-- ___________대회일정 캘린더___________ -->
 
 <insert id="regSchedule" parameterType="com.fp.pi.calendar.ContestBean">
- 	insert into calendar_contest values (calendar_conteste_seq.nextval, #{cc_text}, #{cc_startDate}, #{cc_endDate})
+ 	insert into calendar_contest values (calendar_contest_seq.nextval, #{cc_text}, #{cc_startDate}, #{cc_endDate})
 </insert>
 
 <select id="contestSchedule" resultType="com.fp.pi.calendar.ContestBean">

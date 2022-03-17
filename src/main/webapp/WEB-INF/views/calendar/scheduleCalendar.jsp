@@ -2,16 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html >
-<html lang='en'>
+<html>
 <head>
 <meta charset="UTF-8">
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
  <link href='resources/css/calendar/main.css' rel='stylesheet' />
 <script type="text/javascript" src='resources/js/calendar/main.js'></script> 
-<script type="text/javascript" src='resources/js/calendar/locales-all.js'></script>
+<script type="text/javascript" src='resources/js/calendar/locales/ko.js'></script>
 	
 	
 <script type="text/javascript">

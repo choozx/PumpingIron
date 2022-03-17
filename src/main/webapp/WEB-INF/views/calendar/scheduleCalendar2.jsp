@@ -120,8 +120,8 @@ function getCalendarDataInDB(){
     $.ajax({
         contentType:'application/json',
         dataType:'json',
-        url:'schedule.getData',
-        type:'GET',
+        url:'calendar/getall',
+        type:'post',
         async: false,
         data:JSON.stringify(viewData),
         success:function(resp){
@@ -144,7 +144,7 @@ function getCalendarDataInDB(){
  
 </script>
 <!-- 캘린더 한글 설정 -->
-<!-- <script src="js/calendar/calmain.js"></script> -->
+<script src="js/calendar/calmain.js"></script>
 <style>
  
   html, body {
