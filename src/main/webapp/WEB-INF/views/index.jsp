@@ -37,6 +37,7 @@
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/customerservice/customerservice.js"></script>
 <script type="text/javascript" src="resources/js/del/delcon.js"></script>
+<script type="text/javascript" src="resources/js/review2/delcon.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(

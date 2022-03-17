@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fp.pi.review.Review2Mapper">
+
+
+<select id="reviews" resultType="com.fp.pi.review.community_review2">
+
+select * from community_review2 order by c2_like desc
+
+
+</select>
+
+<select id="getDetail" resultType="com.fp.pi.review.community_review2">
+
+select * from community_review2 where c2_no = #{c2_no}
+
+
+</select>
+
+
+<select id="getMsgCount" resultType="com.fp.pi.review.community_review2" parameterType="Selector">
+select * from (select rownum as rn, c2_no, c2_title, c2_content, c2_like, c2_views, 
+c2_tips, c2_bodyProfile, c2_productReview, c2_email, c2_nickname, c2_date from 
+
+			(select * from community_review2	order by c2_date desc)	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
+
+
+</select>
+
+
+<insert id="writeCon" parameterType="com.fp.pi.review.community_review2">
+
+insert into community_review2 values(community_review2_seq.nextval, #{c2_title}, #{c2_content}, 0, 0, #{c2_tips}, #{c2_bodyProfile}, #{c2_productReview},#{c2_email},#{c2_nickname}, sysdate)
+ 
+
+
+</insert>
+
+<delete id="delete" parameterType="com.fp.pi.review.community_review2">
+
+delete from community_review2 where c2_no = #{c2_no}
+
+
+</delete>
+
+
+
+<update id="update" parameterType="com.fp.pi.review.community_review2">
+update community_review2 set c2_content = #{c2_content}, c2_title = #{c2_title} where c2_no = #{c2_no}
+
+
+
+</update>
+
+
+<select id="getmsgcount" resultType="int">
+ select count(*) from community_review2
+</select>
+
+
+<!-- 댓글 조회 -->
+<select id="replys" resultType="com.fp.pi.review.community_review2" parameterType="com.fp.pi.review.community_review2_reply">
+
+select * from community_review2_reply  where c2r_c2_no = #{c2r_c2_no} order by c2r_date desc
+</select>
+
+
+
+<!-- 댓글 등록 -->
+<insert id="getReply" parameterType="com.fp.pi.review.community_review2_reply">
+
+insert into community_review2_reply values(community_review2_reply_seq.nextval, #{c2r_c2_no}, #{c2r_text}, #{c2r_c2_nickname}, sysdate)
+</insert>
+
+<!-- 댓글 삭제  -->
+<delete id="delReply" parameterType="com.fp.pi.review.community_review2_reply">
+
+delete from community_review2_reply where c2r_no = #{c2r_no}
+
+</delete>
+
+<!-- 댓글 수정 -->
+<update id="upReply" parameterType="com.fp.pi.review.community_review2_reply">
+
+update community_review2_reply set c2r_text = #{c2r_text} where c2r_no = #{c2r_no}
+
+</update>
+
+<!-- 조회수 -->
+<update id="views" parameterType="com.fp.pi.review.community_review2">
+	UPDATE
+		community_review2
+	SET
+		c2_views = c2_views + 1
+	WHERE
+		c2_no = #{c2_no}
+</update>
+<select id="likeOfTips" parameterType="map" resultType="com.fp.pi.review.HeartDTO2">
+	select * from heart_table2 where h_c2_no = #{idd} and h_m_email = #{emaill}
+</select>
+
+ <insert id="likeOfTipsInsert" parameterType="HeartDTO2">
+	insert into heart_table2 values(heart_table2_seq.nextval, #{h_c2_no}, #{h_m_email})
+</insert>
+
+ <delete id="likeOfTipsDelete" parameterType="HeartDTO2">
+	delete heart_table2 where h_m_email = #{h_m_email}
+</delete>
+  <select id="allLike" resultType="int" parameterType="community_review2">
+	select count(*) from heart_table2 where h_c2_no = #{c2_no}
+</select>
+
+
+
+
+
+
+
+
+</mapper>

@@ -168,8 +168,6 @@ public class tipsController {
 	
 	
 	
-	
-	
 	@RequestMapping(value = "/summorFileUpload", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody String summerUpload(HttpServletRequest req) {
 		return tDAO.getSummorJSON(req);

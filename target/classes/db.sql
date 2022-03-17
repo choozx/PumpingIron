@@ -164,4 +164,18 @@ insert into heart_table values(heart_table_seq.nextval, 101, '1234@gmail.com')
 select * from heart_table;	
 
 select count(*) from heart_table where h_cr_no = 101
+-------------------------------------------------------------------------------------------
+
+create table heart_table2(
+h_no  number(7) primary key,
+h_c2_no  number(7) not null, --게시글 넘버
+h_m_email varchar2(50 char) not null, -- 회원 이메일 
+constraint h_for_no
+		foreign key(h_c2_no) references community_review2(c2_no) on delete cascade,
+		foreign key(h_m_email) references member(m_email) on delete cascade);
+
+create sequence heart_table2_seq;
+insert into heart_table values(heart_table2_seq.nextval, 101, '1234@gmail.com')
+select * from heart_table2;	
+
 
