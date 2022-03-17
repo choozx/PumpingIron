@@ -24,6 +24,18 @@ insert into PRODUCTS values(products_seq.nextval, '신발', 'shoes', 11000, 'sho
 select * from (select rownum as rn,p_no,p_name,p_type,p_price,p_img,p_info,p_cnt from products where p_type = 'supplements') where rn >= 1 and rn <= 10;
 select * from (select rownum as rn, products.* from (select * from products where p_type = 'supplements' ORDER BY p_price DESC)products) where rn >= 1 and rn <= 10;
 --------------------------------------------------------------------
+create table cart(
+	cart_no number(7) primary key,
+	m_email varchar2(100 char) not null,
+	p_no number(7) not null,
+	constraint cart_for_no
+		foreign key(p_no) references products(p_no) on delete cascade,
+		foreign key(m_email) references member(m_email) on delete cascade
+)
+create sequence cart_seq;
+
+select * from CART
+--------------------------------------------------------------------
 create table product_review(
 
 r_no number(7) primary key,

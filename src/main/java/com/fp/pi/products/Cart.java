@@ -2,20 +2,18 @@ package com.fp.pi.products;
 
 public class Cart {
 	private int cart_no;
-	private int m_no;
+	private String m_email;
 	private int p_no;
-	private Product product;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int cart_no, int m_no, int p_no, Product product) {
+	public Cart(int cart_no, String m_email, int p_no, Product product) {
 		super();
 		this.cart_no = cart_no;
-		this.m_no = m_no;
+		this.m_email = m_email;
 		this.p_no = p_no;
-		this.product = product;
 	}
 
 	public int getCart_no() {
@@ -26,12 +24,12 @@ public class Cart {
 		this.cart_no = cart_no;
 	}
 
-	public int getM_no() {
-		return m_no;
+	public String getM_email() {
+		return m_email;
 	}
 
-	public void setM_no(int m_no) {
-		this.m_no = m_no;
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
 	}
 
 	public int getP_no() {
@@ -40,14 +38,6 @@ public class Cart {
 
 	public void setP_no(int p_no) {
 		this.p_no = p_no;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
 	}
 	
 	

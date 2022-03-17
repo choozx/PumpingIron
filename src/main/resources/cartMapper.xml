@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.products.CartMapper">
-	<insert id="cartInsert">
-		INSERT INTO CART (
-		CART_NO , CART_ITEM_NO , CART_MEM_NO
-		)VALUES(
-		(SELECT NVL(MAX(CART_NO), 0) + 1 FROM CART) , #{cart_item_no} , ${cart_mem_no}
-		)
-	</insert>	
+	
+	<select id="cartCheck" parameterType="com.fp.pi.products.Cart" resultType="int">
+		select count(*) from cart where m_email = #{m_email} and p_no = #{p_no}
+	</select>
+	
+	<insert id="addCart" parameterType="com.fp.pi.products.Cart">
+		insert into cart values(cart_seq.nextval, #{m_email}, #{p_no})
+	</insert>
 </mapper>
