@@ -180,12 +180,15 @@ $(function() {
       	 console.log('clicked on ' + info.dateStr);
       	//alert('Clicked on: ' + info.dateStr);
       	});
-      
-      
         
+        
+        var str = $('#calendar_content').val();
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+        $('#calendar_content').val(str);
         
         
 });    
+
 
     </script>
     
@@ -194,7 +197,7 @@ $(function() {
 </head>
 <body>
 
-	<!-- admin 확인 
+	<!-- admin 확인 -->
 	<input id="login_check" type="hidden" value="${sessionScope.loginMember.m_email}">
 	
 	<c:forEach items="${contest}" var="con">
@@ -202,7 +205,7 @@ $(function() {
 	<input class="toConsole_text" type="hidden" value="${con.cc_text}">
 	<input class="toConsole_sDate" type="hidden" value="${con.cc_startDate}">
 	<input class="toConsole_eDate" type="hidden" value="${con.cc_endDate}">
-	</c:forEach> -->
+	</c:forEach> 
 	
 
 
@@ -216,7 +219,7 @@ $(function() {
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header"> 
                     <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
                     <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -224,8 +227,8 @@ $(function() {
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="taskId" class="col-form-label">일정 내용</label>
-                        <input type="text" class="form-control" id="calendar_content" name="cc_text">
+                        <label for="taskId" class="col-form-label">일정  내용</label>
+                        <input class="form-control" id="calendar_content" name="cc_text" >
                         <label for="taskId" class="col-form-label">시작 날짜</label>
                         <input type="date" class="form-control" id="calendar_start_date" name="cc_startDate">
                         <label for="taskId" class="col-form-label">종료 날짜</label>
