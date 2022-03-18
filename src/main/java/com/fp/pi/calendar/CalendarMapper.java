@@ -18,4 +18,6 @@ public interface CalendarMapper {
 
 	int delSchedule(ContestBean c);
 
+	List<ContestDetailBean> detailSchedule();
+
 }

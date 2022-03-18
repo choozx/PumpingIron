@@ -49,16 +49,23 @@ select cc_text, cc_startDate, cc_endDate from calendar_contest
 -- drop sequence calendar_contest_seq;
 
 
--- 아직 생성 안 함 ㅇㅇ
+
+
 create table calendar_contest_detail(
-ccd_no number(7) primary key, -- setCc_no로 설정
+ccd_no number(7) primary key,
+ccd_title varchar2(100 char) not null,
 ccd_img varchar2(500 char) not null,
-ccd_text varchar2(200 char) not null
+ccd_text varchar2(4000 char) not null
 );
+
+insert into calendar_contest_detail values(22, '20220319_PCA경북', 'resources/img/calendar/20220319_PCA경북.jpg',
+'dddda');
 
 delete calendar_contest, calendar_contest_detail where cc_no and ccd_no;
 
 select * from calendar_contest_detail;
+
+drop table calendar_contest_detail;
 
 
 

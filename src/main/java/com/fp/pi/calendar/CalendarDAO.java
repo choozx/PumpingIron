@@ -115,6 +115,19 @@ public class CalendarDAO {
 	}
 	
 	
+
+
+	public List<ContestDetailBean> selectDetail(ContestDetailBean cd, HttpServletRequest req) {
+		
+		List<ContestDetailBean> details = ss.getMapper(CalendarMapper.class).detailSchedule();
+		
+		req.setAttribute("detail", details);
+		
+		return details;
+		
+	}
+	
+	
 	
 	
 	

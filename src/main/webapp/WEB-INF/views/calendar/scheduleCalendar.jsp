@@ -131,6 +131,7 @@ $(function() {
               displayEventTime: false // 시간 표시 x
 
         });
+        
         }  else {
         // 로그인 id가 admin이 아닐 때 /////////////////
         	
@@ -165,7 +166,25 @@ $(function() {
               eventClick: function(info) { // 관리자가 아닐 경우 => 클릭시 상세 페이지
               	let numSchedule = info.event.id;
                  
-              	location.href = '';
+              	$("#detailModal").modal("show"); // modal 나타내기
+              	
+        			/* $.ajax({
+					type: "GET",
+					url: "schedule.getDetail",
+					data: {"ccd_title" : content,"ccd_text" : start_date, "ccd_img" : end_date},
+					success: function(data) {
+						console.log(data)
+						$.each(data, function(i,c) {
+							$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<span class="delRoutine" style="color: white;"> x </span></h6>');
+						});
+					}
+				})  */
+              	
+              	$('#doModalClose').on("click", function() {
+						$('#detailModal').click();
+				});
+              
+              //	location.href = '';
   				
   			},
               
@@ -181,10 +200,6 @@ $(function() {
       	//alert('Clicked on: ' + info.dateStr);
       	});
         
-        
-        var str = $('#calendar_content').val();
-        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
-        $('#calendar_content').val(str);
         
         
 });    
@@ -244,6 +259,43 @@ $(function() {
             </div>
         </div>
     </div>
+
+
+
+
+
+ <!-- modal 추가 -->
+ 	
+    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            
+                <div class="modal-header"> 
+                    <h5 class="modal-title" id="exampleModalLabel"> dsadas </h5>
+                    <button type="button" id="doModalClose" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="form-group">
+                    
+                        <div id="detail_img">
+                        	<img src="${d.ccd_img}">
+                        </div>
+                        
+                        <div id="detail_text">
+                        	${d.ccd_img}
+                        </div>
+                        
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>

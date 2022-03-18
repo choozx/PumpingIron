@@ -57,8 +57,8 @@ public class CalendarController {
 	public @ResponseBody List<ContestBean> scheduleData(ContestBean c, HttpServletRequest req) {
 		
 		if(mDAO.loginCheck(req)) {
-			cDAO.selectSchdule(c, req);
 		}
+		cDAO.selectSchdule(c, req);
 		
 		return cDAO.selectSchdule(c, req);
 	}
@@ -77,14 +77,14 @@ public class CalendarController {
 	
 	
 	// ajax로 바꾸기
-	@RequestMapping(value = "/schedule.detail", method = RequestMethod.GET)
-	public String scheduleDetail(ContestBean c, HttpServletRequest req) {
+	@RequestMapping(value = "/schedule.getDetail", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody List<ContestDetailBean> scheduleDetail(ContestDetailBean cd, HttpServletRequest req) {
 		
-		if (mDAO.loginCheck(req)) {
+		if(mDAO.loginCheck(req)) {
 		}
+		cDAO.selectDetail(cd, req);
 		
-		return "";
-		
+		return cDAO.selectDetail(cd, req);
 	}
 
 		
