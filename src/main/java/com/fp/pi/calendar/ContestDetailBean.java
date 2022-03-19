@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class ContestDetailBean {
 	
 	private BigDecimal ccd_no;
+	private String ccd_title;
 	private String ccd_img;
 	private String ccd_text;
 
@@ -14,9 +15,10 @@ public class ContestDetailBean {
 	}
 
 
-	public ContestDetailBean(BigDecimal ccd_no, String ccd_img, String ccd_text) {
+	public ContestDetailBean(BigDecimal ccd_no, String ccd_title, String ccd_img, String ccd_text) {
 		super();
 		this.ccd_no = ccd_no;
+		this.ccd_title = ccd_title;
 		this.ccd_img = ccd_img;
 		this.ccd_text = ccd_text;
 	}
@@ -29,6 +31,16 @@ public class ContestDetailBean {
 
 	public void setCcd_no(BigDecimal ccd_no) {
 		this.ccd_no = ccd_no;
+	}
+	
+	
+	public String getCcd_title() {
+		return ccd_title;
+	}
+
+
+	public void setCcd_title(String ccd_title) {
+		this.ccd_title = ccd_title;
 	}
 
 

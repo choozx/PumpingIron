@@ -164,28 +164,27 @@ $(function() {
               ],
               
               eventClick: function(info) { // 관리자가 아닐 경우 => 클릭시 상세 페이지
-              	let numSchedule = info.event.id;
+              	 let numSchedule = info.event.id;
+             	 console.log(numSchedule);
+             	 
+             	$('#numFromJS').val(numSchedule);
+             	
+             	location.href = "schedule.getDetail?ccd_no=" + numSchedule;
                  
-              	$("#detailModal").modal("show"); // modal 나타내기
-              	
-        			/* $.ajax({
+              /* 	$.ajax({
 					type: "GET",
 					url: "schedule.getDetail",
-					data: {"ccd_title" : content,"ccd_text" : start_date, "ccd_img" : end_date},
+					data: {'ccd_no' : numSchedule},
 					success: function(data) {
 						console.log(data)
-						$.each(data, function(i,c) {
-							$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<span class="delRoutine" style="color: white;"> x </span></h6>');
-						});
+						$("#detailModal").modal("show"); // modal 나타내기
 					}
-				})  */
-              	
+				})       */ 
+				
               	$('#doModalClose').on("click", function() {
 						$('#detailModal').click();
 				});
-              
-              //	location.href = '';
-  				
+              	
   			},
               
               editable: false, // false로 변경 시 draggable 작동 x 
@@ -215,21 +214,13 @@ $(function() {
 	<!-- admin 확인 -->
 	<input id="login_check" type="hidden" value="${sessionScope.loginMember.m_email}">
 	
-	<c:forEach items="${contest}" var="con">
-	<input class="toConsole_no" type="hidden" value="${con.cc_no}">
-	<input class="toConsole_text" type="hidden" value="${con.cc_text}">
-	<input class="toConsole_sDate" type="hidden" value="${con.cc_startDate}">
-	<input class="toConsole_eDate" type="hidden" value="${con.cc_endDate}">
-	</c:forEach> 
-	
-
 
 	<!-- Calendar div -->
         <div id="calendar" class="container"></div>
 
 
 
- <!-- modal 추가 -->
+ <!-- 일정 등록 modal -->
     <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -262,31 +253,38 @@ $(function() {
 
 
 
+	<input name="ccd_no" id="numFromJS" type="hidden" value="">
 
-
- <!-- modal 추가 -->
+ <!-- 상세페이지 modal -->
+	
+	<%-- <c:forEach items="${detail}" var="d" >
+	<input name="ccd_no" id="toJs_no" type="hidden" value="${d.ccd_no}">
+	<input name="ccd_title" id="toJs_title" type="hidden" value="${d.ccd_title}">
+	<input name="ccd_img" id="toJs_img" type="hidden" value="${d.ccd_img}">
+	<textarea name="ccd_text" id="toJs_text" style="display: none;">${d.ccd_text}</textarea>
+	
+	 
  	
     <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            
                 <div class="modal-header"> 
-                    <h5 class="modal-title" id="exampleModalLabel"> dsadas </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> ${d.ccd_title} </h5>
                     <button type="button" id="doModalClose" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                
-                <div class="modal-body">
+               
+                <div class="modal-body" style="text-align: center;">
                     <div class="form-group">
                     
                         <div id="detail_img">
-                        	<img src="${d.ccd_img}">
+                        	<img style="width: 460px; " src="${d.ccd_img}">
                         </div>
                         
                         <div id="detail_text">
-                        	${d.ccd_img}
+							${d.ccd_text}
                         </div>
                         
                     </div>
@@ -295,7 +293,7 @@ $(function() {
             </div>
         </div>
     </div>
-
+    </c:forEach> --%>
 
 </body>
 </html>

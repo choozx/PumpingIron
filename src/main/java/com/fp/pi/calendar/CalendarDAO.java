@@ -1,5 +1,6 @@
 package com.fp.pi.calendar;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -115,17 +116,43 @@ public class CalendarDAO {
 	}
 	
 	
+	
+	public void selectDetail_all(ContestDetailBean cd, HttpServletRequest req) {
+		
+		List<ContestDetailBean> details = ss.getMapper(CalendarMapper.class).detailSchedule2();
+		
+		req.setAttribute("detail", details);
+		
+	}
 
 
+	public void selectDetail(ContestDetailBean cd, HttpServletRequest req) {
+		
+		BigDecimal num = cd.getCcd_no();
+		System.out.println(num);
+		
+		List<ContestDetailBean> details = ss.getMapper(CalendarMapper.class).detailSchedule(cd);
+		
+		req.setAttribute("detail", details);
+		
+	}
+	
+	
+	/*	
 	public List<ContestDetailBean> selectDetail(ContestDetailBean cd, HttpServletRequest req) {
 		
-		List<ContestDetailBean> details = ss.getMapper(CalendarMapper.class).detailSchedule();
+		BigDecimal num = cd.getCcd_no();
+		System.out.println(num);
+		
+//		cd.setCcd_no(num);
+		
+		List<ContestDetailBean> details = ss.getMapper(CalendarMapper.class).detailSchedule(cd);
 		
 		req.setAttribute("detail", details);
 		
 		return details;
-		
 	}
+*/
 	
 	
 	

@@ -58,12 +58,16 @@ ccd_img varchar2(500 char) not null,
 ccd_text varchar2(4000 char) not null
 );
 
-insert into calendar_contest_detail values(22, '20220319_PCA경북', 'resources/img/calendar/20220319_PCA경북.jpg',
+insert into calendar_contest_detail values(23, '20220320_NPCA경북', 'resources/img/calendar/20220320_NPCA경북.png',
 'dddda');
 
+update calendar_contest_detail where cc_no = 
+
+delete calendar_contest_detail;
 delete calendar_contest, calendar_contest_detail where cc_no and ccd_no;
 
 select * from calendar_contest_detail;
+select * from calendar_contest_detail where ccd_no = 23
 
 drop table calendar_contest_detail;
 

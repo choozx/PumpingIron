@@ -28,11 +28,12 @@ public class CalendarController {
 	
 	
 	@RequestMapping(value = "/schedule.go", method = RequestMethod.GET)
-	public String scheduleGo(ContestBean c, HttpServletRequest req) {
+	public String scheduleGo(ContestBean c, ContestDetailBean cd, HttpServletRequest req) {
 		
 		if (mDAO.loginCheck(req)) {
 		}
 		cDAO.selectSchdule(c, req);
+		cDAO.selectDetail_all(cd, req);
 		
 		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";
@@ -54,7 +55,7 @@ public class CalendarController {
 	
 	
 	@RequestMapping(value = "/schedule.getData", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<ContestBean> scheduleData(ContestBean c, HttpServletRequest req) {
+	public @ResponseBody List<ContestBean> scheduleData(ContestDetailBean cd,ContestBean c, HttpServletRequest req) {
 		
 		if(mDAO.loginCheck(req)) {
 		}
@@ -76,7 +77,18 @@ public class CalendarController {
 	}
 	
 	
-	// ajax로 바꾸기
+	@RequestMapping(value = "/schedule.getDetail", method = RequestMethod.GET, produces="application/json")
+	public String scheduleDetail(ContestDetailBean cd, HttpServletRequest req) {
+		
+		if(mDAO.loginCheck(req)) {
+		}
+		cDAO.selectDetail(cd, req);
+		
+		req.setAttribute("contentPage", "calendar/scheduleDetail.jsp");
+		return "index";
+	}
+	
+	/*	
 	@RequestMapping(value = "/schedule.getDetail", method = RequestMethod.GET, produces="application/json")
 	public @ResponseBody List<ContestDetailBean> scheduleDetail(ContestDetailBean cd, HttpServletRequest req) {
 		
@@ -86,7 +98,7 @@ public class CalendarController {
 		
 		return cDAO.selectDetail(cd, req);
 	}
-
+*/
 		
 	
 	

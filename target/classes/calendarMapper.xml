@@ -36,8 +36,12 @@
 	delete calendar_contest where cc_no = #{cc_no}
 </delete>
 
-<select id="detailSchedule" resultType="com.fp.pi.calendar.ContestDetailBean" parameterType="com.fp.pi.calendar.ContestBean">
-	select * from calendar_contest_detail where ccd_no = #{cc_no}
+<select id="detailSchedule" resultType="com.fp.pi.calendar.ContestDetailBean" parameterType="com.fp.pi.calendar.ContestDetailBean">
+	select * from calendar_contest_detail where ccd_no = #{ccd_no}
+</select>
+
+<select id="detailSchedule2" resultType="com.fp.pi.calendar.ContestDetailBean">
+	select * from calendar_contest_detail
 </select>
 
 </mapper>
