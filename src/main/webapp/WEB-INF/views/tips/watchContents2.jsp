@@ -10,6 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
+<script src="resources/js/del/like.js"></script>
 <style>
 .reply-write-btn {
 position: absolute;
@@ -38,7 +39,7 @@ ${result }
 <div class="board-header mb-2">
 <div class="title-center text-center">
 
-<a href="tips/tips.jsp">
+<a href="">
 <span class="prompt-h1">Q/A</span>
 </a>
 </div>
@@ -65,11 +66,13 @@ ${result }
 </div>
 <div class="text-bottom d-flex align-items-center">
 <span class="noto-pb">${tippp.cr_nickname }</span>
+
+<!-- 좋아요 -->
 <p class="d-flex align-items-center ml-3 m-0 noto-pb">
-<span class="viewer-like viewer-like-count noto-h4">0</span>&nbsp
+<span class="viewer-like viewer-like-count noto-h4"></span>&nbsp
 <span class="material-icons viewer-like-icon ml-1 cursor" data-type="0"
- data-like-cnt="0" data-islike="0" onclick="" >
- <img alt="" src="resources/img/tips/love.png" style="width: 18px">
+ data-like-cnt="" data-islike="0">
+  <img id="likeImg" src="resources/img/tips/heart.svg" style="width: 18px">
  </span>
 
 
@@ -81,17 +84,18 @@ ${result }
 
 </div>
 </div>
-<div class="viewer-right">
+<div class="viewer-right" style="margin-top: 20px">
 <div class="right-bottom d-flex justify-content-end">
 
 <div class="viewer-view-count mr-3">
 <span class="count-text mr-2 noto-pb">조회수</span>
-<span class="count-number noto-pb">${tippp.cr_views }</span>&nbsp
+<span class="count-number noto-pb">${tippp.cr_views }</span>&nbsp&nbsp
 
 </div>
 <div class="viewer-view-data">
 <span class="count-text mr-2 noto-pb">작성시간</span>
-<span class="count-data noto-pb" >${tippp.cr_date }</span>
+
+<span class="count-data noto-pb"><fmt:formatDate value="${tippp.cr_date }"/></span>
 
 
 
@@ -194,8 +198,8 @@ ${result }
 
 <c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
 <div class="d-flex align-items-center comment-right" style="float: right;">
-<button class="update" onclick="updateReply('${p.crr_no}','${p.crr_cr_no}','${p.crr_text}')" style="float: right;">수정</button>
-<button class="delete" onclick="deleteReply(${p.crr_no},${p.crr_cr_no})" style="float: right;">삭제</button>
+<button class="update" onclick="updateReply('${p.crr_no}','${p.crr_cr_no}','${p.crr_text}');" style="float: right;">수정</button>
+<button class="delete" onclick="deleteReply('${p.crr_no}','${p.crr_cr_no}');" style="float: right;">삭제</button>
 </div>
 </c:if>
 
@@ -238,9 +242,13 @@ class="bg-whtie comment-textarea" name="crr_text"></textarea>
 <div class="reply-write-btn container" style="margin-right: 2px">
 
 <div class="write-btn-right">
-<input type="hidden" value="${tippp.cr_no }" name="cr_no">
+
+<input type="hidden" value="${tippp.cr_no}" name="crr_cr_no" id="likeId">
+<input type="hidden" value="${sessionScope.loginMember.m_email }"id="likeEmail">
 <input type="hidden" name="token" value="${token }">
-<%-- <input type="hidden" value="${re.crr_no }" name="crr_no">  --%>
+<input type="hidden" name="cr_no" value="${tippp.cr_no }">
+
+<%-- <input type="hidden" value="${re.crr_no }" name="crr_no"> --%>
 <button class="noto-pb submit-btn"  name="button"
  style="margin-right: 70px;">댓글등록</button>
 

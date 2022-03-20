@@ -51,18 +51,17 @@ ${result }
     </tr>
   </thead>
   <tbody>
-  <c:forEach var="m" items="${reviews }" >
+  <c:forEach var="m" items="${reviews }">
     <tr>
       <th scope="row">${m.cr_no}</th>
-      <td><a href="watchContents.go?cr_no=${m.cr_no }"><span>${m.cr_title}</span></a></td>
+      <td><a href="watchContents.go?cr_no=${m.cr_no }&token2=${token2}"><span>${m.cr_title}</span></a></td>
       <td>${m.cr_nickname }</td>
       <td><fmt:formatDate value="${m.cr_date}" type="date" dateStyle="short" />
       </td>
       <td>${m.cr_views }</td>
       
-      <c:forEach var="m" items="${m.cr_like }">
-      <td>${m.cr_like }</td>
-      </c:forEach>
+      <td class="viewer-like" style="color: black;"> ${m.cr_like}</td>
+
       
     </tr>
   </c:forEach>

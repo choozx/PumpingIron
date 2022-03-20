@@ -77,6 +77,7 @@ public class MemberController {
 	public String joinGo(Member m, HttpServletRequest req, HttpServletResponse respons) {
 		
 		mDAO.join(m, req, respons);
+		//System.out.println(m.getM_email());
 		mailsender.mailSendWithUserKey(m.getM_email(), req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
