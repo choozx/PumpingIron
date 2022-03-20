@@ -10,4 +10,8 @@ public interface CartMapper {
 
 	public List<Product> getcart(Cart cart);
 
+	public int delCartAll(Cart cart);
+
+	public int delCart(Cart cart);
+
 }

@@ -38,12 +38,34 @@ public class CartContoller {
 	}
 	
 	@RequestMapping(value = "/cart.go", method = RequestMethod.GET)
-	public String ProductDetail(Cart cart, HttpSession session, HttpServletRequest request) {
+	public String cartGo(Cart cart, HttpSession session, HttpServletRequest request) {
 		
 		Member member = (Member) session.getAttribute("loginMember");
 		cart.setM_email(member.getM_email());
 		
 		cDAO.getCart(cart, request);
+		request.setAttribute("contentPage", "products/cart.jsp");
+		return "index";  
+	}
+	
+	@RequestMapping(value = "/cart.del.all", method = RequestMethod.GET)
+	public String cartDelAll(Cart cart, HttpSession session, HttpServletRequest request) {
+		
+		Member member = (Member) session.getAttribute("loginMember");
+		cart.setM_email(member.getM_email());
+		
+		cDAO.delCartAll(cart, request);
+		request.setAttribute("contentPage", "products/cart.jsp");
+		return "index";  
+	}
+	
+	@RequestMapping(value = "/cart.del", method = RequestMethod.GET)
+	public String cartDel(Cart cart, HttpSession session, HttpServletRequest request) {
+		
+		Member member = (Member) session.getAttribute("loginMember");
+		cart.setM_email(member.getM_email());
+		
+		cDAO.delCart(cart, request);
 		request.setAttribute("contentPage", "products/cart.jsp");
 		return "index";  
 	}

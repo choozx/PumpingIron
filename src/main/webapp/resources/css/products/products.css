@@ -74,3 +74,51 @@
 #kakao_pay_div{
 	float: right;
 }
+
+#cart_name{
+	margin-top: 50px;
+	font-weight: bold;	
+}
+
+#product_cart_div{
+	height: 100px;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+#product_cart_img_div{
+	height: 100px;
+	width: 100px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-right: 100px;
+	object-fit: cover;
+	float: left;
+}
+
+#product_cart_name_div{
+	width: 300px;
+	float: left;
+}
+
+#product_cart_price_div{
+	width:300px;
+	float: left;
+	font-weight: bold;
+}
+
+#cart_quantity{
+	width: 150px;
+}
+
+#cart_quantity_div{
+	width: 150px;
+	float: left;
+	margin-right: 100px;
+}
+
+#cartDel{
+	height: 50px;
+	width: 50px;
+	object-fit: cover;
+}

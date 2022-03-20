@@ -37,9 +37,37 @@ public class CartDAO {
 
 	public void getCart(Cart cart, HttpServletRequest request) {
 		List<Product> p = ss.getMapper(CartMapper.class).getcart(cart);
-		System.out.println(p.get(0).getP_name());
-		System.out.println(p.get(1).getP_name());
 		request.setAttribute("myCart", p);
+
+	}
+
+	public void delCartAll(Cart cart, HttpServletRequest request) {
+
+		try {
+			
+			if (ss.getMapper(CartMapper.class).delCartAll(cart) >= 1) {
+				System.out.println("삭제 성공");
+			} else {
+				System.out.println("삭제 실패");			
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void delCart(Cart cart, HttpServletRequest request) {
+		
+		try {
+			
+			if (ss.getMapper(CartMapper.class).delCart(cart) == 1) {
+				System.out.println("삭제 성공");
+			} else {
+				System.out.println("삭제 실패");			
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

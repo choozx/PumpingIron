@@ -13,4 +13,12 @@
 	<insert id="addCart" parameterType="com.fp.pi.products.Cart">
 		insert into cart values(cart_seq.nextval, #{m_email}, #{p_no})
 	</insert>
+	
+	<delete id="delCartAll" parameterType="com.fp.pi.products.Cart">
+		delete from cart where m_email = #{m_email}
+	</delete>
+	
+	<delete id="delCart" parameterType="com.fp.pi.products.Cart">
+		delete from cart where m_email = #{m_email} and p_no = #{p_no}
+	</delete>
 </mapper>
