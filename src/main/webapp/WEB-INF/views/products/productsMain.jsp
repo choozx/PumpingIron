@@ -10,8 +10,6 @@
 <body>
 	<div class="container">
 	<div id="products_banner"><input id="p_type" type="hidden" value="${param.p_type }">보충제</div>
-=======
-<body class="container">
 	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }">보충제</div>
 	<div id="products_select_div">
 		<select id="p_main_sort" name="p_sort">			
@@ -38,7 +36,6 @@
 				</div>
 			</c:forEach>
 		</div>
-	</c:forEach>
 	</div>
 	</div>
 	
