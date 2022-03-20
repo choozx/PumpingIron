@@ -77,7 +77,7 @@
 href="javascript:history.back();" type="button">취소</a>
 
 <button class="ml-3 background-b-btn board-btn noto-h4" name="button1" data-type="board" data-category-id="8"
- data-id>저장</button>
+ data-id>작성</button>
 
 
 

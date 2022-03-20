@@ -43,3 +43,47 @@ select * from event;
 drop table event cascade constraint purge;
 
 DROP SEQUENCE event_seq;
+
+---------------------------------------------
+--- 고객센터(자주찾는 질문) 테이블 ---
+create table question(
+q_no number(5) primary key,
+q_title varchar2(100 char) not null,
+q_content varchar2(1000 char) not null,
+q_date date not null,
+q_type varchar2(50 char) not null
+);
+
+create sequence question_seq;
+
+select * from question;
+
+drop table question cascade constraint purge;
+
+DROP SEQUENCE question_seq;
+
+---------------------------------------------
+--- 고객센터(1:1문의) 테이블 ---
+create table inquiry(
+i_no number(5) primary key,
+i_title varchar2(100 char) not null,
+i_content varchar2(1000 char) not null,
+i_date date not null,
+i_type varchar2(50 char) not null,
+i_to varchar2(30 char) not null,
+i_from varchar2(30 char) not null,
+i_answercheck varchar2(10 char) not null,
+i_photo varchar2(200 char) not null
+);
+
+create sequence inquiry_seq;
+
+insert into inquiry values
+(inquiry_seq.nextval, '몰라', 'ㅋㅋㅋ', sysdate, '결제', 'admin',
+'iii9501@naver.com', '1' , 'test.jpg')
+
+select * from inquiry;
+
+drop table inquiry cascade constraint purge;
+
+DROP SEQUENCE inquiry_seq;

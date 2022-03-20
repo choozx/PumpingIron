@@ -65,14 +65,14 @@
 				<div class="col-sm-6 col-lg-3">
 					<div class="card flex-center">
 						<div class="card-body">
-							<h5 class="card-text text-center">Pumping Iron에 바란다</h5>
+							<h5 class="card-text text-center"><a href="customerservice.request.go">Pumping Iron에 바란다</a></h5>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-lg-3">
 					<div class="card flex-center">
 						<div class="card-body">
-							<h5 class="card-text text-center">고객센터</h5>
+							<h5 class="card-text text-center"><a href="customerservice.go">고객센터</a></h5>
 						</div>
 					</div>
 				</div>

@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body class="container">
+<body>
+	<div class="container">
 	<div id="products_banner"><input id="p_type" type="hidden" value="${param.p_type }">보충제</div>
 	<div id="products_select_div">
 		<select id="p_main_sort" name="p_sort">			
@@ -32,5 +33,6 @@
 			</a>
 		</div>
 	</c:forEach>
+	</div>
 </body>
 </html>
