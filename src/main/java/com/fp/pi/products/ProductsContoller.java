@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.pi.SiteOption;
+import com.fp.pi.TokenMaker;
+
 @Controller
 public class ProductsContoller {
 	
@@ -16,7 +19,8 @@ public class ProductsContoller {
 	
 	@RequestMapping(value = "/products.go", method = RequestMethod.GET)
 	public String ProductsMain(HttpServletRequest request) {
-		pDAO.getProducts(request);
+		pDAO.getProducts(1, request);
+		SiteOption.clearSearch(request);
 		request.setAttribute("contentPage", "products/productsMain.jsp");
 		
 		return "index";
@@ -24,7 +28,7 @@ public class ProductsContoller {
 	
 	@RequestMapping(value = "/products.sort", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
 	public @ResponseBody Products ProductsMainSort(ProductSort ps, HttpServletRequest request) {
-		Products pproducts = pDAO.getProductsSort(ps);
+		Products pproducts = pDAO.getProductsSort(ps, request);
 		return pproducts;
 	}
 	

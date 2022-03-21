@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ProductsMapper {
 
-	public List<Product> getProducts(String type);
+	public List<Product> getProducts(ProductSort ps);
 
 	public Product getProduct(Product p);
 
@@ -17,4 +17,6 @@ public interface ProductsMapper {
 	public int delProduct(String p_no);
 
 	public int updateProduct(Product p);
+
+	public int getproductcount(String type);
 }
