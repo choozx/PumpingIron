@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${sessionScope.loginMember.m_email eq '1234@gmail.com'}">
+	<c:if test="${sessionScope.loginMember.m_email eq 'admin'}">
 		<div id="product_controll" class="container">
 			<button id="delBtn">삭제</button>
 			<button id="updateBtn" onclick="location.href='updateProduct.go?p_no='+${productDetail.p_no }">수정</button>
@@ -19,7 +19,6 @@
 		<div id="product_detail_img_div"><img id="product_detail_img" src="resources/file/${productDetail.p_img }"></div>
 		<div id="product_info">
 			<div id="product_name_div"><input id="product_name" type="hidden" value="${productDetail.p_name }">${productDetail.p_name }</div>
-			<div id="product_star">별점</div>
 			<div id="product_price_div"><input id="product_price" type="hidden" value="${productDetail.p_price }">${productDetail.p_price }</div>
 			<div id="product_quantity">수량<p><input class="container" type="text" value="1" id='detail_quantity'></div>
 			
@@ -29,10 +28,10 @@
 			<input id="member_email" type="hidden" value="${sessionScope.loginMember.m_email }">
 			<input id="member_name" type="hidden" value="${sessionScope.loginMember.m_name }">			
 			<input id="member_phone" type="hidden" value="${sessionScope.loginMember.m_phone }">			
-			<input id="total_amount">
+			<input id="total_amount" type="hidden">
 			
 			<div id="kakao_pay_div"><img id="kakao_pay" src="resources/img/products/payment_icon_yellow_small.png"></div>
-			<div id="addCart">장바구니</div>
+			<div id="addCart"><i class="fa-solid fa-cart-shopping" style="color: black;"></i></div>
 		</div>
 	</div>
 	<div style="clear: both;"></div>

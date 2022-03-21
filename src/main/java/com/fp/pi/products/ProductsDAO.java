@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fp.pi.SiteOption;
-import com.fp.pi.tips.Selector;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -46,23 +45,19 @@ public class ProductsDAO {
 			ProductSort ps = (ProductSort) request.getSession().getAttribute("search");
 			int productCount = 0;
 			
-			if (ps == null) {
-				//search = new Selector("", new BigDecimal(start), new BigDecimal(end));
-				ps = new ProductSort("", p_type, "", new BigDecimal(start), new BigDecimal(end));
-				productCount = allProductCount; // 전체 개시글 수     
+			ps = new ProductSort("p_name", p_type, "",new BigDecimal(1) ,new BigDecimal(start), new BigDecimal(end));
+			productCount = allProductCount; // 전체 개시글 수     
+			/*if (ps == null) {
 			} else {
+				ps.setP_sort("p_name");
 				ps.setStart(new BigDecimal(start));
 				ps.setEnd(new BigDecimal(end));
-			}
+			}*/
 			
 			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts(ps));
 			
 			int pageCount = (int) Math.ceil(productCount / (double) count);
-			System.out.println(productCount);
-			System.out.println(count);
 			request.setAttribute("pageCount", pageCount);
-			System.out.println(pageCount);
-			request.setAttribute("curPage", pageNo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,34 +86,24 @@ public class ProductsDAO {
 		}
 	}
 
-	public Products getProductsSort(int pageNo, ProductSort ps, HttpServletRequest request) {
+	public Products getProductsSort(ProductSort ps, HttpServletRequest request) {
+		
+		allProductCount = ss.getMapper(ProductsMapper.class).getproductcount(ps.getP_type());
 		
 		System.out.println(ps.getP_sort());
 		System.out.println(ps.getP_type());
+		System.out.println(ps.getPageNo());
+		System.out.println("---");
+		int pageNo = ps.getPageNo().intValue();
 		
-		
-		//allProductCount = ss.getMapper(ProductsMapper.class).getproductcount(p_type);
 		int count = so.getSnsCountPerpage();
 		int start = (pageNo - 1) * count + 1;
 		int end = start + (count - 1);
 		
-		//Selector search = (Selector) request.getSession().getAttribute("search");
-		//ProductSort ps = (ProductSort) request.getSession().getAttribute("search");
-		int productCount = 0;
+		int productCount = allProductCount;
 		
 		ps.setStart(new BigDecimal(start));
 		ps.setEnd(new BigDecimal(end));
-		
-		/*if (ps == null) {
-			//search = new Selector("", new BigDecimal(start), new BigDecimal(end));
-			ps = new ProductSort("", ps.getP_type(), "", new BigDecimal(start), new BigDecimal(end));
-			productCount = allProductCount; // 전체 개시글 수     
-		} else {
-			//search.setStart(new BigDecimal(start));
-			//search.setEnd(new BigDecimal(end));
-			ps.setStart(new BigDecimal(start));
-			ps.setEnd(new BigDecimal(end));
-		}*/
 		
 		if (ps.getP_sort().equals("p_priceToLow")) {
 			ps.setP_sort("p_price");
@@ -134,11 +119,7 @@ public class ProductsDAO {
 		List<Product> product = ss.getMapper(ProductsMapper.class).getProductSort(ps);
 		
 		int pageCount = (int) Math.ceil(productCount / (double) count);
-		System.out.println(productCount);
-		System.out.println(count);
 		request.setAttribute("pageCount", pageCount);
-		System.out.println(pageCount);
-		request.setAttribute("curPage", pageNo);
 				
 		Products p = new Products(product);
 		return p;

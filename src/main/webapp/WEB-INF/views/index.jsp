@@ -160,15 +160,12 @@
 				<li class="nav-item dropdown flex"> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
-						<li>
-							<input type="hidden">
-							<a class="dropdown-item" href="products.go?p_type=supplements&p=1">보충제</a>
-						</li>
-						<li><a class="dropdown-item" href="products.go?p_type=gripStrap&p=1">그립/스트랩</a></li>
-						<li><a class="dropdown-item" href="products.go?p_type=elbowProtecter&p=1">팔꿈치 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?p_type=backWaist&p=1" >등/허리</a></li>
-						<li><a class="dropdown-item" href="products.go?p_type=kneeProtecter&p=1">무릎 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?p_type=shoes&p=1">신발</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=supplements&pageNo=1">보충제</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=gripStrap&pageNo=1">그립/스트랩</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=elbowProtecter&pageNo=1">팔꿈치 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=backWaist&pageNo=1" >등/허리</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=kneeProtecter&pageNo=1">무릎 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=shoes&=1">신발</a></li>
 					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">헬스장 정보</a>
                     <ul class="dropdown-menu">
@@ -202,7 +199,7 @@
 							<a href="member.login.go">로그인</a>
 						</div>
 					</c:when>
-					<c:when test="${sessionScope.loginMember.m_email eq '1234@gmail.com'}">
+					<c:when test="${sessionScope.loginMember.m_email eq 'admin'}">
 						<div class="login-item01">
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>

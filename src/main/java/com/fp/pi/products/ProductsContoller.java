@@ -26,19 +26,9 @@ public class ProductsContoller {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/products.page.change", method = RequestMethod.GET)
-	public String PageChange(ProductSort ps ,HttpServletRequest request) {
-		
-		int p = Integer.parseInt(request.getParameter("p"));
-		pDAO.getProductsSort(p, ps, request);
-		request.setAttribute("contentPage", "products/productsMain.jsp");
-		return "index";
-	}
-	
 	@RequestMapping(value = "/products.sort", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
 	public @ResponseBody Products ProductsMainSort(ProductSort ps, HttpServletRequest request) {
-		int p = Integer.parseInt(request.getParameter("pageNo"));
-		Products pproducts = pDAO.getProductsSort(1 ,ps, request);
+		Products pproducts = pDAO.getProductsSort(ps, request);
 		return pproducts;
 	}
 	
