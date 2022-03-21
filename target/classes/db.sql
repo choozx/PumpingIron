@@ -4,15 +4,16 @@ select * from products where p_type = 'supplements' ORDER BY p_price DESC
 
 create table products(
 	p_no number(7) primary key,
-	p_name varchar2(30 char) not null,
+	p_name varchar2(300 char) not null,
 	p_type varchar2(40 char) not null,
 	p_price number(10) not null,
 	p_img varchar2(200 char) not null,
-	p_info varchar2(1000 char) not null,
+	p_info varchar2(4000 char) not null,
 	p_cnt number(7) not null
 )
 
 create sequence products_seq;
+
 insert into PRODUCTS values(products_seq.nextval, '보충제1', 'supplements', 10000, 'zxc', 0);
 insert into PRODUCTS values(products_seq.nextval, '보충제2', 'supplements', 15000, 'zxc', 0);
 insert into PRODUCTS values(products_seq.nextval, '스트렙1', 'gripStrap', 15000, 'strap1', 0);
@@ -21,7 +22,28 @@ insert into PRODUCTS values(products_seq.nextval, '밸트', 'backWaist', 50000, 
 insert into PRODUCTS values(products_seq.nextval, '무릅보호대1', 'kneeProtecter', 11000, 'kneeProtecter1', 0);
 insert into PRODUCTS values(products_seq.nextval, '신발', 'shoes', 11000, 'shoes1', 0);
 
+DROP SEQUENCE products_seq;
+DROP TABLE products CASCADE CONSTRAINTS purge;
 
+select * from (select rownum as rn,p_no,p_name,p_type,p_price,p_img,p_info,p_cnt from products where p_type = 'supplements') where rn >= 1 and rn <= 10;
+select * from (select rownum as rn, products.* from (select * from products where p_type = 'supplements' ORDER BY p_price DESC)products) where rn >= 1 and rn <= 10;
+--------------------------------------------------------------------
+create table cart(
+	cart_no number(7) primary key,
+	m_email varchar2(100 char) not null,
+	p_no number(7) not null,
+	constraint cart_for_no
+		foreign key(p_no) references products(p_no) on delete cascade,
+		foreign key(m_email) references member(m_email) on delete cascade
+)
+create sequence cart_seq;
+
+insert into cart values(cart_seq.nextval, 'admin', 1)
+select * from CART
+
+delete CART;
+
+select * from products where p_no in (select p_no from cart where m_email = 'admin')
 --------------------------------------------------------------------
 create table product_review(
 

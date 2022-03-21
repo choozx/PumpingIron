@@ -34,8 +34,8 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="username" value="c##gw" />
-		<beans:property name="password" value="gw" />
+		<beans:property name="username" value="yjh" />
+		<beans:property name="password" value="yjh" />
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -58,6 +58,7 @@
 				<beans:value>classpath:calendarMapper.xml</beans:value>
 				<beans:value>classpath:productsMapper.xml</beans:value>
 				<beans:value>classpath:customerServiceMapper.xml</beans:value>
+				<beans:value>classpath:cartMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -88,7 +89,7 @@
 	</beans:bean>
 
 	<beans:bean id="so" class="com.fp.pi.SiteOption">
-		<beans:constructor-arg value="5"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
+	        <beans:constructor-arg value="10"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
 	</beans:bean>
 	
 	<beans:bean id="so2" class="com.fp.pi.SiteOption2">
