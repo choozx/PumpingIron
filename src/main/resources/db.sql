@@ -167,15 +167,69 @@ select count(*) from heart_table where h_cr_no = 101
 -------------------------------------------------------------------------------------------
 
 create table heart_table2(
-h_no  number(7) primary key,
-h_c2_no  number(7) not null, --게시글 넘버
-h_m_email varchar2(50 char) not null, -- 회원 이메일 
+h2_no  number(7) primary key,
+h2_c2_no  number(7) not null, --게시글 넘버
+h2_m_email varchar2(50 char) not null, -- 회원 이메일 
 constraint h_for_no
-		foreign key(h_c2_no) references community_review2(c2_no) on delete cascade,
-		foreign key(h_m_email) references member(m_email) on delete cascade);
+		foreign key(h2_c2_no) references community_review2(c2_no) on delete cascade,
+		foreign key(h2_m_email) references member(m_email) on delete cascade);
 
 create sequence heart_table2_seq;
-insert into heart_table values(heart_table2_seq.nextval, 101, '1234@gmail.com')
+insert into heart_table2 values(heart_table2_seq.nextval, 1, '1')
 select * from heart_table2;	
 
+select * from community_review2_reply  where c2r_c2_no =61 order by c2r_date desc
+select * from community_review2_reply
 
+DROP SEQUENCE heart_table2_seq;
+DROP TABLE heart_table2 CASCADE CONSTRAINTS;
+-----------------------------------------------------------
+ALTER TABLE COMMUNITY_REVIEW2 ADD c2_picture varchar(200 char);
+
+-----------------------------------------------------------------
+
+
+create table body_review(
+br_no number(7) primary key,
+br_title varchar2(100 char) not null,
+br_content varchar2(4000 char) not null,
+br_like number(5) not null,
+br_views varchar2(20 char) default 0 not null,
+br_tips varchar2(200 char) not null,
+br_bodyProfile varchar2(200 char) not null,
+br_productReview varchar2(200 char) not null,
+br_email varchar2(100) not null,
+br_nickname varchar2(100) not null,
+br_date date not null,
+br_picture varchar(200 char)
+)
+create sequence body_review_seq;
+select * from body_review;
+---------------------------------------------------
+create table body_review_reply(
+brr_no number(7) primary key, --댓글 번호
+brr_br_no number(7) not null, -- 게시판 번호 
+brr_text varchar2(200 char) not null,
+brr_br_nickname varchar2(20 char) not null,-- 아이디
+brr_date date not null,
+
+constraint brr_for_no
+		foreign key(brr_br_no)
+		references body_review(br_no)
+		on delete cascade
+
+)
+create sequence body_review_reply_seq;
+select * from body_review_reply
+----------------------------------------------------
+create table heart_table3(
+h3_no  number(7) primary key,
+h3_br_no  number(7) not null, --게시글 넘버
+h3_m_email varchar2(50 char) not null, -- 회원 이메일 
+constraint h3_for_no
+		foreign key(h3_br_no) references body_review(br_no) on delete cascade,
+		foreign key(h3_m_email) references member(m_email) on delete cascade);
+		
+		create sequence heart_table3_seq;
+insert into heart_table2 values(heart_table2_seq.nextval, 1, '1')
+select * from heart_table3;	

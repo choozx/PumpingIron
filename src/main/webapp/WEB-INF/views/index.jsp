@@ -38,6 +38,7 @@
 <script type="text/javascript" src="resources/js/customerservice/customerservice.js"></script>
 <script type="text/javascript" src="resources/js/del/delcon.js"></script>
 <script type="text/javascript" src="resources/js/review2/delcon.js"></script>
+<script type="text/javascript" src="resources/js/body/delcon.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
@@ -181,7 +182,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
-                        <li><a class="dropdown-item" href="">바디프로필</a></li>
+                        <li><a class="dropdown-item" href="body.go">바디프로필</a></li>
                         <li><a class="dropdown-item" href="info.go">운동영상</a></li>
 					</ul> 
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"

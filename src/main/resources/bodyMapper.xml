@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fp.pi.body.BodyMapper">
+
+
+<select id="reviews" resultType="com.fp.pi.body.body_review">
+
+select * from body_review order by br_date desc
+
+
+</select>
+
+<select id="getDetail" resultType="com.fp.pi.body.body_review">
+
+select * from body_review where br_no = #{br_no}
+
+
+</select>
+
+
+<select id="getMsgCount" resultType="com.fp.pi.body.body_review" parameterType="Selector3">
+select * from (select rownum as rn, br_no, br_title, br_content, br_like, br_views, 
+br_tips, br_bodyProfile, br_productReview, br_email, br_nickname, br_date, br_picture from 
+
+			(select * from body_review	order by br_date desc)	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
+
+
+</select>
+
+
+<insert id="writeCon" parameterType="com.fp.pi.body.body_review">
+
+insert into body_review values(body_review_seq.nextval, #{br_title}, #{br_content}, 0, 0, #{br_tips}, #{br_bodyProfile}, #{br_productReview},#{br_email},#{br_nickname}, sysdate, #{br_picture})
+ 
+
+
+</insert>
+
+<delete id="delete" parameterType="com.fp.pi.body.body_review">
+
+delete from body_review where br_no = #{br_no}
+
+
+</delete>
+
+
+
+<update id="update" parameterType="com.fp.pi.body.body_review">
+update body_review set br_content = #{br_content}, br_title = #{br_title} where br_no = #{br_no}
+
+</update>
+
+
+<select id="getmsgcount" resultType="int">
+ select count(*) from body_review
+</select>
+
+
+<!-- 댓글 조회 -->
+<select id="replys" resultType="com.fp.pi.body.body_review_reply" parameterType="com.fp.pi.body.body_review_reply">
+
+select * from body_review_reply  where brr_br_no = #{brr_br_no} order by brr_date desc
+</select>
+
+
+
+<!-- 댓글 등록 -->
+<insert id="getReply" parameterType="com.fp.pi.body.body_review_reply">
+
+insert into body_review_reply values(body_review_reply_seq.nextval, #{brr_br_no}, #{brr_text}, #{brr_br_nickname}, sysdate)
+</insert>
+
+<!-- 댓글 삭제  -->
+<delete id="delReply" parameterType="com.fp.pi.body.body_review_reply">
+
+delete from body_review_reply where brr_no = #{brr_no}
+
+</delete>
+
+<!-- 댓글 수정 -->
+<update id="upReply" parameterType="com.fp.pi.body.body_review_reply">
+
+update body_review_reply set brr_text = #{brr_text} where brr_no = #{brr_no}
+
+</update>
+
+<!-- 조회수 -->
+<update id="views" parameterType="com.fp.pi.body.body_review">
+	UPDATE
+		body_review
+	SET
+		br_views = br_views + 1
+	WHERE
+		br_no = #{br_no}
+</update>
+<select id="likeOfTips" parameterType="map" resultType="com.fp.pi.body.HeartDTO3">
+	select * from heart_table3 where h3_br_no = #{idd} and h3_m_email = #{emaill}
+</select>
+
+ <insert id="likeOfTipsInsert" parameterType="HeartDTO3">
+	insert into heart_table3 values(heart_table3_seq.nextval, #{h3_br_no}, #{h3_m_email})
+</insert>
+
+ <delete id="likeOfTipsDelete" parameterType="HeartDTO3">
+	delete heart_table3 where h3_m_email = #{h3_m_email}
+</delete>
+  <select id="allLike" resultType="int" parameterType="body_review">
+	select count(*) from heart_table3 where h3_br_no = #{br_no}
+</select>
+
+
+
+<select id="replys2" parameterType="com.fp.pi.body.body_review" resultType="int">
+ select count(*) from body_review_reply where brr_br_no = #{br_no}
+
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

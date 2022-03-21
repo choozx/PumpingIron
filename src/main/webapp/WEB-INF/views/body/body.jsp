@@ -34,7 +34,7 @@ ${result }
 <div class="title-center text-center ">
 
 <a href="">
-<span class="prompt-h1">review</span>
+<span class="prompt-h1">bodyprofile</span>
 </a>
 </div>
 </div>
@@ -49,36 +49,36 @@ ${result }
    
     <div class="col" style="border: 1px solid;">
     
-<a href="reviewWatch.go?c2_no=${n.c2_no }" class="card-item grid-item"  >
+<a href="bodyWatch.go?br_no=${n.br_no }" class="card-item grid-item"  >
 <div class="column-div cursor">
 <span class="column-img" alt style="width: 100%"></span>
- <img class="column-img" src="${n.c2_picture }" alt style="width: 100%" ><!-- ajax에서 등록된 문자열 가져오기  -->
+ <img class="column-img" src="${n.br_picture }" alt style="width: 100%" ><!-- ajax에서 등록된 문자열 가져오기  -->
 <div class="d-flex align-items-center justify-content-between mb-3" style="margin-top: 10px">
-<span class="noto-sb text-gray"><fmt:formatDate value="${n.c2_date }" type="date" dateStyle="short"/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<span class="noto-sb text-gray"><fmt:formatDate value="${n.br_date }" type="date" dateStyle="short"/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <div class="d-flex align-items-center">
 <img  src="resources/img/tips/heart-fill.svg" class="mr-1 column-like" style="max-width: 20px">
-<span class="noto-sb mb-1">${n.c2_like }</span>
+<span class="noto-sb mb-1">${n.br_like }</span>
 
 
 </div>
 <div class="d-flex align-items-center ml-2">
 <img alt="" src="resources/img/tips/cnt.png" class="mr-1 column-like">
-<span class="noto-sb mb-1">${n.c2_bodyProfile }</span>
+<span class="noto-sb mb-1">${n.br_bodyProfile }</span>
 </div>
 
 </div>
-<div class="column-title noto-h4 column-mb-15 text-break text-overflow-3">${n.c2_title }</div>
+<div class="column-title noto-h4 column-mb-15 text-break text-overflow-3">${n.br_title }</div>
 <div class="column-content noto-pr mb-5 colum-lineheight w-100 text-break text-overflow-5">
 
 </div>
 <div class="column-user d-flex align-items-center justify-content-between" style="margin-bottom: 15px;">
 <div class="d-flex align-items-center">
 <img  src="" class="user-img mr-2"><!-- 회원가입할때 이미지 가져오기 -->
-<span class="noto-sb">${n.c2_nickname }</span>
+<span class="noto-sb">${n.br_nickname }</span>
 </div>
 <div class="d-flex align-items-center noto-sb"></div>
 <span class="mr-1" style="font-size: 12px; font-weight: bold;">조회수</span>
-<span style="font-size: 12px; font-weight: bold;" >${n.c2_views }</span>
+<span style="font-size: 12px; font-weight: bold;" >${n.br_views }</span>
 </div>
 </div> 
 </a>
@@ -115,7 +115,7 @@ ${result }
 <c:otherwise>
 
 
-      <a class="page-link" href="page2.change?p=${curPage - 1 }" aria-label="Previous">
+      <a class="page-link" href="page3.change?p=${curPage - 1 }" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
 
@@ -128,7 +128,7 @@ ${result }
     
     
     <c:forEach var="p" begin="1" end="${pageCount }">
-    	<li class="page-item"><a class="page-link" href="page2.change?p=${p }">${p }</a></li>
+    	<li class="page-item"><a class="page-link" href="page3.change?p=${p }">${p }</a></li>
  	</c:forEach>
     
     
@@ -145,7 +145,7 @@ ${result }
  
     </c:when>
     <c:otherwise>
-      <a class="page-link" href="page2.change?p=${curPage + 1 }" aria-label="Next">
+      <a class="page-link" href="page3.change?p=${curPage + 1 }" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </c:otherwise>
@@ -168,7 +168,7 @@ ${result }
 <button class="background-b-btn board-btn noto-h4"
  type="button" name="button" data-category-id="8"
   data-auth-write="1" 
-  onclick= "location.href='reviewWrite.go'" value="${sessionScope.loginMember.m_name}">글쓰기</button>
+  onclick= "location.href='bodyWrite.go'" value="${sessionScope.loginMember.m_name}">글쓰기</button>
   
   
 </div>

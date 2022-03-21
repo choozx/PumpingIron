@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fp.pi.SiteOption;
+import com.fp.pi.SiteOption2;
 import com.fp.pi.TokenMaker;
 import com.fp.pi.member.MemberDAO;
-import com.fp.pi.tips.community_review;
-import com.fp.pi.tips.community_review_reply;
 
 @Controller
 public class reviewController {
@@ -31,7 +29,7 @@ public class reviewController {
 		TokenMaker.make2(req);
 		rDAO.getContent(req);
 		rDAO.getMsg(1, req);
-		SiteOption.clearSearch(req);
+		SiteOption2.clearSearch(req);
 		req.setAttribute("contentPage", "review/review2.jsp");
 		return "index";
 	}
@@ -66,7 +64,7 @@ public class reviewController {
 			rDAO.insertCon(req, cr);
 		}
 		rDAO.getMsg(1, req);
-		req.setAttribute("contentPage", "review/review.jsp");
+		req.setAttribute("contentPage", "review/review2.jsp");
 		return "index";
 	}
 
@@ -125,7 +123,7 @@ public class reviewController {
 		}
 		rDAO.getReply(req, crr);
 		rDAO.getDetail(req, cr);
-		req.setAttribute("contentPage", "tips/watchContents2.jsp");
+		req.setAttribute("contentPage", "review/reviewWatch.jsp");
 		return "index";
 	}
 	
@@ -137,7 +135,7 @@ public class reviewController {
 		}
 		rDAO.getDetail(req, cr);
 		rDAO.getReply(req, crr);
-		req.setAttribute("contentPage", "tips/watchContents2.jsp");
+		req.setAttribute("contentPage", "review/reviewWatch.jsp");
 		return "index";
 	}
 	
@@ -150,7 +148,7 @@ public class reviewController {
 		}
 		rDAO.getDetail(req, cr);
 		rDAO.getReply(req, crr);
-		req.setAttribute("contentPage", "tips/watchContents2.jsp");
+		req.setAttribute("contentPage", "review/reviewWatch.jsp");
 		return "index";
 	}
 

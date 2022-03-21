@@ -78,7 +78,7 @@ var up = "<c:out value="${tippp.cr_no}"></c:out>";
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/pi/summorFileUpload",
+			url : "/pi/summorFileUpload2",
 			cache : false,
 			contentType : false,
 			processData : false,

@@ -72,18 +72,20 @@
 			processData : false,
 			success : function (data) {
 				$(editor).summernote('editor.insertImage',data.url);
-				console.log(data.url)
+				console.log(data.url) // 파일이름
+				$("#c2_pic").val(data.url);
 			}
 		});
 		
-		}
+		} // 베이스24코드로 안바꾸고 ajax로 처리 '등록' 누르면 문자열로
     </script>
 
 
 <div class="write-bottom">
 <a class="border-b-btn board-btn noto-h4 text-center"
 href="javascript:history.back();" type="button">취소</a>
-<input name="token" value="${token }">
+<input name="token" value="${token }" type="hidden">
+<input id="c2_pic" name="c2_picture" value="" type="hidden">
 <button class="ml-3 background-b-btn board-btn noto-h4" name="button1" data-type="board" data-category-id="8"
  data-id>저장</button>
 

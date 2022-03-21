@@ -2,12 +2,11 @@ package com.fp.pi.review;
 
 import java.util.List;
 
+
 import java.util.Map;
 
 
 public interface Review2Mapper {
-
-
 
 
 	List<community_review2> reviews();
@@ -42,6 +41,8 @@ public interface Review2Mapper {
 	int likeOfTipsDelete(HeartDTO2 vals);
 
 	int allLike(community_review2 aa);
+
+	int replys2(community_review2 cr);
 
 	
 	

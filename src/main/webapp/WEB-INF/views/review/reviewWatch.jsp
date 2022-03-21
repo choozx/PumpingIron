@@ -10,7 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
-<script src="resources/js/reivew2/like.js"></script>
+<script src="resources/js/review2/like.js"></script>
 <style>
 .reply-write-btn {
 position: absolute;
@@ -155,8 +155,7 @@ ${result }
 
 </div>
 <!-- 댓글 영역 -->
-<!-- foreach 로 돌리기 -->
-<c:forEach var="p" items="${re }">
+<c:forEach var="t" items="${re }">
 <div class="comment-content border border-dark border-top-0">
 
 <div class="comment-box-elem">
@@ -172,9 +171,9 @@ ${result }
 <div class="comment-left-text">
 <%-- <input type="hidden" name="crr_no" value="${re.crr_no}"> --%>
 <div class="text-id noto-pb mb-1 d-flex align-items-center">&nbsp&nbsp
-<span class="noto-pb">${p.c2r_c2_nickname }</span>&nbsp
+<span class="noto-pb">${t.c2r_c2_nickname }</span>&nbsp
 
-<c:if test="${p.c2r_c2_nickname == sessionScope.loginMember.m_name }">
+<c:if test="${t.c2r_c2_nickname == sessionScope.loginMember.m_name }">
 <div class="reply-writer ml-1 noto-sm hidden">작성자</div>
 </c:if>
 
@@ -184,7 +183,7 @@ ${result }
 </div>
 <div class="comment-item">&nbsp
 
-<span class="noto-pm text-break comment-text">${p.c2r_text }</span>
+<span class="noto-pm text-break comment-text">${t.c2r_text }</span>
 </div>
 <div class="hidden comment-file-264785">
 <img alt="" src="">
@@ -192,14 +191,14 @@ ${result }
 
 </div>
 
-<div class="comment-content-right" style="margin-left: 1013px;">
+<div class="comment-content-right" style="margin-left: 1131px;">
 
 
 
-<c:if test="${p.c2r_c2_nickname == sessionScope.loginMember.m_name }">
+<c:if test="${t.c2r_c2_nickname == sessionScope.loginMember.m_name }">
 <div class="d-flex align-items-center comment-right" style="float: right;">
-<button class="update" onclick="updateReply('${p.c2r_no}','${p.c2r_c2_no}','${p.c2r_text}');" style="float: right;">수정</button>
-<button class="delete" onclick="deleteReply('${p.c2r_no}','${p.c2r_c2_no}');" style="float: right;">삭제</button>
+<button class="update" onclick="updateReply('${t.c2r_no}','${t.c2r_c2_no}','${t.c2r_text}');" style="float: right;">수정</button>
+<button class="delete" onclick="deleteReply('${t.c2r_no}','${t.c2r_c2_no}');" style="float: right;">삭제</button>
 </div>
 </c:if>
 
@@ -269,7 +268,7 @@ class="bg-whtie comment-textarea" name="c2r_text"></textarea>
 목록</button>
 </a>
 
-<c:if test="${tippp.cr_nickname == sessionScope.loginMember.m_name }">
+<c:if test="${tippp.c2_nickname == sessionScope.loginMember.m_name }">
 <div class="viewer-bottom-right d-flex align-items-center">
 <div class="d-inline-block is-mine">
 <button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"

@@ -7,7 +7,7 @@ $(function() {
 
 	// 디테일 글 진임시 하트 표기 (채운거 or 빈거)
 	$.ajax({
-		url : "/pi/tipsLikes2",
+		url : "/pi/tipsLikes3",
 		data : {
 			'ajaxId' : idd,
 			'ajaxEmail' : emaill
@@ -31,8 +31,8 @@ $(function() {
 	function likeCnt(idd) {
 		console.log(idd);
 		$.ajax({
-			url : "/pi/tipsLikes2.cnt",
-			data : {'c2_no' : idd},
+			url : "/pi/tipsLikes3.cnt",
+			data : {'br_no' : idd},
 			success : function(data) {
 				console.log(data + '??????????');
 				$('.viewer-like').text(data)
@@ -45,7 +45,7 @@ $(function() {
 
 		let val = $(imgTag).attr("value");
 
-		let myurl = '/pi/tipsLikes2.update';
+		let myurl = '/pi/tipsLikes3.update';
 
 		$.ajax({
 			url : myurl,

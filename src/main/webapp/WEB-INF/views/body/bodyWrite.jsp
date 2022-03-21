@@ -23,8 +23,8 @@
 <body class="main-bg">
 <div class="title-center text-center ">
 
-<a href="tips/tips.jsp">
-<span class="prompt-h1">Q/A</span>
+<a href="">
+<span class="prompt-h1">bodyprofile</span>
 </a>
 </div>
 
@@ -35,14 +35,14 @@
 
 </div>
 
-<form id="common-edit-form" onsubmit="true" action="write.do" method="post" >
+<form id="common-edit-form" onsubmit="true" action="bodyWrite.do" method="post" >
 <div class="d-flex justify-content-center mb-4">
 <span class="m-0 sub-title noto-pb pt-3">제목</span>
-<input class="common-oneline-input" type="text" name="cr_title"
+<input class="common-oneline-input" type="text" name="br_title"
  maxlength="100" placeholder="제목을 입력해주세요" >
 
 </div>
- <textarea id="summernote" name="cr_content"></textarea>
+ <textarea id="summernote" name="br_content"></textarea>
  
  
  
@@ -66,17 +66,18 @@
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/pi/summorFileUpload",
+			url : "/pi/summorFileUpload3",
 			cache : false,
 			contentType : false,
 			processData : false,
 			success : function (data) {
 				$(editor).summernote('editor.insertImage',data.url);
-				console.log(data.url)
+				console.log(data.url) // 파일이름
+				$("#br_pic").val(data.url);
 			}
 		});
 		
-		}
+		} // 베이스24코드로 안바꾸고 ajax로 처리 '등록' 누르면 문자열로
     </script>
 
 
@@ -84,6 +85,7 @@
 <a class="border-b-btn board-btn noto-h4 text-center"
 href="javascript:history.back();" type="button">취소</a>
 <input name="token" value="${token }" type="hidden">
+<input id="br_pic" name="br_picture" value="" type="hidden">
 <button class="ml-3 background-b-btn board-btn noto-h4" name="button1" data-type="board" data-category-id="8"
  data-id>저장</button>
 

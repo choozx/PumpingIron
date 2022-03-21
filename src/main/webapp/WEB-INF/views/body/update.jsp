@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,12 +20,16 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/index.css">
+<style type="text/css">
+img {
+max-width: 200px;}
+</style>
 </head>
 <body class="main-bg">
 <div class="title-center text-center ">
 
-<a href="tips/tips.jsp">
-<span class="prompt-h1">Q/A</span>
+<a href="">
+<span class="prompt-h1">bodyprofile</span>
 </a>
 </div>
 
@@ -35,14 +40,21 @@
 
 </div>
 
-<form id="common-edit-form" onsubmit="true" action="write.do" method="post" >
+<form action="update.do" id="common-edit-form" onsubmit="return updateContennt();" method="get">
+
+
+<script type="text/javascript">
+var up = "<c:out value="${tippp.br_no}"></c:out>";
+
+
+</script> 
 <div class="d-flex justify-content-center mb-4">
 <span class="m-0 sub-title noto-pb pt-3">제목</span>
-<input class="common-oneline-input" type="text" name="cr_title"
- maxlength="100" placeholder="제목을 입력해주세요" >
+<input class="common-oneline-input" type="text" name="br_title"
+ maxlength="100" placeholder="제목을 입력해주세요" value="${tippp.br_title }">
 
 </div>
- <textarea id="summernote" name="cr_content"></textarea>
+ <textarea id="summernote" name="cr_content">${tippp.br_content }</textarea>
  
  
  
@@ -52,7 +64,7 @@
         height: 400,
         callbacks:{
         	onImageUpload: function (files, editor, welEditable) {
-				console.log('aaaaa');
+				console.log('aaaaa')
                 sendFile(files[0], this);
         	}
         }
@@ -83,17 +95,17 @@
 <div class="write-bottom">
 <a class="border-b-btn board-btn noto-h4 text-center"
 href="javascript:history.back();" type="button">취소</a>
-<input name="token" value="${token }" type="hidden">
-<button class="ml-3 background-b-btn board-btn noto-h4" name="button1" data-type="board" data-category-id="8"
- data-id>저장</button>
 
-
+<button class="ml-3 background-b-btn board-btn noto-h4" data-type="board" data-category-id="8"
+ data-id >수정</button>
+<input name="br_no" value="${param.br_no }" type="hidden">
+<input id="iii" name="iii" type="hidden">
 
 </div>
-
 </form>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </body>
 </html>

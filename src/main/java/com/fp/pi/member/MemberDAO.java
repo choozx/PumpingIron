@@ -99,7 +99,7 @@ public class MemberDAO {
 			m.setM_addr(m_addr);
 			m.setM_name(m_name);
 			m.setM_photo(m_photo);
-
+			
 			if (ss.getMapper(MemberMapper.class).join(m) == 1) {
 				response.setContentType("text/html; charset=euc-kr");
 				PrintWriter script = response.getWriter();
