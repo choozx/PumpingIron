@@ -52,7 +52,7 @@
 						console.log(l.category_name);
 						
 						var markerImage = new daum.maps.MarkerImage(
-							    'resources/img/infoMap/pi.svg', new daum.maps.Size(30, 30));
+							    'resources/img/infoMap/pi.svg', new daum.maps.Size(40, 40));
 						
 					// 마커를 생성합니다
 					var marker = new kakao.maps.Marker({
