@@ -178,6 +178,7 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">커뮤니티</a>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="best.go">Best</a></li>
                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="body.go">바디프로필</a></li>

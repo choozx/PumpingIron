@@ -40,7 +40,7 @@ max-width: 200px;}
 
 </div>
 
-<form action="update.do" id="common-edit-form" onsubmit="return updateContennt();" method="get">
+<form action="update3.do" id="common-edit-form" onsubmit="return updateContennt();" method="get">
 
 
 <script type="text/javascript">
@@ -54,7 +54,7 @@ var up = "<c:out value="${tippp.br_no}"></c:out>";
  maxlength="100" placeholder="제목을 입력해주세요" value="${tippp.br_title }">
 
 </div>
- <textarea id="summernote" name="cr_content">${tippp.br_content }</textarea>
+ <textarea id="summernote" name="br_content">${tippp.br_content }</textarea>
  
  
  

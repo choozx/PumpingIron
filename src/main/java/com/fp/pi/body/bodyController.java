@@ -95,7 +95,7 @@ public class bodyController {
 		TokenMaker.make(req);
 		bDAO.getDetail(req, cr);
 		
-		req.setAttribute("contentPage", "body/update.jsp");
+		req.setAttribute("contentPage", "body/update3.jsp");
 		return "index";
 	}
 	
@@ -134,12 +134,12 @@ public class bodyController {
 		}
 		bDAO.getDetail(req, cr);
 		bDAO.getReply(req, crr);
-		req.setAttribute("contentPage", "review/reviewWatch.jsp");
+		req.setAttribute("contentPage", "body/bodyWatch.jsp");
 		return "index";
 	}
 	
 	
-	@RequestMapping(value = "/upReply3.Do", method = RequestMethod.GET)
+	@RequestMapping(value = "/upReply3.do", method = RequestMethod.GET)
 	public String upReplyDo(HttpServletRequest req, body_review cr, body_review_reply crr) {
 		TokenMaker.make(req);
 		if (mDAO.loginCheck(req)) {
@@ -147,7 +147,7 @@ public class bodyController {
 		}
 		bDAO.getDetail(req, cr);
 		bDAO.getReply(req, crr);
-		req.setAttribute("contentPage", "review/reviewWatch.jsp");
+		req.setAttribute("contentPage", "body/bodyWatch.jsp");
 		return "index";
 	}
 

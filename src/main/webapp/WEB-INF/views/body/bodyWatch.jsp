@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
 <script src="resources/js/body/like.js"></script>
+
 <style>
 .reply-write-btn {
 position: absolute;
@@ -197,8 +198,8 @@ ${result }
 
 <c:if test="${t.brr_br_nickname == sessionScope.loginMember.m_name }">
 <div class="d-flex align-items-center comment-right" style="float: right;">
-<button class="update" onclick="updateReply('${t.brr_no}','${t.brr_br_no}','${t.brr_text}');" style="float: right;">수정</button>
-<button class="delete" onclick="deleteReply('${t.brr_no}','${t.brr_br_no}');" style="float: right;">삭제</button>
+<button class="update" onclick="updateReply3('${t.brr_no}','${t.brr_br_no}','${t.brr_text}');" style="float: right;">수정</button>
+<button class="delete" onclick="deleteReply3('${t.brr_no}','${t.brr_br_no}');" style="float: right;">삭제</button>
 </div>
 </c:if>
 

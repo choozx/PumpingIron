@@ -40,21 +40,21 @@ max-width: 200px;}
 
 </div>
 
-<form action="update.do" id="common-edit-form" onsubmit="return updateContennt();" method="get">
+<form action="update2.do" id="common-edit-form" onsubmit="return updateContennt();" method="get">
 
 
 <script type="text/javascript">
-var up = "<c:out value="${tippp.cr_no}"></c:out>";
+var up = "<c:out value="${tippp.c2_no}"></c:out>";
 
 
 </script> 
 <div class="d-flex justify-content-center mb-4">
 <span class="m-0 sub-title noto-pb pt-3">제목</span>
-<input class="common-oneline-input" type="text" name="cr_title"
- maxlength="100" placeholder="제목을 입력해주세요" value="${tippp.cr_title }">
+<input class="common-oneline-input" type="text" name="c2_title"
+ maxlength="100" placeholder="제목을 입력해주세요" value="${tippp.c2_title }">
 
 </div>
- <textarea id="summernote" name="cr_content">${tippp.cr_content }</textarea>
+ <textarea id="summernote" name="c2_content">${tippp.c2_content }</textarea>
  
  
  
@@ -98,7 +98,7 @@ href="javascript:history.back();" type="button">취소</a>
 
 <button class="ml-3 background-b-btn board-btn noto-h4" data-type="board" data-category-id="8"
  data-id >수정</button>
-<input name="cr_no" value="${param.cr_no }" type="hidden">
+<input name="c2_no" value="${param.c2_no }" type="hidden">
 <input id="iii" name="iii" type="hidden">
 
 </div>

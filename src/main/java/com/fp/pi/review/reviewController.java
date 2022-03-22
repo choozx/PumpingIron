@@ -96,7 +96,7 @@ public class reviewController {
 		TokenMaker.make(req);
 		rDAO.getDetail(req, cr);
 		
-		req.setAttribute("contentPage", "review/update.jsp");
+		req.setAttribute("contentPage", "review/update2.jsp");
 		return "index";
 	}
 	

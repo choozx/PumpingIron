@@ -105,6 +105,7 @@ update body_review_reply set brr_text = #{brr_text} where brr_no = #{brr_no}
  <delete id="likeOfTipsDelete" parameterType="HeartDTO3">
 	delete heart_table3 where h3_m_email = #{h3_m_email}
 </delete>
+
   <select id="allLike" resultType="int" parameterType="body_review">
 	select count(*) from heart_table3 where h3_br_no = #{br_no}
 </select>

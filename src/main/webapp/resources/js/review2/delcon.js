@@ -23,7 +23,7 @@ function updateContennt() {
 	}
 }
 
-function deleteReply(n,n2) {
+function deleteReply2(n,n2) {
 	
 	var ok = confirm("정말 삭제하겠습니까?");
 	if (ok) {
@@ -31,7 +31,7 @@ function deleteReply(n,n2) {
 	}
 }
 
-function updateReply(n, n2, t) {
+function updateReply2(n, n2, t) {
 	t = prompt("댓글", t);
 	if (t != null && t.length > 0 && t.length < 250) {
 		location.href = "upReply2.Do?c2r_no=" + n + "&c2r_text=" + t + "&c2_no=" + n2;

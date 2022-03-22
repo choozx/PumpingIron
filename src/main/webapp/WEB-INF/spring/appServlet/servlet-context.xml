@@ -34,8 +34,8 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="username" value="yjh" />
-		<beans:property name="password" value="yjh" />
+		<beans:property name="username" value="c##gw" />
+		<beans:property name="password" value="gw" />
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -53,6 +53,7 @@
 				<beans:value>classpath:memberMapper.xml</beans:value>
 				<beans:value>classpath:tipsMapper.xml</beans:value>
 				<beans:value>classpath:bodyMapper.xml</beans:value>
+				<beans:value>classpath:bestMapper.xml</beans:value>
 				<beans:value>classpath:review2Mapper.xml</beans:value>
 				<beans:value>classpath:infoMapMapper.xml</beans:value>
 				<beans:value>classpath:calendarMapper.xml</beans:value>
@@ -89,14 +90,17 @@
 	</beans:bean>
 
 	<beans:bean id="so" class="com.fp.pi.SiteOption">
-	        <beans:constructor-arg value="10"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
+	        <beans:constructor-arg value="10"></beans:constructor-arg> <!-- 한 페이지당 10개씩 보여주겠다 -->
 	</beans:bean>
 	
 	<beans:bean id="so2" class="com.fp.pi.SiteOption2">
-		<beans:constructor-arg value="12"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
+		<beans:constructor-arg value="12"></beans:constructor-arg> <!-- 한 페이지당 12개씩 보여주겠다 -->
 	</beans:bean>
 	<beans:bean id="so3" class="com.fp.pi.SiteOption3">
-		<beans:constructor-arg value="12"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
+		<beans:constructor-arg value="12"></beans:constructor-arg> <!-- 한 페이지당 12개씩 보여주겠다 -->
+	</beans:bean>
+	<beans:bean id="so4" class="com.fp.pi.SiteOption4">
+		<beans:constructor-arg value="12"></beans:constructor-arg> <!-- 한 페이지당 12개씩 보여주겠다 -->
 	</beans:bean>
 	
 
