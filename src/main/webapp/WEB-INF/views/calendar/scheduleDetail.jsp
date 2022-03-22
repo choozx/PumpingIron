@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 
-
+<link rel="stylesheet" href="resources/css/calendar">
 
 <title>Insert title here</title>
 </head>
@@ -44,8 +44,8 @@
                         	<img style="width: 85%; " src="${d.ccd_img}">
                         </div>
                         
-                        <div id="detail_text">
-							${d.ccd_text}
+                        <div id="detail_text" style="color:#3D3D3D; ">
+							${d.ccd_text} 
                         </div>
                         
                     </div>
