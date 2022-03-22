@@ -77,19 +77,19 @@ $(function() {
                           				$('#calendarModal').click();
                           				alert('일정을 추가했습니다.');
                           				location.reload();
-                          				}
-                          		});
-                              }
+                          				} //success
+                          		}); //ajax
+                              } // else
                               
-                          });
+                          }); // on.click
                           
                         $('#sprintSettingModalClose').on("click", function() {
 						$('#calendarModal').click();
 						});
                           
-                      }
-                  }
-              },
+                      } // click
+                  } //addEventButton
+              }, //customButtons
               
           
                events: [ //DB에서 event 불러오기
@@ -105,11 +105,11 @@ $(function() {
 								title: response[i] ['cc_text'],
 								start: response[i] ['cc_startDate'],
 								end: response[i] ['cc_endDate']
-							})
-						}
-					}
-				})            	  
-              ],
+							}) // .addEvent
+						} // for
+					} //success
+				})  // ajax          	  
+              ], // events
               
                eventClick: function(info) { // 관리자가 아닐 경우 => 클릭시 삭제
             	let numSchedule = info.event.id;
@@ -121,16 +121,16 @@ $(function() {
 						data: {	'cc_no' : numSchedule },
 						success : function () {
 							location.reload();
-						}	
+						} // success
 						
-					});
-				} 
-			},
+					}); // ajax
+				} // if
+			}, // eventClick
               
               editable: false, // false로 변경 시 draggable 작동 x 
               displayEventTime: false // 시간 표시 x
 
-        });
+        }); // calendar 선언
         
         }  else {
         // 로그인 id가 admin이 아닐 때 /////////////////
