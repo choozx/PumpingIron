@@ -8,11 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }">보충제</div>
+	<div id="products_banner">
+		<input id="p_type" type="hidden" value="${param.p_type }">보충제
+		<input id="pageNo" type="hidden" value="${param.pageNo}">
+	</div>
 	<div id="products_select_div">
-		<select id="p_main_sort" name="p_sort">			
+		<select id="p_main_sort" name="p_sort" onchange="productsSort(${param.pageNo})">			
+			<option value="p_name">이름순</option>
 			<option value="p_cnt">구매순</option>
-			<option value="evaluation_sort">평점순</option>
 			<option value="p_priceTohigh">높은가격순</option>
 			<option value="p_priceToLow">낮은가격순</option>
 		</select>
@@ -35,6 +38,16 @@
 			</c:forEach>
 		</div>
 	</div>
+	
+	<nav aria-label="Page navigation example">
+  		<ul class="pagination justify-content-center">
+    
+   			<c:forEach var="pageNo" begin="1" end="${pageCount }">
+    			<li class="page-item"><div id="page${pageNo }" class="page-link" onclick="productsSort(${pageNo});">${pageNo }</div></li>
+ 			</c:forEach>
+    
+  		</ul>
+	</nav>
 	
 </body>
 </html>
