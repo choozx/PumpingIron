@@ -53,13 +53,13 @@
 				<beans:value>classpath:memberMapper.xml</beans:value>
 				<beans:value>classpath:tipsMapper.xml</beans:value>
 				<beans:value>classpath:bodyMapper.xml</beans:value>
-				<beans:value>classpath:bestMapper.xml</beans:value>
 				<beans:value>classpath:review2Mapper.xml</beans:value>
 				<beans:value>classpath:infoMapMapper.xml</beans:value>
 				<beans:value>classpath:calendarMapper.xml</beans:value>
 				<beans:value>classpath:productsMapper.xml</beans:value>
 				<beans:value>classpath:customerServiceMapper.xml</beans:value>
 				<beans:value>classpath:cartMapper.xml</beans:value>
+				<beans:value>classpath:bestMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

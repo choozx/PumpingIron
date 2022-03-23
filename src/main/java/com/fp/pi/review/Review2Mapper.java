@@ -3,7 +3,10 @@ package com.fp.pi.review;
 import java.util.List;
 
 
+
 import java.util.Map;
+
+import com.fp.pi.body.body_review;
 
 
 public interface Review2Mapper {
@@ -11,7 +14,7 @@ public interface Review2Mapper {
 
 	List<community_review2> reviews();
 	
-	community_review2 getDetail(community_review2 cr);
+	community_review2 getDetail2(community_review2 cr);
 	
 	public abstract int writeCon(community_review2 cr);
 
@@ -43,6 +46,10 @@ public interface Review2Mapper {
 	int allLike(community_review2 aa);
 
 	int replys2(community_review2 cr);
+
+	int likePush(community_review2 cr);
+
+
 
 	
 	

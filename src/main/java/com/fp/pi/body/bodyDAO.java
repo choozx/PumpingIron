@@ -3,6 +3,7 @@ package com.fp.pi.body;
 import java.io.File;
 
 
+
 import java.math.BigDecimal;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -333,7 +334,14 @@ private int allMsgCount;
 		
 		}
 	public int likeCnt(HttpServletRequest req, body_review cr) {
-		return ss.getMapper(BodyMapper.class).allLike(cr);
+		int likeCnt =  ss.getMapper(BodyMapper.class).allLike2(cr);
+		cr.setBr_like(likeCnt);
+		ss.getMapper(BodyMapper.class).likePush2(cr);
+		
+		return likeCnt;
+		
+		
+		
 	}
 	
 	public int likeOfTips(HttpServletRequest req) {

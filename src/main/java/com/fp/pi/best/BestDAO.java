@@ -21,6 +21,7 @@ import com.fp.pi.body.BodyMapper;
 import com.fp.pi.body.HeartDTO3;
 import com.fp.pi.best.Selector4;
 import com.fp.pi.body.body_review;
+import com.fp.pi.review.Review2Mapper;
 import com.fp.pi.review.community_review2;
 
 
@@ -35,7 +36,7 @@ public class BestDAO {
 	@Autowired
 	private SiteOption4 so4;
 	
-	public void getBest(HttpServletRequest req) {
+	public void getBest(HttpServletRequest req, BestBean cr) {
 		
 	// bean에다 실시간으로 세팅
 	ArrayList<BestBean> bests = new ArrayList<BestBean>();
@@ -44,6 +45,7 @@ public class BestDAO {
 
 	for (body_review b : bodies) {
 		BestBean bb = new BestBean();
+	 bb.setB_no(b.getBr_no());
 	 bb.setB_title(b.getBr_title());
 	 bb.setB_content(b.getBr_content());
 	 bb.setB_nickname(b.getBr_nickname());
@@ -55,8 +57,10 @@ public class BestDAO {
 	 bb.setB_productReview(b.getBr_productReview());
 	 bb.setB_date(b.getBr_date());
 	 bb.setB_picture(b.getBr_picture());
+	 bb.setB_type("body");
 	 bests.add(bb);
 	 System.out.println(bb.getB_title());
+	 System.out.println(bb.getB_no());
 	}
 	
 		// 리뷰2 베스트
@@ -64,6 +68,7 @@ public class BestDAO {
 	
 	for (community_review2 c : reviews) {
 		BestBean bb = new BestBean();
+		 bb.setB_no(c.getC2_no());
 		 bb.setB_title(c.getC2_title());
 		 bb.setB_content(c.getC2_content());
 		 bb.setB_nickname(c.getC2_nickname());
@@ -75,6 +80,7 @@ public class BestDAO {
 		 bb.setB_productReview(c.getC2_productReview());
 		 bb.setB_date(c.getC2_date());
 		 bb.setB_picture(c.getC2_picture());
+		 bb.setB_type("review2");
 		 System.out.println(bb.getB_title() + "-----aa");
 		 bests.add(bb);
 		
@@ -98,7 +104,6 @@ public class BestDAO {
 	});
 	
 	req.setAttribute("bests", bests);
-	
 	}
 	
 	private int allMsgCount;
@@ -210,12 +215,30 @@ public class BestDAO {
 		public int getReply2(HttpServletRequest req, BestBean cr) {
 			return ss.getMapper(BestMapper.class).replys2(cr);
 		}
-		public void getDetail(HttpServletRequest req, BestBean cr) {
-			  
-			req.setAttribute("tippp", ss.getMapper(BestMapper.class).detailFromReview2(cr));	
-			req.setAttribute("tippp", ss.getMapper(BestMapper.class).detailFromBody(cr));	
-			
-			
+		public void getDetail(HttpServletRequest req, BestBean cr, body_review br, community_review2 c2) {
+			if(cr.getB_type().equals("body")) {
+				br.setBr_no(cr.getB_no());
+				br.setBr_content(cr.getB_content());
+				br.setBr_date(cr.getB_date());
+				br.setBr_picture(cr.getB_picture());
+				br.setBr_title(cr.getB_title());
+				br.setBr_nickname(cr.getB_nickname());
+				br.setBr_views(cr.getB_views());
+				req.setAttribute("dd", ss.getMapper(BodyMapper.class).getDetail(br));
+				System.out.println(br.getBr_no() + "^^");
+				
+			}else if (cr.getB_type().equals("review2")) {
+				c2.setC2_no(cr.getB_no());
+				c2.setC2_content(cr.getB_content());
+				c2.setC2_date(c2.getC2_date());
+				c2.setC2_picture(c2.getC2_picture());
+				c2.setC2_title(c2.getC2_title());
+				c2.setC2_nickname(c2.getC2_nickname());
+				c2.setC2_views(c2.getC2_views());
+				req.setAttribute("dd", ss.getMapper(Review2Mapper.class).getDetail2(c2));
+				System.out.println(c2.getC2_no() + "^^");
+			}
+	
 			
 		}
 

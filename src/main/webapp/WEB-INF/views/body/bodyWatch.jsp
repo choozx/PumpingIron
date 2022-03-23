@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
 <script src="resources/js/body/like.js"></script>
+<script type="text/javascript" src="resources/js/body/delcon.js"></script>
 
 <style>
 .reply-write-btn {

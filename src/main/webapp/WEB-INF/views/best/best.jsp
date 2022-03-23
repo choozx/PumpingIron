@@ -49,7 +49,7 @@ ${result }
    
     <div class="col" style="border: 1px solid;">
     
-<a href="bestWatch.go?b_no=${b.b_no }" class="card-item grid-item"  >
+<a href="bestWatch.go?b_type=${b.b_type }" class="card-item grid-item"  >
 <div class="column-div cursor">
 <span class="column-img" alt style="width: 100%"></span>
  <img class="column-img" src="${b.b_picture }" alt style="width: 100%" ><!-- ajax에서 등록된 문자열 가져오기  -->
@@ -115,7 +115,7 @@ ${result }
 <c:otherwise>
 
 
-      <a class="page-link" href="page3.change?p=${curPage - 1 }" aria-label="Previous">
+      <a class="page-link" href="page4.change?p=${curPage - 1 }" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
 
@@ -128,7 +128,7 @@ ${result }
     
     
     <c:forEach var="p" begin="1" end="${pageCount }">
-    	<li class="page-item"><a class="page-link" href="page3.change?p=${p }">${p }</a></li>
+    	<li class="page-item"><a class="page-link" href="page4.change?p=${p }">${p }</a></li>
  	</c:forEach>
     
     
@@ -145,7 +145,7 @@ ${result }
  
     </c:when>
     <c:otherwise>
-      <a class="page-link" href="page3.change?p=${curPage + 1 }" aria-label="Next">
+      <a class="page-link" href="page4.change?p=${curPage + 1 }" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </c:otherwise>

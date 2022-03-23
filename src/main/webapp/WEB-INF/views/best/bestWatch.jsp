@@ -62,11 +62,11 @@ ${result }
 
 <div class="viewer-left-text">
 <div class="text-top mb-1">
-<span class="noto-h3 text-over-flow-2">${tippp.b_title }</span>
+<span class="noto-h3 text-over-flow-2">${dd.b_title }</span>
 
 </div>
 <div class="text-bottom d-flex align-items-center">
-<span class="noto-pb">${tippp.b_nickname }</span>
+<span class="noto-pb">${dd.b_nickname }</span>
 
 <!-- 좋아요 -->
 <p class="d-flex align-items-center ml-3 m-0 noto-pb">
@@ -90,13 +90,13 @@ ${result }
 
 <div class="viewer-view-count mr-3">
 <span class="count-text mr-2 noto-pb">조회수</span>
-<span class="count-number noto-pb">${tippp.b_views }</span>&nbsp&nbsp
+<span class="count-number noto-pb">${dd.b_views }</span>&nbsp&nbsp
 
 </div>
 <div class="viewer-view-data">
 <span class="count-text mr-2 noto-pb">작성시간</span>
 
-<span class="count-data noto-pb"><fmt:formatDate value="${tippp.b_date }"/></span>
+<span class="count-data noto-pb"><fmt:formatDate value="${dd.b_date }"/></span>
 
 
 
@@ -124,7 +124,7 @@ ${result }
 <div class="viewer-content border border-dark border-top-0 p-5">
 <div class="viewer-content-item">
 <div class="item-text mb-5 text-break">
-<span>${tippp.b_content }</span>
+<span>${dd.b_content }</span>
 </div>
 
 

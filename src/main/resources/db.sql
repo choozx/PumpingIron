@@ -243,6 +243,9 @@ constraint brr_for_no
 )
 create sequence body_review_reply_seq;
 select * from body_review_reply
+
+DROP SEQUENCE body_review_reply_seq;
+DROP TABLE body_review_reply CASCADE CONSTRAINTS;
 ----------------------------------------------------
 create table heart_table3(
 h3_no  number(7) primary key,-----------------------------------

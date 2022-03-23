@@ -106,7 +106,7 @@ update body_review_reply set brr_text = #{brr_text} where brr_no = #{brr_no}
 	delete heart_table3 where h3_m_email = #{h3_m_email}
 </delete>
 
-  <select id="allLike" resultType="int" parameterType="body_review">
+  <select id="allLike2" resultType="int" parameterType="body_review">
 	select count(*) from heart_table3 where h3_br_no = #{br_no}
 </select>
 
@@ -118,6 +118,16 @@ update body_review_reply set brr_text = #{brr_text} where brr_no = #{brr_no}
 </select>
 
 
+<update id="likePush2" parameterType="com.fp.pi.body.body_review">
+
+UPDATE
+		body_review
+	SET
+		br_like = #{br_like}
+	WHERE
+		br_no = #{br_no}
+
+</update>
 
 
 

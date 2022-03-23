@@ -32,8 +32,9 @@ int likeOfTipsInsert(HeartDTO3 h);
 
 int likeOfTipsDelete(HeartDTO3 h);
 
-int detailFromReview2(BestBean cr);
 
-int detailFromBody(BestBean cr);
+
+int detail(BestBean cr);
+
 	
 }

@@ -7,7 +7,6 @@
 
 select * from community_review2 order by c2_date desc
 
-
 </select>
 
 <select id="getDetail" resultType="com.fp.pi.review.community_review2">
@@ -31,7 +30,7 @@ c2_tips, c2_bodyProfile, c2_productReview, c2_email, c2_nickname, c2_date, c2_pi
 
 <insert id="writeCon" parameterType="com.fp.pi.review.community_review2">
 
-insert into community_review2 values(community_review2_seq.nextval, #{c2_title}, #{c2_content}, 0, 0, #{c2_tips}, #{c2_bodyProfile}, #{c2_productReview},#{c2_email},#{c2_nickname}, sysdate, #{c2_picture})
+insert into community_review2 values(community_review2_seq.nextval, #{c2_title}, #{c2_content}, #{c2_like}, 0, #{c2_tips}, #{c2_bodyProfile}, #{c2_productReview},#{c2_email},#{c2_nickname}, sysdate, #{c2_picture})
  
 
 
@@ -107,6 +106,7 @@ update community_review2_reply set c2r_text = #{c2r_text} where c2r_no = #{c2r_n
  <delete id="likeOfTipsDelete" parameterType="HeartDTO2">
 	delete heart_table2 where h2_m_email = #{h2_m_email}
 </delete>
+
   <select id="allLike" resultType="int" parameterType="community_review2">
 	select count(*) from heart_table2 where h2_c2_no = #{c2_no}
 </select>
@@ -118,7 +118,17 @@ update community_review2_reply set c2r_text = #{c2r_text} where c2r_no = #{c2r_n
 
 </select>
 
+<!--좋아요 db에 넣기  -->
+<update id="likePush" parameterType="com.fp.pi.review.community_review2">
 
+UPDATE
+		community_review2
+	SET
+		c2_like = #{c2_like}
+	WHERE
+		c2_no = #{c2_no}
+
+</update>
 
 
 </mapper>

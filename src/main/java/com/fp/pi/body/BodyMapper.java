@@ -3,7 +3,12 @@ package com.fp.pi.body;
 import java.util.List;
 
 
+
 import java.util.Map;
+
+import com.fp.pi.best.BestBean;
+import com.fp.pi.review.community_review2;
+
 
 
 public interface BodyMapper {
@@ -40,10 +45,12 @@ public interface BodyMapper {
 
 	int likeOfTipsDelete(HeartDTO3 vals);
 
-	int allLike(body_review aa);
+	int allLike2(body_review aa);
 
 	int replys2(body_review cr);
 
+	int likePush2(body_review cr);
 	
+
 	
 }

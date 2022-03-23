@@ -4,11 +4,11 @@
 
 <select id="bestFromBody" resultType="com.fp.pi.body.body_review">
 
-select * from BODY_REVIEW where br_like >= 1
+select * from BODY_REVIEW where br_like >= 2
 </select>
 <select id="bestFromReview2" resultType="com.fp.pi.review.community_review2">
 
-select * from COMMUNITY_REVIEW2 where c2_like >= 1
+select * from COMMUNITY_REVIEW2 where c2_like >= 2
 </select>
 
 <select id="getMsgCount" resultType="com.fp.pi.best.BestBean" parameterType="Selector4">
@@ -20,19 +20,20 @@ b_tips, b_bodyProfile, b_productReview, b_email, b_nickname, b_date, b_picture f
 
 
 </select>
-<select id="detailFromReview2" resultType="community_review2">
+<select id="getDetail2" resultType="com.fp.pi.review.community_review2" >
 
-select * from community_review2 where cr_no = #{cr_no}
+select * from COMMUNITY_REVIEW2 where c2_no = #{c2_no}
+
+
+</select>
+<select id="getDetail" resultType="com.fp.pi.body.body_review" >
+
+select * from BODY_REVIEW where c2_no = #{c2_no}
 
 
 </select>
 
-<select id="detailFromBody" resultType="com.fp.pi.body.body_review">
 
-select * from body_review where br_no = #{br_no}
-
-
-</select>
 
 
 
