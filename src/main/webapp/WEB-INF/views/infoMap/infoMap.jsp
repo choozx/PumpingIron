@@ -94,39 +94,23 @@
 						// 마커에 클릭이벤트를 등록합니다
 						kakao.maps.event.addListener(marker, 'click', function() {
 							
-							
-							// 클릭할 때마다 윈도우를 비우고 새롭게 append
-							  $('#infoTitle').empty();
-							  $('#infoAdress_road').empty();
-							  $('#infoAdress').empty();
+							  $('img[alt=close]').click();
 							  
-							$('img[alt=close]').click();
-							
 							// infowindow 열기
 						      infowindow.open(map, marker); 
 						      
-						      // infowindow에 추가할 내용 
-						      $('#infoTitle').append(namePlace);
-						      $('#infoAdress_road').append(roadAdress);
-						      $('#infoAdress').append('(지번)' + address);
 							
-						});
-						
-						$('img[alt=close]').click(function() {
-							  $('#infoTitle').empty();
-							  $('#infoAdress_road').empty();
-							  $('#infoAdress').empty();
 						});
 						
 						
 					// 커스텀 오버레이에 표시할 컨텐츠
 					var content = '<div class="wrap" style="border-radius: 1px; width:250px; height:100px;">' +
 					 	'    <div class="info row" style="width:100%; height:100%;">' + 
-			            '        <div id="infoTitle" class="title" style="background-color: black; color:white; font-size:14pt;"></div>' + 
+			            '        <div id="infoTitle" class="title" style="background-color: black; color:white; font-size:14pt;">'+ namePlace +'</div>' + 
 			            '        <div class="body row" style="width:100%; height:100%;">' + 
 			            '            <div class="desc">' + 
-			            '                <div id="infoAdress_road" class="ellipsis"></div>' + 
-			            '                <div id="infoAdress" style="font-size:9pt; color:silver;" class="jibun ellipsis"></div>' + 
+			            '                <div id="infoAdress_road" class="ellipsis">' + roadAdress + '</div>' + 
+			            '                <div id="infoAdress" style="font-size:9pt; color:silver;" class="jibun ellipsis">' + address + '</div>' + 
 			            '                <div style="font-size:9pt; color:gary;"><a href="' + detail + '" target="_blank" class="link">길찾기</a> | <a href="/pi/priceInfo.go" target="_blank" class="link">가격 정보</a></div>' + 
 			            '            </div>' + 
 			            '        </div>' + 

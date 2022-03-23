@@ -10,19 +10,13 @@
 <body>
 
 	<div class="input-group mb-3 container" style="margin-top: 100px;">
-		<select class="form-select" >
- 		 <option value="all"> 전체 포함 </option>
-  		 <option value="name"> 업체명 </option>
- 		 <option value="area"> 위치 </option>
-		</select>
-		
 		<input type="text" class="form-control" placeholder="헬스장 검색..." style="width:75%"
 			 aria-label="search fitnessClub" aria-describedby="button-addon2">
-		<button class="btn btn-outline-secondary" type="button"
+		<button class="btn btn-outline-secondary" type="button" style="width: 100px;"
 			id="button-addon2">검색</button>
 			
-			<c:if test="${sessionScope == admin}">
-	<button class="btn btn-outline-secondary">정보 등록</button>
+			<c:if test="${sessionScope.loginMember.m_email == 'admin'}">
+		<button class="btn btn-outline-secondary" style="width: 100px;">정보 등록</button>
 			</c:if>
 		
 	</div>
