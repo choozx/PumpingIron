@@ -46,15 +46,10 @@ public class ProductsDAO {
 			int productCount = 0;
 			
 			ps = new ProductSort("p_name", p_type, "",new BigDecimal(1) ,new BigDecimal(start), new BigDecimal(end));
-			productCount = allProductCount; // 전체 개시글 수     
-			/*if (ps == null) {
-			} else {
-				ps.setP_sort("p_name");
-				ps.setStart(new BigDecimal(start));
-				ps.setEnd(new BigDecimal(end));
-			}*/
+			productCount = allProductCount; // 전체 개시글 수
 			
-			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProducts(ps));
+			System.out.println(ps.getP_sort());
+			request.setAttribute("products", ss.getMapper(ProductsMapper.class).getProductSort(ps));
 			
 			int pageCount = (int) Math.ceil(productCount / (double) count);
 			request.setAttribute("pageCount", pageCount);
@@ -90,10 +85,6 @@ public class ProductsDAO {
 		
 		allProductCount = ss.getMapper(ProductsMapper.class).getproductcount(ps.getP_type());
 		
-		System.out.println(ps.getP_sort());
-		System.out.println(ps.getP_type());
-		System.out.println(ps.getPageNo());
-		System.out.println("---");
 		int pageNo = ps.getPageNo().intValue();
 		
 		int count = so.getSnsCountPerpage();
