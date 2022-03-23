@@ -20,6 +20,11 @@
 			 aria-label="search fitnessClub" aria-describedby="button-addon2">
 		<button class="btn btn-outline-secondary" type="button"
 			id="button-addon2">검색</button>
+			
+			<c:if test="${sessionScope == admin}">
+	<button class="btn btn-outline-secondary">정보 등록</button>
+			</c:if>
+		
 	</div>
 
 		<c:forEach begin="1" end="3">
