@@ -76,9 +76,6 @@ ${result }
  data-like-cnt="" data-islike="0">
   <img id="likeImg" src="resources/img/tips/heart.svg" style="width: 18px">
  </span>
-
-
-
 </p>
 
 

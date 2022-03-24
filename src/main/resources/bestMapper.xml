@@ -20,15 +20,15 @@ b_tips, b_bodyProfile, b_productReview, b_email, b_nickname, b_date, b_picture f
 
 
 </select>
-<select id="getDetail2" resultType="com.fp.pi.review.community_review2" >
+<select id="getDetailReview2" parameterType="com.fp.pi.best.BestBean" resultType="com.fp.pi.review.community_review2" >
 
-select * from COMMUNITY_REVIEW2 where c2_no = #{c2_no}
+select * from COMMUNITY_REVIEW2 where c2_no = #{b_no}
 
 
 </select>
-<select id="getDetail" resultType="com.fp.pi.body.body_review" >
+<select id="getDetailBody"  parameterType="com.fp.pi.best.BestBean" resultType="com.fp.pi.body.body_review" >
 
-select * from BODY_REVIEW where c2_no = #{c2_no}
+select * from BODY_REVIEW where br_no = #{b_no}
 
 
 </select>

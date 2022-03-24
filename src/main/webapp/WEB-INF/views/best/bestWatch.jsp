@@ -62,11 +62,20 @@ ${result }
 
 <div class="viewer-left-text">
 <div class="text-top mb-1">
-<span class="noto-h3 text-over-flow-2">${dd.b_title }</span>
+<span class="noto-h3 text-over-flow-2">
+<c:if test="${typee eq 'body' }">${dd.br_title }</c:if>
+<c:if test="${typee eq 'review2' }">${dd.c2_title }</c:if>
+
+
+</span>
 
 </div>
 <div class="text-bottom d-flex align-items-center">
-<span class="noto-pb">${dd.b_nickname }</span>
+<span class="noto-pb">
+<c:if test="${typee eq 'body' }">${dd.br_nickname }</c:if>
+<c:if test="${typee eq 'review2' }">${dd.c2_nickname }</c:if>
+
+</span>
 
 <!-- 좋아요 -->
 <p class="d-flex align-items-center ml-3 m-0 noto-pb">
@@ -90,13 +99,19 @@ ${result }
 
 <div class="viewer-view-count mr-3">
 <span class="count-text mr-2 noto-pb">조회수</span>
-<span class="count-number noto-pb">${dd.b_views }</span>&nbsp&nbsp
+<span class="count-number noto-pb">
+<c:if test="${typee eq 'body' }">${dd.br_views }</c:if>
+<c:if test="${typee eq 'review2' }">${dd.c2_views }</c:if>
+
+</span>&nbsp&nbsp
 
 </div>
 <div class="viewer-view-data">
 <span class="count-text mr-2 noto-pb">작성시간</span>
 
-<span class="count-data noto-pb"><fmt:formatDate value="${dd.b_date }"/></span>
+
+<span class="count-data noto-pb"><c:if test="${typee eq 'body' }"><fmt:formatDate value="${dd.br_date }"/></c:if>
+<c:if test="${typee eq 'review2' }"><fmt:formatDate value="${dd.c2_date }"/></c:if></span>
 
 
 
@@ -124,10 +139,13 @@ ${result }
 <div class="viewer-content border border-dark border-top-0 p-5">
 <div class="viewer-content-item">
 <div class="item-text mb-5 text-break">
-<span>${dd.b_content }</span>
+
+<span>
+<c:if test="${typee eq 'body' }">${dd.br_content }</c:if>
+<c:if test="${typee eq 'review2' }">${dd.c2_content }</c:if>
+
+</span>
 </div>
-
-
 </div>
 
 

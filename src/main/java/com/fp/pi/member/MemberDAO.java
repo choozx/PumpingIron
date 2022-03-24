@@ -21,6 +21,8 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fp.pi.point.PointBean;
+import com.fp.pi.point.PointMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -699,7 +701,15 @@ public class MemberDAO {
 			}
 			
 		}
-	
+		
+		public void pushPoint(HttpServletRequest req, PointBean point) {
+			
+			PointMapper p =	ss.getMapper(PointMapper.class);
+			if(p.pushPoint(point)==1) {
+			System.out.println("포인트 적립 성공");	
+			}
+				
+			}
 }
 
 	

@@ -203,6 +203,13 @@ select * from heart_table2;
 select * from community_review2_reply  where c2r_c2_no =61 order by c2r_date desc
 select * from community_review2_reply
 
+
+select count(*) from heart_table2 where h2_c2_no = 161;
+select * from COMMUNITY_REVIEW2 where c2_no = 161;
+
+
+
+
 DROP SEQUENCE heart_table2_seq;
 DROP TABLE heart_table2 CASCADE CONSTRAINTS;
 -----------------------------------------------------------
@@ -279,18 +286,41 @@ constraint b_for_no
 	create sequence best_table_seq;
 	
 	select * from best_table;	
-
-	
-	
-	
-	
 	
 update BODY_REVIEW set br_like = 6 where br_no = 2
 
 
-
-
 select * from BODY_REVIEW where br_like >= 1;
 select * from COMMUNITY_REVIEW2 where c2_like >= 1;
+
+------------------------------------------------------------------------------------------------------------------------
+
+create table pointChk(
+p_num number(7) primary key,
+p_email varchar2(50 char) not null, -- 회원 아이디
+p_no number(7) not null, -- 게시판 넘버
+p_check number(7) not null, -- 포인트 몇개 쌓였는지 체크
+p_type varchar2(40 char) not null -- 리뷰2테이블, 바디테이블 구분 할려고 
+)
+constraint p_for_no
+	        foreign key(p_email) references member(m_email) on delete cascade,
+	        foreign key(p_no) references COMMUNITY_REVIEW2(c2_no) on delete cascade,
+	        foreign key(p_no) references BODY_REVIEW(br_no) on delete cascade);
+	        
+	        create sequence pointChk_seq
+			select * from pointChk;	
+
+
+DROP SEQUENCE pointChk_seq;
+DROP TABLE pointChk CASCADE CONSTRAINTS purge;
+select * from HEART_TABLE2;
+
+select * from pointChk;
+delete from pointChk;
+
+
+select * from COMMUNITY_REVIEW2
+select * from member;
+update member set m_point = 0 where m_email = 'admin';
 
 

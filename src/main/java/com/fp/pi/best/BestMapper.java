@@ -36,5 +36,9 @@ int likeOfTipsDelete(HeartDTO3 h);
 
 int detail(BestBean cr);
 
+public body_review getDetailBody(BestBean br);
+
+public community_review2 getDetailReview2(BestBean c2);
+
 	
 }

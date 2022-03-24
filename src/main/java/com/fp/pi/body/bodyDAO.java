@@ -19,6 +19,9 @@ import org.springframework.stereotype.Service;
 
 import com.fp.pi.SiteOption3;
 import com.fp.pi.member.Member;
+import com.fp.pi.member.MemberMapper;
+import com.fp.pi.point.PointBean;
+import com.fp.pi.point.PointMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -63,6 +66,10 @@ private int allMsgCount;
 		for (body_review r : reviews) {
 			System.out.println(r.getBr_no()+"----");
 			r.setBr_like(likeCnt(req, r));
+		/*	if(r.getBr_like() % 3 == 0) {
+				PointBean p = new
+				ss.getMapper(PointMapper.class).pushPoint(p);
+			}*/
 			r.setBr_bodyProfile(getReply2(req,r) + "");
 			System.out.println(r.getBr_like() +"~~~~~~~");
 			
@@ -99,7 +106,7 @@ private int allMsgCount;
 		}
 		cr.setBr_nickname(mmm.getM_name());
 		cr.setBr_tips("zz");
-		cr.setBr_bodyProfile("aaaa");
+		cr.setBr_bodyProfile("0");
 		cr.setBr_productReview("굿");
 		cr.setBr_email("zzz");
 		
@@ -337,7 +344,6 @@ private int allMsgCount;
 		int likeCnt =  ss.getMapper(BodyMapper.class).allLike2(cr);
 		cr.setBr_like(likeCnt);
 		ss.getMapper(BodyMapper.class).likePush2(cr);
-		
 		return likeCnt;
 		
 		

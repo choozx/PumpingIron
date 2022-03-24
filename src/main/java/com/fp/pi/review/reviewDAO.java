@@ -4,6 +4,7 @@ import java.io.File;
 
 
 
+
 import java.math.BigDecimal;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
 
 import com.fp.pi.SiteOption2;
 import com.fp.pi.member.Member;
+import com.fp.pi.point.PointBean;
+import com.fp.pi.point.PointMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -99,9 +102,9 @@ private int allMsgCount;
 		}
 		cr.setC2_nickname(mmm.getM_name());
 		cr.setC2_tips("zz");
-		cr.setC2_bodyProfile("aaaa");
+		cr.setC2_bodyProfile("0");
 		cr.setC2_productReview("굿");
-		cr.setC2_email("zzz");
+		cr.setC2_email(mmm.getM_email());
 		
 		if (ss.getMapper(Review2Mapper.class).writeCon(cr) == 1) {
 			req.setAttribute("result", "등록성공");
@@ -118,9 +121,10 @@ private int allMsgCount;
 	
 	}
 
-	public void getDetail(HttpServletRequest req, community_review2 cr) {
-		
-	    req.setAttribute("tippp", ss.getMapper(Review2Mapper.class).getDetail(cr));	
+	public community_review2 getDetail(HttpServletRequest req, community_review2 cr) {
+		community_review2 review = ss.getMapper(Review2Mapper.class).getDetail(cr);
+	    req.setAttribute("tippp", review);	
+	    return review;
 	}
 
 	public String getSummorJSON(HttpServletRequest request) {
@@ -372,6 +376,36 @@ private int allMsgCount;
 		int val = Integer.parseInt(req.getParameter("val"));
 		if(val == 0) {
 			ss.getMapper(Review2Mapper.class).likeOfTipsInsert(h);
+			community_review2 cr = new community_review2();
+			cr.setC2_no(aa);
+			// 하트 누른 그 게시글에 하트 몇갠지
+			if(likeCnt(req, cr) % 2 == 0) {
+				community_review2 review = getDetail(req, cr);
+				PointBean p = new PointBean();
+				p.setP_no(review.getC2_no());
+				p.setP_email(review.getC2_email());
+				p.setP_type("review2");
+				PointBean pb = ss.getMapper(PointMapper.class).getPoint(p);
+				if(pb == null) {
+					p.setP_check(2);
+					ss.getMapper(PointMapper.class).pushPoint(p);
+					ss.getMapper(PointMapper.class).pushPointMember(p);
+				} else {
+					if(likeCnt(req, cr) != pb.getP_check()) {
+						ss.getMapper(PointMapper.class).updatePoint(p);
+						pb = ss.getMapper(PointMapper.class).getPoint(p);
+						p.setP_check(pb.getP_check());
+						ss.getMapper(PointMapper.class).pushPointMember(p);
+					}
+					
+				}
+				
+			}
+			
+			
+			
+			
+			
 		}else {
 			ss.getMapper(Review2Mapper.class).likeOfTipsDelete(h);
 		}

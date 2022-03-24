@@ -49,7 +49,7 @@ ${result }
    
     <div class="col" style="border: 1px solid;">
     
-<a href="bestWatch.go?b_type=${b.b_type }" class="card-item grid-item"  >
+<a href="bestWatch.go?b_type=${b.b_type }&b_no=${b.b_no}" class="card-item grid-item"  >
 <div class="column-div cursor">
 <span class="column-img" alt style="width: 100%"></span>
  <img class="column-img" src="${b.b_picture }" alt style="width: 100%" ><!-- ajax에서 등록된 문자열 가져오기  -->

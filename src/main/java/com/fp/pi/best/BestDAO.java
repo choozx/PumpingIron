@@ -215,28 +215,16 @@ public class BestDAO {
 		public int getReply2(HttpServletRequest req, BestBean cr) {
 			return ss.getMapper(BestMapper.class).replys2(cr);
 		}
+		
 		public void getDetail(HttpServletRequest req, BestBean cr, body_review br, community_review2 c2) {
+			req.setAttribute("typee", cr.getB_type());
 			if(cr.getB_type().equals("body")) {
 				br.setBr_no(cr.getB_no());
-				br.setBr_content(cr.getB_content());
-				br.setBr_date(cr.getB_date());
-				br.setBr_picture(cr.getB_picture());
-				br.setBr_title(cr.getB_title());
-				br.setBr_nickname(cr.getB_nickname());
-				br.setBr_views(cr.getB_views());
 				req.setAttribute("dd", ss.getMapper(BodyMapper.class).getDetail(br));
-				System.out.println(br.getBr_no() + "^^");
 				
 			}else if (cr.getB_type().equals("review2")) {
 				c2.setC2_no(cr.getB_no());
-				c2.setC2_content(cr.getB_content());
-				c2.setC2_date(c2.getC2_date());
-				c2.setC2_picture(c2.getC2_picture());
-				c2.setC2_title(c2.getC2_title());
-				c2.setC2_nickname(c2.getC2_nickname());
-				c2.setC2_views(c2.getC2_views());
-				req.setAttribute("dd", ss.getMapper(Review2Mapper.class).getDetail2(c2));
-				System.out.println(c2.getC2_no() + "^^");
+				req.setAttribute("dd", ss.getMapper(Review2Mapper.class).getDetail(c2));
 			}
 	
 			

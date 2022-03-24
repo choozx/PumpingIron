@@ -14,7 +14,7 @@ public interface Review2Mapper {
 
 	List<community_review2> reviews();
 	
-	community_review2 getDetail2(community_review2 cr);
+	community_review2 getDetail(community_review2 cr);
 	
 	public abstract int writeCon(community_review2 cr);
 
