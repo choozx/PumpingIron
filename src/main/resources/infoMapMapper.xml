@@ -2,5 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.infomap.InfoMapMapper">
 
+<insert id="regInfo" parameterType="com.fp.pi.infomap.InfoMapBean">
+	insert into price_info values(price_info_seq.nextval, #{pi_name}, #{pi_loc}, #{pi_price}, #{pi_partner}, #{pi_img})
+</insert>
 
 </mapper>

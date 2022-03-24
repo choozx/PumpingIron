@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.pi.TokenMaker;
 import com.fp.pi.member.MemberDAO;
 
 @Controller
@@ -14,6 +16,9 @@ public class InfoMapController {
 	
 	@Autowired
 	MemberDAO mDAO;
+	
+	@Autowired
+	InfoMapDAO iDAO;
 	
 /////////////////////////////////////// 지도로 정보 검색  ////////////////////////////////////////////
 
@@ -30,14 +35,6 @@ public class InfoMapController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	/////////////////////////////////////// 가격 정보 모아 보기 //////////////////////////////////////////
 	
 	
@@ -45,6 +42,19 @@ public class InfoMapController {
 	public String priceInfoGo(HttpServletRequest req) {
 		
 		mDAO.loginCheck(req);
+		
+		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/priceInfo.reg", method = RequestMethod.POST)
+	public String priceInfoReg(InfoMapBean i, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+			iDAO.insertInfo(i, req);
+		}
+		TokenMaker.make(req);
 		
 		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
 		return "index";

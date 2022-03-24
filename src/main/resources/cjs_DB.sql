@@ -1,29 +1,15 @@
-
---create table info_map{
---im_no(pk) ,
---im_name,
---im_text,
---im_menu,
---im_price,
---im_latitude,
---im_longitude
---};
---
---create sequence info_map_seq;
-
-
-
-create table info_price(
-ip_no number(7) primary key,
-ip_name varchar2(30 char) not null, 
-ip_location varchar2(200 char) not null,
-ip_price number(7) not null,
-ip_partnership varchar2(1 char)
+create table price_info(
+pi_no number(7) primary key,
+pi_name varchar2(50 char) not null,
+pi_loc varchar2(50 char) not null,
+pi_price varchar2(500 char) not null,
+pi_partner varchar2(50 char) not null,
+pi_img varchar2(1000 char) not null
 );
 
-create sequence info_price_seq;
+create sequence price_info_seq;
 
-
+select * from PRICE_INFO;
 
 
 

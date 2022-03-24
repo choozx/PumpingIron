@@ -211,6 +211,10 @@ $(function() {
 </head>
 <body>
 
+	<div class="container" style="font-size: 9pt;">* 일정을 클릭하시면 상세 정보를 볼 수 있습니다. </div>
+	
+	<br>
+
 	<!-- admin 확인 -->
 	<input id="login_check" type="hidden" value="${sessionScope.loginMember.m_email}">
 	
