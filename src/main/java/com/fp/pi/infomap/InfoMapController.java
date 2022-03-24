@@ -39,9 +39,12 @@ public class InfoMapController {
 	
 	
 	@RequestMapping(value = "/priceInfo.go", method = RequestMethod.GET)
-	public String priceInfoGo(HttpServletRequest req) {
+	public String priceInfoGo(InfoMapBean i,HttpServletRequest req) {
 		
-		mDAO.loginCheck(req);
+
+		if (mDAO.loginCheck(req)) {
+		}
+		iDAO.selectInfo(i, req);
 		
 		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
 		return "index";

@@ -1,6 +1,7 @@
 package com.fp.pi.infomap;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -68,5 +69,15 @@ public class InfoMapDAO {
 			return;
 		}
 }
+
+	public void selectInfo(InfoMapBean i, HttpServletRequest req) {
+		
+		List<InfoMapBean> priceInfoes = ss.getMapper(InfoMapMapper.class).callInfo();
+		req.setAttribute("priceInfo", priceInfoes);
+		
+	}
+	
+	
+	
 		
 	}

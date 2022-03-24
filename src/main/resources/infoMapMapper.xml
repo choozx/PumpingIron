@@ -6,4 +6,8 @@
 	insert into price_info values(price_info_seq.nextval, #{pi_name}, #{pi_loc}, #{pi_price}, #{pi_partner}, #{pi_img})
 </insert>
 
+<select id="callInfo" resultType="com.fp.pi.infomap.InfoMapBean">
+	select * from price_info
+</select>
+
 </mapper>
