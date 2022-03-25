@@ -55,7 +55,7 @@ ${result }
 <div class=" viewer-left d-flex align-items-start">
 <a class="viewer-picture">
 
-<img alt="" src="" class="rounded-circle">
+<img alt="" src="resources/files/${tippp.m_photo}" class="rounded-circle">
 
 </a>
 
