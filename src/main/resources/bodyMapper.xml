@@ -12,7 +12,7 @@ select * from body_review order by br_date desc
 
 <select id="getDetail" resultType="com.fp.pi.body.body_review">
 
-select * from body_review where br_no = #{br_no}
+select * from body_review, member where m_email = br_email and br_no = #{br_no}
 
 
 </select>

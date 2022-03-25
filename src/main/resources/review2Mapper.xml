@@ -11,7 +11,7 @@ select * from community_review2 order by c2_date desc
 
 <select id="getDetail" resultType="com.fp.pi.review.community_review2">
 
-select * from community_review2 where c2_no = #{c2_no}
+select * from community_review2, member where m_email = c2_email and c2_no = #{c2_no}
 
 
 </select>
