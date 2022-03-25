@@ -22,6 +22,8 @@ import com.fp.pi.member.Member;
 import com.fp.pi.member.MemberMapper;
 import com.fp.pi.point.PointBean;
 import com.fp.pi.point.PointMapper;
+import com.fp.pi.review.Review2Mapper;
+import com.fp.pi.review.community_review2;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -108,7 +110,7 @@ private int allMsgCount;
 		cr.setBr_tips("zz");
 		cr.setBr_bodyProfile("0");
 		cr.setBr_productReview("굿");
-		cr.setBr_email("zzz");
+		cr.setBr_email(mmm.getM_email());
 		
 		if (ss.getMapper(BodyMapper.class).writeCon(cr) == 1) {
 			req.setAttribute("result", "등록성공");
@@ -125,9 +127,10 @@ private int allMsgCount;
 	
 	}
 
-	public void getDetail(HttpServletRequest req, body_review cr) {
-		
-	    req.setAttribute("tippp", ss.getMapper(BodyMapper.class).getDetail(cr));	
+	public body_review getDetail(HttpServletRequest req, body_review cr) {
+		body_review body = ss.getMapper(BodyMapper.class).getDetail(cr);
+	    req.setAttribute("tippp", body);	
+	    return body;
 	}
 
 	public String getSummorJSON(HttpServletRequest request) {
@@ -368,6 +371,7 @@ private int allMsgCount;
 		}
 		
 	}
+	
 	public int likeOfTipsUpdate(HttpServletRequest req) {
 		
 		int aa = Integer.parseInt(req.getParameter("ajaxId"));
@@ -381,7 +385,35 @@ private int allMsgCount;
 		int val = Integer.parseInt(req.getParameter("val"));
 		if(val == 0) {
 			ss.getMapper(BodyMapper.class).likeOfTipsInsert(h);
-		}else {
+			body_review cr = new body_review();
+			cr.setBr_no(aa);
+			// 하트 누른 그 게시글에 하트 몇갠지
+			if(likeCnt(req, cr) % 2 == 0) {
+				body_review body = getDetail(req, cr);
+				PointBean p = new PointBean();
+				p.setP_no(body.getBr_no());
+				p.setP_email(body.getBr_email());
+				p.setP_type("body");
+				PointBean pb = ss.getMapper(PointMapper.class).getPoint(p);
+				if(pb == null) {
+					p.setP_check(2);
+					ss.getMapper(PointMapper.class).pushPoint(p);
+					ss.getMapper(PointMapper.class).pushPointMember(p);
+	
+				} else {
+					if(likeCnt(req, cr) != pb.getP_check()) {
+						ss.getMapper(PointMapper.class).updatePoint(p);
+						pb = ss.getMapper(PointMapper.class).getPoint(p);
+						p.setP_check(pb.getP_check());
+						ss.getMapper(PointMapper.class).pushPointMember(p);
+					}
+					
+				}
+				
+			}
+				
+				
+				}else {
 			ss.getMapper(BodyMapper.class).likeOfTipsDelete(h);
 		}
 		return likeOfTips(req);

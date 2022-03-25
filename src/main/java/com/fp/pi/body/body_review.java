@@ -17,6 +17,7 @@ public class body_review {
 	private String br_productReview;
 	private Date br_date ;
 	private String br_picture; // f12 눌렀을시 사진 url 가져오기
+	private String m_photo;
 
 	public body_review() {
 		// TODO Auto-generated constructor stub
@@ -24,7 +25,7 @@ public class body_review {
 
 	public body_review(int br_no, String br_title, String br_content, String br_nickname, int br_like, int br_views,
 			String br_email, String br_tips, String br_bodyProfile, String br_productReview, Date br_date,
-			String br_picture) {
+			String br_picture, String m_photo) {
 		super();
 		this.br_no = br_no;
 		this.br_title = br_title;
@@ -38,6 +39,7 @@ public class body_review {
 		this.br_productReview = br_productReview;
 		this.br_date = br_date;
 		this.br_picture = br_picture;
+		this.m_photo = m_photo;
 	}
 
 	public int getBr_no() {
@@ -136,7 +138,13 @@ public class body_review {
 		this.br_picture = br_picture;
 	}
 
-	
+	public String getM_photo() {
+		return m_photo;
+	}
+
+	public void setM_photo(String m_photo) {
+		this.m_photo = m_photo;
+	}
 
 	
 }

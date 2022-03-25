@@ -40,7 +40,7 @@ width: 100%;
 
 <div class="d-flex  mb-4">
 <span class="m-0 sub-title noto-pb ">작성자</span>
-<span class="noto-pb mr-2">#ID</span>
+<span class="noto-pb mr-2">김두</span>
 <span class=""></span>&nbsp
 <span class="" style="margin-right: 850px"></span>
 

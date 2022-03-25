@@ -18,10 +18,12 @@ select * from community_review2 where c2_no = #{c2_no}
 
 
 <select id="getMsgCount" resultType="com.fp.pi.review.community_review2" parameterType="Selector">
-select * from (select rownum as rn, c2_no, c2_title, c2_content, c2_like, c2_views, 
-c2_tips, c2_bodyProfile, c2_productReview, c2_email, c2_nickname, c2_date, c2_picture from 
+select * from (
+	select rownum as rn, c2_no, c2_title, c2_content, c2_like, c2_views, 
+	c2_tips, c2_bodyProfile, c2_productReview, c2_email, c2_nickname, c2_date, c2_picture, m_photo
+	from 
 
-			(select * from community_review2	order by c2_date desc)	)
+			(select * from community_review2, member	order by c2_date desc) where m_email = c2_email	)
 			where rn &gt;= #{start} and rn &lt;= #{end}
 
 

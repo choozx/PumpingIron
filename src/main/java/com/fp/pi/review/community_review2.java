@@ -17,14 +17,15 @@ public class community_review2 {
 	private String c2_productReview;
 	private Date c2_date ;
 	private String c2_picture; // f12 눌렀을시 사진 url 가져오기
-
+	private String m_photo;
+	
 	public community_review2() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public community_review2(int c2_no, String c2_title, String c2_content, String c2_nickname, int c2_like,
 			int c2_views, String c2_email, String c2_tips, String c2_bodyProfile, String c2_productReview, Date c2_date,
-			String c2_picture) {
+			String c2_picture, String m_photo) {
 		super();
 		this.c2_no = c2_no;
 		this.c2_title = c2_title;
@@ -38,6 +39,7 @@ public class community_review2 {
 		this.c2_productReview = c2_productReview;
 		this.c2_date = c2_date;
 		this.c2_picture = c2_picture;
+		this.m_photo = m_photo;
 	}
 
 	public int getC2_no() {
@@ -136,6 +138,14 @@ public class community_review2 {
 		this.c2_picture = c2_picture;
 	}
 
+	public String getM_photo() {
+		return m_photo;
+	}
 
+	public void setM_photo(String m_photo) {
+		this.m_photo = m_photo;
+	}
+
+	
 	
 }

@@ -13,9 +13,10 @@ select * from COMMUNITY_REVIEW2 where c2_like >= 2
 
 <select id="getMsgCount" resultType="com.fp.pi.best.BestBean" parameterType="Selector4">
 select * from (select rownum as rn, b_no, b_title, b_content, b_like, b_views, 
-b_tips, b_bodyProfile, b_productReview, b_email, b_nickname, b_date, b_picture from 
+b_tips, b_bodyProfile, b_productReview, b_email, b_nickname, b_date, b_picture, m_photo
+ from 
 
-			(select * from community_review2 order by b_date desc)	)
+			(select * from community_review2, member order by b_date desc) where m_email = b_email	)
 			where rn &gt;= #{start} and rn &lt;= #{end}
 
 

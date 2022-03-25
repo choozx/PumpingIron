@@ -324,3 +324,26 @@ select * from member;
 update member set m_point = 0 where m_email = 'admin';
 
 
+
+select * from (
+	select rownum as rn, c2_no, c2_title, c2_content, c2_like, c2_views, 
+	c2_tips, c2_bodyProfile, c2_productReview, c2_email, c2_nickname, c2_date, c2_picture, m_photo
+	from (
+	select * from community_review2, member	order by c2_date desc) where c2_email = m_email)
+			where rn >= 1 and rn <= 5
+
+update member set m_pw = 1234 where m_email = 'kgw96@naver.com';
+
+select * from (select rownum as rn, br_no, br_title, br_content, br_like, br_views, 
+br_tips, br_bodyProfile, br_productReview, br_email, br_nickname, br_date, br_picture,m_photo
+from 
+
+			(select * from body_review, member	order by br_date desc) where m_email = br_email	)
+			where rn >= 1 and rn <= 5
+
+			
+select * from (select rownum as rn, cr_no, cr_title, cr_content, cr_like, cr_views, 
+cr_tips, cr_bodyProfile, cr_productReview, cr_email, cr_nickname, cr_date, m_photo
+ from 
+			(select * from community_review, member	order by cr_date desc) where m_email = cr_email	)
+			where rn &gt;= #{start} and rn &lt;= #{end}

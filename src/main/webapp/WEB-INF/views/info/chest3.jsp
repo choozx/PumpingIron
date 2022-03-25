@@ -40,14 +40,14 @@ width: 100%;
 
 <div class="d-flex  mb-4">
 <span class="m-0 sub-title noto-pb ">작성자</span>
-<span class="noto-pb mr-2">#ID</span>
+<span class="noto-pb mr-2">김두</span>
 <span class=""></span>&nbsp
 <span class="" style="margin-right: 850px"></span>
 
-<span class="viewer">조회수</span>
-<span class="">#</span>&nbsp&nbsp&nbsp&nbsp
-<span class="">작성시간</span>
-<span class="">####-##-##</span>
+<!-- <span class="viewer">조회수</span>
+<span class="">#</span>&nbsp&nbsp&nbsp&nbsp -->
+<span class="">작성시간</span>&nbsp&nbsp
+<span class="">2022.03.10</span>
 
 </div>
 </div>
@@ -65,7 +65,7 @@ width: 100%;
 
 </div>
 </div>
-<div class="write-wrapper container">
+<!-- <div class="write-wrapper container">
 <div class="d-flex align-items-center comment-left">
 
 <img src="resources/img/tips/comment.png" class="comment-icon">
@@ -79,12 +79,12 @@ width: 100%;
 </div>
 
 </div>
-
+ -->
 <!-- <div class="write-wrapper container" >
 <span class="">lmc 제품입니다</span>
 </div>
  -->
-
+<!-- 
 
 <div class="write-wrapper container" style="height: 250px">
 <div class="reply-write-textarea" >
@@ -96,7 +96,7 @@ width: 100%;
 </div>
 
 
-</div>
+</div> -->
 <div class="bottom-btn-wrapper container">
 <div class="viewer-bottom d-flex align-items-center justify-content-between
 mt-5 mb-5">

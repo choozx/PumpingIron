@@ -20,9 +20,10 @@ select * from body_review where br_no = #{br_no}
 
 <select id="getMsgCount" resultType="com.fp.pi.body.body_review" parameterType="Selector3">
 select * from (select rownum as rn, br_no, br_title, br_content, br_like, br_views, 
-br_tips, br_bodyProfile, br_productReview, br_email, br_nickname, br_date, br_picture from 
+br_tips, br_bodyProfile, br_productReview, br_email, br_nickname, br_date, br_picture,m_photo
+from 
 
-			(select * from body_review	order by br_date desc)	)
+			(select * from body_review, member	order by br_date desc) where m_email = br_email	)
 			where rn &gt;= #{start} and rn &lt;= #{end}
 
 

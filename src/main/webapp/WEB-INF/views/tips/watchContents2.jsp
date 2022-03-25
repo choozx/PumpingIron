@@ -53,10 +53,10 @@ ${result }
 <div class="border border-dark board-header-wrapper">
 <div class="viewer-header d-flex align-items-start justify-content-between">
 <div class=" viewer-left d-flex align-items-start">
-<a class="viewer-picture">
 
-<img alt="" src="" class="rounded-circle">
-${m.m_photo }
+<a class="viewer-picture">
+<img alt="" src="resources/files/${tippp.m_photo}" class="rounded-circle">
+
 </a>
 
 
