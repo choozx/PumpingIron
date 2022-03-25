@@ -1,5 +1,12 @@
 function payment() {
 	
+	let member = $("#member").val();
+	
+	if (member == null || member == "") {
+		alert("로그인이 필요한 서비스입니다");
+		return false;
+	}
+	
 	let p_name = $('#product_name').val();
 	let total_amount = $('#total_amount').val();
 	
