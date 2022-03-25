@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+a {
+	color: aqua;
+}
+
+a:hover {
+	
+	color: navy;
+	size: 15pt;
+	
+	
+}
