@@ -28,7 +28,7 @@
 </insert>
 
 <select id="contestSchedule" resultType="com.fp.pi.calendar.ContestBean">
-	select * from calendar_contest
+	select * from calendar_contest order by cc_startDate
 </select>
 
 <delete id="delSchedule" parameterType="com.fp.pi.calendar.ContestBean">

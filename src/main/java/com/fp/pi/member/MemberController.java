@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.pi.body.bodyDAO;
+import com.fp.pi.calendar.CalendarDAO;
+import com.fp.pi.calendar.ContestBean;
 import com.fp.pi.customerservice.CustomerServiceDAO;
+import com.fp.pi.tips.tipsDAO;
 
 
 @Controller
@@ -28,6 +32,15 @@ public class MemberController {
 
 	@Autowired
 	private CustomerServiceDAO csDAO;
+	
+	@Autowired
+	private CalendarDAO cDAO;
+	
+	@Autowired
+	private tipsDAO tDAO;
+	
+	@Autowired
+	private bodyDAO bDAO;
 //	@Autowired
 //	private LoginService lg;
 	
@@ -58,8 +71,11 @@ public class MemberController {
 	
 	// 로그아웃
 	@RequestMapping(value = "member.logout", method = RequestMethod.GET)
-	public String logout(Member m, HttpServletRequest req) {
+	public String logout(Member m, HttpServletRequest req, ContestBean c) {
 		csDAO.getEvent1(1, req);
+		cDAO.selectSchdule1(c, req);
+		tDAO.getMsg(1, req);
+		bDAO.getMsg(1, req);
 		mDAO.logout(req);
 		mDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
@@ -77,12 +93,15 @@ public class MemberController {
 	
 	// 회원가입 
 	@RequestMapping(value = "/member.join.do", method = RequestMethod.POST)
-	public String joinGo(Member m, HttpServletRequest req, HttpServletResponse respons) {
+	public String joinGo( ContestBean c, Member m, HttpServletRequest req, HttpServletResponse respons) {
 		
 		mDAO.join(m, req, respons);
 		//System.out.println(m.getM_email());
 		mailsender.mailSendWithUserKey(m.getM_email(), req);
 		csDAO.getEvent1(1, req);
+		cDAO.selectSchdule1(c, req);
+		tDAO.getMsg(1, req);
+		bDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
@@ -136,12 +155,15 @@ public class MemberController {
 		}	
 		// 회원탈퇴 수행
 		@RequestMapping(value = "/member.withdrawal.do", method = RequestMethod.POST)
-		public String withdrawalDo(Member m,HttpServletRequest req, HttpServletResponse response) {
+		public String withdrawalDo(Member m,HttpServletRequest req, HttpServletResponse response, ContestBean c) {
 
 		if(mDAO.loginCheck(req)) {
 			mDAO.withdrawal(m, req, response);
 		}
 			csDAO.getEvent1(1, req);
+			cDAO.selectSchdule1(c, req);
+			tDAO.getMsg(1, req);
+			bDAO.getMsg(1, req);
 			req.setAttribute("contentPage", "home.jsp");
 			return "index";
 		}	
@@ -217,7 +239,7 @@ public class MemberController {
 		}
 		// 카카오 로그인 페이지
 		@RequestMapping(value = "/member.kakaoGO", method = RequestMethod.GET)
-		public String kakaoGo(Member m, HttpServletRequest req, HttpServletResponse response, String m_email) {
+		public String kakaoGo(Member m, HttpServletRequest req, HttpServletResponse response, String m_email, ContestBean c) {
 			
 			System.out.println(req.getParameter("name"));
 			System.out.println(req.getParameter("email"));
@@ -227,6 +249,9 @@ public class MemberController {
 			mDAO.loginKakao(m, req, response, m_email);
 			if(mDAO.loginCheck(req)) {
 				csDAO.getEvent1(1, req);
+				cDAO.selectSchdule1(c, req);
+				tDAO.getMsg(1, req);
+				bDAO.getMsg(1, req);
 				req.setAttribute("contentPage", "home.jsp");
 			} else {
 				
@@ -242,7 +267,7 @@ public class MemberController {
 		
 		// 카카오 회원가입
 		@RequestMapping(value = "/member.kakaoDo", method = RequestMethod.POST)
-		public String kakaoDo(Member m, HttpServletRequest req, HttpServletResponse response, String m_email) {
+		public String kakaoDo(Member m, HttpServletRequest req, HttpServletResponse response, String m_email, ContestBean c) {
 			
 			
 
@@ -250,6 +275,9 @@ public class MemberController {
 			mDAO.joinKakao(m, req, response, m_email);
 			mDAO.loginCheck(req);
 			csDAO.getEvent1(1, req);
+			cDAO.selectSchdule1(c, req);
+			tDAO.getMsg(1, req);
+			bDAO.getMsg(1, req);
 			req.setAttribute("contentPage", "home.jsp");
 			return "index";
 		}
@@ -284,12 +312,15 @@ public class MemberController {
 		
 		// 카카오 회원탈퇴 수행
 			@RequestMapping(value = "/member.kakaoWithdrawal", method = RequestMethod.GET)
-			public String kakaoWithdrawal(Member m,HttpServletRequest req, HttpServletResponse response) {
+			public String kakaoWithdrawal(Member m,HttpServletRequest req, HttpServletResponse response, ContestBean c) {
 
 			if(mDAO.loginCheck(req)) {
 			mDAO.kakaoWithdrawal(m, req, response);
 			}
 				csDAO.getEvent1(1, req);
+				cDAO.selectSchdule1(c, req);
+				tDAO.getMsg(1, req);
+				bDAO.getMsg(1, req);
 				req.setAttribute("contentPage", "home.jsp");
 				return "index";
 			}	
