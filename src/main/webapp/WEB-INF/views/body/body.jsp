@@ -43,7 +43,7 @@ ${result }
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
   
   
- <c:forEach var="n" items="${reviews}">
+ <c:forEach var="n" items="${bodys}">
  	
  
    

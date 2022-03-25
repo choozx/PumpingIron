@@ -56,8 +56,21 @@
 
 }
 
+.event_td7{
+	width: 25%;
+	display:inline-block;
+	 text-overflow: ellipsis; 
+	 overflow: hidden;
+	 white-space: nowrap;
+}
 
-
+.event_td8{
+	width: 50%;
+	display:inline-block;
+	 text-overflow: ellipsis; 
+	 overflow: hidden;
+	 white-space: nowrap;
+}
 </style>
 <script type="text/javascript">
  $(function() {
@@ -67,6 +80,11 @@
    $(".contest_tr").hide();
    $(".contest_tr").slice(0,3).show();
    
+   $(".body_tr").hide();
+   $(".body_tr").slice(0,3).show();
+   
+   $(".tip_tr").hide();
+   $(".tip_tr").slice(0,3).show();
 	  
 })
 </script>
@@ -241,9 +259,9 @@
 				<div class="col-sm-12 col-lg-6 ">
 					<header class="header-board pb-3 mt-5">
 						<h3  style="font-weight: 900;">커뮤니티
-						<span class="ms-3" style="color:rgba(7, 29, 61, 0.7); font-size: 20px;">운동팁/Q&A</span></h3>
+						<span class="ms-3" style="color:rgba(7, 29, 61, 0.7); font-size: 20px; cursor: pointer;" onclick="location.href='tips.go'">운동팁/Q&A</span></h3>
 						<div>
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" onclick="location.href='tips.go'" style="cursor: pointer;">
   						<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
 						</svg>
 						</div>
@@ -251,39 +269,28 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
+								<th scope="col" width="25%;" class="event_td7">작성자</th>
+								<th scope="col" width="25%;" class="event_td5">날짜</th>
+								<th scope="col" width="50%" class="event_td8">제목</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
+							<c:forEach items="${reviews}" var="r">
+							<tr class="tip_tr" id="tip_tr" onclick="location.href='tips.go'" style="cursor: pointer;" >
+								<th scope="row" class="event_td7" style="max-width: 25%;">${r.cr_nickname}</th>
+								<td class="event_td5" style="max-width: 25%;"><fmt:formatDate value="${r.cr_date}" type="date" pattern="yyyy.MM.dd"/></td>
+								<td class="event_td8" style="max-width: 50%;">${r.cr_title }</td>
 							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td colspan="2">Larry the Bird</td>
-								<td>@twitter</td>
-							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div class="col-sm-12 col-lg-6">
 					<header class="header-board pb-3 mt-5">
 						<h3  style="font-weight: 900;">커뮤니티
-						<span class="ms-3" style="color:rgba(7, 29, 61, 0.7); font-size: 20px;">쇼핑 후기</span></h3>
+						<span class="ms-3" style="color:rgba(7, 29, 61, 0.7); font-size: 20px; cursor: pointer;" onclick="location.href='body.go;'">바디프로필</span></h3>
 						<div>
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" style="cursor: pointer;" onclick="location.href='body.go;'">
   						<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
 						</svg>
 						</div>
@@ -291,30 +298,19 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
+								<th scope="col" width="25%;" class="event_td7">작성자</th>
+								<th scope="col" width="25%;" class="event_td5">날짜</th>
+								<th scope="col" width="50%" class="event_td8">제목</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
+							<c:forEach items="${bodys}" var="b">
+							<tr class="body_tr" id="body_tr" onclick="location.href='body.go'" style="cursor: pointer;" >
+								<th scope="row" class="event_td7" style="max-width: 25%;">${b.br_nickname}</th>
+								<td class="event_td5" style="max-width: 25%;"><fmt:formatDate value="${b.br_date}" type="date" pattern="yyyy.MM.dd"/></td>
+								<td class="event_td8" style="max-width: 50%;">${b.br_title }</td>
 							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td colspan="2">Larry the Bird</td>
-								<td>@twitter</td>
-							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

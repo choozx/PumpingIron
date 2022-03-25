@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.pi.body.bodyDAO;
 import com.fp.pi.calendar.CalendarDAO;
 import com.fp.pi.calendar.ContestBean;
 import com.fp.pi.customerservice.CustomerServiceDAO;
+import com.fp.pi.tips.tipsDAO;
 
 
 @Controller
@@ -33,6 +35,12 @@ public class MemberController {
 	
 	@Autowired
 	private CalendarDAO cDAO;
+	
+	@Autowired
+	private tipsDAO tDAO;
+	
+	@Autowired
+	private bodyDAO bDAO;
 //	@Autowired
 //	private LoginService lg;
 	
@@ -66,6 +74,8 @@ public class MemberController {
 	public String logout(Member m, HttpServletRequest req, ContestBean c) {
 		csDAO.getEvent1(1, req);
 		cDAO.selectSchdule1(c, req);
+		tDAO.getMsg(1, req);
+		bDAO.getMsg(1, req);
 		mDAO.logout(req);
 		mDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
@@ -90,6 +100,8 @@ public class MemberController {
 		mailsender.mailSendWithUserKey(m.getM_email(), req);
 		csDAO.getEvent1(1, req);
 		cDAO.selectSchdule1(c, req);
+		tDAO.getMsg(1, req);
+		bDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
@@ -150,6 +162,8 @@ public class MemberController {
 		}
 			csDAO.getEvent1(1, req);
 			cDAO.selectSchdule1(c, req);
+			tDAO.getMsg(1, req);
+			bDAO.getMsg(1, req);
 			req.setAttribute("contentPage", "home.jsp");
 			return "index";
 		}	
@@ -236,6 +250,8 @@ public class MemberController {
 			if(mDAO.loginCheck(req)) {
 				csDAO.getEvent1(1, req);
 				cDAO.selectSchdule1(c, req);
+				tDAO.getMsg(1, req);
+				bDAO.getMsg(1, req);
 				req.setAttribute("contentPage", "home.jsp");
 			} else {
 				
@@ -260,6 +276,8 @@ public class MemberController {
 			mDAO.loginCheck(req);
 			csDAO.getEvent1(1, req);
 			cDAO.selectSchdule1(c, req);
+			tDAO.getMsg(1, req);
+			bDAO.getMsg(1, req);
 			req.setAttribute("contentPage", "home.jsp");
 			return "index";
 		}
@@ -301,6 +319,8 @@ public class MemberController {
 			}
 				csDAO.getEvent1(1, req);
 				cDAO.selectSchdule1(c, req);
+				tDAO.getMsg(1, req);
+				bDAO.getMsg(1, req);
 				req.setAttribute("contentPage", "home.jsp");
 				return "index";
 			}	
