@@ -18,13 +18,13 @@
 		// 라디오 버튼
 		$("#btnradio1").click(function() {
 			location.href='customerservice.event.go';
+			/* $(".이벤트").show();
+			$(".공지사항").show();
+			$(".accordion-body").hide(); ; */
 		});
 
 		$("#btnradio2").click(function() {
 			location.href='customerservice.event.go2';
-			/* $(".공지사항").show();
-			$(".이벤트").css("display","none");
-			$(".accordion-body").hide();  */
 		});
 
 		$("#btnradio3").click(function() {
@@ -39,14 +39,8 @@
 			return false;
 		});
 		
-		/* if(${curPage} == 1){
-		 $("#page-link").css("background", "gray");
-		}  */
-		 
-			
 		
-	
-	
+		
 	});
 </script>
 </head>
@@ -56,16 +50,16 @@
 		<div class="btn-group" role="group"
 			aria-label="Basic radio toggle button group" style="width: 100%;">
 			<input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-				autocomplete="off" checked> <label
+				autocomplete="off"> <label
 				class="btn btn-outline-primary" for="btnradio1">전체</label> <input
 				type="radio" class="btn-check" name="btnradio" id="btnradio2"
 				autocomplete="off"> <label class="btn btn-outline-primary"
 				for="btnradio2">공지사항</label> <input type="radio" class="btn-check"
-				name="btnradio" id="btnradio3" autocomplete="off"> <label
+				name="btnradio" id="btnradio3" autocomplete="off" checked> <label
 				class="btn btn-outline-primary" for="btnradio3">이벤트</label>
 		</div>
 		<div class="mt-5" style="display: flex; justify-content: space-between;">
-		<form action="event.search" name="eventSearchForm" onsubmit="return eventSearchCheck();">
+			<form action="event.search3" name="eventSearchForm" onsubmit="return eventSearchCheck();">
 			<div style="display: flex;">
 		<input class="form-control" type="search" placeholder="찾고 싶은 내용을 검색해보세요!" aria-label="Search" name="search">
         <button class="btn btn-outline-primary" >Search</button>
@@ -108,16 +102,17 @@
 			</div>
 			</div>
 			</c:forEach>
-			 <c:if test="${pageCount ne 0}">
+			<c:if test="${pageCount ne 0}">
 			<nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
+  
   
   
     <li class="page-item">
     
     <c:choose>
     
-    <c:when test="${curPage == 1 }">
+     <c:when test="${curPage == 1 }">
     <a class="page-link disabled"  aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
@@ -127,7 +122,7 @@
 <c:otherwise>
 
 
-      <a class="page-link" href="event.page.change?p=${curPage - 1 }" aria-label="Previous">
+      <a class="page-link" href="event.page.change3?p=${curPage - 1 }" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
 
@@ -139,7 +134,7 @@
     </li>
     
     <c:forEach var="p" begin="1" end="${pageCount }">
-    	<li class="page-item"><a id="page-link" class="page-link" href="event.page.change?p=${p }">${p}</a></li>
+    	<li class="page-item"><a class="page-link" href="event.page.change3?p=${p }">${p}</a></li>
  	</c:forEach>
     
     
@@ -148,18 +143,18 @@
     
      <li class="page-item">
     <c:choose>
-    <c:when test="${curPage == pageCount }">
+     <c:when test="${curPage == pageCount }">
     	<a class="page-link disabled" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </c:when>
     <c:otherwise>
-      <a class="page-link" href="event.page.change?p=${curPage + 1 }" aria-label="Next">
+      <a class="page-link" href="event.page.change3?p=${curPage + 1 }" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </c:otherwise>
     </c:choose>
- 	
+ 
     </li>
   </ul>
 </nav>

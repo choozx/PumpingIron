@@ -34,8 +34,8 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="username" value="c##jss" />
-		<beans:property name="password" value="jss" />
+		<beans:property name="username" value="dh" />
+		<beans:property name="password" value="dh" />
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -90,7 +90,7 @@
 		<beans:constructor-arg value="5"></beans:constructor-arg> <!-- 한 페이지당 5개씩 보여주겠다 -->
 	</beans:bean>
 	
-
+	
 
 
 </beans:beans>
