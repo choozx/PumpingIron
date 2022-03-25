@@ -98,9 +98,9 @@ private int allMsgCount;
 		}
 		cr.setCr_nickname(mmm.getM_name());
 		cr.setCr_tips("zz");
-		cr.setCr_bodyProfile("aaaa");
+		cr.setCr_bodyProfile("0");
 		cr.setCr_productReview("굿");
-		cr.setCr_email("zzz");
+		cr.setCr_email(mmm.getM_email());
 	
 		if (ss.getMapper(TipsMapper.class).writeCon(cr) == 1) {
 			req.setAttribute("result", "등록성공");

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fp.pi.best.BestMapper">
+
+<select id="bestFromBody" resultType="com.fp.pi.body.body_review">
+
+select * from BODY_REVIEW where br_like >= 2
+</select>
+<select id="bestFromReview2" resultType="com.fp.pi.review.community_review2">
+
+select * from COMMUNITY_REVIEW2 where c2_like >= 2
+</select>
+
+<select id="getMsgCount" resultType="com.fp.pi.best.BestBean" parameterType="Selector4">
+select * from (select rownum as rn, b_no, b_title, b_content, b_like, b_views, 
+b_tips, b_bodyProfile, b_productReview, b_email, b_nickname, b_date, b_picture, m_photo
+ from 
+
+			(select * from community_review2, member order by b_date desc) where m_email = b_email	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
+
+
+</select>
+<select id="getDetailReview2" parameterType="com.fp.pi.best.BestBean" resultType="com.fp.pi.review.community_review2" >
+
+select * from COMMUNITY_REVIEW2 where c2_no = #{b_no}
+
+
+</select>
+<select id="getDetailBody"  parameterType="com.fp.pi.best.BestBean" resultType="com.fp.pi.body.body_review" >
+
+select * from BODY_REVIEW where br_no = #{b_no}
+
+
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

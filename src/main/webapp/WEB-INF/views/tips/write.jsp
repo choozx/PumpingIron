@@ -83,7 +83,7 @@
 <div class="write-bottom">
 <a class="border-b-btn board-btn noto-h4 text-center"
 href="javascript:history.back();" type="button">취소</a>
-<input name="token" value="${token }">
+<input name="token" value="${token }" type="hidden">
 <button class="ml-3 background-b-btn board-btn noto-h4" name="button1" data-type="board" data-category-id="8"
  data-id>저장</button>
 

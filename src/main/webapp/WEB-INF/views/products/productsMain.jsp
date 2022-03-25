@@ -9,9 +9,9 @@
 </head>
 <body>
 	<div class="container">
-	<div id="products_banner"><input id="p_type" type="hidden" value="${param.p_type }">보충제</div>
-	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }">보충제</div>
-<body class="container">
+	<div id="products_banner"><input id="p_type" type="hidden" value="${param.p_type }"></div>
+	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }"></div>
+
 	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="z-index: 0;">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carouselExampleCaptions"
@@ -85,7 +85,6 @@
 			</c:forEach>
 		</div>
 	</div>
-	</div>
 	
 	<nav aria-label="Page navigation example">
   		<ul class="pagination justify-content-center">
@@ -96,6 +95,6 @@
     
   		</ul>
 	</nav>
-	
+	</div>
 </body>
 </html>
