@@ -18,7 +18,7 @@ $('textarea').val(str);
 </script>
 </head>
 <body>
-		<form action="customerservice.write.do" method="post" enctype="multipart/form-data">
+		<form action="customerservice.write.do" method="post" onsubmit="return customerserviceCheck();" name="customerserviceForm">
 			<div class="container mt-5">
 			<div class="col-sm-12 col-lg-12">
 				<div class="card flex-center" style="border: none;">

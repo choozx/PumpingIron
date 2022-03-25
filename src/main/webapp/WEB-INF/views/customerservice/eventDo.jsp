@@ -19,7 +19,7 @@
 </head>
 <body class="main-bg mt-5">
 
-<form id="common-edit-form" onsubmit="true" action="customerservice.event" method="post" >
+<form id="common-edit-form" onsubmit="return eventCheck();" action="customerservice.event" method="post" name="eventCheckForm">
 <div class="write-wrapper container">
 <div class="write-input-top d-flex mb-5" style="align-items: center;">
 <span class="m-0 sub-title noto-pb">말머리</span>
@@ -31,7 +31,7 @@
 <div class="d-flex justify-content-center mb-4"  style="align-items: center;">
 <span class="m-0 sub-title noto-pb">제목</span>
 <input class="common-oneline-input" type="text" name="e_title"
- maxlength="100" placeholder="제목을 입력해주세요" >
+ maxlength="100" placeholder="제목을 입력해주세요" id="title">
 
 </div>
  <textarea id="summernote" name="e_content"></textarea>
@@ -46,7 +46,7 @@
         	onImageUpload: function (files, editor, welEditable) {
 				console.log('aaaaa');
                 sendFile(files[0], this);
-        	}
+        	},
         }
       });
       

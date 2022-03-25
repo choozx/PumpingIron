@@ -65,9 +65,9 @@
 				class="btn btn-outline-primary" for="btnradio3">이벤트</label>
 		</div>
 		<div class="mt-5" style="display: flex; justify-content: space-between;">
-		<form action="event.search">
+		<form action="event.search" name="eventSearchForm" onsubmit="return eventSearchCheck();">
 			<div style="display: flex;">
-		<input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
+		<input class="form-control" type="search" placeholder="찾고 싶은 내용을 검색해보세요!" aria-label="Search" name="search">
         <button class="btn btn-outline-primary" >Search</button>
 			</div>
 		</form>
@@ -108,7 +108,7 @@
 			</div>
 			</div>
 			</c:forEach>
-  			<input type="hidden" value="${curPage}">
+			 <c:if test="${pageCount ne 0}">
 			<nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
   
@@ -163,6 +163,7 @@
     </li>
   </ul>
 </nav>
+</c:if>
 		</div>
 	</div>
 </body>

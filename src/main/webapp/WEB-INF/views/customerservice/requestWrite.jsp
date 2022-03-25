@@ -8,9 +8,6 @@
 <script type="text/javascript">
 $(function() {
 	
-	// 이전 페이지에서 사용자가 클릭한 옵션을 select에 셋팅하기
-	$("#i_type").val("${param.i_type}").prop("selected",true);
-	
 	// textarea 개행처리
 	$(".btn-primary").click(function() {
 	var str = $('textarea').val();
@@ -22,7 +19,7 @@ $(function() {
 </script>
 </head>
 <body>
-	<form action="customerservice.inquiry.do" method="post" id="fileForm" name="inquiryForm" enctype="multipart/form-data" onsubmit="return inquiryCheck()">
+	<form action="customerservice.request.writeDo" method="post" id="fileForm" name="requestForm" enctype="multipart/form-data" onsubmit="return requestCheck()">
 			<div class="container mt-5">
 			<div class="col-sm-12 col-lg-12">
 				<div class="card flex-center" style="border: none;">
@@ -30,17 +27,7 @@ $(function() {
 						<div class="mb-3 mt-3">
 							<div class="mt-4">
 								<div style="display: flex; justify-content: center;">
-									<h4>1:1문의</h4>
-								</div>
-								<span class="m-0 sub-title noto-pb me-2">말머리</span>
-								<div class="mt-1">
-								<select name="i_type" id="i_type">
-									<option selected="selected" value="주문">주문</option>
-									<option value="결제">결제</option>
-									<option value="취소">취소/반품/교환</option>
-									<option value="배송">배송</option>
-									<option value="기타">기타</option>
-								</select>
+									<h4>Pumping Iron에 바란다</h4>
 								</div>
 							</div>
 						</div>
@@ -48,29 +35,29 @@ $(function() {
 						<div style="display: flex; align-items: center;">
 							제목
 						</div>
-						<input style="width: 770px;"class="mt-1"  name="i_title" type="text" placeholder="제목을 입력해주세요." id="title">
+						<input style="width: 770px;"class="mt-1"  name="r_title" type="text" placeholder="제목을 입력해주세요." id="title">
 						</div>
 						<div class="mb-3">
 						<div style="display: flex; align-items: center;">
 							내용
 						</div>
-						<textarea style="width: 770px; height: 200px;" class="mt-1" name="i_content" placeholder="내용을 입력해주세요." id="content"></textarea>
+						<textarea style="width: 770px; height: 200px;" class="mt-1" name="r_content" placeholder="내용을 입력해주세요." id="content"></textarea>
 						</div>
 						<div class="mb-3">
 							<div style="display: flex; align-items: center;" class="mb-1">
 								<label>첨부파일</label>
-								<span class="ms-2" style="color: red;">'png', 'gif', 'jpg', 'bmp' 파일만 업로드가 가능합니다.</span>
+								<span class="ms-2" style="color: red;">'png', 'gif', 'jpg', 'jpeg' 파일만 업로드가 가능합니다.</span>
 							</div>
 							<div>
-							<input type="file" name="i_photo1"  accept="image/*"  id="photo1">
-							<input type="file" name="i_photo2"  accept="image/*"  id="photo2">				
+							<input type="file" name="r_photo1"  accept="image/*" id="photo1">
+							<input type="file" name="r_photo2"  accept="image/*" id="photo2">				
 							</div>
 							<div>
-							<input type="file" name="i_photo3"  accept="image/*"  id="photo3">
-							<input type="file" name="i_photo4"  accept="image/*"  id="photo4">			
+							<input type="file" name="r_photo3"  accept="image/*" id="photo3">
+							<input type="file" name="r_photo4"  accept="image/*" id="photo4">			
 							</div>
 						</div>
-						<input type="hidden" name="i_to" value="admin">
+						<input type="hidden" name="r_to" value="admin">
 						<input type="hidden" name="token" value="${token }">
 						<div style="display: flex; align-items: center; justify-content: center;">
 								<button type="button" class="btn btn-secondary" onclick="history.back(-1)" style="width: 150px;">취소</button>

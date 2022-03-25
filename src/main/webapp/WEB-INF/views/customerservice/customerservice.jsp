@@ -85,8 +85,8 @@
 </script>
 </head>
 <body>
-	<input type="hidden" name="token" value="${token }">
 	<div class="main container mt-5">
+	<input type="hidden" name="token" value="${token }">
 	<c:set var="m_email" value="${sessionScope.loginMember.m_email}"></c:set>
         <c:if test="${m_email ne 'admin'}">
 		<div style="width: 100%; border-bottom: 3px solid gray;">
@@ -105,11 +105,62 @@
 		<div class="mt-3 pb-3" style="border-bottom: 3px solid #f2f5f5;">
 			<div class="mb-2" onclick="location.href='customerservice.inquiry.detail?i_no=${i.i_no}'" style="cursor: pointer;"><span><fmt:formatDate value="${i.i_date}" type="date" pattern="yyyy.MM.dd"/></span> ${i.i_title}</div>
 			<div class="mt-4">
-			<span class="me-2" style="border: 1px solid #f7de5e; background: #f7de5e; border-radius: 30px; padding: 5px 10px">답변완료</span><a href="#" style="color: #717171;">RE:</a>
+			<span class="me-2" style="border: 1px solid #f7de5e; background: #f7de5e; border-radius: 30px; padding: 5px 10px">답변완료</span><a href="customerservice.inquiry.detail?i_no=${i.i_no}" style="color: #717171;">RE: ${i.i_title}</a>
 			</div>
 		</div>
 		</c:if>
         </c:forEach>
+        <c:if test="${inquiryCount ne 0}">
+        <nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+
+
+			<li class="page-item"><c:choose>
+
+					<c:when test="${curPage == 1 }">
+						<a class="page-link disabled" aria-label="Previous"> <span
+							aria-hidden="true">&laquo;</span>
+						</a>
+					</c:when>
+
+
+					<c:otherwise>
+
+
+						<a class="page-link" href="customerservice.inquiry.page?p=${curPage - 1 }"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a>
+
+
+					</c:otherwise>
+
+
+				</c:choose></li>
+
+			<c:forEach var="p" begin="1" end="${pageCount }">
+				<li class="page-item"><a id="page-link" class="page-link"
+					href="customerservice.inquiry.page?p=${p }">${p}</a></li>
+			</c:forEach>
+
+
+
+
+
+			<li class="page-item"><c:choose>
+					<c:when test="${curPage == pageCount }">
+						<a class="page-link disabled" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a class="page-link" href="customerservice.inquiry.page?p=${curPage + 1 }"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a>
+					</c:otherwise>
+				</c:choose></li>
+		</ul>
+	</nav>
+	</c:if>
 		</c:if>
 	<c:set var="m_email" value="${sessionScope.loginMember.m_email}"></c:set>
         <c:if test="${m_email eq 'admin'}">
@@ -117,9 +168,9 @@
 		<div>
 			<h4>문의내역</h4>
 		</div>
-		<form action="event.search">
+		<form action="customerservice.inquiry.search" name="eventSearchForm" onsubmit="return eventSearchCheck();">
 			<div style="display: flex;">
-		<input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
+		<input class="form-control" type="search" placeholder="찾고 싶은 내용을 검색해보세요!" aria-label="Search" name="search">
         <button class="btn btn-outline-primary" >Search</button>
 			</div>
 		</form>
@@ -134,6 +185,58 @@
 			</c:if>
 		</c:forEach>
 		</div>
+		<c:if test="${inquiryAdminCount ne 0}">
+		<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+
+
+			<li class="page-item"><c:choose>
+
+					<c:when test="${curPage == 1 }">
+						<a class="page-link disabled" aria-label="Previous"> <span
+							aria-hidden="true">&laquo;</span>
+						</a>
+					</c:when>
+
+
+					<c:otherwise>
+
+
+						<a class="page-link" href="customerservice.inquiry.page?p=${curPage - 1 }"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a>
+
+
+					</c:otherwise>
+
+
+				</c:choose></li>
+			
+			<c:forEach var="p" begin="1" end="${pageCount }">
+				<li class="page-item"><a id="page-link" class="page-link"
+					href="customerservice.inquiry.page?p=${p }">${p}</a></li>
+			</c:forEach>
+			
+
+
+
+
+
+			<li class="page-item"><c:choose>
+					<c:when test="${curPage == pageCount }">
+						<a class="page-link disabled" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a class="page-link" href="customerservice.inquiry.page?p=${curPage + 1 }"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a>
+					</c:otherwise>
+				</c:choose></li>
+		</ul>
+	</nav>
+	</c:if>
 		</c:if>	
 		<div class="mt-5">
 			<h4>1:1문의</h4>

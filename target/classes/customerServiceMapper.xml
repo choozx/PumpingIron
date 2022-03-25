@@ -127,12 +127,134 @@ select * from event where e_type = '이벤트' order by e_date desc
 <select id="getAllInquiry" parameterType="com.fp.pi.member.Member" resultType="com.fp.pi.customerservice.Inquiry">
  	select * from inquiry where i_from = #{m_email} order by i_date desc
 </select>
+<!-- <select id="getInquiryCount" parameterType="com.fp.pi.tips.Selector" resultType="java.lang.Integer">
+	select count(*)
+		from inquiry, member
+		where i_from = #{m_email} and i_content like '%'||#{search}||'%' order by i_date desc
+</select> -->
+<select id="getInquiry" resultType="com.fp.pi.customerservice.Inquiry" parameterType="com.fp.pi.customerservice.CustomerServiceSelector">
+	select *
+   from (
+      select rownum as rn, i_no, i_title, i_content, i_date, i_type, i_to, i_from, i_answercheck, i_photo
+       from (
+       		select * from inquiry, member	
+       		where i_from = m_email and i_from = #{m_email} and i_content like '%'||#{search}||'%' order by i_date desc
+       		)	
+       	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
+</select>
 <!-- 고객센터(1:1문의) admin 글 가져오기 -->
 <select id="getAllInquiryAdmin" parameterType="com.fp.pi.member.Member" resultType="com.fp.pi.customerservice.Inquiry">
  	select * from inquiry where i_to = 'admin' order by i_date desc
+</select>
+<select id="getInquiryAdminCount"  resultType="java.lang.Integer" parameterType="com.fp.pi.customerservice.CustomerServiceSelector">
+	select count(*)
+		from inquiry, member
+		where i_to = m_email and i_to = 'admin' and i_content like '%'||#{search}||'%' 
+		or i_to = m_email and i_to = 'admin' and i_title like '%'||#{search}||'%' 
+		order by i_date desc
+</select>
+<select id="getInquiryAdmin"  resultType="com.fp.pi.customerservice.Inquiry" parameterType="com.fp.pi.customerservice.CustomerServiceSelector">
+	select *
+   from (
+      select rownum as rn, i_no, i_title, i_content, i_date, i_type, i_to, i_from, i_answercheck, i_photo
+       from (
+       		select * from inquiry, member	
+       		where i_to = m_email and i_to = 'admin' and i_content like '%'||#{search}||'%' 
+       		or i_to = m_email and i_to = 'admin' and i_title like '%'||#{search}||'%' 
+       		order by i_date desc
+       		)	
+       	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
 </select>
 <!-- 고객센터(1:1문의) 글 상세정보 -->
 <select id="detailInquiry" resultType="com.fp.pi.customerservice.Inquiry">
 	select * from inquiry where i_no = #{i_no}
 </select>
+<!-- 고객센터(1:1문의 답변) 글 작성하기 -->
+<insert id="writeAnswer" parameterType="com.fp.pi.customerservice.InquiryAnswer">
+	insert into ianswer values (#{ia_no}, #{ia_title}, #{ia_content}, sysdate, #{ia_type}, #{ia_to}, #{ia_from}, #{ia_photo})
+</insert>
+<!-- 고객센터(1:1 문의) 글 답변대기에서 답변완료로 변경-->
+<update id="updateChkAnswer" parameterType="com.fp.pi.customerservice.InquiryAnswer">
+	update inquiry set i_answercheck = '1' where i_no = #{ia_no}
+</update>
+<!-- 고객센터(1:1 문의 답변) 글  가져오기-->
+<select id="getAllAnswer" resultType="com.fp.pi.customerservice.InquiryAnswer">
+	select * from ianswer where ia_no = #{ia_no} order by ia_date 
+</select>
+<!-- 고객센터(1:1 문의 답변) 글  삭제하기-->
+<delete id="deleteAnswer" parameterType="com.fp.pi.customerservice.InquiryAnswer">
+	delete from ianswer where ia_no = #{ia_no}
+</delete>
+<!-- 고객센터(1:1문의 답변) 삭제로 인한 답변완료에서 답변대기로 변경 -->
+<update id="updateChkAnswer2" parameterType="com.fp.pi.customerservice.InquiryAnswer">
+	update inquiry set i_answercheck = '0' where i_no = #{ia_no}
+</update>
+<!-- Pumping Iron에 바란다 글 작성하기 -->
+<insert id="writeRequest" parameterType="com.fp.pi.customerservice.Request">
+	insert into request values(request_seq.nextval, #{r_title}, #{r_content}, sysdate, #{r_to},
+	#{r_from}, '0' , #{r_photo})
+</insert>
+<!-- Pumping Iron에 바란다 글 가져오기 -->
+<select id="getAllRequest" parameterType="com.fp.pi.member.Member" resultType="com.fp.pi.customerservice.Request">
+	select * from request where r_from = #{m_email} order by r_date desc
+</select>
+<select id="getRequest" resultType="com.fp.pi.customerservice.Request" parameterType="com.fp.pi.customerservice.CustomerServiceSelector">
+	select *
+   from (
+      select rownum as rn, r_no, r_title, r_content, r_date, r_to, r_from, r_answercheck, r_photo
+       from (
+       		select * from request, member	
+       		where r_from = m_email and r_from = #{m_email} and r_content like '%'||#{search}||'%' order by r_date desc
+       		)	
+       	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
+</select>
+<!-- Pumping Iron에 바란다 admin 글 가져오기 -->
+<select id="getAllRequestAdmin" parameterType="com.fp.pi.member.Member" resultType="com.fp.pi.customerservice.Request">
+ 	select * from request where r_to = 'admin' order by r_date desc
+</select>
+<select id="getRequestAdminCount"  resultType="java.lang.Integer" parameterType="com.fp.pi.customerservice.CustomerServiceSelector">
+	select count(*)
+		from request, member
+		where r_to = m_email and r_to = 'admin' and r_content like '%'||#{search}||'%' 
+		or r_to = m_email and r_to = 'admin' and r_title like '%'||#{search}||'%' 
+		order by r_date desc
+</select>
+<select id="getRequestAdmin"  resultType="com.fp.pi.customerservice.Request" parameterType="com.fp.pi.customerservice.CustomerServiceSelector">
+	select *
+   from (
+      select rownum as rn, r_no, r_title, r_content, r_date, r_to, r_from, r_answercheck, r_photo
+       from (
+       		select * from request, member	
+       		where r_to = m_email and r_to = 'admin' and r_content like '%'||#{search}||'%' 
+       		or r_to = m_email and r_to = 'admin' and r_title like '%'||#{search}||'%' 
+       		order by r_date desc
+       		)	
+       	)
+			where rn &gt;= #{start} and rn &lt;= #{end}
+</select>
+<!-- Pumping Iron에 바란다 글 상세정보 -->
+<select id="detailRequest" resultType="com.fp.pi.customerservice.Request">
+	select * from request where r_no = #{r_no}
+</select>
+<!-- Pumping Iron에 바란다 답변하기 -->
+<insert id="writeRequestAnswer" parameterType="com.fp.pi.customerservice.RequestAnswer">
+	insert into ranswer values (#{ra_no}, #{ra_title}, #{ra_content}, sysdate, #{ra_to}, #{ra_from}, #{ra_photo})
+</insert>
+<!-- Pumping Iron에 바란다 답변대기에서 답변완료로 변경  -->
+<update id="updateChkRequestAnswer" parameterType="com.fp.pi.customerservice.RequestAnswer">
+	update request set r_answercheck = '1' where r_no = #{ra_no}
+</update>
+<!-- Pumping Iron에 바란다 답변 가져오기-->
+<select id="getAllRequestAnswer" resultType="com.fp.pi.customerservice.RequestAnswer">
+	select * from ranswer where ra_no = #{ra_no} order by ra_date 
+</select>
+<delete id="deleteRequestAnswer" parameterType="com.fp.pi.customerservice.RequestAnswer">
+	delete from ranswer where ra_no = #{ra_no}
+</delete>
+<update id="updateChkRequestAnswer2" parameterType="com.fp.pi.customerservice.RequestAnswer">
+	update request set r_answercheck = '0' where r_no = #{ra_no}
+</update>
 </mapper>

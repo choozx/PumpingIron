@@ -28,7 +28,7 @@ $(function() {
 </script>
 </head>
 <body>
-		<form action="customerservice.update.do" method="post">
+		<form action="customerservice.update.do" method="post" onsubmit="return customerserviceCheck();" name="customerserviceForm">
 			<div class="container mt-5">
 			<div class="col-sm-12 col-lg-12">
 				<div class="card flex-center" style="border: none;">
@@ -51,6 +51,7 @@ $(function() {
 							</div>
 						</div>
 						<input type="hidden" value="${qdetail.q_no}" name="q_no">
+						<input type="hidden" name="token" value="${token }">
 						<div class="mb-3">
 						<div style="display: flex; align-items: center;">
 							제목

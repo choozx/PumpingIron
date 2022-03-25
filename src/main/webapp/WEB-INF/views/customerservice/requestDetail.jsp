@@ -25,34 +25,34 @@ var i4 = document.getElementById("i4").style.visibility="visible";
 						</div>
 						<div>
 							<div style="display: flex; align-items: center; background-color: #f1f5f9; height: 50px; border-top: 2px solid black ;border-bottom: 1px solid #dedede; font-size: 30px;">
-								<span style="width: 5%; height: auto;" class="me-2">Q.</span> ${idetail.i_title}
+								<span style="width: 5%; height: auto;" class="me-2">Q.</span> ${rdetail.r_title}
 							</div>
 						</div>
 						<div class="mb-3">
 							<div style="display: flex; align-items: center; height: 40px; border-bottom: 1px solid #dedede; color: #717171;">
-								<fmt:formatDate value="${idetail.i_date}" type="date" pattern="yyyy-MM-dd HH:mm:ss"/>
+								<fmt:formatDate value="${rdetail.r_date}" type="date" pattern="yyyy-MM-dd HH:mm:ss"/>
 							</div>
 						</div>
 						<div class="mb-3">
 							<div>
-							${idetail.i_content}
+							${rdetail.r_content}
 							</div>
 						</div>
 						<div class="mb-5">
 							<div class="mb-1">
-							<c:if test="${idetail.i_photo ne null}">
+							<c:if test="${rdetail.r_photo ne null}">
 							<div style="display: flex;">
-							<img src="resources/files/${i_photo[0]}" onError="this.style.display='none'" id="i1" style="width: 350px;" height="350px;">
-							<img src="resources/files/${i_photo[1]}" onError="this.style.display='none'" id="i2" style="width: 350px;" height="350px;">
+							<img src="resources/files/${r_photo[0]}" onError="this.style.display='none'" id="i1" style="width: 350px;" height="350px;">
+							<img src="resources/files/${r_photo[1]}" onError="this.style.display='none'" id="i2" style="width: 350px;" height="350px;">
 							</div>
 							<div style="display: flex;">
-							<img src="resources/files/${i_photo[2]}" onError="this.style.display='none'" id="i3" style="width: 350px;" height="350px;">
-							<img src="resources/files/${i_photo[3]}" onError="this.style.display='none'" id="i4" style="width: 350px;" height="350px;">
+							<img src="resources/files/${r_photo[2]}" onError="this.style.display='none'" id="i3" style="width: 350px;" height="350px;">
+							<img src="resources/files/${r_photo[3]}" onError="this.style.display='none'" id="i4" style="width: 350px;" height="350px;">
 							</div>
 							</c:if>
 							</div>
 						</div>
-						<c:if test="${idetail.i_answercheck eq 0}">
+						<c:if test="${rdetail.r_answercheck eq 0}">
 						<div style="border-top: 3px solid #f2f5f5; border-bottom: 3px solid #f2f5f5; padding-top: 20px; padding-bottom: 20px;" >
 							<div style="color: #af2309; font-size: 20px;" class="mb-3">
 							<span style="color: #af2309; font-size: 20px;" class="me-2">A.</span>답변입니다.
@@ -66,7 +66,7 @@ var i4 = document.getElementById("i4").style.visibility="visible";
 							</div>	
 						</div>
 						</c:if>
-						<c:if test="${idetail.i_answercheck eq 1}">
+						<c:if test="${rdetail.r_answercheck eq 1}">
 						<div style="border-top: 3px solid #f2f5f5; border-bottom: 3px solid #f2f5f5; padding-top: 20px; padding-bottom: 20px;" >
 							<div style="color: #af2309; font-size: 20px;" class="mb-3">
 							<span style="color: #af2309; font-size: 20px;" class="me-2">A.</span>답변입니다.
@@ -79,27 +79,27 @@ var i4 = document.getElementById("i4").style.visibility="visible";
 								 	<br>
 								</p>								
 								 	<div>
-								 	${answers.ia_content}
+								 	${ranswers.ra_content}
 								 	</div>
 								 	<div style="display: flex;">
-								 		<img src="resources/files/${ii_photo[0]}" onError="this.style.display='none'" id="i1" style="width: 350px;" height="350px;">
-										<img src="resources/files/${ii_photo[1]}" onError="this.style.display='none'" id="i2" style="width: 350px;" height="350px;">
+								 		<img src="resources/files/${rr_photo[0]}" onError="this.style.display='none'" id="i1" style="width: 350px;" height="350px;">
+										<img src="resources/files/${rr_photo[1]}" onError="this.style.display='none'" id="i2" style="width: 350px;" height="350px;">
 								 	</div>
 								 	<div style="display: flex;">
-										<img src="resources/files/${ii_photo[2]}" onError="this.style.display='none'" id="i3" style="width: 350px;" height="350px;">
-										<img src="resources/files/${ii_photo[3]}" onError="this.style.display='none'" id="i4" style="width: 350px;" height="350px;">
+										<img src="resources/files/${rr_photo[2]}" onError="this.style.display='none'" id="i3" style="width: 350px;" height="350px;">
+										<img src="resources/files/${rr_photo[3]}" onError="this.style.display='none'" id="i4" style="width: 350px;" height="350px;">
 									</div>
 							</div>	
 						</div>
 						</c:if>
-						<input type="hidden" name="i_to" value="admin">
+						<input type="hidden" name="r_to" value="admin">
 						<input type="hidden" name="token" value="${token }">
 						<div class="mt-5" style="display: flex; align-items: center; justify-content:flex-end;">
-						<c:if test="${idetail.i_answercheck eq 0 and sessionScope.loginMember.m_email eq 'admin'}">
-								<button type="button" class="btn btn-primary" onclick="location.href='customerservice.inquiry.answerGo?i_no=${idetail.i_no}'" style="width: 150px;">답변하기</button>
+						<c:if test="${rdetail.r_answercheck eq 0 and sessionScope.loginMember.m_email eq 'admin'}">
+								<button type="button" class="btn btn-primary" onclick="location.href='customerservice.request.answerGo?r_no=${rdetail.r_no}'" style="width: 150px;">답변하기</button>
 						</c:if>
-						<c:if test="${idetail.i_answercheck eq 1 and sessionScope.loginMember.m_email eq 'admin'}">
-								<button type="button" class="btn btn-warning" onclick="answerDelete(${idetail.i_no})" style="width: 150px;">삭제</button>
+						<c:if test="${rdetail.r_answercheck eq 1 and sessionScope.loginMember.m_email eq 'admin'}">
+								<button type="button" class="btn btn-warning" onclick="requestADelete(${rdetail.r_no})" style="width: 150px;">삭제</button>
 						</c:if>
 								<button type="button" class="btn btn-secondary" onclick="history.back(-1)" style="width: 150px;">목록으로</button>
 						</div>
