@@ -1765,7 +1765,7 @@ var FullCalendar = (function (exports) {
         initialView: '',
         aspectRatio: 1.35,
         headerToolbar: {
-            start: 'dayGridMonth listMonth addEvent',
+            start: 'dayGridMonth listMonth addEventButton',
             center: 'title',
             end: 'today prevYear,prev,next,nextYear',
         },
@@ -4200,7 +4200,7 @@ var FullCalendar = (function (exports) {
             week: 'week',
             day: 'day',
             list: '대회 일정 모아보기',
-           // addEvent: '대회 일정 추가'
+//            addEvent: '대회 일정 추가'
         },
         weekText: 'W',
         weekTextLong: 'Week',

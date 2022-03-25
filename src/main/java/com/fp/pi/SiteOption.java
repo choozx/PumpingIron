@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 
-@Controller
 public class SiteOption {
 
 	private int snsCountPerpage; // 한 페이지 개수 
@@ -29,4 +28,19 @@ public class SiteOption {
 		req.getSession().setAttribute("search", null);
 		
 	}
+	public static void clearSearch1(HttpServletRequest req) {
+		req.getSession().setAttribute("searchEvent", null);
+		
+	}
+	
+	public static void clearSearch2(HttpServletRequest req) {
+		req.getSession().setAttribute("searchCustomerService", null);
+		
+	}
+	
+	public static void clearSearch3(HttpServletRequest req) {
+		req.getSession().setAttribute("searchRequest", null);
+		
+	}
+	
 }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.pi.customerservice.CustomerServiceDAO;
+
 
 @Controller
 public class MemberController {
@@ -24,7 +26,8 @@ public class MemberController {
 	@Autowired
 	private UserMailSendService mailsender;
 
-	
+	@Autowired
+	private CustomerServiceDAO csDAO;
 //	@Autowired
 //	private LoginService lg;
 	
@@ -56,7 +59,7 @@ public class MemberController {
 	// 로그아웃
 	@RequestMapping(value = "member.logout", method = RequestMethod.GET)
 	public String logout(Member m, HttpServletRequest req) {
-		
+		csDAO.getEvent1(1, req);
 		mDAO.logout(req);
 		mDAO.loginCheck(req);
 		req.setAttribute("contentPage", "home.jsp");
@@ -77,7 +80,9 @@ public class MemberController {
 	public String joinGo(Member m, HttpServletRequest req, HttpServletResponse respons) {
 		
 		mDAO.join(m, req, respons);
+		//System.out.println(m.getM_email());
 		mailsender.mailSendWithUserKey(m.getM_email(), req);
+		csDAO.getEvent1(1, req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
@@ -136,6 +141,7 @@ public class MemberController {
 		if(mDAO.loginCheck(req)) {
 			mDAO.withdrawal(m, req, response);
 		}
+			csDAO.getEvent1(1, req);
 			req.setAttribute("contentPage", "home.jsp");
 			return "index";
 		}	
@@ -220,6 +226,7 @@ public class MemberController {
 			m_email = req.getParameter("email");
 			mDAO.loginKakao(m, req, response, m_email);
 			if(mDAO.loginCheck(req)) {
+				csDAO.getEvent1(1, req);
 				req.setAttribute("contentPage", "home.jsp");
 			} else {
 				
@@ -242,6 +249,7 @@ public class MemberController {
 			m_email = req.getParameter("email");
 			mDAO.joinKakao(m, req, response, m_email);
 			mDAO.loginCheck(req);
+			csDAO.getEvent1(1, req);
 			req.setAttribute("contentPage", "home.jsp");
 			return "index";
 		}
@@ -281,6 +289,7 @@ public class MemberController {
 			if(mDAO.loginCheck(req)) {
 			mDAO.kakaoWithdrawal(m, req, response);
 			}
+				csDAO.getEvent1(1, req);
 				req.setAttribute("contentPage", "home.jsp");
 				return "index";
 			}	

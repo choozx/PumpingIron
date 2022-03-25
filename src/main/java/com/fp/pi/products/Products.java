@@ -22,6 +22,7 @@ public class Products {
 		return pproducts;
 	}
 
+	@XmlElement
 	public void setPproducts(List<Product> pproducts) {
 		this.pproducts = pproducts;
 	}

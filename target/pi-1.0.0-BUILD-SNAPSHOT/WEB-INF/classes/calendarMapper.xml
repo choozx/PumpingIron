@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fp.pi.calendar.CalendarMapper">
+
+
+<insert id="recordRoutine" parameterType="com.fp.pi.calendar.RoutineBean" >
+	insert into calendar_routine values(calendar_routine_seq.nextval, #{cr_id}, #{cr_text}, #{cr_date})
+</insert>
+
+<select id="showRoutine" parameterType="com.fp.pi.calendar.RoutineBean" resultType="com.fp.pi.calendar.RoutineBean">
+	select * from calendar_routine
+	where cr_id = #{cr_id} and cr_date = #{cr_date}
+</select>
+
+<delete id="delRoutine" parameterType="com.fp.pi.calendar.RoutineBean">
+	delete calendar_routine where cr_no = #{cr_no}
+</delete>
+
+
+</mapper>

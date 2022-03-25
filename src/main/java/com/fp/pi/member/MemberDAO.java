@@ -138,7 +138,7 @@ public class MemberDAO {
 
 	
 	// 로그인
-public int userLogin(Member m, HttpSession httpSession, HttpServletResponse response, HttpServletRequest req,
+	public int userLogin(Member m, HttpSession httpSession, HttpServletResponse response, HttpServletRequest req,
 		String user_check) {
 		
 		System.out.println("UserLoginService // 로그인 객체 확인 MemberDAO : " + m);
@@ -215,7 +215,7 @@ public int userLogin(Member m, HttpSession httpSession, HttpServletResponse resp
 		if (m != null) {
 			return true;
 		} else {
-			req.setAttribute("loginPage", "member/login.jsp");
+			req.setAttribute("contentPage", "member/login.jsp");
 			return false;
 		}
 	}

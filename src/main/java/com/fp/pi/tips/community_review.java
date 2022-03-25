@@ -1,10 +1,6 @@
 package com.fp.pi.tips;
 
-import java.util.ArrayList;
-
 import java.util.Date;
-
-import org.springframework.stereotype.Repository;
 
 
 public class community_review {
@@ -13,7 +9,7 @@ public class community_review {
 	private String cr_title;
 	private String cr_content;
 	private String cr_nickname;
-	private ArrayList<Like> cr_like;
+	private int cr_like;
 	private int cr_views;
 	private String cr_email;
 	private String cr_tips;
@@ -27,8 +23,8 @@ public community_review() {
 }
 
 
-public community_review(int cr_no, String cr_title, String cr_content, String cr_nickname, ArrayList<Like> cr_like,
-		int cr_views, String cr_email, String cr_tips, String cr_bodyProfile, String cr_productReview, Date cr_date) {
+public community_review(int cr_no, String cr_title, String cr_content, String cr_nickname, int cr_like, int cr_views,
+		String cr_email, String cr_tips, String cr_bodyProfile, String cr_productReview, Date cr_date) {
 	super();
 	this.cr_no = cr_no;
 	this.cr_title = cr_title;
@@ -84,12 +80,12 @@ public void setCr_nickname(String cr_nickname) {
 }
 
 
-public ArrayList<Like> getCr_like() {
+public int getCr_like() {
 	return cr_like;
 }
 
 
-public void setCr_like(ArrayList<Like> cr_like) {
+public void setCr_like(int cr_like) {
 	this.cr_like = cr_like;
 }
 
@@ -152,6 +148,8 @@ public Date getCr_date() {
 public void setCr_date(Date cr_date) {
 	this.cr_date = cr_date;
 }
+
+
 
 	
 }

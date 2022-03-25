@@ -1,6 +1,7 @@
 package com.fp.pi.tips;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface TipsMapper {
@@ -29,6 +30,16 @@ public interface TipsMapper {
 	int upReply(community_review_reply crr);
 
 	int views(community_review cr);
+
+	void likeOfTips();
+
+	HeartDTO likeOfTips(Map<String, String> vals);
+
+	int likeOfTipsInsert(HeartDTO vals);
+
+	int likeOfTipsDelete(HeartDTO vals);
+
+	int allLike(community_review aa);
 	
 
 }

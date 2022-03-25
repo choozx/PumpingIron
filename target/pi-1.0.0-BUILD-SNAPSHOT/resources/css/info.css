@@ -1,0 +1,35 @@
+.article-board {
+    border-top: solid 2px;
+}
+
+.video-board-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 40px;
+    gap: 40px;
+}
+.video-elem {
+    border: 1px solid #999;
+}
+.main-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    margin-top: 75px;
+    overflow-x: hidden;
+}
+
+.pagination-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.font-weight-bold {
+    font-weight: 700!important;
+}
+.p-2 {
+    padding: 0.5rem!important;
+}
+.w-100 {
+    width: 100%!important;
+}

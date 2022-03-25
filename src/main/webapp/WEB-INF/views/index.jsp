@@ -7,12 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Pumping Iron</title>
-  <link rel="shortcut icon" href="">
+<link rel="shortcut icon" href="">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+	type="text/css" rel="stylesheet" />	
 <link href="resources/css/index.css" rel="stylesheet">
 <link href="resources/css/member/login.css" rel="stylesheet">
 <link href="resources/css/member/join.css" rel="stylesheet">
@@ -21,8 +24,7 @@
 <link href="resources/css/member/withdrawlDo.css" rel="stylesheet">
 <link href="resources/css/member/memberSearch.css" rel="stylesheet">
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="https://kit.fontawesome.com/f44a228655.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f44a228655.js" crossorigin="anonymous"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>	
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -30,7 +32,12 @@
 <script type="text/javascript" src="resources/js/member/member.js" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/member/memberCheck.js"></script>
 <script type="text/javascript" src="resources/js/products/pay.js"></script>
+<script type="text/javascript" src="resources/js/calendar/calendarTodo2.js"></script>
+<script type="text/javascript" src="resources/js/products/product.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
+<script type="text/javascript" src="resources/js/customerservice/customerservice.js"></script>
+<script type="text/javascript" src="resources/js/del/delcon.js"></script>
+<script type="text/javascript" src="resources/js/products/cart.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
@@ -153,15 +160,12 @@
 				<li class="nav-item dropdown flex"> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
-						<li>
-							<input type="hidden">
-							<a class="dropdown-item" href="products.go?products=supplements">보충제</a>
-						</li>
-						<li><a class="dropdown-item" href="products.go?products=gripStrap">그립/스트랩</a></li>
-						<li><a class="dropdown-item" href="products.go?products=elbowProtecter">팔꿈치 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?products=backWaist" >등/허리</a></li>
-						<li><a class="dropdown-item" href="products.go?products=kneeProtecter">무릎 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?products=shoes">신발</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=supplements">보충제</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=gripStrap">그립/스트랩</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=elbowProtecter">팔꿈치 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=backWaist">등/허리</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=kneeProtecter">무릎 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=shoes">신발</a></li>
 					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">헬스장 정보</a>
                     <ul class="dropdown-menu">
@@ -175,36 +179,27 @@
                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
                         <li><a class="dropdown-item" href="review.go">쇼핑후기</a></li>
                         <li><a class="dropdown-item" href="">바디프로필</a></li>
-                         <li><a class="dropdown-item" href="tips.go">운동팁/Q&A</a></li>
-                        <li><a class="dropdown-item" href="#">쇼핑후기</a></li>
-                        <li><a class="dropdown-item" href="#">바디프로필</a></li>
-                        <li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" href="info.go">운동영상</a></li>
 					</ul> 
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 					href="" role="button" aria-expanded="false" style="color: black;">대회/운동
 						루틴</a>
+					 <input type="hidden" id="loginCheck" value="${sessionScope.loginMember.m_email}">
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="schedule.go">대회 정보</a></li>
-						<li><a class="dropdown-item" href="routine.go">운동 루틴 기록</a></li>
+						<li><a class="dropdown-item" href="routine.date" onclick="return login_check();">운동 루틴 기록</a></li>
 					</ul></li>
 
 			</div>
 			<div class="nav-login">
 				<c:choose>
 					<c:when test="${sessionScope.loginMember == null}">
-					<!-- 로그인 안했을 경우   -->
-						<div class="login-item02">
-							<a href=""><i class="fa-solid fa-cart-shopping"
-								style="color: black;"><span>장바구니</span></i></a>
-						</div>					
+					<!-- 로그인 안했을 경우   -->			
 						<div class="login-item01">
 							<a href="member.login.go">로그인</a>
 						</div>
 					</c:when>
-					<c:when test="${sessionScope.loginMember.m_email eq '1234@gmail.com'}">
+					<c:when test="${sessionScope.loginMember.m_email eq 'admin'}">
 						<div class="login-item01">
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
@@ -225,25 +220,17 @@
 					<c:otherwise>
 					<!-- 로그인 했을 경우  -->
 						<div class="login-item02">
-							<a href=""><i class="fa-solid fa-cart-shopping"
+							<a href="cart.go"><i class="fa-solid fa-cart-shopping"
 								style="color: black;"><span>장바구니</span></i></a>
 						</div>
 						<div class="login-item01">
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
 			                    <ul class="dropdown-menu" style="padding: 0px">
-<<<<<<< HEAD
-			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_email}</a></li>
-			                         <li><a class="dropdown-item" href="" style="color: #01a1dd;">주문조회</a></li>
-			                        <li><a class="dropdown-item" href="" style="color: #01a1dd;">보유 포인트(0)</a></li>
-			                        <li><a class="dropdown-item" href="" style="color: #01a1dd;">회원정보</a></li>
-			                        <li><a class="dropdown-item" href="" style="color: #01a1dd;">회원탈퇴</a></li>
-			                        <li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
-=======
 			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
 			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
-			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">고객센터</a></li>	
+			                         <li><a class="dropdown-item" href="customerservice.go" style="color: #01a1dd;">고객센터</a></li>	
 			                		  <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
                                         <c:if test="${m_type eq 'kakao'}">
 			                             <li><a class="dropdown-item" href="member.kakaoInfo.go" style="color: #01a1dd;">회원정보</a></li>
@@ -270,7 +257,6 @@
                                         <c:if test="${m_type eq 'normal'}">
 			                        	<li><a class="btn btn-primary" href="member.logout" role="button" style="border-radius: 0; border: 0">로그아웃</a></li>
 			                        	</c:if>
->>>>>>> 3ddeb2b901b64d2811855a23204c99e4fcc3de9e
 								</ul> 
 						</div>
 					</c:otherwise>

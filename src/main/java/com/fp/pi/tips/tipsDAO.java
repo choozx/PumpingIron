@@ -4,7 +4,9 @@ import java.io.File;
 
 import java.math.BigDecimal;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -59,6 +61,13 @@ private int allMsgCount;
 		}
 		
 		List<community_review> reviews = ss.getMapper(TipsMapper.class).getMsgCount(search);
+		for (community_review r : reviews) {
+			System.out.println(r.getCr_no()+"----");
+			r.setCr_like(likeCnt(req, r));
+			System.out.println(r.getCr_like() +"~~~~~~~");
+			
+		}
+		
 		
 		req.setAttribute("reviews", reviews);
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
@@ -74,6 +83,7 @@ private int allMsgCount;
 	public int getContent(HttpServletRequest req) {
 		List<community_review> reviews = ss.getMapper(TipsMapper.class).reviews();
 		allMsgCount = reviews.size();
+		System.out.println(allMsgCount);
 		return reviews.size();
 	}
 
@@ -81,7 +91,11 @@ private int allMsgCount;
 		try {
 		System.out.println(cr.getCr_title());	
 		Member mmm = (Member) req.getSession().getAttribute("loginMember");
-		
+		String token = req.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		if (successToken != null && token.equals(successToken)) {
+			return;
+		}
 		cr.setCr_nickname(mmm.getM_name());
 		cr.setCr_tips("zz");
 		cr.setCr_bodyProfile("aaaa");
@@ -90,6 +104,7 @@ private int allMsgCount;
 	
 		if (ss.getMapper(TipsMapper.class).writeCon(cr) == 1) {
 			req.setAttribute("result", "등록성공");
+			req.getSession().setAttribute("successToken", token);
 		}
 			
 			
@@ -103,17 +118,8 @@ private int allMsgCount;
 	}
 
 	public void getDetail(HttpServletRequest req, community_review cr) {
-	
-		String token = req.getParameter("token");
-		String successToken = (String) req.getSession().getAttribute("successToken");
-		
-		if (successToken != null && token.equals(successToken)) {
-			return;
-		}
 		
 	    req.setAttribute("tippp", ss.getMapper(TipsMapper.class).getDetail(cr));	
-	    
-	    req.getSession().setAttribute("successToken", token);
 	}
 
 	public String getSummorJSON(HttpServletRequest request) {
@@ -188,6 +194,16 @@ private int allMsgCount;
 		try {
 			if (ss.getMapper(TipsMapper.class).update(cr) == 1) {
 				
+				/*if (cr.getCr_content() != null) {  //이미지 존재할경우 
+						String path = req.getSession().getServletContext().getRealPath("resources/file");
+						new File(path + "/" + iii).delete(); // 기존이미지 삭제 
+					cr.getCr_content();
+						
+					
+				}else { // 이미지 없을경우
+					cr.getCr_content();
+				}*/
+
 				
 				
 				req.setAttribute("result", "글수정성공");
@@ -202,16 +218,18 @@ private int allMsgCount;
 	public void writeReply(HttpServletRequest req, community_review_reply crr, community_review cr) {
 		try {
 			String token = req.getParameter("token");
-			String successToken = (String) req.getSession().getAttribute("successToken");
+			String successToken = (String) req.getSession().getAttribute("successToken2");
 			
-			if (successToken != null && token.equals(successToken)) {
+		if (successToken != null && token.equals(successToken)) {
 				return;
 			}
 
+			System.out.println("++++++++++++++++++++++++++++++++++++");
+			
 			
 		Member m = (Member) req.getSession().getAttribute("loginMember");
 		crr.setCrr_cr_nickname(m.getM_name());
-		crr.setCrr_cr_no(Integer.parseInt(req.getParameter("cr_no")));
+		System.out.println(crr.getCrr_cr_no());
 		crr.setCrr_text(req.getParameter("crr_text"));
 		System.out.println("=================================");
 		System.out.println(crr.getCrr_cr_nickname());
@@ -220,7 +238,7 @@ private int allMsgCount;
 		
 		if (ss.getMapper(TipsMapper.class).getReply(crr) == 1) {
 			req.setAttribute("result", "댓글쓰기성공");
-			req.getSession().setAttribute("successToken", token);
+			req.getSession().setAttribute("successToken2", token);
 
 			
 		} else {
@@ -240,6 +258,7 @@ private int allMsgCount;
 		
 		
 		crr.setCrr_cr_no(Integer.parseInt(req.getParameter("cr_no")));
+		
 		List<community_review_reply> replyss = ss.getMapper(TipsMapper.class).replys(crr);
 		req.setAttribute("re", replyss);
 		req.setAttribute("recnt", replyss.size());
@@ -290,11 +309,65 @@ private int allMsgCount;
 		
 	}
 	public void viewCount(HttpServletRequest req, community_review cr) {
-		
+		String token = req.getParameter("token2");
+		String successToken = (String) req.getSession().getAttribute("successToken2");
+	    System.out.println("토큰 값111" + token);
+	    System.out.println("--------------111" + successToken);
+		if (successToken != null) {
+			if (token.equals(successToken)) {
+				
+				return;
+			}	
+		}
+	    
+	    req.getSession().setAttribute("successToken2", token);
+	    System.out.println("토큰 값222" + token);
+	    System.out.println("--------------222" + successToken);
 		ss.getMapper(TipsMapper.class).views(cr);
 		
 		
 		}
+	public int likeCnt(HttpServletRequest req, community_review cr) {
+		return ss.getMapper(TipsMapper.class).allLike(cr);
+	}
+	
+	public int likeOfTips(HttpServletRequest req) {
+		Map<String, String> vals = new HashMap<String, String>();
+		String aa = req.getParameter("ajaxId");
+		String bb = req.getParameter("ajaxEmail");
+		
+		vals.put("idd", aa);
+		vals.put("emaill", bb);
+		
+		HeartDTO heart = ss.getMapper(TipsMapper.class).likeOfTips(vals);
+		System.out.println(heart);
+	
+		if(heart == null) {
+			return 0;
+		}else {
+			return 1;
+		}
+		
+	}
+	public int likeOfTipsUpdate(HttpServletRequest req) {
+		
+		int aa = Integer.parseInt(req.getParameter("ajaxId"));
+		String bb = req.getParameter("ajaxEmail");
+		HeartDTO h = new HeartDTO(0, aa, bb);
+		System.out.println(aa);
+		System.out.println(bb);
+		System.out.println(h.getH_cr_no());
+		System.out.println(h.getH_m_email());
+		
+		int val = Integer.parseInt(req.getParameter("val"));
+		if(val == 0) {
+			ss.getMapper(TipsMapper.class).likeOfTipsInsert(h);
+		}else {
+			ss.getMapper(TipsMapper.class).likeOfTipsDelete(h);
+		}
+		return likeOfTips(req);
+	}
+
 		
 		
 		

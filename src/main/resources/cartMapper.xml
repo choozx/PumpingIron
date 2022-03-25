@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fp.pi.products.CartMapper">
+	
+	<select id="cartCheck" parameterType="com.fp.pi.products.Cart" resultType="int">
+		select count(*) from cart where m_email = #{m_email} and p_no = #{p_no}
+	</select>
+	
+	<select id="getcart" parameterType="com.fp.pi.products.Cart" resultType="com.fp.pi.products.Product">
+		select * from products where p_no in (select p_no from cart where m_email = #{m_email})
+	</select>
+	
+	<insert id="addCart" parameterType="com.fp.pi.products.Cart">
+		insert into cart values(cart_seq.nextval, #{m_email}, #{p_no})
+	</insert>
+	
+	<delete id="delCartAll" parameterType="com.fp.pi.products.Cart">
+		delete from cart where m_email = #{m_email}
+	</delete>
+	
+	<delete id="delCart" parameterType="com.fp.pi.products.Cart">
+		delete from cart where m_email = #{m_email} and p_no = #{p_no}
+	</delete>
+</mapper>
