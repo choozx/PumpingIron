@@ -16,6 +16,7 @@ public class community_review {
 	private String cr_bodyProfile;
 	private String cr_productReview;
 	private Date cr_date ;
+	private String m_photo;
 
 	
 public community_review() {
@@ -24,7 +25,7 @@ public community_review() {
 
 
 public community_review(int cr_no, String cr_title, String cr_content, String cr_nickname, int cr_like, int cr_views,
-		String cr_email, String cr_tips, String cr_bodyProfile, String cr_productReview, Date cr_date) {
+		String cr_email, String cr_tips, String cr_bodyProfile, String cr_productReview, Date cr_date, String m_photo) {
 	super();
 	this.cr_no = cr_no;
 	this.cr_title = cr_title;
@@ -37,6 +38,7 @@ public community_review(int cr_no, String cr_title, String cr_content, String cr
 	this.cr_bodyProfile = cr_bodyProfile;
 	this.cr_productReview = cr_productReview;
 	this.cr_date = cr_date;
+	this.m_photo = m_photo;
 }
 
 
@@ -147,6 +149,16 @@ public Date getCr_date() {
 
 public void setCr_date(Date cr_date) {
 	this.cr_date = cr_date;
+}
+
+
+public String getM_photo() {
+	return m_photo;
+}
+
+
+public void setM_photo(String m_photo) {
+	this.m_photo = m_photo;
 }
 
 

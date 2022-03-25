@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/css/tips.css">
 <link rel="stylesheet" href="resources/css/tips1.css">
 <script src="resources/js/del/like.js"></script>
+<script type="text/javascript" src="resources/js/del/delcon.js"></script>
 <style>
 .reply-write-btn {
 position: absolute;
@@ -52,9 +53,9 @@ ${result }
 <div class="border border-dark board-header-wrapper">
 <div class="viewer-header d-flex align-items-start justify-content-between">
 <div class=" viewer-left d-flex align-items-start">
-<a class="viewer-picture">
 
-<img alt="" src="" class="rounded-circle">
+<a class="viewer-picture">
+<img alt="" src="resources/files/${tippp.m_photo}" class="rounded-circle">
 
 </a>
 
@@ -156,7 +157,7 @@ ${result }
 </div>
 <!-- 댓글 영역 -->
 <!-- foreach 로 돌리기 -->
-<c:forEach var="p" items="${re }">
+<c:forEach var="p" items="${re}">
 <div class="comment-content border border-dark border-top-0">
 
 <div class="comment-box-elem">
@@ -192,8 +193,8 @@ ${result }
 
 </div>
 
-<div class="comment-content-right" style="margin-left: 1013px;">
-
+<div class="comment-content-right" style="margin-left: 1131px;">
+ 
 
 
 <c:if test="${p.crr_cr_nickname == sessionScope.loginMember.m_name }">
@@ -250,7 +251,7 @@ class="bg-whtie comment-textarea" name="crr_text"></textarea>
 
 <%-- <input type="hidden" value="${re.crr_no }" name="crr_no"> --%>
 <button class="noto-pb submit-btn"  name="button"
- style="margin-right: 70px;">댓글등록</button>
+ style="margin-right: 10px;">댓글등록</button>
 
 </div>
 </div>

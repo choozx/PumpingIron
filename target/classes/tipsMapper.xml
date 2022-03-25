@@ -11,7 +11,7 @@ select * from community_review order by cr_date desc
 
 <select id="getDetail" resultType="com.fp.pi.tips.community_review">
 
-select * from community_review where cr_no = #{cr_no}
+select * from community_review, member where  m_email = cr_email and cr_no = #{cr_no}
 
 
 </select>
@@ -19,9 +19,10 @@ select * from community_review where cr_no = #{cr_no}
 
 <select id="getMsgCount" resultType="com.fp.pi.tips.community_review" parameterType="Selector">
 select * from (select rownum as rn, cr_no, cr_title, cr_content, cr_like, cr_views, 
-cr_tips, cr_bodyProfile, cr_productReview, cr_email, cr_nickname, cr_date from 
+cr_tips, cr_bodyProfile, cr_productReview, cr_email, cr_nickname, cr_date, m_photo
+ from 
 
-			(select * from community_review	order by cr_date desc)	)
+			(select * from community_review, member	order by cr_date desc) where m_email = cr_email	)
 			where rn &gt;= #{start} and rn &lt;= #{end}
 
 
