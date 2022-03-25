@@ -72,8 +72,28 @@
 		
 		$(document).on("click", "#info_update_btn", function() {
 			
-			let numForDelete = $(this).attr("value");
-			console.log(numForDelete);
+			let numForUpdate = $(this).attr("value");
+			console.log(numForUpdate);
+			
+			 $.ajax({
+				type : "GET",
+				url: "priceInfo.get.updateData",
+				data : {"pi_no": numForUpdate},
+				dataType: "json",
+				success : function(data) {
+						console.log(data);
+						console.log(numForUpdate);
+						$('#primary_num2').val(numForUpdate);
+					$.each(data, function(i, pi) {
+						console.log(pi.pi_img);
+						$('#old_image').empty();
+						$('#info_name2').val(pi.pi_name);
+						$('#info_location2').val(pi.pi_loc);
+						$('#info_price2').val(pi.pi_price);
+						$('#old_image').append('<img style="width: 100px;" src="resources/img/' + pi.pi_img + '">');
+					});
+				}
+			}); 
 			
 			$('#infoUpdate').modal('show');
 			
@@ -81,7 +101,11 @@
 				$('#infoUpdate').click();
 			});
 			
-		});
+			$('#addBtn2').click(function() {
+				console.log(numForUpdate);
+			}); // addBtn2
+			
+		}); //info_update_btn
 		
 
 		var enter = document.querySelector('textarea');
@@ -132,11 +156,11 @@
 						<br> <br>
 					</c:if>
 
-					▷업체명<br> ${p.pi_name}
+					▷업체명<br> <span id="piName"> ${p.pi_name}</span> 
 					<p>
-						<br> ▷위 치<br> ${p.pi_loc}
+						<br> ▷위 치<br> <span id="piLoc">${p.pi_loc}</span> 
 					<p>
-						▷가격 정보<br> ${p.pi_price}
+						▷가격 정보<br> <span id="piPrice">${p.pi_price}</span> 
 					<p>
 					
 					<c:if test="${sessionScope.loginMember.m_email == 'admin'}">
@@ -161,6 +185,12 @@
 			<span style="font-family: facon; font-size: 50pt;">Pumping Iron</span>
 		</div>
 	</c:if>
+	
+	 <c:if test="${priceInfo.size() == 0}">
+		<div class="pb-5 pt-3"></div>
+		<div class="pb-5 pt-3"></div>
+	 	<div style="text-align: center;"><h3 style="color: gray;"> 검색 결과가 없습니다... </h3></div>
+	 </c:if>
 
 
 
@@ -171,13 +201,13 @@
 		<!--  Reg Modal -->
 	<form action="priceInfo.reg" method="post" enctype="multipart/form-data">
 	
-		<input type="hidden" name="token" value="${token }">
+		<input type="hidden" name="token" value="${token}">
 		<div class="modal fade" id="infoReg" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">헬스장 정보 수정</h5>
+						<h5 class="modal-title" id="exampleModalLabel">헬스장 정보 등록</h5>
 					</div>
 
 					<div class="modal-body">
@@ -187,10 +217,16 @@
 							  <label for="taskId" class="col-form-label"> 위치 정보</label>
 							<textarea class="form-control" id="info_location" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
-							<textarea class="form-control" id="info_price" name="pi_price" style="height: 150px;"> </textarea>
+							<textarea class="form-control" id="info_price" name="pi_price" style="height: 150px;">
+1일권 : 
+1개월 : 
+3개월 : 
+5개월 : 
+12개월 :
+							</textarea>
 							<label for="taskId" class="col-form-label">제휴 여부</label> 
-							<input type="radio" id="info_partner" name="pi_partner" value="Y" /> Yes
-							<input type="radio" id="info_partner" name="pi_partner" value="N"> No <br> 
+							<input type="radio" id="info_partner" name="pi_partner" required="required"  value="Y" /> Yes
+							<input type="radio" id="info_partner" name="pi_partner" required="required"  value="N"> No <br> 
 							<label for="taskId" class="col-form-label">업체 제공 사진</label>
 							 <input type="file" name="pi_img" id="info_image" required="required">
 						</div>
@@ -212,53 +248,43 @@
 
 		<!--  UPDATE Modal -->
 	<form action="priceInfo.update" method="post" enctype="multipart/form-data">
-	
-		<input type="hidden" name="token" value="${token }">
+		
+		<input name="pi_no" id="primary_num2" type="hidden" value="">
+		<input type="hidden" name="token" value="${token}">
 		<div class="modal fade" id="infoUpdate" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">헬스장 정보 등록</h5>
+						<h5 class="modal-title" id="exampleModalLabel">헬스장 정보 수정</h5>
 					</div>
 
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="taskId" class="col-form-label">업체명</label> <input
-								class="form-control" id="info_name" name="pi_name"
-								required="required"> <label for="taskId"
-								class="col-form-label">위치 정보</label>
-							<textarea class="form-control" id="info_location" name="pi_loc"
-								placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
+							<label for="taskId" class="col-form-label">업체명</label> 
+							<input class="form-control" id="info_name2" name="pi_name" required="required"> 
+								<label for="taskId" class="col-form-label">위치 정보</label>
+							<textarea class="form-control" id="info_location2" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
 
-							<textarea class="form-control" id="info_price" name="pi_price"
-								style="height: 150px;">
-1일권 : 
-1개월 : 
-3개월 : 
-5개월 : 
-12개월 : </textarea>
-							<label for="taskId" class="col-form-label">제휴 여부</label> <input
-								type="radio" id="info_partner" name="pi_partner" value="Y" />
-							Yes <input type="radio" id="info_partner" name="pi_partner"
-								value="N"> No <br> <label for="taskId"
-								class="col-form-label">업체 제공 사진</label> <input type="file"
-								name="pi_img" id="info_image" required="required">
+							<textarea class="form-control" id="info_price2" name="pi_price" style="height: 150px;">
+							</textarea>
+							<label for="taskId" class="col-form-label">제휴 여부</label>
+							<input type="radio" id="info_partner2" name="pi_partner" required="required" value="Y"> Yes 
+							<input type="radio" id="info_partner2" name="pi_partner" required="required" value="N"> No <br>
+							<label for="taskId" class="col-form-label">업체 제공 사진</label>
+							<span id="old_image"></span>
+							<input type="file" name="pi_img" id="info_image2" required="required">
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-warning" id="addBtn">추가</button>
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" id="modalClose2" onclick="">취소</button>
+						<button class="btn btn-warning" id="addBtn2">추가</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalClose2" onclick="">취소</button>
 					</div>
-
 				</div>
 			</div>
 		</div>
-		
 	</form>
-
 
 
 </body>

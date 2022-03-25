@@ -80,7 +80,7 @@ public class InfoMapController {
 	
 	
 	
-	@RequestMapping(value = "/priceInfo.del", method = RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "/priceInfo.del", method = RequestMethod.GET)
 	public  @ResponseBody int deletePriceInfo(InfoMapBean i, HttpServletRequest req) {
 		
 		if (mDAO.loginCheck(req)) {
@@ -89,6 +89,36 @@ public class InfoMapController {
 			}
 			return 0;
 		
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/priceInfo.get.updateData", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody List<InfoMapBean> getPriceInfo(InfoMapBean i, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+		}
+		iDAO.get_a_PriceInfo(i, req);
+		
+		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
+		return iDAO.get_a_PriceInfo(i, req);
+	}
+	
+	
+	
+	@RequestMapping(value = "/priceInfo.update", method = RequestMethod.POST)
+	public String priceInfoUpdate(InfoMapBean i, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+			iDAO.updateInfo(i, req);
+		}
+		TokenMaker.make(req);
+		
+//		System.out.println(i.getPi_name());
+		
+		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
+		return "index";
 	}
 	
 	

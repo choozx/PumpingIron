@@ -9,6 +9,10 @@ pi_img varchar2(1000 char) not null
 
 create sequence price_info_seq;
 
+update price_info 
+set pi_name = 'ㅁㅁ', pi_loc = '1234', pi_price = '5678', pi_partner = 'N', pi_img = '9012'
+where pi_no = 81 
+
 select * from PRICE_INFO;
 
 select * from PRICE_INFO where pi_name like '%종각%';

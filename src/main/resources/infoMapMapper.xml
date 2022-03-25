@@ -18,4 +18,12 @@
 	delete price_info where pi_no = #{pi_no}
 </delete>
 
+<select id="searchForUpdate" resultType="com.fp.pi.infomap.InfoMapBean">
+	select * from price_info where pi_no = #{pi_no}
+</select>
+
+<update id="updateInfo" parameterType="com.fp.pi.infomap.InfoMapBean">
+	update price_info set pi_name=#{pi_name}, pi_loc=#{pi_loc}, pi_price=#{pi_price}, pi_partner=#{pi_partner}, pi_img=#{pi_img} where pi_no=#{pi_no} 
+</update>
+
 </mapper>
