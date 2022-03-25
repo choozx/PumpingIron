@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 
-@Controller
 public class SiteOption {
 
 	private int snsCountPerpage; // 한 페이지 개수 
