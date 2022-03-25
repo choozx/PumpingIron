@@ -28,7 +28,7 @@ $("#e_type").val("${edetail.e_type}").prop("selected",true);
 </head>
 <body class="main-bg mt-5">
 
-<form id="common-edit-form" action="customerservice.event.updateDo" method="post">
+<form id="common-edit-form" action="customerservice.event.updateDo" method="post" onsubmit="return eventCheck();">
 <div class="write-wrapper container">
 <div class="write-input-top d-flex mb-5" style="align-items: center;">
 <span class="m-0 sub-title noto-pb">말머리</span>
@@ -39,7 +39,7 @@ $("#e_type").val("${edetail.e_type}").prop("selected",true);
 </div>
 <div class="d-flex justify-content-center mb-4"  style="align-items: center;">
 <span class="m-0 sub-title noto-pb">제목</span>
-<input class="common-oneline-input" type="text" name="e_title"
+<input class="common-oneline-input" type="text" name="e_title" id="title"
  maxlength="100" placeholder="제목을 입력해주세요" value="${edetail.e_title}">
 
 </div>

@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
-		// 더보기 클릭
+		
 		
 		
 		
@@ -17,21 +17,18 @@
 		
 		// 라디오 버튼
 		$("#btnradio1").click(function() {
-			$(".이벤트").show();
-			$(".공지사항").show();
-			$(".accordion-body").hide(); ;
+			location.href='customerservice.event.go';
 		});
 
 		$("#btnradio2").click(function() {
-			$(".공지사항").show();
-			$(".이벤트").hide();
-			$(".accordion-body").hide(); 
+			location.href='customerservice.event.go2';
+			/* $(".공지사항").show();
+			$(".이벤트").css("display","none");
+			$(".accordion-body").hide();  */
 		});
 
 		$("#btnradio3").click(function() {
-			$(".이벤트").show();
-			$(".공지사항").hide();
-			$(".accordion-body").hide(); ;
+			location.href='customerservice.event.go3';
 		});
 
 		// 아코디언
@@ -42,13 +39,19 @@
 			return false;
 		});
 		
+		/* if(${curPage} == 1){
+		 $("#page-link").css("background", "gray");
+		}  */
+		 
+			
 		
-		
+	
+	
 	});
 </script>
 </head>
 <body>
-
+	<input type="hidden" name="token" value="${token }">
 	<div class="main container mt-5">
 		<div class="btn-group" role="group"
 			aria-label="Basic radio toggle button group" style="width: 100%;">
@@ -62,10 +65,12 @@
 				class="btn btn-outline-primary" for="btnradio3">이벤트</label>
 		</div>
 		<div class="mt-5" style="display: flex; justify-content: space-between;">
+		<form action="event.search" name="eventSearchForm" onsubmit="return eventSearchCheck();">
 			<div style="display: flex;">
-			<input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button type="button" class="btn btn-outline-primary">Search</button>
+		<input class="form-control" type="search" placeholder="찾고 싶은 내용을 검색해보세요!" aria-label="Search" name="search">
+        <button class="btn btn-outline-primary" >Search</button>
 			</div>
+		</form>
 			<c:set var="m_email" value="${sessionScope.loginMember.m_email}"></c:set>
              <c:if test="${m_email eq 'admin'}">
 			<div><button type="button" class="btn btn-primary" onclick="location.href='customerservice.event.do'">글쓰기</button></div>
@@ -98,17 +103,67 @@
 					</button>
 				</h2>
 				</c:if>	
-			<div class="accordion-body accordion-collapse collapse">
+			<div class="accordion-body accordion-collapse collapse" style="background-color: #f2f2f2;">
 					<div>${e.e_content}</div>
 			</div>
 			</div>
 			</c:forEach>
-			<div style="display: flex; justify-content: center; align-items: center;">
-				<a style="color: rgb(0, 81, 245);" href="#" id="more">더보기</a>
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down ms-1" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" style="color: rgb(0, 81, 245);"/>
-</svg>
-			</div>
+			 <c:if test="${pageCount ne 0}">
+			<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+  
+  
+    <li class="page-item">
+    
+    <c:choose>
+    
+    <c:when test="${curPage == 1 }">
+    <a class="page-link disabled"  aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </c:when>
+
+
+<c:otherwise>
+
+
+      <a class="page-link" href="event.page.change?p=${curPage - 1 }" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+
+
+</c:otherwise>   
+   
+   
+    </c:choose>
+    </li>
+    
+    <c:forEach var="p" begin="1" end="${pageCount }">
+    	<li class="page-item"><a id="page-link" class="page-link" href="event.page.change?p=${p }">${p}</a></li>
+ 	</c:forEach>
+    
+    
+    
+    
+    
+     <li class="page-item">
+    <c:choose>
+    <c:when test="${curPage == pageCount }">
+    	<a class="page-link disabled" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </c:when>
+    <c:otherwise>
+      <a class="page-link" href="event.page.change?p=${curPage + 1 }" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </c:otherwise>
+    </c:choose>
+ 	
+    </li>
+  </ul>
+</nav>
+</c:if>
 		</div>
 	</div>
 </body>
