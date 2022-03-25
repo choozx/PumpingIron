@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fp.pi.calendar.CalendarDAO;
+import com.fp.pi.calendar.ContestBean;
 import com.fp.pi.customerservice.CustomerServiceDAO;
 import com.fp.pi.member.MemberDAO;
 
@@ -19,21 +21,25 @@ public class HomeController {
 	@Autowired
 	private CustomerServiceDAO csDAO;
 	
+	@Autowired
+	private CalendarDAO cDAO;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpServletRequest request) {
+	public String home(HttpServletRequest request, ContestBean c) {
 		SiteOption.clearSearch1(request);
 		SiteOption.clearSearch2(request);
 		SiteOption.clearSearch3(request);
 		csDAO.getEvent1(1, request);
+		cDAO.selectSchdule1(c, request);
 		request.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/index.go", method = RequestMethod.GET)
-	public String indexGo(HttpServletRequest request) {
+	public String indexGo(HttpServletRequest request, ContestBean c) {
 		
 		
-		return home(request);  // 로고를 누르면 home(request) 메서드를 불러내겠다
+		return home(request,c );  // 로고를 누르면 home(request) 메서드를 불러내겠다
 	}
 	
 }

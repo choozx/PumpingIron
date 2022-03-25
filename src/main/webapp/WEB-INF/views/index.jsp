@@ -228,8 +228,7 @@
                     href="" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
 			                    <ul class="dropdown-menu" style="padding: 0px">
 			                         <li><a class="dropdown-item" style="pointer-events: none;">${sessionScope.loginMember.m_name}님 환영합니다.</a></li>
-			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">주문조회</a></li>
-			                         <li><a class="dropdown-item" href="#" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
+			                         <li><a class="dropdown-item" style="color: #01a1dd;">보유 포인트(${sessionScope.loginMember.m_point })</a></li>
 			                         <li><a class="dropdown-item" href="customerservice.go" style="color: #01a1dd;">고객센터</a></li>	
 			                		  <c:set var="m_type" value="${sessionScope.loginMember.m_type}"></c:set>
                                         <c:if test="${m_type eq 'kakao'}">
