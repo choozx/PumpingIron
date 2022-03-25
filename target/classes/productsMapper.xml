@@ -2,16 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.products.ProductsMapper">
 
-	<select id="getProducts" parameterType="java.lang.String" resultType="com.fp.pi.products.Product">
-		select * from products where p_type = #{type}
-	</select>
-	
 	<select id="getProductSort" parameterType="com.fp.pi.products.ProductSort" resultType="com.fp.pi.products.Product">
-		select * from products where p_type = #{p_type} ORDER BY ${p_sort} ${order} 
+		select * from (select rownum as rn, products.* from 
+		(select * from products where p_type = #{p_type} ORDER BY ${p_sort} ${order})products) 
+		where rn &gt;= #{start} and rn &lt;= #{end}
 	</select>
 	
-	<select id="getProduct" parameterType="com.fp.pi.products.Product" resultType="com.fp.pi.products.Product">
+	<select id="getProduct" parameterType="com.fp.pi.products.Product" 
+	resultType="com.fp.pi.products.Product">
 		select * from products where p_no = #{p_no}
+	</select>
+	
+	<select id="getproductcount" parameterType="java.lang.String" resultType="int">
+ 		select count(*) from products where p_type = #{type}
 	</select>
 	
 	<update id="increaseBuyCount" parameterType="com.fp.pi.products.Product">

@@ -37,6 +37,7 @@
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/customerservice/customerservice.js"></script>
 <script type="text/javascript" src="resources/js/del/delcon.js"></script>
+<script type="text/javascript" src="resources/js/products/cart.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(
@@ -159,15 +160,12 @@
 				<li class="nav-item dropdown flex"> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
 					role="button" aria-expanded="false" style="color: black;">SHOP</a>
 					<ul class="dropdown-menu">
-						<li>
-							<input type="hidden">
-							<a class="dropdown-item" href="products.go?products=supplements">보충제</a>
-						</li>
-						<li><a class="dropdown-item" href="products.go?products=gripStrap">그립/스트랩</a></li>
-						<li><a class="dropdown-item" href="products.go?products=elbowProtecter">팔꿈치 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?products=backWaist" >등/허리</a></li>
-						<li><a class="dropdown-item" href="products.go?products=kneeProtecter">무릎 보호대</a></li>
-						<li><a class="dropdown-item" href="products.go?products=shoes">신발</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=supplements">보충제</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=gripStrap">그립/스트랩</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=elbowProtecter">팔꿈치 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=backWaist">등/허리</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=kneeProtecter">무릎 보호대</a></li>
+						<li><a class="dropdown-item" href="products.go?p_type=shoes">신발</a></li>
 					</ul> <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">헬스장 정보</a>
                     <ul class="dropdown-menu">
@@ -196,16 +194,12 @@
 			<div class="nav-login">
 				<c:choose>
 					<c:when test="${sessionScope.loginMember == null}">
-					<!-- 로그인 안했을 경우   -->
-						<div class="login-item02">
-							<a href=""><i class="fa-solid fa-cart-shopping"
-								style="color: black;"><span>장바구니</span></i></a>
-						</div>					
+					<!-- 로그인 안했을 경우   -->			
 						<div class="login-item01">
 							<a href="member.login.go">로그인</a>
 						</div>
 					</c:when>
-					<c:when test="${sessionScope.loginMember.m_email eq '1234@gmail.com'}">
+					<c:when test="${sessionScope.loginMember.m_email eq 'admin'}">
 						<div class="login-item01">
 							 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     href="#" role="button" aria-expanded="false" style="color: black;">마이페이지</a>
@@ -226,7 +220,7 @@
 					<c:otherwise>
 					<!-- 로그인 했을 경우  -->
 						<div class="login-item02">
-							<a href=""><i class="fa-solid fa-cart-shopping"
+							<a href="cart.go"><i class="fa-solid fa-cart-shopping"
 								style="color: black;"><span>장바구니</span></i></a>
 						</div>
 						<div class="login-item01">

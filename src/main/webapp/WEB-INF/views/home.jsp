@@ -163,6 +163,36 @@
 						<div class="card-body">
 							<h5 class="card-text text-center">팔꿈치 보호대</h5>
 						</div>
+					<div class="card flex-center">
+						<a href="products.go?p_type=supplements">
+							<img src="resources/img/index/card_protein.jpg"
+								class="card-img-top" alt="보충제">
+							<div class="card-body">
+								<h5 class="card-text text-center">보충제</h5>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-12 col-lg-4">
+					<div class="card flex-center">
+						<a href="products.go?p_type=gripStrap">
+							<img src="resources/img/index/card_strap.jpg" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-text text-center">그립/스트랩</h5>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-12 col-lg-4">
+					<div class="card flex-center">
+						<a href="products.go?p_type=elbowProtecter">
+							<img src="resources/img/index/card_elbowguard.jpg"
+								class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-text text-center">팔꿈치 보호대</h5>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -195,6 +225,36 @@
 						<div class="card-body">
 							<h5 class="card-text text-center">신발</h5>
 						</div>
+					<div class="card flex-center">
+						<a href="products.go?p_type=backWaist">
+							<img src="resources/img/index/card_belt.jpg" class="card-img-top"
+								alt="...">
+							<div class="card-body">
+								<h5 class="card-text text-center">등/허리</h5>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-12 col-lg-4">
+					<div class="card flex-center">
+						<a href="products.go?p_type=kneeProtecter">
+							<img src="resources/img/index/card_kneeguard.jpg"
+								class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-text text-center">무릎 보호대</h5>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-12 col-lg-4">
+					<div class="card flex-center">
+						<a href="products.go?p_type=shoes">
+							<img src="resources/img/index/card_shoues.jpg"
+								class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-text text-center">신발</h5>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
