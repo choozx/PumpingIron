@@ -233,8 +233,8 @@ $(function() {
 			return false;
 		}
 		
-		let h5 = $(this).parent();
-		let no = $(h5).attr("value");
+		let h6 = $(this).parent();
+		let no = $(h6).attr("value");
 		console.log(no);
 //		alert(no);
 		$.ajax({

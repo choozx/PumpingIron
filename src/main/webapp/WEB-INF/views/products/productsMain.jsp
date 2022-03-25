@@ -7,8 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body class="container">
-	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="z-index: 0;">
+<body class="">
+<div class="container">
+	<div id="carouselExampleCaptions" class="container carousel slide" data-bs-ride="carousel" style="z-index: 0;">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carouselExampleCaptions"
 				data-bs-slide-to="0" class="active" aria-current="true"
@@ -91,6 +92,6 @@
     
   		</ul>
 	</nav>
-	
+</div>	
 </body>
 </html>

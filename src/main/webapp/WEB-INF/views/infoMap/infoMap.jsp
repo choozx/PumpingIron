@@ -43,7 +43,7 @@
 					return false;
 				}
 			}
-//			37.570073934698264
+			
 			$.ajax({
 				url : "https://dapi.kakao.com/v2/local/search/keyword.json",
 				data : {query : search + "헬스클럽", x:35.93501119925401, y:128.56210315279392, radius:5000},
@@ -111,7 +111,7 @@
 			            '            <div class="desc">' + 
 			            '                <div id="infoAdress_road" class="ellipsis">' + roadAdress + '</div>' + 
 			            '                <div id="infoAdress" style="font-size:9pt; color:silver;" class="jibun ellipsis">' + address + '</div>' + 
-			            '                <div style="font-size:9pt; color:gary;"><a href="' + detail + '" target="_blank" class="link">길찾기</a> | <a href="/pi/priceInfo.go" target="_blank" class="link">가격 정보</a></div>' + 
+			            '                <div style="font-size:9pt; color:gary;"><a href="' + detail + '" target="_blank" class="link">길찾기</a> | <a href="/pi/priceInfo.search?pi_name=' + namePlace + '" target="_blank" class="link">가격 정보</a></div>' + 
 			            '            </div>' + 
 			            '        </div>' + 
 			            '    </div>' +    
@@ -156,7 +156,7 @@
 
 
 	<!-- 지도를 표시할 div 입니다 -->
-	<div id="map" class="container" style="width: 100%; height: 750px; margin-top: 40px; border-style: double; border-radius: 8px; "></div>
+	<div id="map" class="container position-relative-1" style="width: 100%; height: 750px; margin-top: 40px; border-style: double; border-radius: 8px; "></div>
 	
 </body>
 </html>

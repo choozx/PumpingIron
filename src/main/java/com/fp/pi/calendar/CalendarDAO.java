@@ -138,23 +138,6 @@ public class CalendarDAO {
 	}
 	
 	
-	/*	
-	public List<ContestDetailBean> selectDetail(ContestDetailBean cd, HttpServletRequest req) {
-		
-		BigDecimal num = cd.getCcd_no();
-		System.out.println(num);
-		
-//		cd.setCcd_no(num);
-		
-		List<ContestDetailBean> details = ss.getMapper(CalendarMapper.class).detailSchedule(cd);
-		
-		req.setAttribute("detail", details);
-		
-		return details;
-	}
-*/
-	
-	
 	
 	
 	

@@ -11,6 +11,8 @@ create sequence price_info_seq;
 
 select * from PRICE_INFO;
 
+select * from PRICE_INFO where pi_name like '%종각%';
+
 
 
 

@@ -10,4 +10,12 @@
 	select * from price_info
 </select>
 
+<select id="searchPriceInfos" resultType="com.fp.pi.infomap.InfoMapBean">
+	select * from PRICE_INFO where pi_name like '%' || #{pi_name} || '%'
+</select>
+
+<delete id="deletePriceInfo" parameterType="com.fp.pi.infomap.InfoMapBean">
+	delete price_info where pi_no = #{pi_no}
+</delete>
+
 </mapper>

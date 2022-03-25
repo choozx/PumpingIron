@@ -22,7 +22,7 @@
 	<div class="main">
 	
 	 
-		<div class="content-wrap bg-info" style="width: 62%;">
+		<div class="content-wrap" style="width: 70%;">
 		
 		
 		

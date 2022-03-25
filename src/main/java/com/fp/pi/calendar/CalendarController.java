@@ -33,7 +33,6 @@ public class CalendarController {
 		if (mDAO.loginCheck(req)) {
 		}
 		cDAO.selectSchdule(c, req);
-		cDAO.selectDetail_all(cd, req);
 		
 		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";
@@ -87,19 +86,6 @@ public class CalendarController {
 		req.setAttribute("contentPage", "calendar/scheduleDetail.jsp");
 		return "index";
 	}
-	
-	/*	
-	@RequestMapping(value = "/schedule.getDetail", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<ContestDetailBean> scheduleDetail(ContestDetailBean cd, HttpServletRequest req) {
-		
-		if(mDAO.loginCheck(req)) {
-		}
-		cDAO.selectDetail(cd, req);
-		
-		return cDAO.selectDetail(cd, req);
-	}
-*/
-		
 	
 	
 	

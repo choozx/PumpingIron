@@ -69,11 +69,29 @@ public class InfoMapDAO {
 			return;
 		}
 }
+	
 
-	public void selectInfo(InfoMapBean i, HttpServletRequest req) {
+	public void searchPriceInfo(InfoMapBean i, HttpServletRequest req) {
 		
-		List<InfoMapBean> priceInfoes = ss.getMapper(InfoMapMapper.class).callInfo();
+		List<InfoMapBean> priceInfoes = ss.getMapper(InfoMapMapper.class).searchPriceInfos(i);
+		
 		req.setAttribute("priceInfo", priceInfoes);
+		
+		
+	}
+
+	
+	public int deletePriceInfo(InfoMapBean i, HttpServletRequest req) {
+		
+		if (ss.getMapper(InfoMapMapper.class).deletePriceInfo(i) == 1) {
+			System.out.println("삭제 성공");
+			req.setAttribute("result", "삭제 성공");
+			return 1;
+		} else {
+			System.out.println("삭제 실패");
+			req.setAttribute("result", "삭제 실패");
+			return 0;
+		}
 		
 	}
 	

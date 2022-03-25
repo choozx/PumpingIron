@@ -8,4 +8,8 @@ public interface InfoMapMapper {
 
 	List<InfoMapBean> callInfo();
 
+	List<InfoMapBean> searchPriceInfos(InfoMapBean i);
+
+	int deletePriceInfo(InfoMapBean i);
+
 }

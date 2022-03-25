@@ -47,7 +47,7 @@
                         <div id="detail_text" style="color:#3D3D3D; ">
 							${d.ccd_text} 
                         </div>
-                        
+                        <br><button class="btn btn-light btn-outline-dark" onclick="location.href='schedule.go'">돌아가기</button>
                     </div>
                 </div>
     

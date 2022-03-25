@@ -1,7 +1,10 @@
 package com.fp.pi.infomap;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.dom4j.CDATA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +47,6 @@ public class InfoMapController {
 
 		if (mDAO.loginCheck(req)) {
 		}
-		iDAO.selectInfo(i, req);
 		
 		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
 		return "index";
@@ -62,6 +64,35 @@ public class InfoMapController {
 		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
 		return "index";
 	}
+	
+	
+	
+	@RequestMapping(value = "/priceInfo.search", method = RequestMethod.GET)
+	public String searchPriceInfo(InfoMapBean i, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+		}
+		iDAO.searchPriceInfo(i, req);
+		
+		req.setAttribute("contentPage", "infoMap/priceInfo.jsp");
+		return "index";
+	}
+	
+	
+	
+	@RequestMapping(value = "/priceInfo.del", method = RequestMethod.GET, produces="application/json")
+	public  @ResponseBody int deletePriceInfo(InfoMapBean i, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+			iDAO.deletePriceInfo(i, req);
+			return 1;
+			}
+			return 0;
+		
+	}
+	
+	
+	
 	
 	
 }
