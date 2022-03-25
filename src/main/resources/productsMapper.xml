@@ -2,10 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.products.ProductsMapper">
 
-	<select id="getProducts" parameterType="com.fp.pi.products.ProductSort" resultType="com.fp.pi.products.Product">
-		select * from (select rownum as rn,p_no,p_name,p_type,p_price,p_img,p_info,p_cnt from products where p_type = #{p_type}) where rn &gt;= #{start} and rn &lt;= #{end}
-	</select>
-	
 	<select id="getProductSort" parameterType="com.fp.pi.products.ProductSort" resultType="com.fp.pi.products.Product">
 		select * from (select rownum as rn, products.* from 
 		(select * from products where p_type = #{p_type} ORDER BY ${p_sort} ${order})products) 

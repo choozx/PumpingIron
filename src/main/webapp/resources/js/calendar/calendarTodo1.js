@@ -227,6 +227,12 @@ $(function() {
 
 	
 	$(document).on("click", ".delRoutine", function(){
+		
+		if (confirm("정말로 삭제하시겠습니까?")) {
+		} else {
+			return false;
+		}
+		
 		let h5 = $(this).parent();
 		let no = $(h5).attr("value");
 		console.log(no);

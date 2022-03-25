@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.pi.calendar.CalendarMapper">
 
-
+<!--  __________루틴 캘린더______________-  -->
 <insert id="recordRoutine" parameterType="com.fp.pi.calendar.RoutineBean" >
 	insert into calendar_routine values(calendar_routine_seq.nextval, #{cr_id}, #{cr_text}, #{cr_date})
 </insert>
@@ -16,5 +16,32 @@
 	delete calendar_routine where cr_no = #{cr_no}
 </delete>
 
+
+
+
+
+
+<!-- ___________대회일정 캘린더___________ -->
+
+<insert id="regSchedule" parameterType="com.fp.pi.calendar.ContestBean">
+ 	insert into calendar_contest values (calendar_contest_seq.nextval, #{cc_text}, #{cc_startDate}, #{cc_endDate})
+</insert>
+
+<select id="contestSchedule" resultType="com.fp.pi.calendar.ContestBean">
+	select * from calendar_contest
+</select>
+
+<delete id="delSchedule" parameterType="com.fp.pi.calendar.ContestBean">
+	<!-- delete calendar_contest, calendar_contest_detail where cc_no = #{cc_no} and ccd_no = #{cc_no}; -->
+	delete calendar_contest where cc_no = #{cc_no}
+</delete>
+
+<select id="detailSchedule" resultType="com.fp.pi.calendar.ContestDetailBean" parameterType="com.fp.pi.calendar.ContestDetailBean">
+	select * from calendar_contest_detail where ccd_no = #{ccd_no}
+</select>
+
+<select id="detailSchedule2" resultType="com.fp.pi.calendar.ContestDetailBean">
+	select * from calendar_contest_detail
+</select>
 
 </mapper>

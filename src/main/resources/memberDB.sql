@@ -46,3 +46,127 @@ select * from event;
 drop table event cascade constraint purge;
 
 DROP SEQUENCE event_seq;
+
+---------------------------------------------
+--- 고객센터(자주찾는 질문) 테이블 ---
+create table question(
+q_no number(5) primary key,
+q_title varchar2(100 char) not null,
+q_content varchar2(1000 char) not null,
+q_date date not null,
+q_type varchar2(50 char) not null
+);
+
+create sequence question_seq;
+
+select * from question;
+
+drop table question cascade constraint purge;
+
+DROP SEQUENCE question_seq;
+
+---------------------------------------------
+--- 고객센터(1:1문의) 테이블 ---
+create table inquiry(
+i_no number(5) primary key,
+i_title varchar2(100 char) not null,
+i_content varchar2(1000 char) not null,
+i_date date not null,
+i_type varchar2(50 char) not null,
+i_to varchar2(30 char) not null,
+i_from varchar2(30 char) not null,
+i_answercheck varchar2(10 char) not null,
+i_photo varchar2(200 char) not null
+);
+
+create sequence inquiry_seq;
+
+insert into inquiry values
+(inquiry_seq.nextval, '몰라', 'ㅋㅋㅋ', sysdate, '결제', 'admin',
+'iii9501@naver.com', '1' , 'test.jpg')
+
+select * from inquiry;
+
+drop table inquiry cascade constraint purge;
+
+DROP SEQUENCE inquiry_seq;
+
+---------------------------------------------
+--- 고객센터(1:1문의) 답변 테이블 ---
+create table ianswer(
+ia_no number(5) not null,
+ia_title varchar2(100 char) not null,
+ia_content varchar2(1000 char) not null,
+ia_date date not null,
+ia_type varchar2(50 char) not null,
+ia_to varchar2(30 char) not null,
+ia_from varchar2(30 char) not null,
+ia_photo varchar2(200 char) not null
+);
+
+
+select * from ianswer;
+
+select *
+   from (
+      select rownum as rn, i_no, i_title, i_content, i_date, i_type, i_to, i_from, i_answercheck, i_photo
+       from (
+       		select * from inquiry,member	
+       		where i_to = m_email and i_to = 'admin' and i_content like '%'||'f'||'%' order by i_date desc
+       		)	
+       	)
+			where rn >= 1 and rn <= 3
+			
+select count(*)
+		from inquiry, member
+		where i_to = m_email and i_to = 'admin' and i_content like '%'||#{search}||'%' order by i_date desc
+			
+			
+drop table ianswer cascade constraint purge;
+
+
+---------------------------------------------
+--- Pumping Iron에 바란다 테이블 ---
+create table request(
+r_no number(5) primary key,
+r_title varchar2(100 char) not null,
+r_content varchar2(1000 char) not null,
+r_date date not null,
+r_to varchar2(30 char) not null,
+r_from varchar2(30 char) not null,
+r_answercheck varchar2(10 char) not null,
+r_photo varchar2(200 char) not null
+);
+
+create sequence request_seq;
+
+insert into request values
+(request_seq.nextval, '몰라', 'ㅋㅋㅋ', sysdate, 'admin',
+'iii9501@naver.com', '1' , 'test.jpg')
+
+select * from request;
+
+drop table request cascade constraint purge;
+
+DROP SEQUENCE request_seq;
+
+---------------------------------------------
+--- Pumping Iron에 바란다 답변 테이블 ---
+create table ranswer(
+ra_no number(5) not null,
+ra_title varchar2(100 char) not null,
+ra_content varchar2(1000 char) not null,
+ra_date date not null,
+ra_to varchar2(30 char) not null,
+ra_from varchar2(30 char) not null,
+ra_photo varchar2(200 char) not null
+);
+
+
+insert into ranswer values
+(ranswer_seq.nextval, '몰라', 'ㅋㅋㅋ', sysdate, 'admin',
+'iii9501@naver.com', '1' , 'test.jpg')
+
+select * from ranswer;
+
+drop table ranswer cascade constraint purge;

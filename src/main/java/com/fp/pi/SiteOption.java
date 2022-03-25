@@ -28,4 +28,19 @@ public class SiteOption {
 		req.getSession().setAttribute("search", null);
 		
 	}
+	public static void clearSearch1(HttpServletRequest req) {
+		req.getSession().setAttribute("searchEvent", null);
+		
+	}
+	
+	public static void clearSearch2(HttpServletRequest req) {
+		req.getSession().setAttribute("searchCustomerService", null);
+		
+	}
+	
+	public static void clearSearch3(HttpServletRequest req) {
+		req.getSession().setAttribute("searchRequest", null);
+		
+	}
+	
 }

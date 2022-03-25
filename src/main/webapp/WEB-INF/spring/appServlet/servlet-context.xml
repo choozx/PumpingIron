@@ -36,6 +36,7 @@
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<beans:property name="username" value="c##gw" />
 		<beans:property name="password" value="gw" />
+
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -104,7 +105,7 @@
 		<beans:constructor-arg value="12"></beans:constructor-arg> <!-- 한 페이지당 12개씩 보여주겠다 -->
 	</beans:bean>
 	
-
+	
 
 
 </beans:beans>

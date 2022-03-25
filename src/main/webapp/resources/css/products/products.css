@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-#products_banner{
-	margin-top: 50px;
-	width: 90%;
-	height: 300px;
-}
 .product_div{
 	float: left;
 	height: 320px;
@@ -12,6 +7,7 @@
 }
 
 #products_select_div{
+	margin-top : 50px;
 	margin-bottom: 50px;
 }
 
@@ -78,6 +74,11 @@
 #cart_name{
 	margin-top: 50px;
 	font-weight: bold;	
+}
+
+#addCart{
+	float: right;
+	margin-right: 50px;
 }
 
 #product_cart_div{
