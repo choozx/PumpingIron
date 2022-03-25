@@ -31,6 +31,7 @@
 	<input id="total_amount" type="hidden" name="totalPrice" >
     <input id="quantity" type="hidden" name="totalVol">
     
+    <input id="member" type="hidden" value="${sessionScope.loginMember }"> 
     <input id="member_addr" type="hidden" value="${sessionScope.loginMember.m_addr }">
 	<input id="member_email" type="hidden" value="${sessionScope.loginMember.m_email }">
 	<input id="member_name" type="hidden" value="${sessionScope.loginMember.m_name }">			
