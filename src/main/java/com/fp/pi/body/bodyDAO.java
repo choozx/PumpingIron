@@ -78,7 +78,7 @@ private int allMsgCount;
 		}
 		
 		
-		req.setAttribute("reviews", reviews);
+		req.setAttribute("bodys", reviews);
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
 		System.out.println(msgCount);
 		System.out.println(count);
