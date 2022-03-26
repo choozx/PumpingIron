@@ -90,9 +90,8 @@ $(function() {
                       } // click
                   } //addEventButton
               }, //customButtons
-              
-          
                events: [ //DB에서 event 불러오기
+            	   
 				$.ajax({
 					type: "GET",
 					url: "schedule.getData",
@@ -111,21 +110,11 @@ $(function() {
 				})  // ajax          	  
               ], // events
               
-               eventClick: function(info) { // 관리자일 경우 => 클릭시 삭제
+               eventClick: function(info) { // 관리자일 경우 => 클릭시 상세 추가 페이지로
             	let numSchedule = info.event.id;
                
-				if (confirm(info.event.title + ' - 해당 일정을 삭제하시겠습니까?')) {
-					$.ajax({
-						type: "GET",
-						url: "schedule.del",
-						data: {	'cc_no' : numSchedule },
-						success : function () {
-							location.reload();
-						} // success
-					}); // ajax
-				} else {
-					return false;
-				}
+               	location.href = "schedule.getDetail?ccd_no=" + numSchedule;
+               
 			}, // eventClick
               
               editable: false, // false로 변경 시 draggable 작동 x 
@@ -172,20 +161,6 @@ $(function() {
              	
              	location.href = "schedule.getDetail?ccd_no=" + numSchedule;
                  
-              /* 	$.ajax({
-					type: "GET",
-					url: "schedule.getDetail",
-					data: {'ccd_no' : numSchedule},
-					success: function(data) {
-						console.log(data)
-						$("#detailModal").modal("show"); // modal 나타내기
-					}
-				})       */ 
-				
-              	$('#doModalClose').on("click", function() {
-						$('#detailModal').click();
-				});
-              	
   			},
               
               editable: false, // false로 변경 시 draggable 작동 x 
@@ -221,7 +196,7 @@ $(function() {
 	
 
 	<!-- Calendar div -->
-        <div id="calendar" class="container"></div>
+        <div id="calendar" style="z-index: -99" class="container"></div>
 
 
 
@@ -247,7 +222,7 @@ $(function() {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                    <button type="button" class="btn btn-primary" id="addCalendar">추가</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         id="sprintSettingModalClose" onclick="">취소</button>
                 </div>

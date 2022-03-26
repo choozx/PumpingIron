@@ -22,9 +22,7 @@
 	<div class="main">
 	
 	 
-		<div class="content-wrap" style="width: 70%;">
-		
-		
+		<div class="content-wrap " style="width: 75%;">
 		
 		
 		<!-- -------------------------------Routine--------------------------- -->

@@ -1,5 +1,6 @@
 package com.fp.pi.calendar;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -9,7 +10,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fp.pi.infomap.InfoMapMapper;
 import com.fp.pi.member.Member;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import oracle.net.aso.c;
 
@@ -101,16 +105,14 @@ public class CalendarDAO {
 	}
 
 
-	public int deleteScheldule(ContestBean c, HttpServletRequest req) {
+	public void deleteScheldule(ContestBean c, HttpServletRequest req) {
 		
 		if (ss.getMapper(CalendarMapper.class).delSchedule(c) == 1) {
 			System.out.println("삭제 성공");
 			req.setAttribute("result", "삭제 성공");
-			return 1;
 		} else {
 			System.out.println("삭제 실패");
 			req.setAttribute("result", "삭제 실패");
-			return 0;
 		}
 		
 	}
@@ -128,12 +130,77 @@ public class CalendarDAO {
 
 	public void selectDetail(ContestDetailBean cd, HttpServletRequest req) {
 		
-		BigDecimal num = cd.getCcd_no();
+		int num = cd.getCcd_no();
 		System.out.println(num);
 		
 		List<ContestDetailBean> details = ss.getMapper(CalendarMapper.class).detailSchedule(cd);
 		
 		req.setAttribute("detail", details);
+		
+	}
+
+
+	public void insertDetail(ContestDetailBean cd, HttpServletRequest req) {
+
+		String path = req.getSession().getServletContext().getRealPath("resources/img");
+		MultipartRequest mr = null;
+		String token = null;
+		
+		System.out.println(path);
+		
+		try {
+		mr = new MultipartRequest(req, path, 1500 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+		token = mr.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		if (successToken != null && token.equals(successToken)) {
+			String fileName = mr.getFilesystemName("ccd_img");
+			new File(path + "/" + fileName).delete();
+			return;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		try {
+		String fileName = mr.getFilesystemName("ccd_img");
+		
+		cd.setCcd_no(Integer.parseInt(mr.getParameter("ccd_no")));
+		cd.setCcd_img(fileName);
+		cd.setCcd_title(mr.getParameter("ccd_title"));
+		cd.setCcd_text(mr.getParameter("ccd_text"));
+		
+		System.out.println(cd.getCcd_no());
+		System.out.println(cd.getCcd_title());
+		
+		if (ss.getMapper(CalendarMapper.class).regSchduleDetail(cd) == 1) {
+			System.out.println("등록 성공");
+			req.setAttribute("result", "등록 성공");
+		} else {
+			System.out.println("등록 실패");
+			req.setAttribute("result", "등록 실패");
+		}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			String fileName = mr.getFilesystemName("ccd_img");
+			new File(path + "/" + fileName).delete();
+			req.setAttribute("result", "등록 실패");
+			return;
+		}
+		
+	}
+
+
+	public void deleteSchelduleDetail(ContestDetailBean cd, HttpServletRequest req) {
+		
+		if (ss.getMapper(CalendarMapper.class).delScheduleDetail(cd) == 1) {
+			System.out.println("삭제 성공");
+			req.setAttribute("result", "삭제 성공");
+		} else {
+			System.out.println("삭제 실패");
+			req.setAttribute("result", "삭제 실패");
+		}
 		
 	}
 	

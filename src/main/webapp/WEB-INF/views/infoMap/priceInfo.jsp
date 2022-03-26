@@ -7,7 +7,6 @@
 
 <script type="text/javascript">
 	$(function() {
-
 		$("#search").keyup(function(e) {
 			if (e.keyCode == 13) {
 				$('#searchBtn').trigger('click');
@@ -37,7 +36,7 @@
 		$('#addInfo').click(function() {
 
 			$('#infoReg').modal("show");
-
+			
 		}); // #addBtn click
 		
 		$('#modalClose1').click(function() {
@@ -107,10 +106,6 @@
 			
 		}); //info_update_btn
 		
-
-		var enter = document.querySelector('textarea');
-		enter = enter.value.replace('\r\n', '<br>');
-
 	}); // ready
 </script>
 
@@ -149,7 +144,7 @@
 						<img class="img-fluid" style="border-radius: 5px 0px 0px 5px; border-right: 1px solid;" src="resources/img/${p.pi_img}">
 				</div>
 
-				<div class="centerInfo_info mt-1 mb-1 p-3 col " style="font-size: 14pt;">
+				<div class="centerInfo_info mt-1 mb-1 p-3 col " style="font-size: 12pt;">
 
 					<c:if test="${p.pi_partner == 'Y'}">
 						<b class="partnership_center">▷ with PUMPING IRON◁</b>
@@ -158,9 +153,9 @@
 
 					▷업체명<br> <span id="piName"> ${p.pi_name}</span> 
 					<p>
-						<br> ▷위 치<br> <span id="piLoc">${p.pi_loc}</span> 
+						<br> ▷위 치<br> <span id="piLoca" style="white-space:pre-wrap;">${p.pi_loc}</span> 
 					<p>
-						▷가격 정보<br> <span id="piPrice">${p.pi_price}</span> 
+						▷가격 정보<br> <span id="piPrice" style="white-space:pre-wrap">${p.pi_price}</span> 
 					<p>
 					
 					<c:if test="${sessionScope.loginMember.m_email == 'admin'}">
@@ -215,7 +210,7 @@
 							<label for="taskId" class="col-form-label">업체명</label>
 							 <input class="form-control" id="info_name" name="pi_name" required="required">
 							  <label for="taskId" class="col-form-label"> 위치 정보</label>
-							<textarea class="form-control" id="info_location" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
+							<textarea class="form-control textarea" id="info_location" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
 							<textarea class="form-control" id="info_price" name="pi_price" style="height: 150px;">
 1일권 : 
@@ -267,7 +262,7 @@
 							<textarea class="form-control" id="info_location2" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
 
-							<textarea class="form-control" id="info_price2" name="pi_price" style="height: 150px;">
+							<textarea class="form-control textarea" id="info_price2" name="pi_price" style="height: 150px;">
 							</textarea>
 							<label for="taskId" class="col-form-label">제휴 여부</label>
 							<input type="radio" id="info_partner2" name="pi_partner" required="required" value="Y"> Yes 
