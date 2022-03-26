@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fp.pi.point.PointMapper">
+
+
+<update id="updatePoint" parameterType="com.fp.pi.point.PointBean">
+
+update pointChk set p_check = p_check + 2
+where p_no = #{p_no}
+
+</update>
+
+<insert id="pushPoint"  parameterType="com.fp.pi.point.PointBean">
+
+insert into pointChk values(pointChk_seq.nextval, #{p_email}, #{p_no}, #{p_check}, #{p_type})
+
+</insert>
+
+<insert id="pushPointMember"  parameterType="com.fp.pi.point.PointBean">
+
+update member set m_point = #{p_check} where m_email = #{p_email}
+
+</insert>
+
+<!-- 포인트 적립된적 있는지? -->
+<select id="getPoint" resultType="com.fp.pi.point.PointBean">
+select * from pointChk where p_no = #{p_no}
+</select>
+
+
+
+</mapper>

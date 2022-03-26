@@ -22,6 +22,56 @@ input[type=number] {
 }
 
 </style>
+<script type="text/javascript">
+$(function() {
+	// 이메일 중복 검사(1 = 중복 / 0 != 중복)
+	$("#kakaoEmail").keyup(function() {
+		// id = "m_email"
+		var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+		var user_id = $('#kakaoEmail').val();
+		// alert(user_id)
+		$.ajax({
+			url : '${pageContext.request.contextPath}/member.emailCheck?m_email='+ user_id,
+			type : 'get',
+			success : function(data) {
+				console.log("1 = 중복o / 0 = 중복x : "+ data);							
+				
+				if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_check").text("이미 사용중인 이메일입니다.");
+						$("#id_check").css("color", "red");
+						$("#kakaoEmail").focus();
+						$("#searchBtn3").attr("disabled", true); // reg_submit 버튼
+					} else {
+						if(regEmail.test(user_id)){
+							// 0 : 아이디 길이 / 문자열 검사
+							$("#id_check").text("사용 가능한 이메일입니다.");
+							$("#id_check").css("color", "green");
+							$("#searchBtn3").attr("disabled", false);
+				
+						} 
+						
+						else if(user_id == ""){
+							$('#id_check').text('이메일을 입력해주세요.');
+							$('#id_check').css('color', 'red');
+							$("#kakaoEmail").focus();
+							$("#searchBtn3").attr("disabled", true);				
+							
+						} else {
+							$('#id_check').text("이메일을 올바르게 입력해주세요.");
+							$('#id_check').css('color', 'red');
+							$("#kakaoEmail").focus();
+							$("#searchBtn3").attr("disabled", true);
+						}
+					}
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
+});
+
+</script>
 </head>
 <body>
 
@@ -44,6 +94,7 @@ input[type=number] {
 						<div>
 							<input type="text" class="form-control" id="kakaoEmail"
 								name="email" placeholder="Email">
+							<span class="ps-1" id="id_check" style="color: green;"></span>
 						</div>
 					</div>
 

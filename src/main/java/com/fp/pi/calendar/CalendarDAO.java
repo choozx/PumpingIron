@@ -2,6 +2,8 @@ package com.fp.pi.calendar;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -102,6 +104,33 @@ public class CalendarDAO {
 		
 		return contests;
 	
+	}
+	public List<ContestBean> selectSchdule1(ContestBean c, HttpServletRequest req) {
+		
+		List<ContestBean> contests = ss.getMapper(CalendarMapper.class).contestSchedule();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd");
+		
+		
+		
+		
+		for (ContestBean cc : contests) {
+			System.out.println(cc.getCc_startDate());
+			try {
+				System.out.println(sdf2.format(sdf.parse(cc.getCc_startDate())));
+				
+				cc.setCc_startDate(sdf2.format(sdf.parse(cc.getCc_startDate())));	
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		req.setAttribute("contest", contests);
+		
+		return contests;
+		
 	}
 
 
