@@ -71,6 +71,30 @@ $(function() {
 		});
 });
 
+Kakao.init("d8c700a991666a81ea5a505838e662a1");
+Kakao.isInitialized();
+
+
+ function kakaoWithdrawl() {
+	    if (Kakao.Auth.getAccessToken()) {
+	      //토큰이 있으면
+	      Kakao.API.request({
+	        url: '/v1/user/unlink',
+	        success: function (response) {
+	         // alert(response)
+		     // 토큰 삭제
+		      Kakao.Auth.setAccessToken(undefined)
+		     // 회원탈퇴
+	        	location.href="member.login.go"
+	        },
+	        fail: function (error) {
+	          console.log(error)
+	        },
+	      })
+
+	    }
+  }
+
 </script>
 </head>
 <body>
@@ -128,7 +152,7 @@ $(function() {
 					<div class="form-group mt-3">
 						<button id="searchBtn3" class="btn btn-primary btn-block sb">확인</button>
 						<a class="btn btn-danger btn-block sb mt-2"
-							onclick="location.href='index.go'">취소</a>
+							onclick="kakaoWithdrawl()">취소</a>
 					</div>
 				</div>
 			</div>
