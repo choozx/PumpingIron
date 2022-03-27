@@ -160,8 +160,8 @@
 					
 					<c:if test="${sessionScope.loginMember.m_email == 'admin'}">
 					<div style="text-align: right;">
-						<button id="info_update_btn" style="background-color: white;" value="${p.pi_no}">수정</button>
-						<button id="info_delete_btn" style="background-color: white;" value="${p.pi_no}">삭제</button>
+						<button id="info_update_btn" class="btn btn-outline-dark" value="${p.pi_no}">수정</button>
+						<button id="info_delete_btn" class="btn btn-outline-dark" value="${p.pi_no}">삭제</button>
 					</div>
 					</c:if>
 					
@@ -173,6 +173,7 @@
 
 		<p>
 	</c:forEach>
+	
 
 	<c:if test="${priceInfo == null}">
 		<div class="pb-5 pt-3"></div>
@@ -180,6 +181,8 @@
 			<span style="font-family: facon; font-size: 50pt;">Pumping Iron</span>
 		</div>
 	</c:if>
+	
+	
 	
 	 <c:if test="${priceInfo.size() == 0}">
 		<div class="pb-5 pt-3"></div>
@@ -210,15 +213,16 @@
 							<label for="taskId" class="col-form-label">업체명</label>
 							 <input class="form-control" id="info_name" name="pi_name" required="required">
 							  <label for="taskId" class="col-form-label"> 위치 정보</label>
-							<textarea class="form-control textarea" id="info_location" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
+							<textarea class="form-control textarea" id="info_location" style="resize: none;" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
-							<textarea class="form-control" id="info_price" name="pi_price" style="height: 150px;">
+							<textarea class="form-control" id="info_price" name="pi_price" style="height: 150px; resize: none;" required="required">
 1일권 : 
 1개월 : 
 3개월 : 
 5개월 : 
 12개월 :
 							</textarea>
+							<div style="font-size: 8pt; color: gray; text-align: right;">* 최대 3,000자</div>
 							<label for="taskId" class="col-form-label">제휴 여부</label> 
 							<input type="radio" id="info_partner" name="pi_partner" required="required"  value="Y" /> Yes
 							<input type="radio" id="info_partner" name="pi_partner" required="required"  value="N"> No <br> 
@@ -227,7 +231,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-warning" id="addBtn">추가</button>
+						<button class="btn btn-primary" id="addBtn">추가</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalClose1" onclick="">취소</button>
 					</div>
 
@@ -259,21 +263,21 @@
 							<label for="taskId" class="col-form-label">업체명</label> 
 							<input class="form-control" id="info_name2" name="pi_name" required="required"> 
 								<label for="taskId" class="col-form-label">위치 정보</label>
-							<textarea class="form-control" id="info_location2" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
+							<textarea class="form-control" id="info_location2" name="pi_loc" style="resize: none;" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
-
-							<textarea class="form-control textarea" id="info_price2" name="pi_price" style="height: 150px;">
+							<textarea class="form-control textarea" id="info_price2" name="pi_price" style="height: 150px; resize: none;" required="required"> 
 							</textarea>
+							<div style="font-size: 8pt; color: gray; text-align: right;">* 최대 3,000자</div>
 							<label for="taskId" class="col-form-label">제휴 여부</label>
 							<input type="radio" id="info_partner2" name="pi_partner" required="required" value="Y"> Yes 
 							<input type="radio" id="info_partner2" name="pi_partner" required="required" value="N"> No <br>
-							<label for="taskId" class="col-form-label">업체 제공 사진</label>
+							<label for="taskId" class="col-form-label">현재 사진</label>
 							<span id="old_image"></span>
 							<input type="file" name="pi_img" id="info_image2" required="required">
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-warning" id="addBtn2">추가</button>
+						<button class="btn btn-primary" id="addBtn2">추가</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalClose2" onclick="">취소</button>
 					</div>
 				</div>
