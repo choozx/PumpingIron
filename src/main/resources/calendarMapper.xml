@@ -19,8 +19,6 @@
 
 
 
-
-
 <!-- ___________대회일정 캘린더___________ -->
 
 <insert id="regSchedule" parameterType="com.fp.pi.calendar.ContestBean">
@@ -32,9 +30,10 @@
 </select>
 
 <delete id="delSchedule" parameterType="com.fp.pi.calendar.ContestBean">
-	<!-- delete calendar_contest, calendar_contest_detail where cc_no = #{cc_no} and ccd_no = #{cc_no}; -->
 	delete calendar_contest where cc_no = #{cc_no}
 </delete>
+
+
 
 <select id="detailSchedule" resultType="com.fp.pi.calendar.ContestDetailBean" parameterType="com.fp.pi.calendar.ContestDetailBean">
 	select * from calendar_contest_detail where ccd_no = #{ccd_no}
@@ -43,5 +42,13 @@
 <select id="detailSchedule2" resultType="com.fp.pi.calendar.ContestDetailBean">
 	select * from calendar_contest_detail
 </select>
+
+<insert id="regSchduleDetail" parameterType="com.fp.pi.calendar.ContestDetailBean">
+	insert into calendar_contest_detail values (#{ccd_no}, #{ccd_title}, #{ccd_img}, #{ccd_text})
+</insert>
+
+<delete id="delScheduleDetail" parameterType="com.fp.pi.calendar.ContestDetailBean">
+	delete calendar_contest_detail where ccd_no = #{ccd_no}
+</delete>
 
 </mapper>

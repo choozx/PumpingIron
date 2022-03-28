@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="">
+	<div id="carouselExampleCaptions" class="container carousel slide" data-bs-ride="carousel" style="z-index: 0;">
 	<div class="container">
 	<div id="products_banner"><input id="p_type" type="hidden" value="${param.p_type }"></div>
 	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }"></div>
@@ -95,6 +96,7 @@
     
   		</ul>
 	</nav>
+</div>	
 	</div>
 </body>
 </html>
