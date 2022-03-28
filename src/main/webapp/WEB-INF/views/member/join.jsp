@@ -154,7 +154,7 @@ $("#m_email").keyup(function() {
 				<div style="display: flex; align-items: center;">
 				<input type="number" id="phone2" name="phone2"  maxlength="4"  style="width: 38%" placeholder="인증번호를 입력해주세요."  disabled="disabled">
 				<input type="button" id="phoneChk2" style="width: 25%; display: none;" value="확인" style="text-align: center">
-				<span class="successPhoneChk mt-1 ps-1" style="color: #50bcdf;">※ 휴대폰 번호 입력 후 휴대폰 인증을 해주세요.</span>
+				<span class="successPhoneChk mt-1 ps-1" style="color: #50bcdf;" id="successPhoneChk">※ 휴대폰 번호 입력 후 휴대폰 인증을 해주세요.</span>
 				</div>
 				<input type="hidden" id="phoneDoubleChk"/>
 			</div>
