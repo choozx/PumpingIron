@@ -157,7 +157,6 @@ $(function() {
               	 let numSchedule = info.event.id;
              	 console.log(numSchedule);
              	 
-             	$('#numFromJS').val(numSchedule);
              	
              	location.href = "schedule.getDetail?ccd_no=" + numSchedule;
                  
@@ -207,9 +206,6 @@ $(function() {
             <div class="modal-content">
                 <div class="modal-header"> 
                     <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button> -->
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -232,8 +228,6 @@ $(function() {
     </div>
 
 
-
-	<input name="ccd_no" id="numFromJS" type="hidden" value="">
 
 </body>
 </html>

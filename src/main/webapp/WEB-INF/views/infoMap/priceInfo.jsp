@@ -140,8 +140,8 @@
 			
 			<div class="row">
 
-				<div class="centerInfo_fhoto ratio" style="width: 450px;">
-						<img class="img-fluid" style="border-radius: 5px 0px 0px 5px; border-right: 1px solid;" src="resources/img/${p.pi_img}">
+				<div class="centerInfo_fhoto ratio" style="width: 40%; ">
+						<img style="border-radius: 5px 0px 0px 5px; border-right: 1px solid;" src="resources/img/${p.pi_img}">
 				</div>
 
 				<div class="centerInfo_info mt-1 mb-1 p-3 col " style="font-size: 12pt;">
@@ -211,7 +211,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="taskId" class="col-form-label">업체명</label>
-							 <input class="form-control" id="info_name" name="pi_name" required="required">
+							 <input class="form-control" id="info_name" name="pi_name" placeholder="지도에서 복사해서 붙여넣기" required="required">
 							  <label for="taskId" class="col-form-label"> 위치 정보</label>
 							<textarea class="form-control textarea" id="info_location" style="resize: none;" name="pi_loc" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
@@ -219,7 +219,7 @@
 1일권 : 
 1개월 : 
 3개월 : 
-5개월 : 
+6개월 : 
 12개월 :
 							</textarea>
 							<div style="font-size: 8pt; color: gray; text-align: right;">* 최대 3,000자</div>
@@ -261,7 +261,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="taskId" class="col-form-label">업체명</label> 
-							<input class="form-control" id="info_name2" name="pi_name" required="required"> 
+							<input class="form-control" id="info_name2" name="pi_name" placeholder="지도에서 복사해서 붙여넣기" required="required"> 
 								<label for="taskId" class="col-form-label">위치 정보</label>
 							<textarea class="form-control" id="info_location2" name="pi_loc" style="resize: none;" placeholder="지도에서 복사해서 붙여넣기" required="required"></textarea>
 							<label for="taskId" class="col-form-label">가격 정보</label>
