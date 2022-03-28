@@ -160,7 +160,7 @@ ${result }
 <div class="comment-box">
 <div class>
 <div class="d-flex align-items-start justify-content-between">
-<div class="comment-content-left d-flex align-items-start justify-content-center">
+<div class="comment-content-left d-flex align-items-start justify-content-center" style="width: 100%;">
 <div class="comment-picture mr-4">
 <img alt="" src="" class="rounded-circle cursor">
 </div>
@@ -189,12 +189,12 @@ ${result }
 
 </div>
 
-<div class="comment-content-right" style="margin-left: 1131px;">
+<div class="comment-content-right" style="display: flex; justify-content: flex-end; width: 100%;">
 
 
 
 <c:if test="${t.brr_br_nickname == sessionScope.loginMember.m_name }">
-<div class="d-flex align-items-center comment-right" style="float: right;">
+<div class="d-flex align-items-center comment-right" style="width: 100%; display: flex; justify-content: flex-end;">
 <button class="update" onclick="updateReply3('${t.brr_no}','${t.brr_br_no}','${t.brr_text}');" style="float: right;">수정</button>
 <button class="delete" onclick="deleteReply3('${t.brr_no}','${t.brr_br_no}');" style="float: right;">삭제</button>
 </div>
@@ -229,10 +229,12 @@ ${result }
 <div class="reply-write-box comment-content border border-dark d-flex" style="">
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
-class="bg-whtie comment-textarea" name="brr_text"></textarea>
+class="bg-whtie comment-textarea" name="brr_text" style="border-right: 5px solid black;"></textarea>
 </div>
 
-<div class="reply-write-wrapper">
+<div class="reply-write-wrapper" style="border: 1px solid black; justify-content: flex-end;">
+<button class="noto-pb submit-btn"  name="button"
+ style="width: 100%; height: 100%; font-size: 20px;">댓글등록</button>
 <div class="preview-wrapper p-3">
 <input type="hidden" class="input-delete" value="0">
 </div>
@@ -246,8 +248,7 @@ class="bg-whtie comment-textarea" name="brr_text"></textarea>
 <input type="hidden" name="br_no" value="${tippp.br_no }">
 
 <%-- <input type="hidden" value="${re.crr_no }" name="crr_no"> --%>
-<button class="noto-pb submit-btn"  name="button"
- style="margin-right: 70px;">댓글등록</button>
+
 
 </div>
 </div>

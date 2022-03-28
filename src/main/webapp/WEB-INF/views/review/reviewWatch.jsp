@@ -162,7 +162,7 @@ ${result }
 <div class="comment-box">
 <div class>
 <div class="d-flex align-items-start justify-content-between">
-<div class="comment-content-left d-flex align-items-start justify-content-center">
+<div class="comment-content-left d-flex align-items-start justify-content-center" style="width: 100%;">
 <div class="comment-picture mr-4">
 <img alt="" src="" class="rounded-circle cursor">
 </div>
@@ -191,12 +191,12 @@ ${result }
 
 </div>
 
-<div class="comment-content-right" style="margin-left: 1131px;">
+<div class="comment-content-right" style="display: flex; justify-content: flex-end; width: 100%;">
 
 
 
 <c:if test="${t.c2r_c2_nickname == sessionScope.loginMember.m_name }">
-<div class="d-flex align-items-center comment-right" style="float: right;">
+<div class="d-flex align-items-center comment-right" style="width: 100%; display: flex; justify-content: flex-end;">
 <button class="update" onclick="updateReply2('${t.c2r_no}','${t.c2r_c2_no}','${t.c2r_text}');" style="float: right;">수정</button>
 <button class="delete" onclick="deleteReply2('${t.c2r_no}','${t.c2r_c2_no}');" style="float: right;">삭제</button>
 </div>
@@ -231,10 +231,12 @@ ${result }
 <div class="reply-write-box comment-content border border-dark d-flex" style="">
 <div class="reply-write-textarea">
 <textarea rows="8" cols="80" placeholder="댓글을 남겨보세요"
-class="bg-whtie comment-textarea" name="c2r_text"></textarea>
+class="bg-whtie comment-textarea" name="c2r_text" style="border-right: 5px solid black;"></textarea>
 </div>
 
-<div class="reply-write-wrapper">
+<div class="reply-write-wrapper" style="border: 1px solid black; justify-content: flex-end;">
+<button class="noto-pb submit-btn"  name="button"
+ style="width: 100%; height: 100%; font-size: 20px;">댓글등록</button>
 <div class="preview-wrapper p-3">
 <input type="hidden" class="input-delete" value="0">
 </div>
@@ -248,8 +250,7 @@ class="bg-whtie comment-textarea" name="c2r_text"></textarea>
 <input type="hidden" name="c2_no" value="${tippp.c2_no }">
 
 <%-- <input type="hidden" value="${re.crr_no }" name="crr_no"> --%>
-<button class="noto-pb submit-btn"  name="button"
- style="margin-right: 70px;">댓글등록</button>
+
 
 </div>
 </div>
@@ -270,7 +271,7 @@ class="bg-whtie comment-textarea" name="c2r_text"></textarea>
 
 <c:if test="${tippp.c2_nickname == sessionScope.loginMember.m_name }">
 <div class="viewer-bottom-right d-flex align-items-center">
-<div class="d-inline-block is-mine">
+<div class="d-inline-block is-mine" >
 <button class="ml-3 border-b-btn board-btn noto-h4" type="button" name="button"
 onclick="location.href = 'update2.go?c2_no=${tippp.c2_no}'">수정</button>
 <button class="ml-3 border-b-btn board-btn noto-h4 item-delete" data-type="board" name="button"
