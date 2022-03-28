@@ -6,23 +6,26 @@ import com.fp.pi.infomap.InfoMapBean;
 
 public interface CalendarMapper {
 
-	int recordRoutine(RoutineBean r);
+	public int recordRoutine(RoutineBean r);
 
-	List<RoutineBean> showRoutine(RoutineBean r);
+	public List<RoutineBean> showRoutine(RoutineBean r);
 
-	int delRoutine(RoutineBean r);
+	public int delRoutine(RoutineBean r);
 	
 	/////////////////////////////////////////////////////
 	
-	int regSchedule(ContestBean c);
+	public int regSchedule(ContestBean c);
 	
-	List<ContestBean> contestSchedule();
+	public List<ContestBean> contestSchedule();
 
-	int delSchedule(ContestBean c);
+	public int delSchedule(ContestBean c);
 
-	List<ContestDetailBean> detailSchedule(ContestDetailBean cd);
+	public List<ContestDetailBean> detailSchedule(ContestDetailBean cd);
 
-	List<ContestDetailBean> detailSchedule2();
+	public List<ContestDetailBean> detailSchedule2();
 
+	public int regSchduleDetail(ContestDetailBean cd);
+
+	public int delScheduleDetail(ContestDetailBean cd);
 
 }
