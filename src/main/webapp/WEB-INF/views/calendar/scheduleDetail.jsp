@@ -58,7 +58,7 @@
 	<c:forEach items="${detail}" var="d" >
  	<c:if test="${detail.size() != 0}">
     <div class="container" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="" role="document" >
+        <div role="document" >
             <div class="modal-content" >
                 <div class="modal-header" > 
                     <h5 class="modal-title" id="exampleModalLabel"> ${d.ccd_title} </h5>
@@ -93,9 +93,9 @@
     <div class="container bg-light bg-gradient" style="width: 100%; border: 1px solid; border-radius: 10px; margin-top: 30px;">
    		<div class="pb-5 pt-3"></div>
 		<div class="pb-5 pt-5" style="text-align: center;">
-                 <h3 style=" font:bold;">이런.. 아직 상세정보가 아직 준비 되지 않은 페이지입니다... :(</h3>
-                 <h3>이용에 불편을 드려 죄송합니다.</h3>
-                 <h3>빠른 시일 내로 추가하도록 하겠습니다.</h3>
+                 <h3>아직 상세정보가 아직 준비 되지 않은 페이지입니다... :( <br>
+                	 빠른 시일 내로 추가하도록 하겠습니다. <br>
+                	이용에 불편을 드려 죄송합니다.</h3>
    		<div class="pb-5 pt-3"></div>
                  <span style="font-family: facon; font-size: 50pt;">Pumping Iron</span>
    		<div class="pb-5 pt-3">

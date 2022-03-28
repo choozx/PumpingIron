@@ -40,6 +40,8 @@ $(function() {
 </head>
 <body>
 
+    <div class="container" id="calendarReg">
+    
 	<!-- admin 확인 -->
 	<input id="login_check" type="hidden" value="${sessionScope.loginMember.m_email}">
 	
@@ -48,8 +50,8 @@ $(function() {
 	<input name="cc_no" id="numFromJS1" type="hidden" value="${param.ccd_no}">
 	<input name="ccd_no" id="numFromJS2" type="hidden" value="${param.ccd_no}">
 	<input type="hidden" name="token" value="${token}">
-    <div class="container" id="calendarReg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+	
+       
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header"> 
@@ -72,9 +74,9 @@ $(function() {
     
             </div>
         </div>
-    </div>
     
 	</form>
+    </div>
     
 
 </body>

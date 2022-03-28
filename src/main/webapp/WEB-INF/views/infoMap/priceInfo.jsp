@@ -134,7 +134,7 @@
 
 
 	<c:forEach items="${priceInfo}" var="p">
-		<div id="priceInfo_DIV" class="centerInfo container bg-light bg-gradient" style="width: 100%; border: 1px ridge; border-radius: 5px;">
+		<div id="priceInfo_DIV" class="centerInfo container bg-light bg-gradient border border-dark" style="width: 100%; border-radius: 5px;">
 
 			<input name="pi_no" id="primary_num" type="hidden" value="${p.pi_no}">
 			
@@ -147,7 +147,7 @@
 				<div class="centerInfo_info mt-1 mb-1 p-3 col " style="font-size: 12pt;">
 
 					<c:if test="${p.pi_partner == 'Y'}">
-						<b class="partnership_center">▷ with PUMPING IRON◁</b>
+						<b class="partnership_center" style="font-family: facon;">/ with PUMPING IRON /</b>
 						<br> <br>
 					</c:if>
 

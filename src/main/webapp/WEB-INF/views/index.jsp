@@ -151,7 +151,7 @@
 	</div>
 
 
-	<div class="header">
+	<div class="header" style="z-index: 10;">
 		<div class="container header-nav">
 			<div class="nav-logo">
 				<a href="index.go"><img

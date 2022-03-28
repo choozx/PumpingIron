@@ -196,7 +196,7 @@ $(function() {
 	
 
 	<!-- Calendar div -->
-        <div id="calendar" style="z-index: -99" class="container"></div>
+        <div id="calendar" style="z-index: 0" class="container"></div>
 
 
 

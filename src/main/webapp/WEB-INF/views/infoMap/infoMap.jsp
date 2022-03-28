@@ -104,14 +104,14 @@
 						
 						
 					// 커스텀 오버레이에 표시할 컨텐츠
-					var content = '<div class="wrap" style="border-radius: 1px; width:250px; height:100px;">' +
+					var content = '<div class="wrap" style="border-radius: 1px; width:250px; height:100%;">' +
 					 	'    <div class="info row" style="width:100%; height:100%;">' + 
-			            '        <div id="infoTitle" class="title" style="background-color: black; color:white; font-size:14pt;">'+ namePlace +'</div>' + 
-			            '        <div class="body row" style="width:100%; height:100%;">' + 
+			            '        <div id="infoTitle" class="title" style="background-color: black; color:white; font-size:13pt;  padding-top:3px; padding-bottom:3px;">'+ namePlace +'</div>' + 
+			            '        <div class="body row" style="width:100%; height:100%; padding-top:6px; padding-bottom:8px;">' + 
 			            '            <div class="desc">' + 
-			            '                <div id="infoAdress_road" class="ellipsis">' + roadAdress + '</div>' + 
-			            '                <div id="infoAdress" style="font-size:9pt; color:silver;" class="jibun ellipsis">' + address + '</div>' + 
-			            '                <div style="font-size:9pt; color:gary;"><a href="' + detail + '" target="_blank" class="link">길찾기</a> | <a href="/pi/priceInfo.search?pi_name=' + namePlace + '" target="_blank" class="link">가격 정보</a></div>' + 
+			            '               <div id="infoAdress_road" class="ellipsis" style="font-size:11pt;">' + roadAdress + '</div>' + 
+			            '               <div id="infoAdress" style="font-size:9pt; color:silver;" class="jibun ellipsis">(지번)' + address + '</div>' + 
+			            '				<div style="font-size:9pt; color:gary;"><a href="' + detail + '" target="_blank" class="link">길찾기</a> | <a href="/pi/priceInfo.search?pi_name=' + namePlace + '" target="_blank" class="link">가격 정보</a></div>' + 
 			            '            </div>' + 
 			            '        </div>' + 
 			            '    </div>' +    
@@ -156,7 +156,7 @@
 
 
 	<!-- 지도를 표시할 div 입니다 -->
-	<div id="map" class="container position-relative-1" style="width: 100%; height: 750px; margin-top: 40px; border-style: double; border-radius: 8px; "></div>
+	<div id="map" class="container position-relative-1" style="z-index:0; width: 100%; height: 750px; margin-top: 40px; border-style: double; border-radius: 8px; "></div>
 	
 </body>
 </html>
