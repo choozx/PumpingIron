@@ -33,7 +33,7 @@
 				<input class="common-oneline-input" type="text" name="p_price" maxlength="100" placeholder="가격입력">
 			</div>
 			<div>
-				<span class="m-0 sub-title noto-pb pt-3">상품 타입</span>
+				<span class="m-0 sub-title noto-pb pt-3">상품 타입</span><p>
 				<select name="p_type" >
 					<option value="supplements">보충제</option>
 					<option value="gripStrap">그립/스트랩</option>

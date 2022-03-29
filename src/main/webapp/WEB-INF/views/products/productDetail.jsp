@@ -7,11 +7,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+$(function () {
+	calAmount();
+})
+</script>
 <body>
 	<c:if test="${sessionScope.loginMember.m_email eq 'admin'}">
 		<div id="product_controll" class="container">
-			<button id="delBtn">삭제</button>
-			<button id="updateBtn" onclick="location.href='updateProduct.go?p_no='+${productDetail.p_no }">수정</button>
+			<button type="button" class="btn btn-primary" id="delBtn">삭제</button>
+			<button type="button" class="btn btn-primary" id="updateBtn" onclick="location.href='updateProduct.go?p_no='+${productDetail.p_no }">수정</button>
 		</div>
 	</c:if>
 	<div id="product_detail_div" class="container">
@@ -20,7 +25,7 @@
 		<div id="product_info">
 			<div id="product_name_div"><input id="product_name" type="hidden" value="${productDetail.p_name }">${productDetail.p_name }</div>
 			<div id="product_price_div"><input id="product_price" type="hidden" value="${productDetail.p_price }">${productDetail.p_price }</div>
-			<div id="product_quantity">수량<p><input class="container" type="text" value="1" id='detail_quantity'></div>
+			<div id="product_quantity">수량:<input type="number" name="detail_quantity" onchange="calAmount();" id="detail_quantity" value="1" min="1"/></div>
 			
 			<input id="product_no" type="hidden" value="${productDetail.p_no }">
 			<input id="member" type="hidden" value="${sessionScope.loginMember }">

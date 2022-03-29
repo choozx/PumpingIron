@@ -70,6 +70,5 @@ function total_cart() {
 
 $(function () {
 	addCart();
-	total_cart();
 	delCart(p_no);
 })
