@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+$(function () {
+	total_cart();
+})
+</script>
 <body>
 	<div id="myCart_all_div" class="container">
 	<div id="cart_name">내가 담은 상품</div>
