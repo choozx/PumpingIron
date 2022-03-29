@@ -87,6 +87,8 @@ insert into inquiry values
 
 select * from inquiry;
 
+delete inquiry;
+
 drop table inquiry cascade constraint purge;
 
 DROP SEQUENCE inquiry_seq;
@@ -121,6 +123,8 @@ select count(*)
 		from inquiry, member
 		where i_to = m_email and i_to = 'admin' and i_content like '%'||#{search}||'%' order by i_date desc
 			
+		
+delete inquiry;
 			
 drop table ianswer cascade constraint purge;
 
