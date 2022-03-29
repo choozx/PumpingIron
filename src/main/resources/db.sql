@@ -192,7 +192,7 @@ create table heart_table2(
 h2_no  number(7) primary key,---------------------------------
 h2_c2_no  number(7) not null, --게시글 넘버
 h2_m_email varchar2(50 char) not null, -- 회원 이메일 
-constraint h_for_no1
+constraint h1_for_no
 		foreign key(h2_c2_no) references community_review2(c2_no) on delete cascade,
 		foreign key(h2_m_email) references member(m_email) on delete cascade);
 
