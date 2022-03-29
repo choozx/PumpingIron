@@ -19,7 +19,7 @@ function payment() {
 	let m_addr = $('#member_addr').val();
 	
 	let m_addr_split = m_addr.split('!');
-			
+	
 	var IMP = window.IMP; // 생략가능
 	IMP.init('imp60273439');
 	IMP.request_pay({
@@ -69,9 +69,5 @@ function calAmount() {
 $(function() {
 	$("#kakao_pay").click(function() {
 		payment();
-	})
-	
-	$("#detail_quantity").change(function() {
-		calAmount();
 	})
 })

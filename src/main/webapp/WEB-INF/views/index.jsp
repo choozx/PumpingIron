@@ -151,7 +151,7 @@
 	</div>
 
 
-	<div class="header">
+	<div class="header" style="z-index: 10;">
 		<div class="container header-nav">
 			<div class="nav-logo">
 				<a href="index.go"><img
@@ -190,7 +190,14 @@
 					 <input type="hidden" id="loginCheck" value="${sessionScope.loginMember.m_email}">
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="schedule.go">대회 정보</a></li>
-						<li><a class="dropdown-item" href="routine.date" onclick="return login_check();">운동 루틴 기록</a></li>
+						<c:choose>
+							<c:when test="${sessionScope.loginMember != null}">
+						<li><a class="dropdown-item" href="routine.date">운동 루틴 기록</a></li>
+							</c:when>
+							<c:when test="${sessionScope.loginMember == null}">
+						<li><a class="dropdown-item" href="member.login.go" onclick="login_check();">운동 루틴 기록</a></li>
+							</c:when>
+						</c:choose>
 					</ul></li>
 
 			</div>

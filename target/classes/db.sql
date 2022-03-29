@@ -305,7 +305,6 @@ p_email varchar2(50 char) not null, -- 회원 아이디
 p_no number(7) not null, -- 게시판 넘버
 p_check number(7) not null, -- 포인트 몇개 쌓였는지 체크
 p_type varchar2(40 char) not null, -- 리뷰2테이블, 바디테이블 구분 할려고 
-
 constraint p_for_no
 	        foreign key(p_email) references member(m_email) on delete cascade,
 	        foreign key(p_no) references COMMUNITY_REVIEW2(c2_no) on delete cascade,

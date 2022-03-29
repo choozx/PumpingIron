@@ -167,15 +167,15 @@ $(function() {
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 	
 	
-	
-	
-	
 
 	let code2 = "";
 	$("#phoneChk").click(function() {
 		alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
 		let phone = $("#phone").val();
 		console.log(phone);
+		var time = 180; // 기준시간 작성
+		var min = ""; // 분
+		var sec = ""; // 초
 
 		$.ajax({
 			type : "GET",
@@ -190,31 +190,51 @@ $(function() {
 				} else {
 					$("#phone2").attr("disabled", false);
 					$("#phoneChk2").css("display", "inline-block");
-					$(".successPhoneChk").text("인증번호를 입력한 뒤 확인을 눌러주십시오.");
-					$(".successPhoneChk").css("color", "red");
+				//	$(".successPhoneChk").text("인증번호를 입력한 뒤 확인을 눌러주십시오.");
+				//	$(".successPhoneChk").css("color", "red");
 					$("#phone").attr("readonly", true);
-					$("#reg_submit").attr("disabled", true)
+					$("#reg_submit").attr("disabled", true);
 					code2 = data;
+					var x = setInterval(function() {
+						min = parseInt(time/60); 
+						sec = time%60;
+						document.getElementById("successPhoneChk").innerHTML = "인증번호를 입력한 뒤 확인을 눌러주십시오." + "<br/>" + "(" + min + "분" + sec + "초" + ")";
+						$(".successPhoneChk").css("color", "red");
+						time--;
+						
+						if(time < 0){
+							clearInterval(x);
+							document.getElementById("successPhoneChk").innerHTML = "시간초과하였습니다. 다시 인증해주세요."
+							$("#phoneChk2").css("display", "none");
+							$("#phoneChk").attr("value", "재인증");
+							$("#phone").attr("readonly", true);
+							$("#reg_submit").attr("disabled", true);
+							code2 = "abcdefg";
+						}
+						
+					}, 1000);
 				}
+// 인증번호 일치 여부
+				$("#phoneChk2").click(function() {
+					if ($("#phone2").val() == code2) {
+						$(".successPhoneChk").text("인증번호가 일치합니다.");
+						$(".successPhoneChk").css("color", "green");
+						clearInterval(x);
+						$("#phoneDoubleChk").val("true");
+						$("#phone2").attr("disabled", true);
+						$("#reg_submit").attr("disabled", false)
+					} else {
+						$(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
+						$(".successPhoneChk").css("color", "red");
+						$("#phoneDoubleChk").val("false");
+						$(this).attr("autofocus", true);
+						$("#reg_submit").attr("disabled", true)
+					}
+				});
+			
+				
 			}
 		});
-	});
-
-// 인증번호 일치 여부
-	$("#phoneChk2").click(function() {
-		if ($("#phone2").val() == code2) {
-			$(".successPhoneChk").text("인증번호가 일치합니다.");
-			$(".successPhoneChk").css("color", "green");
-			$("#phoneDoubleChk").val("true");
-			$("#phone2").attr("disabled", true);
-			$("#reg_submit").attr("disabled", false)
-		} else {
-			$(".successPhoneChk").text("인증번호가 일치하지 않습니다.");
-			$(".successPhoneChk").css("color", "red");
-			$("#phoneDoubleChk").val("false");
-			$(this).attr("autofocus", true);
-			$("#reg_submit").attr("disabled", true)
-		}
 	});
 
 // 휴대폰 유효성 검사

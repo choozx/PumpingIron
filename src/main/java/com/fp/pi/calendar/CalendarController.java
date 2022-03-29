@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.pi.TokenMaker;
 import com.fp.pi.member.Member;
 import com.fp.pi.member.MemberDAO;
 
@@ -33,7 +34,6 @@ public class CalendarController {
 		if (mDAO.loginCheck(req)) {
 		}
 		cDAO.selectSchdule(c, req);
-		cDAO.selectDetail_all(cd, req);
 		
 		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
 		return "index";
@@ -66,14 +66,14 @@ public class CalendarController {
 	
 	
 	
-	@RequestMapping(value = "/schedule.del", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody int scheduleDel(ContestBean c, HttpServletRequest req) {
+	@RequestMapping(value = "/schedule.del", method = RequestMethod.GET)
+	public String scheduleDel(ContestBean c, HttpServletRequest req) {
 		
 		if(mDAO.loginCheck(req)) {
 			cDAO.deleteScheldule(c, req);
-			return 1;
-			}
-			return 0;
+		}
+		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+		return "index";
 	}
 	
 	
@@ -88,18 +88,43 @@ public class CalendarController {
 		return "index";
 	}
 	
-	/*	
-	@RequestMapping(value = "/schedule.getDetail", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody List<ContestDetailBean> scheduleDetail(ContestDetailBean cd, HttpServletRequest req) {
+	
+	
+	@RequestMapping(value = "/schedule.reg.page", method = RequestMethod.GET)
+	public String scheduleRegGo(ContestDetailBean cd, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+		}
+		
+		req.setAttribute("contentPage", "calendar/scheduleRegPage.jsp");
+		return "index";
+	}
+	
+	
+	
+	@RequestMapping(value = "/schedule.reg.detail", method = RequestMethod.POST)
+	public String scheduleRegDo(ContestDetailBean cd, HttpServletRequest req) {
+		
+		if (mDAO.loginCheck(req)) {
+			cDAO.insertDetail(cd, req);
+		}
+		TokenMaker.make(req);
+		
+		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+		return "index";
+	}
+
+	
+	
+	@RequestMapping(value = "/schedule.del.detail", method = RequestMethod.GET)
+	public String scheduleDelDetail(ContestDetailBean cd, HttpServletRequest req) {
 		
 		if(mDAO.loginCheck(req)) {
+			cDAO.deleteSchelduleDetail(cd, req);
 		}
-		cDAO.selectDetail(cd, req);
-		
-		return cDAO.selectDetail(cd, req);
+		req.setAttribute("contentPage", "calendar/scheduleCalendar.jsp");
+		return "index";
 	}
-*/
-		
 	
 	
 	

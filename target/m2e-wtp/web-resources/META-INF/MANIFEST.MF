@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kgw96
 Build-Jdk: 14
+=======
+Built-By: ￬ﾜﾠ￬ﾠﾜ￭ﾘﾄ
+Build-Jdk: 14.0.1
+>>>>>>> 5574d82173ca195a07b7a572bbdc95a9218beed7
 Created-By: Maven Integration for Eclipse
 

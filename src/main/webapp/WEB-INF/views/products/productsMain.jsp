@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="">
+	<div id="carouselExampleCaptions" class="container carousel slide" data-bs-ride="carousel" style="z-index: 0;">
 	<div class="container">
 	<div id="products_banner"><input id="p_type" type="hidden" value="${param.p_type }"></div>
 	<div id="products_banner"><input id="p_type" type="hidden" value="${param.products }"></div>
@@ -75,11 +76,11 @@
 	<div id="products_div_first">
 		<div class="row">
 		 	<c:forEach var="p" items="${products }">
-				<div class="col-sm-12 col-lg-3 product_div" id="product_div">
+				<div class="col-sm-12 col-lg-2 col-md-2 product_div" id="product_div">
 					<a href="product.detail?p_no=${p.p_no }">
 						<div><img id="product_img_div" class="container" src="resources/file/${p.p_img }"></div>
-						<div id="product_name_div">${p.p_name }</div>
-						<div id="product_price_div">${p.p_price }</div>
+						<div id="product_name_div" style="display: flex; justify-content: center;">${p.p_name }</div>
+						<div id="product_price_div"  style="display: flex; justify-content: center;">${p.p_price }</div>
 					</a>
 				</div>
 			</c:forEach>
@@ -95,6 +96,7 @@
     
   		</ul>
 	</nav>
+</div>	
 	</div>
 </body>
 </html>

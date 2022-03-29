@@ -69,11 +69,101 @@ public class InfoMapDAO {
 			return;
 		}
 }
+	
 
-	public void selectInfo(InfoMapBean i, HttpServletRequest req) {
+	public void searchPriceInfo(InfoMapBean i, HttpServletRequest req) {
 		
-		List<InfoMapBean> priceInfoes = ss.getMapper(InfoMapMapper.class).callInfo();
+		List<InfoMapBean> priceInfoes = ss.getMapper(InfoMapMapper.class).searchPriceInfos(i);
+		
 		req.setAttribute("priceInfo", priceInfoes);
+		
+		
+	}
+
+	
+	public int deletePriceInfo(InfoMapBean i, HttpServletRequest req) {
+		
+		if (ss.getMapper(InfoMapMapper.class).deletePriceInfo(i) == 1) {
+			System.out.println("삭제 성공");
+			req.setAttribute("result", "삭제 성공");
+			return 1;
+		} else {
+			System.out.println("삭제 실패");
+			req.setAttribute("result", "삭제 실패");
+			return 0;
+		}
+		
+	}
+
+
+	public List<InfoMapBean> get_a_PriceInfo(InfoMapBean i, HttpServletRequest req) {
+		
+		List<InfoMapBean> priceInfoes = ss.getMapper(InfoMapMapper.class).searchForUpdate(i);
+		
+		req.setAttribute("priceInfo_update", priceInfoes);
+		
+		return priceInfoes;
+		
+	}
+
+	
+
+	public void updateInfo(InfoMapBean i, HttpServletRequest req) {
+
+		String path = req.getSession().getServletContext().getRealPath("resources/img");
+		MultipartRequest mr = null;
+		String token = null;
+		
+		System.out.println(path);
+		
+		try {
+		mr = new MultipartRequest(req, path, 1500 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+		token = mr.getParameter("token");
+		String successToken = (String) req.getSession().getAttribute("successToken");
+		if (successToken != null && token.equals(successToken)) {
+			String fileName = mr.getFilesystemName("pi_img");
+			new File(path + "/" + fileName).delete();
+			return;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		try {
+		String fileName = mr.getFilesystemName("pi_img");
+		
+		i.setPi_no(Integer.parseInt(mr.getParameter("pi_no")));
+		i.setPi_name(mr.getParameter("pi_name"));
+		i.setPi_loc(mr.getParameter("pi_loc"));
+		i.setPi_price(mr.getParameter("pi_price"));
+		i.setPi_partner(mr.getParameter("pi_partner"));
+		i.setPi_img(fileName);
+		
+		System.out.println(i.getPi_no());
+		System.out.println(i.getPi_name());
+		System.out.println(i.getPi_loc());
+		System.out.println(i.getPi_price());
+		System.out.println(i.getPi_partner());
+		System.out.println(fileName);
+		System.out.println("----------------");
+		
+		
+		if (ss.getMapper(InfoMapMapper.class).updateInfo(i) == 1) {
+			System.out.println("수정 성공");
+			req.setAttribute("result", "수정 성공");
+		} else {
+			System.out.println("수정 실패");
+			req.setAttribute("result", "수정 실패");
+		}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			String fileName = mr.getFilesystemName("pi_img");
+			new File(path + "/" + fileName).delete();
+			req.setAttribute("result", "수정 실패");
+			return;
+		}
 		
 	}
 	

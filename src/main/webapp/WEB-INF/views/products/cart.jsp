@@ -8,9 +8,15 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
+<<<<<<< HEAD
 	$(function(){
 		total_cart();
 	})
+=======
+$(function () {
+	total_cart();
+})
+>>>>>>> 5574d82173ca195a07b7a572bbdc95a9218beed7
 </script>
 <body>
 	<div id="myCart_all_div" class="container">

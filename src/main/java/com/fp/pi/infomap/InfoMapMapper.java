@@ -4,8 +4,16 @@ import java.util.List;
 
 public interface InfoMapMapper {
 
-	int regInfo(InfoMapBean i);
+	public int regInfo(InfoMapBean i);
 
-	List<InfoMapBean> callInfo();
+	public List<InfoMapBean> callInfo();
+
+	public List<InfoMapBean> searchPriceInfos(InfoMapBean i);
+
+	public int deletePriceInfo(InfoMapBean i);
+
+	public List<InfoMapBean> searchForUpdate(InfoMapBean i);
+
+	public abstract int updateInfo(InfoMapBean i);
 
 }

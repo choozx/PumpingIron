@@ -28,7 +28,7 @@ function productsSort(pageNo) {
 				let price = $(p).find("p_price").text();
 				let no = $(p).find("p_no").text();
 				
-				$('#products_div_in').append("<div class='col-sm-12 col-lg-3 product_div' id='product_div" + i + "'><a id='product_a" + i + "' href='product.detail?p_no="+ no +"'></a></div>");
+				$('#products_div_in').append("<div class='col-sm-12 col-lg-2 product_div' id='product_div" + i + "'><a id='product_a" + i + "' href='product.detail?p_no="+ no +"'></a></div>");
 				
 				$('#product_a' + i).append("<div><img id='product_img_div' class='container' src='resources/file/"+ img +"'></div>");
 				$('#product_a' + i).append("<div id='product_name_div'>"+ name +"</`div>");
