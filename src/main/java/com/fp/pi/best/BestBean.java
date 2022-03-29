@@ -15,9 +15,9 @@ public class BestBean {
 	private String b_bodyProfile;
 	private String b_productReview;
 	private Date b_date ;
-	private String b_picture; 
+	private String b_picture; // 전체페이지에서 콘텐트안에 있는 이미지 빼오기
 	private String b_type;
-	private String m_photo;
+	private String m_photo;// 회원가입 할때 이미지
 	public BestBean() {
 		// TODO Auto-generated constructor stub
 	}
