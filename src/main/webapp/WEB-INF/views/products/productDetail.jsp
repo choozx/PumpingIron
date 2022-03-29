@@ -15,8 +15,8 @@ $(function () {
 <body>
 	<c:if test="${sessionScope.loginMember.m_email eq 'admin'}">
 		<div id="product_controll" class="container">
-			<button id="delBtn">삭제</button>
-			<button id="updateBtn" onclick="location.href='updateProduct.go?p_no='+${productDetail.p_no }">수정</button>
+			<button type="button" class="btn btn-primary" id="delBtn">삭제</button>
+			<button type="button" class="btn btn-primary" id="updateBtn" onclick="location.href='updateProduct.go?p_no='+${productDetail.p_no }">수정</button>
 		</div>
 	</c:if>
 	<div id="product_detail_div" class="container">
