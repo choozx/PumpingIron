@@ -15,7 +15,7 @@ m_type varchar2(20 char) not null -- 일반회원인지 카카오톡 회원인�
 insert into member values ('ee', 'ee', 00000000000, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y', 'normal');
 
 insert into member values
-('1234@gmail.com', '1234', '01067019501', '몰라', '김두', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
+('5678@gmail.com', '5678', '01055555555', '몰랑', '식식', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
 
 insert into member values
 ('admin', '1234', '01067019501', '몰라', 'admin', 'test,jpg', 0, 300000, sysdate, 'Y', 'normal');
@@ -24,7 +24,7 @@ select * from member;
 
 drop table member cascade constraint purge;
 
-delete member where m_email = 'admin'
+delete member where m_email = 'chlwotlr55@naver.com'
 
 ---------------------------------------------
 --- 공지사항&이벤트 테이블 ---

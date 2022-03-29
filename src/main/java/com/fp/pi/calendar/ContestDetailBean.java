@@ -1,10 +1,8 @@
 package com.fp.pi.calendar;
 
-import java.math.BigDecimal;
-
 public class ContestDetailBean {
 	
-	private BigDecimal ccd_no;
+	private int ccd_no;
 	private String ccd_title;
 	private String ccd_img;
 	private String ccd_text;
@@ -15,7 +13,7 @@ public class ContestDetailBean {
 	}
 
 
-	public ContestDetailBean(BigDecimal ccd_no, String ccd_title, String ccd_img, String ccd_text) {
+	public ContestDetailBean(int ccd_no, String ccd_title, String ccd_img, String ccd_text) {
 		super();
 		this.ccd_no = ccd_no;
 		this.ccd_title = ccd_title;
@@ -24,12 +22,12 @@ public class ContestDetailBean {
 	}
 
 
-	public BigDecimal getCcd_no() {
+	public int getCcd_no() {
 		return ccd_no;
 	}
 
 
-	public void setCcd_no(BigDecimal ccd_no) {
+	public void setCcd_no(int ccd_no) {
 		this.ccd_no = ccd_no;
 	}
 	

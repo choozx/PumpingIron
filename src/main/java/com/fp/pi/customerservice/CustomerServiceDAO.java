@@ -497,6 +497,7 @@ public class CustomerServiceDAO {
 		
 		
 		String path = req.getSession().getServletContext().getRealPath("resources/files");
+		System.out.println(path);
 		MultipartRequest mr = null;
 		try {
 			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fp.pi.SiteOption;
+import com.fp.pi.SiteOption2;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -20,7 +21,7 @@ public class ProductsDAO {
 	private SqlSession ss;
 	
 	@Autowired
-	private SiteOption so;
+	private SiteOption2 so;
 	
 	private int allProductCount;
 	

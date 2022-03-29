@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class InfoMapBean {
 	
-	private BigDecimal pi_no;
+	private int pi_no;
 	private String pi_name;
 	private String pi_loc;
 	private String pi_price;
@@ -15,7 +15,7 @@ public class InfoMapBean {
 		// TODO Auto-generated constructor stub
 	}
 
-	public InfoMapBean(BigDecimal pi_no, String pi_name, String pi_loc, String pi_price, String pi_partner,
+	public InfoMapBean(int pi_no, String pi_name, String pi_loc, String pi_price, String pi_partner,
 			String pi_img) {
 		super();
 		this.pi_no = pi_no;
@@ -26,11 +26,11 @@ public class InfoMapBean {
 		this.pi_img = pi_img;
 	}
 
-	public BigDecimal getPi_no() {
+	public int getPi_no() {
 		return pi_no;
 	}
 
-	public void setPi_no(BigDecimal pi_no) {
+	public void setPi_no(int pi_no) {
 		this.pi_no = pi_no;
 	}
 
