@@ -13,9 +13,6 @@ function payment() {
 	let p_no = $('#product_no').val();	
 	let p_quantity = $('#detail_quantity').val();
 	
-	alert(p_name);
-	alert(total_amount);
-	
 	let m_name = $('#member_name').val();
 	let m_email = $('#member_email').val();
 	let m_phone = $('#member_phone').val();
@@ -44,7 +41,6 @@ function payment() {
 		if (rsp.success) {
 			if (p_name.indexOf('외') == -1) {								
 				location.href='product.buycount?p_no=' + p_no + '&p_cnt=' + p_quantity;
-				alert("단일 구매");
 			} else {		
 				location.href='cart.del.all';
 			}
@@ -57,7 +53,6 @@ function payment() {
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;
 		}
-		alert(msg);
 	});
 	
 }
@@ -65,9 +60,6 @@ function payment() {
 function calAmount() {
 	let price = $("#product_price").val();
 	let quantity = $("#detail_quantity").val();
-	
-	alert(price);
-	alert(quantity);
 	
 	let total_amount = price * quantity;
 	$("#total_amount").val(total_amount);

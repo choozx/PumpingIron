@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+	$(function(){
+		calAmount();
+	})
+</script>
 <body>
 	<c:if test="${sessionScope.loginMember.m_email eq 'admin'}">
 		<div id="product_controll" class="container">

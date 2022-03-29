@@ -85,6 +85,7 @@ private int allMsgCount;
 		req.setAttribute("pageCount", pageCount);
 		System.out.println(pageCount);
 		req.setAttribute("curPage", pageNo);
+		System.out.println(pageNo);
 	}
 	
 	
