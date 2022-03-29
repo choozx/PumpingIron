@@ -27,7 +27,7 @@ width: 100%;
 </style>
 </head>
 <body>
-${result }
+<%-- ${result } --%>
 
 
 

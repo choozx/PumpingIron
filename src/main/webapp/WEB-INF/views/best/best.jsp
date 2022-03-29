@@ -28,7 +28,7 @@
 </script>
 
 </head>
-${result }
+<%-- ${result } --%>
 <body>
 <div class="main-wrapper container">
 <div class="title-center text-center ">

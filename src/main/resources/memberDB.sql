@@ -18,7 +18,7 @@ insert into member values
 ('5678@gmail.com', '5678', '01055555555', '몰랑', '식식', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
 
 insert into member values
-('admin', '1234', '01067019501', '몰라', 'admin', 'test,jpg', 0, 300000, sysdate, 'Y', 'normal');
+('admin', '1234', '01067019501', '몰라', 'admin', 'saaffsfjlk1.jpg', 0, 300000, sysdate, 'Y', 'normal');
 
 select * from member;
 

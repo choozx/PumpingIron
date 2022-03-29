@@ -259,7 +259,7 @@
 				<div class="col-sm-12 col-lg-6 ">
 					<header class="header-board pb-3 mt-5">
 						<h3  style="font-weight: 900;">커뮤니티
-						<span class="ms-3" style="color:rgba(7, 29, 61, 0.7); font-size: 20px; cursor: pointer;" onclick="location.href='tips.go'">운동팁/Q&A</span></h3>
+						<span class="ms-3" style="color:rgba(7, 29, 61, 0.7); font-size: 20px; cursor: pointer;" onclick="location.href='tips.go'">Q&A/파트너 찾기</span></h3>
 						<div>
 						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" onclick="location.href='tips.go'" style="cursor: pointer;">
   						<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
