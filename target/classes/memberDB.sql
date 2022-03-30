@@ -12,7 +12,7 @@ m_key varchar2(100 char) not null, -- 회원 이메일 인증 여부
 m_type varchar2(20 char) not null -- 일반회원인지 카카오톡 회원인지 구분
 );
 
-insert into member values ('ee', 'ee', 00000000000, '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y', 'normal');
+insert into member values ('gg', 'gg', '00000000000', '몰라', '김두', 'test.jpg', 0, 0, sysdate, 'Y', 'normal');
 
 insert into member values
 ('5678@gmail.com', '5678', '01055555555', '몰랑', '식식', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');

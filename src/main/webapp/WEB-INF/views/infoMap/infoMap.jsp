@@ -43,15 +43,15 @@
 					return false;
 				}
 			}
-			
 			$.ajax({
 				url : "https://dapi.kakao.com/v2/local/search/keyword.json",
-				data : {query : search + "헬스클럽", x:35.93501119925401, y:128.56210315279392, radius:5000},
+				data : {query : search + "헬스", x:35.93501119925401, y:128.56210315279392, radius:5000},
 				beforeSend : function(req) {
 					req.setRequestHeader("Authorization", "KakaoAK 4f7470daace7b93bb66a9fcffbb5d9c9");
 				},
 				success : function(result) {
 					$("#search").val('');
+					map = new kakao.maps.Map(mapContainer, mapOption);
 					console.log(result);
 					console.log(JSON.stringify(result));
 					
@@ -86,6 +86,8 @@
 					    // 마커 클릭 가능
 					    clickable: true
 					});
+						
+						
 						// 마커 생성
 						marker.setMap(map);  
 						
