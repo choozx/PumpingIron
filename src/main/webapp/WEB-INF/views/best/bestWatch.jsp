@@ -27,7 +27,7 @@ width: 100%;
 </style>
 </head>
 <body>
-${result }
+<%-- ${result } --%>
 
 
 
@@ -55,8 +55,12 @@ ${result }
 <div class=" viewer-left d-flex align-items-start">
 <a class="viewer-picture">
 
+<<<<<<< HEAD
 
 <img alt="" src="" class="rounded-circle">
+=======
+<!-- <img alt="" src="" class="rounded-circle"> -->
+>>>>>>> 6fd57c5e9b11d740707812a8f470db87125fa016
 
 </a>
 
@@ -154,7 +158,7 @@ ${result }
 </div>
 <div class="clothes-list border-dark border border-top-0"></div>
 <!-- 댓글  -->
-<div class="comment-wrapper">
+<%-- <div class="comment-wrapper">
 <div class="comment-top border border-dark border-top-0 d-flex align-items-center justify-content-between">
 <div class="d-flex align-items-center comment-left">
 <img alt="" src="resources/img/tips/comment.png" class="comment-icon">
@@ -189,7 +193,7 @@ ${result }
 
 
 <div class="comment-left-text">
-<%-- <input type="hidden" name="crr_no" value="${re.crr_no}"> --%>
+<input type="hidden" name="crr_no" value="${re.crr_no}">
 <div class="text-id noto-pb mb-1 d-flex align-items-center">&nbsp&nbsp
 <span class="noto-pb">${t.brr_br_nickname }</span>&nbsp
 
@@ -267,7 +271,7 @@ class="bg-whtie comment-textarea" name="brr_text"></textarea>
 <input type="hidden" name="token" value="${token }">
 <input type="hidden" name="b_no" value="${tippp.b_no }">
 
-<%-- <input type="hidden" value="${re.crr_no }" name="crr_no"> --%>
+<input type="hidden" value="${re.crr_no }" name="crr_no">
 <button class="noto-pb submit-btn"  name="button"
  style="margin-right: 70px;">댓글등록</button>
 
@@ -277,7 +281,7 @@ class="bg-whtie comment-textarea" name="brr_text"></textarea>
 </div>
 </form>
 </div>
-
+ --%>
 
 
 <div class="bottom-btn-wrapper">

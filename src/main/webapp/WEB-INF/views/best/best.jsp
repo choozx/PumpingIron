@@ -28,7 +28,7 @@
 </script>
 
 </head>
-${result }
+<%-- ${result } --%>
 <body>
 <div class="main-wrapper container">
 <div class="title-center text-center ">
@@ -73,7 +73,7 @@ ${result }
 </div>
 <div class="column-user d-flex align-items-center justify-content-between" style="margin-bottom: 15px;">
 <div class="d-flex align-items-center">
-<img  src="resources/files/${b.m_photo}" class="user-img mr-2"><!-- 회원가입할때 이미지 가져오기 -->
+<%-- <img  src="resources/files/${b.m_photo}" class="user-img mr-2"> --%><!-- 회원가입할때 이미지 가져오기 -->
 <span class="noto-sb">${b.b_nickname }</span>
 </div>
 <div class="d-flex align-items-center noto-sb"></div>

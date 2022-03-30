@@ -26,7 +26,7 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active" >
 				<a href="#"><img style="height: 300px;"
-				src="resources/img/products/sup_banner.jpg"
+				src="resources/img/products/banner.webp"
 					class="d-block w-100" alt="..."></a>
 				<div class="carousel-caption d-none d-md-block">
 				
@@ -34,7 +34,7 @@
 			</div>
 			<div class="carousel-item" >
 				<a href="#"><img style="height: 300px;"
-					src="resources/img/index/slide_02.png"
+					src="resources/img/products/banner2.webp"
 					class="d-block w-100" alt="..."></a>
 				<div class="carousel-caption d-none d-md-block">
 				

@@ -18,7 +18,7 @@ insert into member values
 ('5678@gmail.com', '5678', '01055555555', '몰랑', '식식', 'test.jpg', 0, 500, sysdate, 'Y', 'normal');
 
 insert into member values
-('admin', '1234', '01067019501', '몰라', 'admin', 'test,jpg', 0, 300000, sysdate, 'Y', 'normal');
+('admin', '1234', '01067019501', '몰라', 'admin', 'saaffsfjlk1.jpg', 0, 300000, sysdate, 'Y', 'normal');
 
 select * from member;
 
@@ -87,6 +87,8 @@ insert into inquiry values
 
 select * from inquiry;
 
+delete inquiry;
+
 drop table inquiry cascade constraint purge;
 
 DROP SEQUENCE inquiry_seq;
@@ -121,6 +123,8 @@ select count(*)
 		from inquiry, member
 		where i_to = m_email and i_to = 'admin' and i_content like '%'||#{search}||'%' order by i_date desc
 			
+		
+delete inquiry;
 			
 drop table ianswer cascade constraint purge;
 
