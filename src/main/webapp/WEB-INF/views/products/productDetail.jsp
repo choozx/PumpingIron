@@ -8,9 +8,15 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
+<<<<<<< HEAD
+	$(function(){
+		calAmount();
+	})
+=======
 $(function () {
 	calAmount();
 })
+>>>>>>> 5574d82173ca195a07b7a572bbdc95a9218beed7
 </script>
 <body>
 	<c:if test="${sessionScope.loginMember.m_email eq 'admin'}">

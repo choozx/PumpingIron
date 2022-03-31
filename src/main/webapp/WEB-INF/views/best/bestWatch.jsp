@@ -55,7 +55,12 @@ width: 100%;
 <div class=" viewer-left d-flex align-items-start">
 <a class="viewer-picture">
 
+<<<<<<< HEAD
+
+<img alt="" src="" class="rounded-circle">
+=======
 <!-- <img alt="" src="" class="rounded-circle"> -->
+>>>>>>> 6fd57c5e9b11d740707812a8f470db87125fa016
 
 </a>
 

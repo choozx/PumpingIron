@@ -81,6 +81,7 @@ c2_date date not null
 create sequence community_review2_seq;
 
 DROP SEQUENCE community_review2_seq;
+DROP TABLE community_review2 CASCADE CONSTRAINTS;
 
 insert into community_review2 values(community_review2_seq.nextval, '1', '1', 1, '1', '1', '1', '1', '1', 'gw', sysdate);
 
@@ -234,6 +235,9 @@ br_picture varchar(200 char)
 )
 create sequence body_review_seq;
 select * from body_review;
+
+DROP SEQUENCE body_review_seq;
+DROP TABLE body_review CASCADE CONSTRAINTS;
 ---------------------------------------------------
 create table body_review_reply(
 brr_no number(7) primary key, --댓글 번호-----------------------------------
