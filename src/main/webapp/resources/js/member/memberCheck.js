@@ -121,6 +121,8 @@ function infoCheck() {
 		alert("주소를 올바르게 입력하세요.");
 		addr2Input.focus();
 		return false;
+	} else if(isEmpty(photoInput)){
+		return true;
 	}  else if ((isNotType(photoInput, "png") && isNotType(photoInput, "gif")
 					&& isNotType(photoInput, "jpg") && isNotType(photoInput,
 					"bmp"))) {

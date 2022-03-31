@@ -294,8 +294,7 @@ $(function() {
 					console.log(data)
 					$.each(data, function(i,c) {
 //						console.log(c.cr_text);
-						$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<span class="delRoutine" style="color: white;"> x </span></h6>');
-//						console.log('--------')
+						$("#routineDIV").append("<h6 style='color: white;' value='"+ c.cr_no + "'> - " + c.cr_text + '<span class="delRoutine" style="color: white; cursor:pointer;"> x </span></h6>');
 					});
 					
 					

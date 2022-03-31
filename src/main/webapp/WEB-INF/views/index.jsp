@@ -205,7 +205,7 @@
 				<c:choose>
 					<c:when test="${sessionScope.loginMember == null}">
 					<!-- 로그인 안했을 경우   -->			
-						<div class="login-item01">
+						<div class="login-item01" style="width: 100%; display: flex; justify-content: flex-end;">
 							<a href="member.login.go">로그인</a>
 						</div>
 					</c:when>
